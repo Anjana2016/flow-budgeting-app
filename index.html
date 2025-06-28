@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0071)file:///Users/anjanasudhakar/Downloads/flow_budget_app_fixed%20(1).html -->
+<!-- saved from url=(0062)file:///Users/anjanasudhakar/Downloads/deployment_package.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,10 @@
     <script src="./index_files/babel.min.js"></script>
     
     <!-- Tailwind CSS -->
-    <script src="./index_files/tailwind.min.js"></script>
+    <script src="./index_files/saved_resource"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="./index_files/lucide.js"></script>
     
     <style>
         /* Custom CSS for animations and special effects */
@@ -66,11 +69,6 @@
         @keyframes fadeInScale {
             from { transform: scale(0.95); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
-        }
-        
-        @keyframes ringPulse {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
         }
         
         .animate-in {
@@ -131,19 +129,672 @@
         .floating-add {
             animation: floatingPulse 3s ease-in-out infinite;
         }
-        
-        /* Dual progress ring system */
-        .progress-ring-overlay {
-            animation: ringPulse 2s ease-in-out infinite;
-        }
     </style>
-</head>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.bottom-32{bottom:8rem}.bottom-6{bottom:1.5rem}.left-1\/2{left:50%}.right-3{right:0.75rem}.right-6{right:1.5rem}.top-2{top:0.5rem}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.flex{display:flex}.grid{display:grid}.h-10{height:2.5rem}.h-12{height:3rem}.h-16{height:4rem}.h-32{height:8rem}.h-8{height:2rem}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-16{width:4rem}.w-32{width:8rem}.w-8{width:2rem}.w-full{width:100%}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-rotate-90{--tw-rotate:-90deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-emerald-500\/10{border-color:rgb(16 185 129 / 0.1)}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-cyan-500{--tw-bg-opacity:1;background-color:rgb(6 182 212 / var(--tw-bg-opacity, 1))}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/30{background-color:rgb(16 185 129 / 0.3)}.bg-emerald-500\/5{background-color:rgb(16 185 129 / 0.05)}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-emerald-400{--tw-gradient-from:#34d399 var(--tw-gradient-from-position);--tw-gradient-to:rgb(52 211 153 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-emerald-500{--tw-gradient-from:#10b981 var(--tw-gradient-from-position);--tw-gradient-to:rgb(16 185 129 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-pink-500{--tw-gradient-from:#ec4899 var(--tw-gradient-from-position);--tw-gradient-to:rgb(236 72 153 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-transparent{--tw-gradient-from:transparent var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-emerald-500\/10{--tw-gradient-to:rgb(16 185 129 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), rgb(16 185 129 / 0.1) var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-cyan-400{--tw-gradient-to:#22d3ee var(--tw-gradient-to-position)}.to-cyan-500{--tw-gradient-to:#06b6d4 var(--tw-gradient-to-position)}.to-rose-500{--tw-gradient-to:#f43f5e var(--tw-gradient-to-position)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.p-10{padding:2.5rem}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.pb-24{padding-bottom:6rem}.pt-6{padding-top:1.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-6xl{font-size:3.75rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.tracking-wide{letter-spacing:0.025em}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.placeholder-slate-400::placeholder{--tw-placeholder-opacity:1;color:rgb(148 163 184 / var(--tw-placeholder-opacity, 1))}.opacity-60{opacity:0.6}.opacity-70{opacity:0.7}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-2xl{--tw-backdrop-blur:blur(40px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-700{transition-duration:700ms}.hover\:-translate-y-1:hover{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:translate-x-1:hover{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:scale-110:hover{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-emerald-500\/10:hover{background-color:rgb(16 185 129 / 0.1)}.hover\:text-purple-300:hover{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-emerald-400\/50:focus{--tw-ring-color:rgb(52 211 153 / 0.5)}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.disabled\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\:from-gray-600:disabled{--tw-gradient-from:#4b5563 var(--tw-gradient-from-position);--tw-gradient-to:rgb(75 85 99 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.disabled\:to-gray-600:disabled{--tw-gradient-to:#4b5563 var(--tw-gradient-to-position)}</style><script>"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var _React = React,
+  useState = _React.useState,
+  useReducer = _React.useReducer,
+  useEffect = _React.useEffect;
+var _ReactDOM = ReactDOM,
+  createRoot = _ReactDOM.createRoot;
+
+// Lucide Icons
+var _lucide = lucide,
+  Plus = _lucide.Plus,
+  Settings = _lucide.Settings,
+  TrendingUp = _lucide.TrendingUp,
+  MessageCircle = _lucide.MessageCircle,
+  DollarSign = _lucide.DollarSign,
+  Target = _lucide.Target,
+  User = _lucide.User,
+  BarChart3 = _lucide.BarChart3;
+
+// Initial state with guilt-free focused data structure
+var initialState = {
+  user: {
+    id: 'user_1',
+    name: 'Sarah',
+    monthlyIncome: 3200,
+    currentPeriod: 'monthly',
+    joinDate: new Date('2024-06-01')
+  },
+  currentMonth: {
+    year: 2024,
+    month: 6,
+    startDate: new Date('2024-06-01'),
+    endDate: new Date('2024-06-30'),
+    daysTotal: 30,
+    daysRemaining: 10
+  },
+  budget: {
+    fixedExpenses: [{
+      id: 1,
+      name: 'Rent',
+      amount: 1200,
+      dueDate: 1,
+      category: 'housing'
+    }, {
+      id: 2,
+      name: 'Insurance',
+      amount: 150,
+      dueDate: 15,
+      category: 'insurance'
+    }, {
+      id: 3,
+      name: 'Phone',
+      amount: 80,
+      dueDate: 10,
+      category: 'utilities'
+    }],
+    allocation: {
+      spend: 0.6,
+      stash: 0.25,
+      save: 0.15
+    }
+  },
+  transactions: [{
+    id: 1,
+    amount: 6.50,
+    description: 'Morning Oat Latte',
+    category: 'spend',
+    timestamp: new Date('2024-06-20T08:30:00'),
+    merchantId: 'coffee_shop',
+    guiltFree: true
+  }, {
+    id: 2,
+    amount: 14.75,
+    description: 'Healthy Lunch Bowl',
+    category: 'spend',
+    timestamp: new Date('2024-06-19T12:15:00'),
+    merchantId: 'lunch_spot',
+    guiltFree: true
+  }, {
+    id: 3,
+    amount: 4.25,
+    description: 'Friday Ice Cream',
+    category: 'spend',
+    timestamp: new Date('2024-06-19T18:00:00'),
+    merchantId: 'ice_cream',
+    guiltFree: true
+  }, {
+    id: 4,
+    amount: 8.75,
+    description: 'Afternoon Snack',
+    category: 'spend',
+    timestamp: new Date('2024-06-18T15:30:00'),
+    merchantId: 'snack_bar',
+    guiltFree: true
+  }],
+  gamification: {
+    currentStreak: 5,
+    totalGuiltFreeExpenses: 47,
+    achievements: ['5_day_streak', 'guilt_free_week', 'budget_champion'],
+    lastCelebration: new Date('2024-06-20T12:15:00')
+  },
+  ai: {
+    chatHistory: [{
+      id: 1,
+      message: "Hey Sarah! 👋 You're absolutely crushing this guilt-free spending! 5-day streak! ✨",
+      sender: 'ai',
+      timestamp: new Date()
+    }],
+    lastActiveTime: new Date()
+  }
+};
+
+// Reducer for state management
+function appReducer(state, action) {
+  switch (action.type) {
+    case 'ADD_GUILT_FREE_PURCHASE':
+      var newTransaction = {
+        id: Date.now(),
+        amount: action.payload.amount,
+        description: action.payload.description,
+        category: 'spend',
+        timestamp: new Date(),
+        merchantId: action.payload.merchantId || null,
+        guiltFree: true
+      };
+      return _objectSpread(_objectSpread({}, state), {}, {
+        transactions: [newTransaction].concat(_toConsumableArray(state.transactions)),
+        gamification: _objectSpread(_objectSpread({}, state.gamification), {}, {
+          totalGuiltFreeExpenses: state.gamification.totalGuiltFreeExpenses + 1,
+          currentStreak: state.gamification.currentStreak + (Math.random() > 0.8 ? 1 : 0)
+        })
+      });
+    case 'ADD_AI_MESSAGE':
+      return _objectSpread(_objectSpread({}, state), {}, {
+        ai: _objectSpread(_objectSpread({}, state.ai), {}, {
+          chatHistory: [].concat(_toConsumableArray(state.ai.chatHistory), [action.payload])
+        })
+      });
+    default:
+      return state;
+  }
+}
+
+// Calculate Daily Guilt-Free Amount
+function calculateGuiltFreeFlow(state) {
+  var user = state.user,
+    budget = state.budget,
+    transactions = state.transactions,
+    currentMonth = state.currentMonth;
+  var totalFixedExpenses = budget.fixedExpenses.reduce(function (sum, expense) {
+    return sum + expense.amount;
+  }, 0);
+  var availableIncome = user.monthlyIncome - totalFixedExpenses;
+  var spendAllocation = availableIncome * budget.allocation.spend;
+  var totalSpent = transactions.reduce(function (sum, tx) {
+    return sum + tx.amount;
+  }, 0);
+  var remainingSpendBudget = spendAllocation - totalSpent;
+  var dailyGuiltFreeAmount = remainingSpendBudget / currentMonth.daysRemaining;
+  var today = new Date().toDateString();
+  var todaySpent = transactions.filter(function (tx) {
+    return tx.timestamp.toDateString() === today;
+  }).reduce(function (sum, tx) {
+    return sum + tx.amount;
+  }, 0);
+  var todayRemaining = Math.max(0, dailyGuiltFreeAmount - todaySpent);
+  var spentPercentage = todaySpent / dailyGuiltFreeAmount;
+  return {
+    dailyGuiltFreeAmount: Math.max(0, dailyGuiltFreeAmount),
+    todayRemaining: todayRemaining,
+    todaySpent: todaySpent,
+    spentPercentage: Math.min(spentPercentage, 1),
+    remainingSpendBudget: remainingSpendBudget,
+    totalSpent: totalSpent,
+    spendAllocation: spendAllocation,
+    stashAmount: availableIncome * budget.allocation.stash,
+    saveAmount: availableIncome * budget.allocation.save,
+    progressPercentage: (currentMonth.daysTotal - currentMonth.daysRemaining) / currentMonth.daysTotal * 100
+  };
+}
+
+// Quick suggestions for guilt-free spending
+var guiltFreeSuggestions = [{
+  amount: 6.50,
+  label: 'Coffee Run ☕',
+  description: '~$5-8 range',
+  icon: '☕',
+  merchantId: 'coffee_generic'
+}, {
+  amount: 14.75,
+  label: 'Lunch Treat 🍕',
+  description: '~$12-18 range',
+  icon: '🍕',
+  merchantId: 'lunch_generic'
+}, {
+  amount: 4.25,
+  label: 'Snack Attack 🍿',
+  description: '~$3-6 range',
+  icon: '🍿',
+  merchantId: 'snacks_generic'
+}, {
+  amount: 0,
+  label: 'Custom Amount 💳',
+  description: 'You choose!',
+  icon: '💳',
+  merchantId: 'custom'
+}];
+
+// Guilt-free messages
+var guiltFreeMessages = ["✅ This amount is 100% guilt-free! Go enjoy it!", "🎉 Guilt-free purchase confirmed! You've earned this!", "☕ Coffee break approved! This fits perfectly in your guilt-free budget", "🍕 Lunch time! You've pre-approved this expense - enjoy!", "🍿 Snack attack! This is exactly what your daily amount is for", "✨ You're absolutely crushing this budget thing!", "💚 Perfect choice! This is YOUR money to enjoy guilt-free"];
+function FlowBudgetingApp() {
+  var _useReducer = useReducer(appReducer, initialState),
+    _useReducer2 = _slicedToArray(_useReducer, 2),
+    state = _useReducer2[0],
+    dispatch = _useReducer2[1];
+  var _useState = useState('guilt-free'),
+    _useState2 = _slicedToArray(_useState, 2),
+    activeTab = _useState2[0],
+    setActiveTab = _useState2[1];
+  var _useState3 = useState(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    showToast = _useState4[0],
+    setShowToast = _useState4[1];
+  var _useState5 = useState(''),
+    _useState6 = _slicedToArray(_useState5, 2),
+    toastMessage = _useState6[0],
+    setToastMessage = _useState6[1];
+  var _useState7 = useState(''),
+    _useState8 = _slicedToArray(_useState7, 2),
+    customAmount = _useState8[0],
+    setCustomAmount = _useState8[1];
+
+  // Calculate current guilt-free data
+  var flowData = calculateGuiltFreeFlow(state);
+
+  // Show permission toast
+  var showPermissionToast = function showPermissionToast(message) {
+    setToastMessage(message);
+    setShowToast(true);
+    setTimeout(function () {
+      return setShowToast(false);
+    }, 3000);
+  };
+  var handleGuiltFreePurchase = function handleGuiltFreePurchase(amount, description, merchantId) {
+    dispatch({
+      type: 'ADD_GUILT_FREE_PURCHASE',
+      payload: {
+        amount: amount,
+        description: description,
+        merchantId: merchantId
+      }
+    });
+    setTimeout(function () {
+      var randomResponse = guiltFreeMessages[Math.floor(Math.random() * guiltFreeMessages.length)];
+      showPermissionToast(randomResponse);
+    }, 500);
+    setCustomAmount('');
+  };
+  var handleCustomPurchase = function handleCustomPurchase() {
+    var amount = parseFloat(customAmount);
+    if (amount > 0) {
+      handleGuiltFreePurchase(amount, "Custom Purchase", 'custom');
+    }
+  };
+
+  // Simulate haptic feedback
+  var triggerHaptic = function triggerHaptic() {
+    var intensity = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'medium';
+    if (navigator.vibrate) {
+      var patterns = {
+        light: [10],
+        medium: [20],
+        strong: [50]
+      };
+      navigator.vibrate(patterns[intensity] || patterns.medium);
+    }
+  };
+
+  // Get time-based greeting
+  var getGreeting = function getGreeting() {
+    var hour = new Date().getHours();
+    if (hour < 12) return 'Good morning, Sarah! ☀️';
+    if (hour < 17) return 'Good afternoon, Sarah! ☀️';
+    return 'Good evening, Sarah! 🌙';
+  };
+  var getTimeContext = function getTimeContext() {
+    var hour = new Date().getHours();
+    if (hour < 12) return 'Perfect time for a guilt-free coffee';
+    if (hour < 17) return 'Perfect time for a guilt-free treat';
+    return 'Perfect time to enjoy your money';
+  };
+  return React.createElement('div', {
+    className: "min-h-screen bg-animated text-white relative overflow-hidden"
+  }, [
+  // Permission Toast
+  showToast && React.createElement('div', {
+    key: 'toast',
+    className: "fixed top-6 left-1/2 transform -translate-x-1/2 z-50 slide-in-from-top-4"
+  }, React.createElement('div', {
+    className: "bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl"
+  }, toastMessage)),
+  // Main Content Container
+  React.createElement('div', {
+    key: 'main',
+    className: "max-w-md mx-auto min-h-screen relative z-10"
+  }, [
+  // Main Content
+  React.createElement('div', {
+    key: 'content',
+    className: "pb-24 pt-6"
+  }, [
+  // Guilt-Free Tab
+  activeTab === 'guilt-free' && React.createElement('div', {
+    key: 'guilt-free-tab',
+    className: "px-6 space-y-6 slide-in-from-bottom-4"
+  }, [
+  // Header
+  React.createElement('div', {
+    key: 'header',
+    className: "flex justify-between items-center mb-8 p-6 bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl slide-in-from-top-4"
+  }, [React.createElement('div', {
+    key: 'greeting-section'
+  }, [React.createElement('h1', {
+    key: 'greeting',
+    className: "text-lg font-semibold mb-1"
+  }, getGreeting()), React.createElement('p', {
+    key: 'context',
+    className: "text-sm text-slate-400"
+  }, getTimeContext())]), React.createElement('button', {
+    key: 'settings-btn',
+    onClick: function onClick() {
+      return setActiveTab('setup');
+    },
+    className: "text-slate-400 hover:text-white transition-colors p-2"
+  }, '⚙️')]),
+  // Hero: Daily Guilt-Free Amount
+  React.createElement('div', {
+    key: 'hero',
+    className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-10 text-center relative overflow-hidden cursor-pointer fade-in-scale",
+    style: {
+      boxShadow: '0 12px 32px rgba(16, 185, 129, 0.3)'
+    },
+    onClick: function onClick() {
+      triggerHaptic('strong');
+      showPermissionToast("✅ This amount is 100% guilt-free! Go enjoy it!");
+    }
+  }, [
+  // Shimmer effect
+  React.createElement('div', {
+    key: 'shimmer',
+    className: "absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse opacity-60"
+  }), React.createElement('div', {
+    key: 'hero-content',
+    className: "relative z-10"
+  }, [React.createElement('div', {
+    key: 'permission-label',
+    className: "flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-2 tracking-wide"
+  }, [React.createElement('span', {
+    key: 'check'
+  }, '✅'), React.createElement('span', {
+    key: 'text'
+  }, 'PRE-APPROVED TO SPEND')]), React.createElement('div', {
+    key: 'amount',
+    className: "text-6xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-3 hover:scale-105 transition-transform duration-300",
+    style: {
+      letterSpacing: '-1px'
+    }
+  }, "$".concat(flowData.todayRemaining.toFixed(2))), React.createElement('p', {
+    key: 'encouragement',
+    className: "text-slate-300 font-medium mb-6"
+  }, "Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉"),
+  // Progress Ring
+  React.createElement('div', {
+    key: 'progress-container',
+    className: "w-32 h-32 mx-auto relative mb-4"
+  }, [React.createElement('svg', {
+    key: 'progress-svg',
+    className: "w-32 h-32 transform -rotate-90",
+    viewBox: "0 0 120 120"
+  }, [React.createElement('circle', {
+    key: 'bg-circle',
+    cx: "60",
+    cy: "60",
+    r: "50",
+    stroke: "rgba(255, 255, 255, 0.1)",
+    strokeWidth: "8",
+    fill: "none"
+  }), React.createElement('circle', {
+    key: 'progress-circle',
+    cx: "60",
+    cy: "60",
+    r: "50",
+    stroke: "url(#progressGradient)",
+    strokeWidth: "8",
+    fill: "none",
+    strokeLinecap: "round",
+    strokeDasharray: "".concat(2 * Math.PI * 50),
+    strokeDashoffset: "".concat(2 * Math.PI * 50 * (1 - flowData.spentPercentage)),
+    className: "transition-all duration-700"
+  }), React.createElement('defs', {
+    key: 'defs'
+  }, React.createElement('linearGradient', {
+    key: 'gradient',
+    id: "progressGradient",
+    x1: "0%",
+    y1: "0%",
+    x2: "100%",
+    y2: "0%"
+  }, [React.createElement('stop', {
+    key: 'stop1',
+    offset: "0%",
+    stopColor: "#10b981"
+  }), React.createElement('stop', {
+    key: 'stop2',
+    offset: "100%",
+    stopColor: "#22c55e"
+  })]))]), React.createElement('div', {
+    key: 'spent-display',
+    className: "absolute inset-0 flex flex-col items-center justify-center"
+  }, [React.createElement('div', {
+    key: 'spent-label',
+    className: "text-xs text-slate-400 mb-1"
+  }, 'Enjoyed Today'), React.createElement('div', {
+    key: 'spent-value',
+    className: "text-lg font-bold text-emerald-400"
+  }, "$".concat(flowData.todaySpent.toFixed(2)))])])])]),
+  // Quick Spending Actions
+  React.createElement('div', {
+    key: 'quick-actions',
+    className: "grid grid-cols-2 gap-4 slide-in-from-bottom-4"
+  }, guiltFreeSuggestions.map(function (suggestion, idx) {
+    return React.createElement('button', {
+      key: "suggestion-".concat(idx),
+      onClick: function onClick() {
+        triggerHaptic('medium');
+        if (suggestion.merchantId === 'custom') {
+          setCustomAmount('');
+        } else {
+          handleGuiltFreePurchase(suggestion.amount, suggestion.label, suggestion.merchantId);
+        }
+      },
+      className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95",
+      style: {
+        boxShadow: '0 8px 25px rgba(99, 102, 241, 0.2)'
+      }
+    }, [React.createElement('div', {
+      key: 'icon',
+      className: "text-3xl mb-3"
+    }, suggestion.icon), React.createElement('div', {
+      key: 'label',
+      className: "font-semibold text-white mb-1"
+    }, suggestion.label), React.createElement('div', {
+      key: 'desc',
+      className: "text-xs text-slate-400"
+    }, suggestion.description)]);
+  })),
+  // Custom Amount Entry
+  React.createElement('div', {
+    key: 'custom-entry',
+    className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6"
+  }, [React.createElement('h3', {
+    key: 'custom-title',
+    className: "font-semibold mb-4 text-center"
+  }, '💳 Custom Guilt-Free Amount'), React.createElement('div', {
+    key: 'custom-form',
+    className: "flex gap-3"
+  }, [React.createElement('input', {
+    key: 'custom-input',
+    type: "number",
+    placeholder: "Enter amount",
+    value: customAmount,
+    onChange: function onChange(e) {
+      return setCustomAmount(e.target.value);
+    },
+    className: "flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
+  }), React.createElement('button', {
+    key: 'custom-btn',
+    onClick: handleCustomPurchase,
+    disabled: !customAmount || parseFloat(customAmount) <= 0,
+    className: "bg-gradient-to-r from-emerald-500 to-cyan-500 disabled:from-gray-600 disabled:to-gray-600 rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:scale-105 active:scale-95 disabled:cursor-not-allowed"
+  }, 'Approve')])]),
+  // Spending Streak
+  React.createElement('div', {
+    key: 'streak',
+    className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-left-4"
+  }, [React.createElement('div', {
+    key: 'streak-header',
+    className: "flex items-center gap-3 mb-4"
+  }, [React.createElement('div', {
+    key: 'streak-icon',
+    className: "w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-2xl animate-pulse"
+  }, '🔥'), React.createElement('div', {
+    key: 'streak-text'
+  }, [React.createElement('div', {
+    key: 'streak-title',
+    className: "font-bold text-lg"
+  }, "".concat(state.gamification.currentStreak, "-Day Guilt-Free Streak!")), React.createElement('div', {
+    key: 'streak-subtitle',
+    className: "text-sm text-slate-400"
+  }, "You're absolutely crushing this budget thing ✨")])]), React.createElement('div', {
+    key: 'streak-days',
+    className: "flex gap-2"
+  }, ['M', 'T', 'W', 'T', 'F', 'S', 'S'].map(function (day, idx) {
+    return React.createElement('div', {
+      key: "day-".concat(idx),
+      className: "w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold ".concat(idx < state.gamification.currentStreak ? 'bg-emerald-500 text-white' : idx === state.gamification.currentStreak ? 'bg-cyan-500 text-white animate-pulse' : 'bg-white/10 text-slate-400')
+    }, day);
+  }))]),
+  // Recent Guilt-Free Purchases
+  React.createElement('div', {
+    key: 'recent-purchases',
+    className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 fade-in-scale"
+  }, [React.createElement('div', {
+    key: 'purchases-header',
+    className: "flex justify-between items-center mb-5"
+  }, [React.createElement('h3', {
+    key: 'purchases-title',
+    className: "font-semibold flex items-center gap-2"
+  }, [React.createElement('span', {
+    key: 'heart'
+  }, '💚'), React.createElement('span', {
+    key: 'title'
+  }, 'Recent Guilt-Free Wins')]), React.createElement('button', {
+    key: 'see-all',
+    className: "text-sm text-purple-400 font-medium hover:text-purple-300 transition-colors"
+  }, 'See all →')]), React.createElement('div', {
+    key: 'purchases-list',
+    className: "space-y-3"
+  }, state.transactions.slice(0, 3).map(function (tx) {
+    return React.createElement('div', {
+      key: "tx-".concat(tx.id),
+      className: "flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative"
+    }, [React.createElement('div', {
+      key: 'check',
+      className: "absolute top-2 right-3 text-xs opacity-70"
+    }, '✅'), React.createElement('div', {
+      key: 'icon',
+      className: "w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg"
+    }, tx.description.includes('Coffee') ? '☕' : tx.description.includes('Lunch') ? '🥗' : tx.description.includes('Ice Cream') ? '🍦' : '🍿'), React.createElement('div', {
+      key: 'details',
+      className: "flex-1"
+    }, [React.createElement('div', {
+      key: 'title',
+      className: "font-medium text-sm"
+    }, tx.description), React.createElement('div', {
+      key: 'context',
+      className: "text-xs text-slate-400"
+    }, "Pre-approved \u2022 ".concat(tx.timestamp.toLocaleDateString(), " \u2022 Guilt-free \u2728"))]), React.createElement('div', {
+      key: 'amount',
+      className: "font-bold text-emerald-400"
+    }, "".concat(tx.amount.toFixed(2)))]);
+  }))])]),
+  // Other tabs (simplified)
+  activeTab === 'setup' && React.createElement('div', {
+    key: 'setup-tab',
+    className: "px-6 space-y-6 slide-in-from-bottom-4"
+  }, [React.createElement('h1', {
+    key: 'setup-title',
+    className: "text-2xl font-bold text-center mb-8"
+  }, 'Setup Your Flow'), React.createElement('div', {
+    key: 'setup-content',
+    className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6"
+  }, [React.createElement('h3', {
+    key: 'settings-title',
+    className: "font-semibold mb-4"
+  }, 'CURRENT SETTINGS'), React.createElement('div', {
+    key: 'settings-list',
+    className: "space-y-3 text-sm"
+  }, [React.createElement('div', {
+    key: 'income',
+    className: "flex justify-between"
+  }, [React.createElement('span', {
+    key: 'income-label',
+    className: "text-slate-400"
+  }, 'Monthly Income:'), React.createElement('span', {
+    key: 'income-value',
+    className: "font-semibold"
+  }, "".concat(state.user.monthlyIncome.toLocaleString()))]), React.createElement('div', {
+    key: 'expenses',
+    className: "flex justify-between"
+  }, [React.createElement('span', {
+    key: 'expenses-label',
+    className: "text-slate-400"
+  }, 'Fixed Bills:'), React.createElement('span', {
+    key: 'expenses-value',
+    className: "font-semibold"
+  }, "".concat(state.budget.fixedExpenses.reduce(function (sum, exp) {
+    return sum + exp.amount;
+  }, 0).toLocaleString()))])])])])]),
+  // Floating Add Button
+  React.createElement('button', {
+    key: 'floating-add',
+    onClick: function onClick() {
+      triggerHaptic('strong');
+      showPermissionToast("💳 Ready to add a guilt-free purchase!");
+    },
+    className: "fixed bottom-32 right-6 w-16 h-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl flex items-center justify-center text-2xl shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 floating-add"
+  }, '➕'),
+  // Bottom Navigation
+  React.createElement('div', {
+    key: 'bottom-nav',
+    className: "fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md px-6"
+  }, React.createElement('div', {
+    className: "bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-3"
+  }, React.createElement('div', {
+    className: "flex justify-around items-center"
+  }, [React.createElement('button', {
+    key: 'nav-guilt-free',
+    onClick: function onClick() {
+      setActiveTab('guilt-free');
+      triggerHaptic('light');
+    },
+    className: "flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 ".concat(activeTab === 'guilt-free' ? 'bg-emerald-500/30 text-emerald-300' : 'text-slate-400 hover:text-white')
+  }, [React.createElement('span', {
+    key: 'icon',
+    className: "text-lg"
+  }, '💚'), React.createElement('span', {
+    key: 'label',
+    className: "text-xs font-semibold"
+  }, 'Guilt-Free')]), React.createElement('button', {
+    key: 'nav-setup',
+    onClick: function onClick() {
+      setActiveTab('setup');
+      triggerHaptic('light');
+    },
+    className: "flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 ".concat(activeTab === 'setup' ? 'bg-purple-500/30 text-purple-300' : 'text-slate-400 hover:text-white')
+  }, [React.createElement('span', {
+    key: 'icon',
+    className: "text-lg"
+  }, '⚙️'), React.createElement('span', {
+    key: 'label',
+    className: "text-xs font-semibold"
+  }, 'Setup')])])))])]);
+}
+
+// Render the app
+var root = createRoot(document.getElementById('root'));
+root.render(React.createElement(FlowBudgetingApp));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfUmVhY3QiLCJSZWFjdCIsInVzZVN0YXRlIiwidXNlUmVkdWNlciIsInVzZUVmZmVjdCIsIl9SZWFjdERPTSIsIlJlYWN0RE9NIiwiY3JlYXRlUm9vdCIsIl9sdWNpZGUiLCJsdWNpZGUiLCJQbHVzIiwiU2V0dGluZ3MiLCJUcmVuZGluZ1VwIiwiTWVzc2FnZUNpcmNsZSIsIkRvbGxhclNpZ24iLCJUYXJnZXQiLCJVc2VyIiwiQmFyQ2hhcnQzIiwiaW5pdGlhbFN0YXRlIiwidXNlciIsImlkIiwibmFtZSIsIm1vbnRobHlJbmNvbWUiLCJjdXJyZW50UGVyaW9kIiwiam9pbkRhdGUiLCJEYXRlIiwiY3VycmVudE1vbnRoIiwieWVhciIsIm1vbnRoIiwic3RhcnREYXRlIiwiZW5kRGF0ZSIsImRheXNUb3RhbCIsImRheXNSZW1haW5pbmciLCJidWRnZXQiLCJmaXhlZEV4cGVuc2VzIiwiYW1vdW50IiwiZHVlRGF0ZSIsImNhdGVnb3J5IiwiYWxsb2NhdGlvbiIsInNwZW5kIiwic3Rhc2giLCJzYXZlIiwidHJhbnNhY3Rpb25zIiwiZGVzY3JpcHRpb24iLCJ0aW1lc3RhbXAiLCJtZXJjaGFudElkIiwiZ3VpbHRGcmVlIiwiZ2FtaWZpY2F0aW9uIiwiY3VycmVudFN0cmVhayIsInRvdGFsR3VpbHRGcmVlRXhwZW5zZXMiLCJhY2hpZXZlbWVudHMiLCJsYXN0Q2VsZWJyYXRpb24iLCJhaSIsImNoYXRIaXN0b3J5IiwibWVzc2FnZSIsInNlbmRlciIsImxhc3RBY3RpdmVUaW1lIiwiYXBwUmVkdWNlciIsInN0YXRlIiwiYWN0aW9uIiwidHlwZSIsIm5ld1RyYW5zYWN0aW9uIiwibm93IiwicGF5bG9hZCIsIl9vYmplY3RTcHJlYWQiLCJjb25jYXQiLCJfdG9Db25zdW1hYmxlQXJyYXkiLCJNYXRoIiwicmFuZG9tIiwiY2FsY3VsYXRlR3VpbHRGcmVlRmxvdyIsInRvdGFsRml4ZWRFeHBlbnNlcyIsInJlZHVjZSIsInN1bSIsImV4cGVuc2UiLCJhdmFpbGFibGVJbmNvbWUiLCJzcGVuZEFsbG9jYXRpb24iLCJ0b3RhbFNwZW50IiwidHgiLCJyZW1haW5pbmdTcGVuZEJ1ZGdldCIsImRhaWx5R3VpbHRGcmVlQW1vdW50IiwidG9kYXkiLCJ0b0RhdGVTdHJpbmciLCJ0b2RheVNwZW50IiwiZmlsdGVyIiwidG9kYXlSZW1haW5pbmciLCJtYXgiLCJzcGVudFBlcmNlbnRhZ2UiLCJtaW4iLCJzdGFzaEFtb3VudCIsInNhdmVBbW91bnQiLCJwcm9ncmVzc1BlcmNlbnRhZ2UiLCJndWlsdEZyZWVTdWdnZXN0aW9ucyIsImxhYmVsIiwiaWNvbiIsImd1aWx0RnJlZU1lc3NhZ2VzIiwiRmxvd0J1ZGdldGluZ0FwcCIsIl91c2VSZWR1Y2VyIiwiX3VzZVJlZHVjZXIyIiwiX3NsaWNlZFRvQXJyYXkiLCJkaXNwYXRjaCIsIl91c2VTdGF0ZSIsIl91c2VTdGF0ZTIiLCJhY3RpdmVUYWIiLCJzZXRBY3RpdmVUYWIiLCJfdXNlU3RhdGUzIiwiX3VzZVN0YXRlNCIsInNob3dUb2FzdCIsInNldFNob3dUb2FzdCIsIl91c2VTdGF0ZTUiLCJfdXNlU3RhdGU2IiwidG9hc3RNZXNzYWdlIiwic2V0VG9hc3RNZXNzYWdlIiwiX3VzZVN0YXRlNyIsIl91c2VTdGF0ZTgiLCJjdXN0b21BbW91bnQiLCJzZXRDdXN0b21BbW91bnQiLCJmbG93RGF0YSIsInNob3dQZXJtaXNzaW9uVG9hc3QiLCJzZXRUaW1lb3V0IiwiaGFuZGxlR3VpbHRGcmVlUHVyY2hhc2UiLCJyYW5kb21SZXNwb25zZSIsImZsb29yIiwibGVuZ3RoIiwiaGFuZGxlQ3VzdG9tUHVyY2hhc2UiLCJwYXJzZUZsb2F0IiwidHJpZ2dlckhhcHRpYyIsImludGVuc2l0eSIsImFyZ3VtZW50cyIsInVuZGVmaW5lZCIsIm5hdmlnYXRvciIsInZpYnJhdGUiLCJwYXR0ZXJucyIsImxpZ2h0IiwibWVkaXVtIiwic3Ryb25nIiwiZ2V0R3JlZXRpbmciLCJob3VyIiwiZ2V0SG91cnMiLCJnZXRUaW1lQ29udGV4dCIsImNyZWF0ZUVsZW1lbnQiLCJjbGFzc05hbWUiLCJrZXkiLCJvbkNsaWNrIiwic3R5bGUiLCJib3hTaGFkb3ciLCJsZXR0ZXJTcGFjaW5nIiwidG9GaXhlZCIsInZpZXdCb3giLCJjeCIsImN5IiwiciIsInN0cm9rZSIsInN0cm9rZVdpZHRoIiwiZmlsbCIsInN0cm9rZUxpbmVjYXAiLCJzdHJva2VEYXNoYXJyYXkiLCJQSSIsInN0cm9rZURhc2hvZmZzZXQiLCJ4MSIsInkxIiwieDIiLCJ5MiIsIm9mZnNldCIsInN0b3BDb2xvciIsIm1hcCIsInN1Z2dlc3Rpb24iLCJpZHgiLCJwbGFjZWhvbGRlciIsInZhbHVlIiwib25DaGFuZ2UiLCJlIiwidGFyZ2V0IiwiZGlzYWJsZWQiLCJkYXkiLCJzbGljZSIsImluY2x1ZGVzIiwidG9Mb2NhbGVEYXRlU3RyaW5nIiwidG9Mb2NhbGVTdHJpbmciLCJleHAiLCJyb290IiwiZG9jdW1lbnQiLCJnZXRFbGVtZW50QnlJZCIsInJlbmRlciJdLCJzb3VyY2VzIjpbIklubGluZSBCYWJlbCBzY3JpcHQiXSwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgICAgIGNvbnN0IHsgdXNlU3RhdGUsIHVzZVJlZHVjZXIsIHVzZUVmZmVjdCB9ID0gUmVhY3Q7XG4gICAgICAgIGNvbnN0IHsgY3JlYXRlUm9vdCB9ID0gUmVhY3RET007XG5cbiAgICAgICAgLy8gTHVjaWRlIEljb25zXG4gICAgICAgIGNvbnN0IHsgUGx1cywgU2V0dGluZ3MsIFRyZW5kaW5nVXAsIE1lc3NhZ2VDaXJjbGUsIERvbGxhclNpZ24sIFRhcmdldCwgVXNlciwgQmFyQ2hhcnQzIH0gPSBsdWNpZGU7XG5cbiAgICAgICAgLy8gSW5pdGlhbCBzdGF0ZSB3aXRoIGd1aWx0LWZyZWUgZm9jdXNlZCBkYXRhIHN0cnVjdHVyZVxuICAgICAgICBjb25zdCBpbml0aWFsU3RhdGUgPSB7XG4gICAgICAgICAgICB1c2VyOiB7XG4gICAgICAgICAgICAgICAgaWQ6ICd1c2VyXzEnLFxuICAgICAgICAgICAgICAgIG5hbWU6ICdTYXJhaCcsXG4gICAgICAgICAgICAgICAgbW9udGhseUluY29tZTogMzIwMCxcbiAgICAgICAgICAgICAgICBjdXJyZW50UGVyaW9kOiAnbW9udGhseScsXG4gICAgICAgICAgICAgICAgam9pbkRhdGU6IG5ldyBEYXRlKCcyMDI0LTA2LTAxJylcbiAgICAgICAgICAgIH0sXG4gICAgICAgICAgICBjdXJyZW50TW9udGg6IHtcbiAgICAgICAgICAgICAgICB5ZWFyOiAyMDI0LFxuICAgICAgICAgICAgICAgIG1vbnRoOiA2LFxuICAgICAgICAgICAgICAgIHN0YXJ0RGF0ZTogbmV3IERhdGUoJzIwMjQtMDYtMDEnKSxcbiAgICAgICAgICAgICAgICBlbmREYXRlOiBuZXcgRGF0ZSgnMjAyNC0wNi0zMCcpLFxuICAgICAgICAgICAgICAgIGRheXNUb3RhbDogMzAsXG4gICAgICAgICAgICAgICAgZGF5c1JlbWFpbmluZzogMTBcbiAgICAgICAgICAgIH0sXG4gICAgICAgICAgICBidWRnZXQ6IHtcbiAgICAgICAgICAgICAgICBmaXhlZEV4cGVuc2VzOiBbXG4gICAgICAgICAgICAgICAgICAgIHsgaWQ6IDEsIG5hbWU6ICdSZW50JywgYW1vdW50OiAxMjAwLCBkdWVEYXRlOiAxLCBjYXRlZ29yeTogJ2hvdXNpbmcnIH0sXG4gICAgICAgICAgICAgICAgICAgIHsgaWQ6IDIsIG5hbWU6ICdJbnN1cmFuY2UnLCBhbW91bnQ6IDE1MCwgZHVlRGF0ZTogMTUsIGNhdGVnb3J5OiAnaW5zdXJhbmNlJyB9LFxuICAgICAgICAgICAgICAgICAgICB7IGlkOiAzLCBuYW1lOiAnUGhvbmUnLCBhbW91bnQ6IDgwLCBkdWVEYXRlOiAxMCwgY2F0ZWdvcnk6ICd1dGlsaXRpZXMnIH1cbiAgICAgICAgICAgICAgICBdLFxuICAgICAgICAgICAgICAgIGFsbG9jYXRpb246IHtcbiAgICAgICAgICAgICAgICAgICAgc3BlbmQ6IDAuNixcbiAgICAgICAgICAgICAgICAgICAgc3Rhc2g6IDAuMjUsXG4gICAgICAgICAgICAgICAgICAgIHNhdmU6IDAuMTVcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9LFxuICAgICAgICAgICAgdHJhbnNhY3Rpb25zOiBbXG4gICAgICAgICAgICAgICAgeyBpZDogMSwgYW1vdW50OiA2LjUwLCBkZXNjcmlwdGlvbjogJ01vcm5pbmcgT2F0IExhdHRlJywgY2F0ZWdvcnk6ICdzcGVuZCcsIHRpbWVzdGFtcDogbmV3IERhdGUoJzIwMjQtMDYtMjBUMDg6MzA6MDAnKSwgbWVyY2hhbnRJZDogJ2NvZmZlZV9zaG9wJywgZ3VpbHRGcmVlOiB0cnVlIH0sXG4gICAgICAgICAgICAgICAgeyBpZDogMiwgYW1vdW50OiAxNC43NSwgZGVzY3JpcHRpb246ICdIZWFsdGh5IEx1bmNoIEJvd2wnLCBjYXRlZ29yeTogJ3NwZW5kJywgdGltZXN0YW1wOiBuZXcgRGF0ZSgnMjAyNC0wNi0xOVQxMjoxNTowMCcpLCBtZXJjaGFudElkOiAnbHVuY2hfc3BvdCcsIGd1aWx0RnJlZTogdHJ1ZSB9LFxuICAgICAgICAgICAgICAgIHsgaWQ6IDMsIGFtb3VudDogNC4yNSwgZGVzY3JpcHRpb246ICdGcmlkYXkgSWNlIENyZWFtJywgY2F0ZWdvcnk6ICdzcGVuZCcsIHRpbWVzdGFtcDogbmV3IERhdGUoJzIwMjQtMDYtMTlUMTg6MDA6MDAnKSwgbWVyY2hhbnRJZDogJ2ljZV9jcmVhbScsIGd1aWx0RnJlZTogdHJ1ZSB9LFxuICAgICAgICAgICAgICAgIHsgaWQ6IDQsIGFtb3VudDogOC43NSwgZGVzY3JpcHRpb246ICdBZnRlcm5vb24gU25hY2snLCBjYXRlZ29yeTogJ3NwZW5kJywgdGltZXN0YW1wOiBuZXcgRGF0ZSgnMjAyNC0wNi0xOFQxNTozMDowMCcpLCBtZXJjaGFudElkOiAnc25hY2tfYmFyJywgZ3VpbHRGcmVlOiB0cnVlIH1cbiAgICAgICAgICAgIF0sXG4gICAgICAgICAgICBnYW1pZmljYXRpb246IHtcbiAgICAgICAgICAgICAgICBjdXJyZW50U3RyZWFrOiA1LFxuICAgICAgICAgICAgICAgIHRvdGFsR3VpbHRGcmVlRXhwZW5zZXM6IDQ3LFxuICAgICAgICAgICAgICAgIGFjaGlldmVtZW50czogWyc1X2RheV9zdHJlYWsnLCAnZ3VpbHRfZnJlZV93ZWVrJywgJ2J1ZGdldF9jaGFtcGlvbiddLFxuICAgICAgICAgICAgICAgIGxhc3RDZWxlYnJhdGlvbjogbmV3IERhdGUoJzIwMjQtMDYtMjBUMTI6MTU6MDAnKVxuICAgICAgICAgICAgfSxcbiAgICAgICAgICAgIGFpOiB7XG4gICAgICAgICAgICAgICAgY2hhdEhpc3Rvcnk6IFtcbiAgICAgICAgICAgICAgICAgICAgeyBpZDogMSwgbWVzc2FnZTogXCJIZXkgU2FyYWghIPCfkYsgWW91J3JlIGFic29sdXRlbHkgY3J1c2hpbmcgdGhpcyBndWlsdC1mcmVlIHNwZW5kaW5nISA1LWRheSBzdHJlYWshIOKcqFwiLCBzZW5kZXI6ICdhaScsIHRpbWVzdGFtcDogbmV3IERhdGUoKSB9XG4gICAgICAgICAgICAgICAgXSxcbiAgICAgICAgICAgICAgICBsYXN0QWN0aXZlVGltZTogbmV3IERhdGUoKVxuICAgICAgICAgICAgfVxuICAgICAgICB9O1xuXG4gICAgICAgIC8vIFJlZHVjZXIgZm9yIHN0YXRlIG1hbmFnZW1lbnRcbiAgICAgICAgZnVuY3Rpb24gYXBwUmVkdWNlcihzdGF0ZSwgYWN0aW9uKSB7XG4gICAgICAgICAgICBzd2l0Y2ggKGFjdGlvbi50eXBlKSB7XG4gICAgICAgICAgICAgICAgY2FzZSAnQUREX0dVSUxUX0ZSRUVfUFVSQ0hBU0UnOlxuICAgICAgICAgICAgICAgICAgICBjb25zdCBuZXdUcmFuc2FjdGlvbiA9IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGlkOiBEYXRlLm5vdygpLFxuICAgICAgICAgICAgICAgICAgICAgICAgYW1vdW50OiBhY3Rpb24ucGF5bG9hZC5hbW91bnQsXG4gICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogYWN0aW9uLnBheWxvYWQuZGVzY3JpcHRpb24sXG4gICAgICAgICAgICAgICAgICAgICAgICBjYXRlZ29yeTogJ3NwZW5kJyxcbiAgICAgICAgICAgICAgICAgICAgICAgIHRpbWVzdGFtcDogbmV3IERhdGUoKSxcbiAgICAgICAgICAgICAgICAgICAgICAgIG1lcmNoYW50SWQ6IGFjdGlvbi5wYXlsb2FkLm1lcmNoYW50SWQgfHwgbnVsbCxcbiAgICAgICAgICAgICAgICAgICAgICAgIGd1aWx0RnJlZTogdHJ1ZVxuICAgICAgICAgICAgICAgICAgICB9O1xuICAgICAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIC4uLnN0YXRlLFxuICAgICAgICAgICAgICAgICAgICAgICAgdHJhbnNhY3Rpb25zOiBbbmV3VHJhbnNhY3Rpb24sIC4uLnN0YXRlLnRyYW5zYWN0aW9uc10sXG4gICAgICAgICAgICAgICAgICAgICAgICBnYW1pZmljYXRpb246IHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAuLi5zdGF0ZS5nYW1pZmljYXRpb24sXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgdG90YWxHdWlsdEZyZWVFeHBlbnNlczogc3RhdGUuZ2FtaWZpY2F0aW9uLnRvdGFsR3VpbHRGcmVlRXhwZW5zZXMgKyAxLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGN1cnJlbnRTdHJlYWs6IHN0YXRlLmdhbWlmaWNhdGlvbi5jdXJyZW50U3RyZWFrICsgKE1hdGgucmFuZG9tKCkgPiAwLjggPyAxIDogMClcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgfTtcbiAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICBjYXNlICdBRERfQUlfTUVTU0FHRSc6XG4gICAgICAgICAgICAgICAgICAgIHJldHVybiB7XG4gICAgICAgICAgICAgICAgICAgICAgICAuLi5zdGF0ZSxcbiAgICAgICAgICAgICAgICAgICAgICAgIGFpOiB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgLi4uc3RhdGUuYWksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgY2hhdEhpc3Rvcnk6IFsuLi5zdGF0ZS5haS5jaGF0SGlzdG9yeSwgYWN0aW9uLnBheWxvYWRdXG4gICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIH07XG4gICAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgZGVmYXVsdDpcbiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHN0YXRlO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG5cbiAgICAgICAgLy8gQ2FsY3VsYXRlIERhaWx5IEd1aWx0LUZyZWUgQW1vdW50XG4gICAgICAgIGZ1bmN0aW9uIGNhbGN1bGF0ZUd1aWx0RnJlZUZsb3coc3RhdGUpIHtcbiAgICAgICAgICAgIGNvbnN0IHsgdXNlciwgYnVkZ2V0LCB0cmFuc2FjdGlvbnMsIGN1cnJlbnRNb250aCB9ID0gc3RhdGU7XG4gICAgICAgICAgICBcbiAgICAgICAgICAgIGNvbnN0IHRvdGFsRml4ZWRFeHBlbnNlcyA9IGJ1ZGdldC5maXhlZEV4cGVuc2VzLnJlZHVjZSgoc3VtLCBleHBlbnNlKSA9PiBzdW0gKyBleHBlbnNlLmFtb3VudCwgMCk7XG4gICAgICAgICAgICBjb25zdCBhdmFpbGFibGVJbmNvbWUgPSB1c2VyLm1vbnRobHlJbmNvbWUgLSB0b3RhbEZpeGVkRXhwZW5zZXM7XG4gICAgICAgICAgICBjb25zdCBzcGVuZEFsbG9jYXRpb24gPSBhdmFpbGFibGVJbmNvbWUgKiBidWRnZXQuYWxsb2NhdGlvbi5zcGVuZDtcbiAgICAgICAgICAgIGNvbnN0IHRvdGFsU3BlbnQgPSB0cmFuc2FjdGlvbnMucmVkdWNlKChzdW0sIHR4KSA9PiBzdW0gKyB0eC5hbW91bnQsIDApO1xuICAgICAgICAgICAgY29uc3QgcmVtYWluaW5nU3BlbmRCdWRnZXQgPSBzcGVuZEFsbG9jYXRpb24gLSB0b3RhbFNwZW50O1xuICAgICAgICAgICAgY29uc3QgZGFpbHlHdWlsdEZyZWVBbW91bnQgPSByZW1haW5pbmdTcGVuZEJ1ZGdldCAvIGN1cnJlbnRNb250aC5kYXlzUmVtYWluaW5nO1xuICAgICAgICAgICAgXG4gICAgICAgICAgICBjb25zdCB0b2RheSA9IG5ldyBEYXRlKCkudG9EYXRlU3RyaW5nKCk7XG4gICAgICAgICAgICBjb25zdCB0b2RheVNwZW50ID0gdHJhbnNhY3Rpb25zXG4gICAgICAgICAgICAgICAgLmZpbHRlcih0eCA9PiB0eC50aW1lc3RhbXAudG9EYXRlU3RyaW5nKCkgPT09IHRvZGF5KVxuICAgICAgICAgICAgICAgIC5yZWR1Y2UoKHN1bSwgdHgpID0+IHN1bSArIHR4LmFtb3VudCwgMCk7XG4gICAgICAgICAgICBcbiAgICAgICAgICAgIGNvbnN0IHRvZGF5UmVtYWluaW5nID0gTWF0aC5tYXgoMCwgZGFpbHlHdWlsdEZyZWVBbW91bnQgLSB0b2RheVNwZW50KTtcbiAgICAgICAgICAgIGNvbnN0IHNwZW50UGVyY2VudGFnZSA9IHRvZGF5U3BlbnQgLyBkYWlseUd1aWx0RnJlZUFtb3VudDtcbiAgICAgICAgICAgIFxuICAgICAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgICAgICBkYWlseUd1aWx0RnJlZUFtb3VudDogTWF0aC5tYXgoMCwgZGFpbHlHdWlsdEZyZWVBbW91bnQpLFxuICAgICAgICAgICAgICAgIHRvZGF5UmVtYWluaW5nLFxuICAgICAgICAgICAgICAgIHRvZGF5U3BlbnQsXG4gICAgICAgICAgICAgICAgc3BlbnRQZXJjZW50YWdlOiBNYXRoLm1pbihzcGVudFBlcmNlbnRhZ2UsIDEpLFxuICAgICAgICAgICAgICAgIHJlbWFpbmluZ1NwZW5kQnVkZ2V0LFxuICAgICAgICAgICAgICAgIHRvdGFsU3BlbnQsXG4gICAgICAgICAgICAgICAgc3BlbmRBbGxvY2F0aW9uLFxuICAgICAgICAgICAgICAgIHN0YXNoQW1vdW50OiBhdmFpbGFibGVJbmNvbWUgKiBidWRnZXQuYWxsb2NhdGlvbi5zdGFzaCxcbiAgICAgICAgICAgICAgICBzYXZlQW1vdW50OiBhdmFpbGFibGVJbmNvbWUgKiBidWRnZXQuYWxsb2NhdGlvbi5zYXZlLFxuICAgICAgICAgICAgICAgIHByb2dyZXNzUGVyY2VudGFnZTogKChjdXJyZW50TW9udGguZGF5c1RvdGFsIC0gY3VycmVudE1vbnRoLmRheXNSZW1haW5pbmcpIC8gY3VycmVudE1vbnRoLmRheXNUb3RhbCkgKiAxMDBcbiAgICAgICAgICAgIH07XG4gICAgICAgIH1cblxuICAgICAgICAvLyBRdWljayBzdWdnZXN0aW9ucyBmb3IgZ3VpbHQtZnJlZSBzcGVuZGluZ1xuICAgICAgICBjb25zdCBndWlsdEZyZWVTdWdnZXN0aW9ucyA9IFtcbiAgICAgICAgICAgIHsgYW1vdW50OiA2LjUwLCBsYWJlbDogJ0NvZmZlZSBSdW4g4piVJywgZGVzY3JpcHRpb246ICd+JDUtOCByYW5nZScsIGljb246ICfimJUnLCBtZXJjaGFudElkOiAnY29mZmVlX2dlbmVyaWMnIH0sXG4gICAgICAgICAgICB7IGFtb3VudDogMTQuNzUsIGxhYmVsOiAnTHVuY2ggVHJlYXQg8J+NlScsIGRlc2NyaXB0aW9uOiAnfiQxMi0xOCByYW5nZScsIGljb246ICfwn42VJywgbWVyY2hhbnRJZDogJ2x1bmNoX2dlbmVyaWMnIH0sXG4gICAgICAgICAgICB7IGFtb3VudDogNC4yNSwgbGFiZWw6ICdTbmFjayBBdHRhY2sg8J+NvycsIGRlc2NyaXB0aW9uOiAnfiQzLTYgcmFuZ2UnLCBpY29uOiAn8J+NvycsIG1lcmNoYW50SWQ6ICdzbmFja3NfZ2VuZXJpYycgfSxcbiAgICAgICAgICAgIHsgYW1vdW50OiAwLCBsYWJlbDogJ0N1c3RvbSBBbW91bnQg8J+SsycsIGRlc2NyaXB0aW9uOiAnWW91IGNob29zZSEnLCBpY29uOiAn8J+SsycsIG1lcmNoYW50SWQ6ICdjdXN0b20nIH1cbiAgICAgICAgXTtcblxuICAgICAgICAvLyBHdWlsdC1mcmVlIG1lc3NhZ2VzXG4gICAgICAgIGNvbnN0IGd1aWx0RnJlZU1lc3NhZ2VzID0gW1xuICAgICAgICAgICAgXCLinIUgVGhpcyBhbW91bnQgaXMgMTAwJSBndWlsdC1mcmVlISBHbyBlbmpveSBpdCFcIixcbiAgICAgICAgICAgIFwi8J+OiSBHdWlsdC1mcmVlIHB1cmNoYXNlIGNvbmZpcm1lZCEgWW91J3ZlIGVhcm5lZCB0aGlzIVwiLFxuICAgICAgICAgICAgXCLimJUgQ29mZmVlIGJyZWFrIGFwcHJvdmVkISBUaGlzIGZpdHMgcGVyZmVjdGx5IGluIHlvdXIgZ3VpbHQtZnJlZSBidWRnZXRcIixcbiAgICAgICAgICAgIFwi8J+NlSBMdW5jaCB0aW1lISBZb3UndmUgcHJlLWFwcHJvdmVkIHRoaXMgZXhwZW5zZSAtIGVuam95IVwiLFxuICAgICAgICAgICAgXCLwn42/IFNuYWNrIGF0dGFjayEgVGhpcyBpcyBleGFjdGx5IHdoYXQgeW91ciBkYWlseSBhbW91bnQgaXMgZm9yXCIsXG4gICAgICAgICAgICBcIuKcqCBZb3UncmUgYWJzb2x1dGVseSBjcnVzaGluZyB0aGlzIGJ1ZGdldCB0aGluZyFcIixcbiAgICAgICAgICAgIFwi8J+SmiBQZXJmZWN0IGNob2ljZSEgVGhpcyBpcyBZT1VSIG1vbmV5IHRvIGVuam95IGd1aWx0LWZyZWVcIlxuICAgICAgICBdO1xuXG4gICAgICAgIGZ1bmN0aW9uIEZsb3dCdWRnZXRpbmdBcHAoKSB7XG4gICAgICAgICAgICBjb25zdCBbc3RhdGUsIGRpc3BhdGNoXSA9IHVzZVJlZHVjZXIoYXBwUmVkdWNlciwgaW5pdGlhbFN0YXRlKTtcbiAgICAgICAgICAgIGNvbnN0IFthY3RpdmVUYWIsIHNldEFjdGl2ZVRhYl0gPSB1c2VTdGF0ZSgnZ3VpbHQtZnJlZScpO1xuICAgICAgICAgICAgY29uc3QgW3Nob3dUb2FzdCwgc2V0U2hvd1RvYXN0XSA9IHVzZVN0YXRlKGZhbHNlKTtcbiAgICAgICAgICAgIGNvbnN0IFt0b2FzdE1lc3NhZ2UsIHNldFRvYXN0TWVzc2FnZV0gPSB1c2VTdGF0ZSgnJyk7XG4gICAgICAgICAgICBjb25zdCBbY3VzdG9tQW1vdW50LCBzZXRDdXN0b21BbW91bnRdID0gdXNlU3RhdGUoJycpO1xuXG4gICAgICAgICAgICAvLyBDYWxjdWxhdGUgY3VycmVudCBndWlsdC1mcmVlIGRhdGFcbiAgICAgICAgICAgIGNvbnN0IGZsb3dEYXRhID0gY2FsY3VsYXRlR3VpbHRGcmVlRmxvdyhzdGF0ZSk7XG5cbiAgICAgICAgICAgIC8vIFNob3cgcGVybWlzc2lvbiB0b2FzdFxuICAgICAgICAgICAgY29uc3Qgc2hvd1Blcm1pc3Npb25Ub2FzdCA9IChtZXNzYWdlKSA9PiB7XG4gICAgICAgICAgICAgICAgc2V0VG9hc3RNZXNzYWdlKG1lc3NhZ2UpO1xuICAgICAgICAgICAgICAgIHNldFNob3dUb2FzdCh0cnVlKTtcbiAgICAgICAgICAgICAgICBzZXRUaW1lb3V0KCgpID0+IHNldFNob3dUb2FzdChmYWxzZSksIDMwMDApO1xuICAgICAgICAgICAgfTtcblxuICAgICAgICAgICAgY29uc3QgaGFuZGxlR3VpbHRGcmVlUHVyY2hhc2UgPSAoYW1vdW50LCBkZXNjcmlwdGlvbiwgbWVyY2hhbnRJZCkgPT4ge1xuICAgICAgICAgICAgICAgIGRpc3BhdGNoKHtcbiAgICAgICAgICAgICAgICAgICAgdHlwZTogJ0FERF9HVUlMVF9GUkVFX1BVUkNIQVNFJyxcbiAgICAgICAgICAgICAgICAgICAgcGF5bG9hZDogeyBhbW91bnQsIGRlc2NyaXB0aW9uLCBtZXJjaGFudElkIH1cbiAgICAgICAgICAgICAgICB9KTtcbiAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICBzZXRUaW1lb3V0KCgpID0+IHtcbiAgICAgICAgICAgICAgICAgICAgY29uc3QgcmFuZG9tUmVzcG9uc2UgPSBndWlsdEZyZWVNZXNzYWdlc1tNYXRoLmZsb29yKE1hdGgucmFuZG9tKCkgKiBndWlsdEZyZWVNZXNzYWdlcy5sZW5ndGgpXTtcbiAgICAgICAgICAgICAgICAgICAgc2hvd1Blcm1pc3Npb25Ub2FzdChyYW5kb21SZXNwb25zZSk7XG4gICAgICAgICAgICAgICAgfSwgNTAwKTtcbiAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICBzZXRDdXN0b21BbW91bnQoJycpO1xuICAgICAgICAgICAgfTtcblxuICAgICAgICAgICAgY29uc3QgaGFuZGxlQ3VzdG9tUHVyY2hhc2UgPSAoKSA9PiB7XG4gICAgICAgICAgICAgICAgY29uc3QgYW1vdW50ID0gcGFyc2VGbG9hdChjdXN0b21BbW91bnQpO1xuICAgICAgICAgICAgICAgIGlmIChhbW91bnQgPiAwKSB7XG4gICAgICAgICAgICAgICAgICAgIGhhbmRsZUd1aWx0RnJlZVB1cmNoYXNlKGFtb3VudCwgYEN1c3RvbSBQdXJjaGFzZWAsICdjdXN0b20nKTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9O1xuXG4gICAgICAgICAgICAvLyBTaW11bGF0ZSBoYXB0aWMgZmVlZGJhY2tcbiAgICAgICAgICAgIGNvbnN0IHRyaWdnZXJIYXB0aWMgPSAoaW50ZW5zaXR5ID0gJ21lZGl1bScpID0+IHtcbiAgICAgICAgICAgICAgICBpZiAobmF2aWdhdG9yLnZpYnJhdGUpIHtcbiAgICAgICAgICAgICAgICAgICAgY29uc3QgcGF0dGVybnMgPSB7IGxpZ2h0OiBbMTBdLCBtZWRpdW06IFsyMF0sIHN0cm9uZzogWzUwXSB9O1xuICAgICAgICAgICAgICAgICAgICBuYXZpZ2F0b3IudmlicmF0ZShwYXR0ZXJuc1tpbnRlbnNpdHldIHx8IHBhdHRlcm5zLm1lZGl1bSk7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfTtcblxuICAgICAgICAgICAgLy8gR2V0IHRpbWUtYmFzZWQgZ3JlZXRpbmdcbiAgICAgICAgICAgIGNvbnN0IGdldEdyZWV0aW5nID0gKCkgPT4ge1xuICAgICAgICAgICAgICAgIGNvbnN0IGhvdXIgPSBuZXcgRGF0ZSgpLmdldEhvdXJzKCk7XG4gICAgICAgICAgICAgICAgaWYgKGhvdXIgPCAxMikgcmV0dXJuICdHb29kIG1vcm5pbmcsIFNhcmFoISDimIDvuI8nO1xuICAgICAgICAgICAgICAgIGlmIChob3VyIDwgMTcpIHJldHVybiAnR29vZCBhZnRlcm5vb24sIFNhcmFoISDimIDvuI8nO1xuICAgICAgICAgICAgICAgIHJldHVybiAnR29vZCBldmVuaW5nLCBTYXJhaCEg8J+MmSc7XG4gICAgICAgICAgICB9O1xuXG4gICAgICAgICAgICBjb25zdCBnZXRUaW1lQ29udGV4dCA9ICgpID0+IHtcbiAgICAgICAgICAgICAgICBjb25zdCBob3VyID0gbmV3IERhdGUoKS5nZXRIb3VycygpO1xuICAgICAgICAgICAgICAgIGlmIChob3VyIDwgMTIpIHJldHVybiAnUGVyZmVjdCB0aW1lIGZvciBhIGd1aWx0LWZyZWUgY29mZmVlJztcbiAgICAgICAgICAgICAgICBpZiAoaG91ciA8IDE3KSByZXR1cm4gJ1BlcmZlY3QgdGltZSBmb3IgYSBndWlsdC1mcmVlIHRyZWF0JztcbiAgICAgICAgICAgICAgICByZXR1cm4gJ1BlcmZlY3QgdGltZSB0byBlbmpveSB5b3VyIG1vbmV5JztcbiAgICAgICAgICAgIH07XG5cbiAgICAgICAgICAgIHJldHVybiBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcIm1pbi1oLXNjcmVlbiBiZy1hbmltYXRlZCB0ZXh0LXdoaXRlIHJlbGF0aXZlIG92ZXJmbG93LWhpZGRlblwiXG4gICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgLy8gUGVybWlzc2lvbiBUb2FzdFxuICAgICAgICAgICAgICAgIHNob3dUb2FzdCAmJiBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgIGtleTogJ3RvYXN0JyxcbiAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImZpeGVkIHRvcC02IGxlZnQtMS8yIHRyYW5zZm9ybSAtdHJhbnNsYXRlLXgtMS8yIHotNTAgc2xpZGUtaW4tZnJvbS10b3AtNFwiXG4gICAgICAgICAgICAgICAgfSwgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiYmctZ3JhZGllbnQtdG8tciBmcm9tLWVtZXJhbGQtNTAwIHRvLWN5YW4tNTAwIHRleHQtd2hpdGUgcHgtNiBweS00IHJvdW5kZWQtMnhsIGZvbnQtc2VtaWJvbGQgc2hhZG93LTJ4bFwiXG4gICAgICAgICAgICAgICAgfSwgdG9hc3RNZXNzYWdlKSksXG5cbiAgICAgICAgICAgICAgICAvLyBNYWluIENvbnRlbnQgQ29udGFpbmVyXG4gICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICBrZXk6ICdtYWluJyxcbiAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcIm1heC13LW1kIG14LWF1dG8gbWluLWgtc2NyZWVuIHJlbGF0aXZlIHotMTBcIlxuICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgLy8gTWFpbiBDb250ZW50XG4gICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2NvbnRlbnQnLFxuICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInBiLTI0IHB0LTZcIlxuICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAvLyBHdWlsdC1GcmVlIFRhYlxuICAgICAgICAgICAgICAgICAgICAgICAgYWN0aXZlVGFiID09PSAnZ3VpbHQtZnJlZScgJiYgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2d1aWx0LWZyZWUtdGFiJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwicHgtNiBzcGFjZS15LTYgc2xpZGUtaW4tZnJvbS1ib3R0b20tNFwiXG4gICAgICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgLy8gSGVhZGVyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdoZWFkZXInLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiZmxleCBqdXN0aWZ5LWJldHdlZW4gaXRlbXMtY2VudGVyIG1iLTggcC02IGJnLXdoaXRlLzggYmFja2Ryb3AtYmx1ci1zbSBib3JkZXIgYm9yZGVyLXdoaXRlLzEyIHJvdW5kZWQtM3hsIHNsaWRlLWluLWZyb20tdG9wLTRcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2JywgeyBrZXk6ICdncmVldGluZy1zZWN0aW9uJyB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdoMScsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdncmVldGluZycsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInRleHQtbGcgZm9udC1zZW1pYm9sZCBtYi0xXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIGdldEdyZWV0aW5nKCkpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgncCcsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdjb250ZXh0JyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwidGV4dC1zbSB0ZXh0LXNsYXRlLTQwMFwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBnZXRUaW1lQ29udGV4dCgpKVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnYnV0dG9uJywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnc2V0dGluZ3MtYnRuJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s6ICgpID0+IHNldEFjdGl2ZVRhYignc2V0dXAnKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJ0ZXh0LXNsYXRlLTQwMCBob3Zlcjp0ZXh0LXdoaXRlIHRyYW5zaXRpb24tY29sb3JzIHAtMlwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sICfimpnvuI8nKVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0pLFxuXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgLy8gSGVybzogRGFpbHkgR3VpbHQtRnJlZSBBbW91bnRcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2hlcm8nLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiYmctd2hpdGUvOCBiYWNrZHJvcC1ibHVyLXNtIGJvcmRlciBib3JkZXItd2hpdGUvMTIgcm91bmRlZC0zeGwgcC0xMCB0ZXh0LWNlbnRlciByZWxhdGl2ZSBvdmVyZmxvdy1oaWRkZW4gY3Vyc29yLXBvaW50ZXIgZmFkZS1pbi1zY2FsZVwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHlsZTogeyBib3hTaGFkb3c6ICcwIDEycHggMzJweCByZ2JhKDE2LCAxODUsIDEyOSwgMC4zKScgfSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb25DbGljazogKCkgPT4ge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJpZ2dlckhhcHRpYygnc3Ryb25nJyk7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaG93UGVybWlzc2lvblRvYXN0KFwi4pyFIFRoaXMgYW1vdW50IGlzIDEwMCUgZ3VpbHQtZnJlZSEgR28gZW5qb3kgaXQhXCIpO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgW1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAvLyBTaGltbWVyIGVmZmVjdFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdzaGltbWVyJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJhYnNvbHV0ZSBpbnNldC0wIGJnLWdyYWRpZW50LXRvLXIgZnJvbS10cmFuc3BhcmVudCB2aWEtZW1lcmFsZC01MDAvMTAgdG8tdHJhbnNwYXJlbnQgYW5pbWF0ZS1wdWxzZSBvcGFjaXR5LTYwXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdoZXJvLWNvbnRlbnQnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInJlbGF0aXZlIHotMTBcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAncGVybWlzc2lvbi1sYWJlbCcsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIGdhcC0yIHRleHQtZW1lcmFsZC00MDAgZm9udC1zZW1pYm9sZCB0ZXh0LXNtIG1iLTIgdHJhY2tpbmctd2lkZVwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnc3BhbicsIHsga2V5OiAnY2hlY2snIH0sICfinIUnKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdzcGFuJywgeyBrZXk6ICd0ZXh0JyB9LCAnUFJFLUFQUFJPVkVEIFRPIFNQRU5EJylcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0pLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnYW1vdW50JyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwidGV4dC02eGwgZm9udC1ib2xkIGJnLWdyYWRpZW50LXRvLXIgZnJvbS1lbWVyYWxkLTQwMCB0by1jeWFuLTQwMCBiZy1jbGlwLXRleHQgdGV4dC10cmFuc3BhcmVudCBtYi0zIGhvdmVyOnNjYWxlLTEwNSB0cmFuc2l0aW9uLXRyYW5zZm9ybSBkdXJhdGlvbi0zMDBcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHlsZTogeyBsZXR0ZXJTcGFjaW5nOiAnLTFweCcgfVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgYCQke2Zsb3dEYXRhLnRvZGF5UmVtYWluaW5nLnRvRml4ZWQoMil9YCksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ3AnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnZW5jb3VyYWdlbWVudCcsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInRleHQtc2xhdGUtMzAwIGZvbnQtbWVkaXVtIG1iLTZcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgXCJHbyBhaGVhZCwgeW91J3ZlIGVhcm5lZCBpdCEgVGhpcyBpcyBZT1VSIG1vbmV5IHRvIGVuam95IGd1aWx0LWZyZWUg8J+OiVwiKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLy8gUHJvZ3Jlc3MgUmluZ1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3Byb2dyZXNzLWNvbnRhaW5lcicsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInctMzIgaC0zMiBteC1hdXRvIHJlbGF0aXZlIG1iLTRcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgW1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ3N2ZycsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAncHJvZ3Jlc3Mtc3ZnJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInctMzIgaC0zMiB0cmFuc2Zvcm0gLXJvdGF0ZS05MFwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2aWV3Qm94OiBcIjAgMCAxMjAgMTIwXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2NpcmNsZScsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2JnLWNpcmNsZScsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjeDogXCI2MFwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY3k6IFwiNjBcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHI6IFwiNTBcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cm9rZTogXCJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSlcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cm9rZVdpZHRoOiBcIjhcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZpbGw6IFwibm9uZVwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0pLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdjaXJjbGUnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdwcm9ncmVzcy1jaXJjbGUnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY3g6IFwiNjBcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGN5OiBcIjYwXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByOiBcIjUwXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJva2U6IFwidXJsKCNwcm9ncmVzc0dyYWRpZW50KVwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3Ryb2tlV2lkdGg6IFwiOFwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZmlsbDogXCJub25lXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJva2VMaW5lY2FwOiBcInJvdW5kXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJva2VEYXNoYXJyYXk6IGAkezIgKiBNYXRoLlBJICogNTB9YCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cm9rZURhc2hvZmZzZXQ6IGAkezIgKiBNYXRoLlBJICogNTAgKiAoMSAtIGZsb3dEYXRhLnNwZW50UGVyY2VudGFnZSl9YCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJ0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi03MDBcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9KSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGVmcycsIHsga2V5OiAnZGVmcycgfSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdsaW5lYXJHcmFkaWVudCcsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdncmFkaWVudCcsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWQ6IFwicHJvZ3Jlc3NHcmFkaWVudFwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHgxOiBcIjAlXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeTE6IFwiMCVcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB4MjogXCIxMDAlXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeTI6IFwiMCVcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgW1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ3N0b3AnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3N0b3AxJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb2Zmc2V0OiBcIjAlXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0b3BDb2xvcjogXCIjMTBiOTgxXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9KSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdzdG9wJywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdzdG9wMicsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9mZnNldDogXCIxMDAlXCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0b3BDb2xvcjogXCIjMjJjNTVlXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9KVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXSlcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0pLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnc3BlbnQtZGlzcGxheScsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJhYnNvbHV0ZSBpbnNldC0wIGZsZXggZmxleC1jb2wgaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3NwZW50LWxhYmVsJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJ0ZXh0LXhzIHRleHQtc2xhdGUtNDAwIG1iLTFcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAnRW5qb3llZCBUb2RheScpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdzcGVudC12YWx1ZScsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwidGV4dC1sZyBmb250LWJvbGQgdGV4dC1lbWVyYWxkLTQwMFwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIGAkJHtmbG93RGF0YS50b2RheVNwZW50LnRvRml4ZWQoMil9YClcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdKVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXSlcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXSlcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBdKSxcblxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vIFF1aWNrIFNwZW5kaW5nIEFjdGlvbnNcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3F1aWNrLWFjdGlvbnMnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiZ3JpZCBncmlkLWNvbHMtMiBnYXAtNCBzbGlkZS1pbi1mcm9tLWJvdHRvbS00XCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBndWlsdEZyZWVTdWdnZXN0aW9ucy5tYXAoKHN1Z2dlc3Rpb24sIGlkeCkgPT4gXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogYHN1Z2dlc3Rpb24tJHtpZHh9YCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s6ICgpID0+IHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmlnZ2VySGFwdGljKCdtZWRpdW0nKTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZiAoc3VnZ2VzdGlvbi5tZXJjaGFudElkID09PSAnY3VzdG9tJykge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzZXRDdXN0b21BbW91bnQoJycpO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhhbmRsZUd1aWx0RnJlZVB1cmNoYXNlKHN1Z2dlc3Rpb24uYW1vdW50LCBzdWdnZXN0aW9uLmxhYmVsLCBzdWdnZXN0aW9uLm1lcmNoYW50SWQpO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiYmctd2hpdGUvOCBiYWNrZHJvcC1ibHVyLXNtIGJvcmRlciBib3JkZXItd2hpdGUvMTIgcm91bmRlZC0zeGwgcC02IHRleHQtY2VudGVyIHRyYW5zaXRpb24tYWxsIGR1cmF0aW9uLTMwMCBob3ZlcjpiZy13aGl0ZS8xMiBob3ZlcjpzY2FsZS0xMDUgaG92ZXI6LXRyYW5zbGF0ZS15LTEgYWN0aXZlOnNjYWxlLTk1XCIsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHlsZTogeyBib3hTaGFkb3c6ICcwIDhweCAyNXB4IHJnYmEoOTksIDEwMiwgMjQxLCAwLjIpJyB9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdpY29uJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwidGV4dC0zeGwgbWItM1wiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBzdWdnZXN0aW9uLmljb24pLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2xhYmVsJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiZm9udC1zZW1pYm9sZCB0ZXh0LXdoaXRlIG1iLTFcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgc3VnZ2VzdGlvbi5sYWJlbCksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnZGVzYycsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInRleHQteHMgdGV4dC1zbGF0ZS00MDBcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgc3VnZ2VzdGlvbi5kZXNjcmlwdGlvbilcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXSlcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICApKSxcblxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vIEN1c3RvbSBBbW91bnQgRW50cnlcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2N1c3RvbS1lbnRyeScsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJiZy13aGl0ZS84IGJhY2tkcm9wLWJsdXItc20gYm9yZGVyIGJvcmRlci13aGl0ZS8xMiByb3VuZGVkLTN4bCBwLTZcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnaDMnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdjdXN0b20tdGl0bGUnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImZvbnQtc2VtaWJvbGQgbWItNCB0ZXh0LWNlbnRlclwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sICfwn5KzIEN1c3RvbSBHdWlsdC1GcmVlIEFtb3VudCcpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdjdXN0b20tZm9ybScsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiZmxleCBnYXAtM1wiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2lucHV0Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2N1c3RvbS1pbnB1dCcsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogXCJudW1iZXJcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcjogXCJFbnRlciBhbW91bnRcIixcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YWx1ZTogY3VzdG9tQW1vdW50LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlOiAoZSkgPT4gc2V0Q3VzdG9tQW1vdW50KGUudGFyZ2V0LnZhbHVlKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiZmxleC0xIGJnLXdoaXRlLzEwIGJvcmRlciBib3JkZXItd2hpdGUvMjAgcm91bmRlZC14bCBweC00IHB5LTMgdGV4dC13aGl0ZSBwbGFjZWhvbGRlci1zbGF0ZS00MDAgZm9jdXM6b3V0bGluZS1ub25lIGZvY3VzOnJpbmctMiBmb2N1czpyaW5nLWVtZXJhbGQtNDAwLzUwXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0pLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnYnV0dG9uJywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2N1c3RvbS1idG4nLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s6IGhhbmRsZUN1c3RvbVB1cmNoYXNlLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRpc2FibGVkOiAhY3VzdG9tQW1vdW50IHx8IHBhcnNlRmxvYXQoY3VzdG9tQW1vdW50KSA8PSAwLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJiZy1ncmFkaWVudC10by1yIGZyb20tZW1lcmFsZC01MDAgdG8tY3lhbi01MDAgZGlzYWJsZWQ6ZnJvbS1ncmF5LTYwMCBkaXNhYmxlZDp0by1ncmF5LTYwMCByb3VuZGVkLXhsIHB4LTYgcHktMyBmb250LXNlbWlib2xkIHRyYW5zaXRpb24tYWxsIGR1cmF0aW9uLTMwMCBob3ZlcjpzY2FsZS0xMDUgYWN0aXZlOnNjYWxlLTk1IGRpc2FibGVkOmN1cnNvci1ub3QtYWxsb3dlZFwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAnQXBwcm92ZScpXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0pXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgXSksXG5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAvLyBTcGVuZGluZyBTdHJlYWtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3N0cmVhaycsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJiZy13aGl0ZS84IGJhY2tkcm9wLWJsdXItc20gYm9yZGVyIGJvcmRlci13aGl0ZS8xMiByb3VuZGVkLTN4bCBwLTYgc2xpZGUtaW4tZnJvbS1sZWZ0LTRcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnc3RyZWFrLWhlYWRlcicsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTMgbWItNFwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdzdHJlYWstaWNvbicsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInctMTIgaC0xMiBiZy1ncmFkaWVudC10by1yIGZyb20tcGluay01MDAgdG8tcm9zZS01MDAgcm91bmRlZC0yeGwgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgdGV4dC0yeGwgYW5pbWF0ZS1wdWxzZVwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAn8J+UpScpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2JywgeyBrZXk6ICdzdHJlYWstdGV4dCcgfSwgW1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnc3RyZWFrLXRpdGxlJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImZvbnQtYm9sZCB0ZXh0LWxnXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBgJHtzdGF0ZS5nYW1pZmljYXRpb24uY3VycmVudFN0cmVha30tRGF5IEd1aWx0LUZyZWUgU3RyZWFrIWApLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnc3RyZWFrLXN1YnRpdGxlJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInRleHQtc20gdGV4dC1zbGF0ZS00MDBcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFwiWW91J3JlIGFic29sdXRlbHkgY3J1c2hpbmcgdGhpcyBidWRnZXQgdGhpbmcg4pyoXCIpXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdKVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3N0cmVhay1kYXlzJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJmbGV4IGdhcC0yXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgWydNJywgJ1QnLCAnVycsICdUJywgJ0YnLCAnUycsICdTJ10ubWFwKChkYXksIGlkeCkgPT4gXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiBgZGF5LSR7aWR4fWAsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBgdy04IGgtOCByb3VuZGVkLWxnIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHRleHQteHMgZm9udC1zZW1pYm9sZCAke1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZHggPCBzdGF0ZS5nYW1pZmljYXRpb24uY3VycmVudFN0cmVhayBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgID8gJ2JnLWVtZXJhbGQtNTAwIHRleHQtd2hpdGUnIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgOiBpZHggPT09IHN0YXRlLmdhbWlmaWNhdGlvbi5jdXJyZW50U3RyZWFrIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgID8gJ2JnLWN5YW4tNTAwIHRleHQtd2hpdGUgYW5pbWF0ZS1wdWxzZScgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgOiAnYmctd2hpdGUvMTAgdGV4dC1zbGF0ZS00MDAnXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfWBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIGRheSlcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKSlcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBdKSxcblxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8vIFJlY2VudCBHdWlsdC1GcmVlIFB1cmNoYXNlc1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAncmVjZW50LXB1cmNoYXNlcycsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJiZy13aGl0ZS84IGJhY2tkcm9wLWJsdXItc20gYm9yZGVyIGJvcmRlci13aGl0ZS8xMiByb3VuZGVkLTN4bCBwLTYgZmFkZS1pbi1zY2FsZVwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgW1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdwdXJjaGFzZXMtaGVhZGVyJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJmbGV4IGp1c3RpZnktYmV0d2VlbiBpdGVtcy1jZW50ZXIgbWItNVwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2gzJywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3B1cmNoYXNlcy10aXRsZScsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImZvbnQtc2VtaWJvbGQgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTJcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgW1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ3NwYW4nLCB7IGtleTogJ2hlYXJ0JyB9LCAn8J+SmicpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ3NwYW4nLCB7IGtleTogJ3RpdGxlJyB9LCAnUmVjZW50IEd1aWx0LUZyZWUgV2lucycpXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdzZWUtYWxsJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwidGV4dC1zbSB0ZXh0LXB1cnBsZS00MDAgZm9udC1tZWRpdW0gaG92ZXI6dGV4dC1wdXJwbGUtMzAwIHRyYW5zaXRpb24tY29sb3JzXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sICdTZWUgYWxsIOKGkicpXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0pLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAncHVyY2hhc2VzLWxpc3QnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInNwYWNlLXktM1wiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIHN0YXRlLnRyYW5zYWN0aW9ucy5zbGljZSgwLCAzKS5tYXAodHggPT4gXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiBgdHgtJHt0eC5pZH1gLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtNCBwLTQgYmctZW1lcmFsZC01MDAvNSBib3JkZXIgYm9yZGVyLWVtZXJhbGQtNTAwLzEwIHJvdW5kZWQtMnhsIGN1cnNvci1wb2ludGVyIGhvdmVyOmJnLWVtZXJhbGQtNTAwLzEwIHRyYW5zaXRpb24tYWxsIGR1cmF0aW9uLTMwMCBob3Zlcjp0cmFuc2xhdGUteC0xIHJlbGF0aXZlXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2NoZWNrJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImFic29sdXRlIHRvcC0yIHJpZ2h0LTMgdGV4dC14cyBvcGFjaXR5LTcwXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAn4pyFJyksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdpY29uJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInctMTAgaC0xMCBiZy1ncmFkaWVudC10by1yIGZyb20tZW1lcmFsZC01MDAgdG8tY3lhbi01MDAgcm91bmRlZC14bCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciB0ZXh0LWxnXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCB0eC5kZXNjcmlwdGlvbi5pbmNsdWRlcygnQ29mZmVlJykgPyAn4piVJyA6IFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR4LmRlc2NyaXB0aW9uLmluY2x1ZGVzKCdMdW5jaCcpID8gJ/CfpZcnIDogXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHguZGVzY3JpcHRpb24uaW5jbHVkZXMoJ0ljZSBDcmVhbScpID8gJ/CfjaYnIDogJ/Cfjb8nKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2RldGFpbHMnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiZmxleC0xXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3RpdGxlJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJmb250LW1lZGl1bSB0ZXh0LXNtXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgdHguZGVzY3JpcHRpb24pLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdjb250ZXh0JyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJ0ZXh0LXhzIHRleHQtc2xhdGUtNDAwXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgYFByZS1hcHByb3ZlZCDigKIgJHt0eC50aW1lc3RhbXAudG9Mb2NhbGVEYXRlU3RyaW5nKCl9IOKAoiBHdWlsdC1mcmVlIOKcqGApXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXSksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdhbW91bnQnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiZm9udC1ib2xkIHRleHQtZW1lcmFsZC00MDBcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIGAke3R4LmFtb3VudC50b0ZpeGVkKDIpfWApXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdKVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICApKVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0pXG4gICAgICAgICAgICAgICAgICAgICAgICBdKSxcblxuICAgICAgICAgICAgICAgICAgICAgICAgLy8gT3RoZXIgdGFicyAoc2ltcGxpZmllZClcbiAgICAgICAgICAgICAgICAgICAgICAgIGFjdGl2ZVRhYiA9PT0gJ3NldHVwJyAmJiBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnc2V0dXAtdGFiJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwicHgtNiBzcGFjZS15LTYgc2xpZGUtaW4tZnJvbS1ib3R0b20tNFwiXG4gICAgICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnaDEnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3NldHVwLXRpdGxlJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInRleHQtMnhsIGZvbnQtYm9sZCB0ZXh0LWNlbnRlciBtYi04XCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAnU2V0dXAgWW91ciBGbG93JyksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdzZXR1cC1jb250ZW50JyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImJnLXdoaXRlLzggYmFja2Ryb3AtYmx1ci1zbSBib3JkZXIgYm9yZGVyLXdoaXRlLzEyIHJvdW5kZWQtM3hsIHAtNlwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgW1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdoMycsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ3NldHRpbmdzLXRpdGxlJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJmb250LXNlbWlib2xkIG1iLTRcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAnQ1VSUkVOVCBTRVRUSU5HUycpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdzZXR0aW5ncy1saXN0JyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJzcGFjZS15LTMgdGV4dC1zbVwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdpbmNvbWUnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJmbGV4IGp1c3RpZnktYmV0d2VlblwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnc3BhbicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnaW5jb21lLWxhYmVsJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInRleHQtc2xhdGUtNDAwXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAnTW9udGhseSBJbmNvbWU6JyksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnc3BhbicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnaW5jb21lLXZhbHVlJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImZvbnQtc2VtaWJvbGRcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIGAke3N0YXRlLnVzZXIubW9udGhseUluY29tZS50b0xvY2FsZVN0cmluZygpfWApXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdleHBlbnNlcycsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImZsZXgganVzdGlmeS1iZXR3ZWVuXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdzcGFuJywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdleHBlbnNlcy1sYWJlbCcsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJ0ZXh0LXNsYXRlLTQwMFwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwgJ0ZpeGVkIEJpbGxzOicpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ3NwYW4nLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTogJ2V4cGVuc2VzLXZhbHVlJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcImZvbnQtc2VtaWJvbGRcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sIGAke3N0YXRlLmJ1ZGdldC5maXhlZEV4cGVuc2VzLnJlZHVjZSgoc3VtLCBleHApID0+IHN1bSArIGV4cC5hbW91bnQsIDApLnRvTG9jYWxlU3RyaW5nKCl9YClcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0pXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0pXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgXSlcbiAgICAgICAgICAgICAgICAgICAgICAgIF0pXG4gICAgICAgICAgICAgICAgICAgIF0pLFxuXG4gICAgICAgICAgICAgICAgICAgIC8vIEZsb2F0aW5nIEFkZCBCdXR0b25cbiAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnYnV0dG9uJywge1xuICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnZmxvYXRpbmctYWRkJyxcbiAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s6ICgpID0+IHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmlnZ2VySGFwdGljKCdzdHJvbmcnKTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaG93UGVybWlzc2lvblRvYXN0KFwi8J+SsyBSZWFkeSB0byBhZGQgYSBndWlsdC1mcmVlIHB1cmNoYXNlIVwiKTtcbiAgICAgICAgICAgICAgICAgICAgICAgIH0sXG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwiZml4ZWQgYm90dG9tLTMyIHJpZ2h0LTYgdy0xNiBoLTE2IGJnLWdyYWRpZW50LXRvLXIgZnJvbS1lbWVyYWxkLTUwMCB0by1jeWFuLTUwMCByb3VuZGVkLTN4bCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciB0ZXh0LTJ4bCBzaGFkb3ctMnhsIHRyYW5zaXRpb24tYWxsIGR1cmF0aW9uLTMwMCBob3ZlcjpzY2FsZS0xMTAgYWN0aXZlOnNjYWxlLTk1IGZsb2F0aW5nLWFkZFwiXG4gICAgICAgICAgICAgICAgICAgIH0sICfinpUnKSxcblxuICAgICAgICAgICAgICAgICAgICAvLyBCb3R0b20gTmF2aWdhdGlvblxuICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7XG4gICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdib3R0b20tbmF2JyxcbiAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJmaXhlZCBib3R0b20tNiBsZWZ0LTEvMiB0cmFuc2Zvcm0gLXRyYW5zbGF0ZS14LTEvMiB3LWZ1bGwgbWF4LXctbWQgcHgtNlwiXG4gICAgICAgICAgICAgICAgICAgIH0sIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJiZy13aGl0ZS8xMCBiYWNrZHJvcC1ibHVyLTJ4bCBib3JkZXIgYm9yZGVyLXdoaXRlLzIwIHJvdW5kZWQtM3hsIHAtM1wiXG4gICAgICAgICAgICAgICAgICAgIH0sIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJmbGV4IGp1c3RpZnktYXJvdW5kIGl0ZW1zLWNlbnRlclwiXG4gICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICduYXYtZ3VpbHQtZnJlZScsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgb25DbGljazogKCkgPT4ge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzZXRBY3RpdmVUYWIoJ2d1aWx0LWZyZWUnKTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJpZ2dlckhhcHRpYygnbGlnaHQnKTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogYGZsZXggZmxleC1jb2wgaXRlbXMtY2VudGVyIGdhcC0xIHAtMyByb3VuZGVkLTJ4bCB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0zMDAgJHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWN0aXZlVGFiID09PSAnZ3VpbHQtZnJlZScgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA/ICdiZy1lbWVyYWxkLTUwMC8zMCB0ZXh0LWVtZXJhbGQtMzAwJyBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDogJ3RleHQtc2xhdGUtNDAwIGhvdmVyOnRleHQtd2hpdGUnXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgfWBcbiAgICAgICAgICAgICAgICAgICAgICAgIH0sIFtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdzcGFuJywge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICdpY29uJyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBcInRleHQtbGdcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sICfwn5KaJyksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnc3BhbicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnbGFiZWwnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwidGV4dC14cyBmb250LXNlbWlib2xkXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAnR3VpbHQtRnJlZScpXG4gICAgICAgICAgICAgICAgICAgICAgICBdKSxcbiAgICAgICAgICAgICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6ICduYXYtc2V0dXAnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s6ICgpID0+IHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2V0QWN0aXZlVGFiKCdzZXR1cCcpO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmlnZ2VySGFwdGljKCdsaWdodCcpO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lOiBgZmxleCBmbGV4LWNvbCBpdGVtcy1jZW50ZXIgZ2FwLTEgcC0zIHJvdW5kZWQtMnhsIHRyYW5zaXRpb24tYWxsIGR1cmF0aW9uLTMwMCAke1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhY3RpdmVUYWIgPT09ICdzZXR1cCcgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA/ICdiZy1wdXJwbGUtNTAwLzMwIHRleHQtcHVycGxlLTMwMCcgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA6ICd0ZXh0LXNsYXRlLTQwMCBob3Zlcjp0ZXh0LXdoaXRlJ1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1gXG4gICAgICAgICAgICAgICAgICAgICAgICB9LCBbXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnc3BhbicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnaWNvbicsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogXCJ0ZXh0LWxnXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAn4pqZ77iPJyksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnc3BhbicsIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OiAnbGFiZWwnLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6IFwidGV4dC14cyBmb250LXNlbWlib2xkXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LCAnU2V0dXAnKVxuICAgICAgICAgICAgICAgICAgICAgICAgXSlcbiAgICAgICAgICAgICAgICAgICAgXSkpKVxuICAgICAgICAgICAgICAgIF0pXG4gICAgICAgICAgICBdKTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFJlbmRlciB0aGUgYXBwXG4gICAgICAgIGNvbnN0IHJvb3QgPSBjcmVhdGVSb290KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdyb290JykpO1xuICAgICAgICByb290LnJlbmRlcihSZWFjdC5jcmVhdGVFbGVtZW50KEZsb3dCdWRnZXRpbmdBcHApKTtcbiAgICAiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUNRLElBQUFBLE1BQUEsR0FBNENDLEtBQUs7RUFBekNDLFFBQVEsR0FBQUYsTUFBQSxDQUFSRSxRQUFRO0VBQUVDLFVBQVUsR0FBQUgsTUFBQSxDQUFWRyxVQUFVO0VBQUVDLFNBQVMsR0FBQUosTUFBQSxDQUFUSSxTQUFTO0FBQ3ZDLElBQUFDLFNBQUEsR0FBdUJDLFFBQVE7RUFBdkJDLFVBQVUsR0FBQUYsU0FBQSxDQUFWRSxVQUFVOztBQUVsQjtBQUNBLElBQUFD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</script></head>
 <body>
-    <div id="root"></div>
+    <div id="root"><div class="min-h-screen bg-animated text-white relative overflow-hidden"><div class="max-w-md mx-auto min-h-screen relative z-10"><div class="pb-24 pt-6"><div class="px-6 space-y-6 slide-in-from-bottom-4"><div class="flex justify-between items-center mb-8 p-6 bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl slide-in-from-top-4"><div><h1 class="text-lg font-semibold mb-1">Good afternoon, Sarah! ☀️</h1><p class="text-sm text-slate-400">Perfect time for a guilt-free treat</p></div><button class="text-slate-400 hover:text-white transition-colors p-2">⚙️</button></div><div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-10 text-center relative overflow-hidden cursor-pointer fade-in-scale" style="box-shadow: rgba(16, 185, 129, 0.3) 0px 12px 32px;"><div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse opacity-60"></div><div class="relative z-10"><div class="flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-2 tracking-wide"><span>✅</span><span>PRE-APPROVED TO SPEND</span></div><div class="text-6xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-3 hover:scale-105 transition-transform duration-300" style="letter-spacing: -1px;">$102.78</div><p class="text-slate-300 font-medium mb-6">Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉</p><div class="w-32 h-32 mx-auto relative mb-4"><svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" stroke="rgba(255, 255, 255, 0.1)" stroke-width="8" fill="none"></circle><circle cx="60" cy="60" r="50" stroke="url(#progressGradient)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="314.1592653589793" stroke-dashoffset="314.1592653589793" class="transition-all duration-700"></circle><defs><lineargradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#10b981"></stop><stop offset="100%" stop-color="#22c55e"></stop></lineargradient></defs></svg><div class="absolute inset-0 flex flex-col items-center justify-center"><div class="text-xs text-slate-400 mb-1">Enjoyed Today</div><div class="text-lg font-bold text-emerald-400">$0.00</div></div></div></div></div><div class="grid grid-cols-2 gap-4 slide-in-from-bottom-4"><button class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: rgba(99, 102, 241, 0.2) 0px 8px 25px;"><div class="text-3xl mb-3">☕</div><div class="font-semibold text-white mb-1">Coffee Run ☕</div><div class="text-xs text-slate-400">~$5-8 range</div></button><button class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: rgba(99, 102, 241, 0.2) 0px 8px 25px;"><div class="text-3xl mb-3">🍕</div><div class="font-semibold text-white mb-1">Lunch Treat 🍕</div><div class="text-xs text-slate-400">~$12-18 range</div></button><button class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: rgba(99, 102, 241, 0.2) 0px 8px 25px;"><div class="text-3xl mb-3">🍿</div><div class="font-semibold text-white mb-1">Snack Attack 🍿</div><div class="text-xs text-slate-400">~$3-6 range</div></button><button class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: rgba(99, 102, 241, 0.2) 0px 8px 25px;"><div class="text-3xl mb-3">💳</div><div class="font-semibold text-white mb-1">Custom Amount 💳</div><div class="text-xs text-slate-400">You choose!</div></button></div><div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6"><h3 class="font-semibold mb-4 text-center">💳 Custom Guilt-Free Amount</h3><div class="flex gap-3"><input type="number" placeholder="Enter amount" class="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50" value=""><button disabled="" class="bg-gradient-to-r from-emerald-500 to-cyan-500 disabled:from-gray-600 disabled:to-gray-600 rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:scale-105 active:scale-95 disabled:cursor-not-allowed">Approve</button></div></div><div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-left-4"><div class="flex items-center gap-3 mb-4"><div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-2xl animate-pulse">🔥</div><div><div class="font-bold text-lg">5-Day Guilt-Free Streak!</div><div class="text-sm text-slate-400">You're absolutely crushing this budget thing ✨</div></div></div><div class="flex gap-2"><div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">M</div><div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">T</div><div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">W</div><div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">T</div><div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">F</div><div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-cyan-500 text-white animate-pulse">S</div><div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-white/10 text-slate-400">S</div></div></div><div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 fade-in-scale"><div class="flex justify-between items-center mb-5"><h3 class="font-semibold flex items-center gap-2"><span>💚</span><span>Recent Guilt-Free Wins</span></h3><button class="text-sm text-purple-400 font-medium hover:text-purple-300 transition-colors">See all →</button></div><div class="space-y-3"><div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative"><div class="absolute top-2 right-3 text-xs opacity-70">✅</div><div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">🍿</div><div class="flex-1"><div class="font-medium text-sm">Morning Oat Latte</div><div class="text-xs text-slate-400">Pre-approved • 6/20/2024 • Guilt-free ✨</div></div><div class="font-bold text-emerald-400">6.50</div></div><div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative"><div class="absolute top-2 right-3 text-xs opacity-70">✅</div><div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">🥗</div><div class="flex-1"><div class="font-medium text-sm">Healthy Lunch Bowl</div><div class="text-xs text-slate-400">Pre-approved • 6/19/2024 • Guilt-free ✨</div></div><div class="font-bold text-emerald-400">14.75</div></div><div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative"><div class="absolute top-2 right-3 text-xs opacity-70">✅</div><div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">🍦</div><div class="flex-1"><div class="font-medium text-sm">Friday Ice Cream</div><div class="text-xs text-slate-400">Pre-approved • 6/19/2024 • Guilt-free ✨</div></div><div class="font-bold text-emerald-400">4.25</div></div></div></div></div></div><button class="fixed bottom-32 right-6 w-16 h-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl flex items-center justify-center text-2xl shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 floating-add">➕</button><div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md px-6"><div class="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-3"><div class="flex justify-around items-center"><button class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300"><span class="text-lg">💚</span><span class="text-xs font-semibold">Guilt-Free</span></button><button class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white"><span class="text-lg">⚙️</span><span class="text-xs font-semibold">Setup</span></button></div></div></div></div></div></div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const { useState, useReducer, useEffect } = React;
         const { createRoot } = ReactDOM;
+
+        // Lucide Icons
+        const { Plus, Settings, TrendingUp, MessageCircle, DollarSign, Target, User, BarChart3 } = lucide;
 
         // Initial state with guilt-free focused data structure
         const initialState = {
@@ -185,146 +836,140 @@
                 totalGuiltFreeExpenses: 47,
                 achievements: ['5_day_streak', 'guilt_free_week', 'budget_champion'],
                 lastCelebration: new Date('2024-06-20T12:15:00')
+            },
+            ai: {
+                chatHistory: [
+                    { id: 1, message: "Hey Sarah! 👋 You're absolutely crushing this guilt-free spending! 5-day streak! ✨", sender: 'ai', timestamp: new Date() }
+                ],
+                lastActiveTime: new Date()
             }
         };
 
+        // Reducer for state management
+        function appReducer(state, action) {
+            switch (action.type) {
+                case 'ADD_GUILT_FREE_PURCHASE':
+                    const newTransaction = {
+                        id: Date.now(),
+                        amount: action.payload.amount,
+                        description: action.payload.description,
+                        category: 'spend',
+                        timestamp: new Date(),
+                        merchantId: action.payload.merchantId || null,
+                        guiltFree: true
+                    };
+                    
+                    return {
+                        ...state,
+                        transactions: [newTransaction, ...state.transactions],
+                        gamification: {
+                            ...state.gamification,
+                            totalGuiltFreeExpenses: state.gamification.totalGuiltFreeExpenses + 1,
+                            currentStreak: state.gamification.currentStreak + (Math.random() > 0.8 ? 1 : 0)
+                        }
+                    };
+                
+                case 'ADD_AI_MESSAGE':
+                    return {
+                        ...state,
+                        ai: {
+                            ...state.ai,
+                            chatHistory: [...state.ai.chatHistory, action.payload]
+                        }
+                    };
+                
+                default:
+                    return state;
+            }
+        }
+
+        // Calculate Daily Guilt-Free Amount
+        function calculateGuiltFreeFlow(state) {
+            const { user, budget, transactions, currentMonth } = state;
+            
+            const totalFixedExpenses = budget.fixedExpenses.reduce((sum, expense) => sum + expense.amount, 0);
+            const availableIncome = user.monthlyIncome - totalFixedExpenses;
+            const spendAllocation = availableIncome * budget.allocation.spend;
+            const totalSpent = transactions.reduce((sum, tx) => sum + tx.amount, 0);
+            const remainingSpendBudget = spendAllocation - totalSpent;
+            const dailyGuiltFreeAmount = remainingSpendBudget / currentMonth.daysRemaining;
+            
+            const today = new Date().toDateString();
+            const todaySpent = transactions
+                .filter(tx => tx.timestamp.toDateString() === today)
+                .reduce((sum, tx) => sum + tx.amount, 0);
+            
+            const todayRemaining = Math.max(0, dailyGuiltFreeAmount - todaySpent);
+            const spentPercentage = todaySpent / dailyGuiltFreeAmount;
+            
+            return {
+                dailyGuiltFreeAmount: Math.max(0, dailyGuiltFreeAmount),
+                todayRemaining,
+                todaySpent,
+                spentPercentage: Math.min(spentPercentage, 1),
+                remainingSpendBudget,
+                totalSpent,
+                spendAllocation,
+                stashAmount: availableIncome * budget.allocation.stash,
+                saveAmount: availableIncome * budget.allocation.save,
+                progressPercentage: ((currentMonth.daysTotal - currentMonth.daysRemaining) / currentMonth.daysTotal) * 100
+            };
+        }
+
+        // Quick suggestions for guilt-free spending
+        const guiltFreeSuggestions = [
+            { amount: 6.50, label: 'Coffee Run ☕', description: '~$5-8 range', icon: '☕', merchantId: 'coffee_generic' },
+            { amount: 14.75, label: 'Lunch Treat 🍕', description: '~$12-18 range', icon: '🍕', merchantId: 'lunch_generic' },
+            { amount: 4.25, label: 'Snack Attack 🍿', description: '~$3-6 range', icon: '🍿', merchantId: 'snacks_generic' },
+            { amount: 0, label: 'Custom Amount 💳', description: 'You choose!', icon: '💳', merchantId: 'custom' }
+        ];
+
+        // Guilt-free messages
+        const guiltFreeMessages = [
+            "✅ This amount is 100% guilt-free! Go enjoy it!",
+            "🎉 Guilt-free purchase confirmed! You've earned this!",
+            "☕ Coffee break approved! This fits perfectly in your guilt-free budget",
+            "🍕 Lunch time! You've pre-approved this expense - enjoy!",
+            "🍿 Snack attack! This is exactly what your daily amount is for",
+            "✨ You're absolutely crushing this budget thing!",
+            "💚 Perfect choice! This is YOUR money to enjoy guilt-free"
+        ];
+
         function FlowBudgetingApp() {
-            const [state, setState] = useState(initialState);
+            const [state, dispatch] = useReducer(appReducer, initialState);
             const [activeTab, setActiveTab] = useState('guilt-free');
             const [showToast, setShowToast] = useState(false);
             const [toastMessage, setToastMessage] = useState('');
             const [customAmount, setCustomAmount] = useState('');
 
-            // Calculate Daily Guilt-Free Amount with proper $5 rounding
-            const calculateGuiltFreeFlow = () => {
-                const { user, budget, transactions, currentMonth } = state;
-                
-                const totalFixedExpenses = budget.fixedExpenses.reduce((sum, expense) => sum + expense.amount, 0);
-                const availableIncome = user.monthlyIncome - totalFixedExpenses;
-                const spendAllocation = availableIncome * budget.allocation.spend;
-                const totalSpent = transactions.reduce((sum, tx) => sum + tx.amount, 0);
-                const remainingSpendBudget = spendAllocation - totalSpent;
-                const rawDailyAmount = remainingSpendBudget / currentMonth.daysRemaining;
-                
-                // Round to nearest $5 increment
-                const dailyGuiltFreeAmount = Math.round(rawDailyAmount / 5) * 5;
-                
-                const today = new Date().toDateString();
-                const todaySpent = transactions
-                    .filter(tx => tx.timestamp.toDateString() === today)
-                    .reduce((sum, tx) => sum + tx.amount, 0);
-                
-                const todayRemaining = Math.max(0, dailyGuiltFreeAmount - todaySpent);
-                const spentPercentage = todaySpent / dailyGuiltFreeAmount;
-                const overspentAmount = Math.max(0, todaySpent - dailyGuiltFreeAmount);
-                
-                // Determine spending state for contextual messaging
-                let spendingState = 'under';
-                if (spentPercentage >= 0.95 && spentPercentage <= 1.05) {
-                    spendingState = 'perfect';
-                } else if (spentPercentage > 1.05) {
-                    spendingState = 'over';
-                }
-                
-                // Tomorrow calculation with overspending impact
-                const baseTomorrowAmount = Math.round(rawDailyAmount / 5) * 5;
-                const tomorrowAdjustment = overspentAmount > 0 ? Math.round(overspentAmount / 5) * 5 : 0;
-                const tomorrowAmount = Math.max(0, baseTomorrowAmount - tomorrowAdjustment);
-                
-                return {
-                    dailyGuiltFreeAmount: Math.max(0, dailyGuiltFreeAmount),
-                    todayRemaining,
-                    todaySpent,
-                    spentPercentage: Math.min(spentPercentage, 2), // Cap at 200% for visual
-                    overspentAmount,
-                    spendingState,
-                    remainingSpendBudget,
-                    totalSpent,
-                    spendAllocation,
-                    stashAmount: availableIncome * budget.allocation.stash,
-                    saveAmount: availableIncome * budget.allocation.save,
-                    progressPercentage: ((currentMonth.daysTotal - currentMonth.daysRemaining) / currentMonth.daysTotal) * 100,
-                    tomorrowAmount,
-                    tomorrowAdjustment
-                };
-            };
+            // Calculate current guilt-free data
+            const flowData = calculateGuiltFreeFlow(state);
 
-            const flowData = calculateGuiltFreeFlow();
-
-            // Quick suggestions for guilt-free spending
-            const guiltFreeSuggestions = [
-                { amount: 5, label: 'Coffee ☕', description: '$5', icon: '☕', merchantId: 'coffee_generic' },
-                { amount: 15, label: 'Lunch 🍕', description: '$15', icon: '🍕', merchantId: 'lunch_generic' },
-                { amount: 5, label: 'Snack 🍿', description: '$5', icon: '🍿', merchantId: 'snacks_generic' },
-                { amount: 0, label: 'Custom 💳', description: 'Custom', icon: '💳', merchantId: 'custom' }
-            ];
-
-            // Contextual guilt-free messages based on spending state
-            const guiltFreeMessages = {
-                under: [
-                    "🎉 Guilt-free purchase confirmed! You're doing amazing!",
-                    "✨ Perfect choice! This is exactly what your budget is for!",
-                    "💚 Approved! You've earned this guilt-free spending!"
-                ],
-                perfect: [
-                    "🎯 Amazing control! Almost perfect spending today!",
-                    "⭐ You're hitting your target perfectly!",
-                    "🔥 Incredible precision! You know your budget!"
-                ],
-                over: [
-                    "💛 Using tomorrow's money - totally fine!",
-                    "🤗 No worries! We'll adjust tomorrow's amount",
-                    "✅ Still approved! Tomorrow gets a small adjustment"
-                ]
-            };
-
-            // Show permission toast with contextual messaging
-            const showPermissionToast = () => {
-                const messages = guiltFreeMessages[flowData.spendingState];
-                const message = messages[Math.floor(Math.random() * messages.length)];
-                
+            // Show permission toast
+            const showPermissionToast = (message) => {
                 setToastMessage(message);
                 setShowToast(true);
                 setTimeout(() => setShowToast(false), 3000);
             };
 
-            // Handle guilt-free purchase with $5 rounding
             const handleGuiltFreePurchase = (amount, description, merchantId) => {
-                // Round to nearest $5
-                const roundedAmount = Math.round(amount / 5) * 5;
-                
-                const newTransaction = {
-                    id: Date.now(),
-                    amount: roundedAmount,
-                    description: description,
-                    category: 'spend',
-                    timestamp: new Date(),
-                    merchantId: merchantId || null,
-                    guiltFree: true
-                };
-                
-                setState(prev => ({
-                    ...prev,
-                    transactions: [newTransaction, ...prev.transactions],
-                    gamification: {
-                        ...prev.gamification,
-                        totalGuiltFreeExpenses: prev.gamification.totalGuiltFreeExpenses + 1,
-                        currentStreak: prev.gamification.currentStreak + (Math.random() > 0.8 ? 1 : 0)
-                    }
-                }));
-                
-                setCustomAmount('');
+                dispatch({
+                    type: 'ADD_GUILT_FREE_PURCHASE',
+                    payload: { amount, description, merchantId }
+                });
                 
                 setTimeout(() => {
-                    showPermissionToast();
+                    const randomResponse = guiltFreeMessages[Math.floor(Math.random() * guiltFreeMessages.length)];
+                    showPermissionToast(randomResponse);
                 }, 500);
+                
+                setCustomAmount('');
             };
 
-            // Handle custom purchase
             const handleCustomPurchase = () => {
                 const amount = parseFloat(customAmount);
                 if (amount > 0) {
-                    handleGuiltFreePurchase(amount, 'Custom Purchase', 'custom');
+                    handleGuiltFreePurchase(amount, `Custom Purchase`, 'custom');
                 }
             };
 
@@ -351,235 +996,452 @@
                 return 'Perfect time to enjoy your money';
             };
 
-            // Create dual progress ring
-            const createProgressRing = () => {
-                const baseProgress = Math.min(flowData.spentPercentage, 1);
-                const overProgress = Math.max(0, flowData.spentPercentage - 1);
-                
-                return (
-                    <div className="w-32 h-32 mx-auto relative mb-4">
-                        <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
-                            {/* Background circle */}
-                            <circle cx="60" cy="60" r="50" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="8" fill="none"></circle>
-                            
-                            {/* Green progress circle (base spending) */}
-                            <circle 
-                                cx="60" cy="60" r="50" 
-                                stroke="url(#progressGradient)" 
-                                strokeWidth="8" 
-                                fill="none" 
-                                strokeLinecap="round" 
-                                strokeDasharray={2 * Math.PI * 50} 
-                                strokeDashoffset={2 * Math.PI * 50 * (1 - baseProgress)} 
-                                className="transition-all duration-700">
-                            </circle>
-                            
-                            {/* Red overlay circle (overspending) */}
-                            {flowData.spentPercentage > 1 && (
-                                <circle 
-                                    cx="60" cy="60" r="50" 
-                                    stroke="url(#overspentGradient)" 
-                                    strokeWidth="6" 
-                                    fill="none" 
-                                    strokeLinecap="round" 
-                                    strokeDasharray={2 * Math.PI * 50} 
-                                    strokeDashoffset={2 * Math.PI * 50 * (1 - Math.min(overProgress, 1))} 
-                                    className="transition-all duration-700 progress-ring-overlay">
-                                </circle>
-                            )}
-                            
-                            <defs>
-                                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stopColor="#10b981"></stop>
-                                    <stop offset="100%" stopColor="#22c55e"></stop>
-                                </linearGradient>
-                                <linearGradient id="overspentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stopColor="#ef4444"></stop>
-                                    <stop offset="100%" stopColor="#f97316"></stop>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        
-                        <div className="absolute inset-0 flex flex-col items-center justify-center">
-                            <div className="text-xs text-slate-400 mb-1">Enjoyed Today</div>
-                            <div className={`text-lg font-bold ${flowData.overspentAmount > 0 ? 'text-orange-400' : 'text-emerald-400'}`}>
-                                ${flowData.todaySpent.toFixed(2)}
-                            </div>
-                        </div>
-                    </div>
-                );
-            };
+            return React.createElement('div', {
+                className: "min-h-screen bg-animated text-white relative overflow-hidden"
+            }, [
+                // Permission Toast
+                showToast && React.createElement('div', {
+                    key: 'toast',
+                    className: "fixed top-6 left-1/2 transform -translate-x-1/2 z-50 slide-in-from-top-4"
+                }, React.createElement('div', {
+                    className: "bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl"
+                }, toastMessage)),
 
-            return (
-                <div className="min-h-screen bg-animated text-white relative overflow-hidden">
-                    
-                    {/* Permission Toast */}
-                    {showToast && (
-                        <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 slide-in-from-top-4">
-                            <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl">
-                                {toastMessage}
-                            </div>
-                        </div>
-                    )}
+                // Main Content Container
+                React.createElement('div', {
+                    key: 'main',
+                    className: "max-w-md mx-auto min-h-screen relative z-10"
+                }, [
+                    // Main Content
+                    React.createElement('div', {
+                        key: 'content',
+                        className: "pb-24 pt-6"
+                    }, [
+                        // Guilt-Free Tab
+                        activeTab === 'guilt-free' && React.createElement('div', {
+                            key: 'guilt-free-tab',
+                            className: "px-6 space-y-6 slide-in-from-bottom-4"
+                        }, [
+                            // Header
+                            React.createElement('div', {
+                                key: 'header',
+                                className: "flex justify-between items-center mb-8 p-6 bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl slide-in-from-top-4"
+                            }, [
+                                React.createElement('div', { key: 'greeting-section' }, [
+                                    React.createElement('h1', {
+                                        key: 'greeting',
+                                        className: "text-lg font-semibold mb-1"
+                                    }, getGreeting()),
+                                    React.createElement('p', {
+                                        key: 'context',
+                                        className: "text-sm text-slate-400"
+                                    }, getTimeContext())
+                                ]),
+                                React.createElement('button', {
+                                    key: 'settings-btn',
+                                    onClick: () => setActiveTab('setup'),
+                                    className: "text-slate-400 hover:text-white transition-colors p-2"
+                                }, '⚙️')
+                            ]),
 
-                    {/* Main Content Container */}
-                    <div className="max-w-md mx-auto min-h-screen relative z-10">
-                        <div className="pb-24 pt-6">
-                            
-                            {activeTab === 'guilt-free' && (
-                                <div className="px-6 space-y-6 slide-in-from-bottom-4">
+                            // Hero: Daily Guilt-Free Amount
+                            React.createElement('div', {
+                                key: 'hero',
+                                className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-10 text-center relative overflow-hidden cursor-pointer fade-in-scale",
+                                style: { boxShadow: '0 12px 32px rgba(16, 185, 129, 0.3)' },
+                                onClick: () => {
+                                    triggerHaptic('strong');
+                                    showPermissionToast("✅ This amount is 100% guilt-free! Go enjoy it!");
+                                }
+                            }, [
+                                // Shimmer effect
+                                React.createElement('div', {
+                                    key: 'shimmer',
+                                    className: "absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse opacity-60"
+                                }),
+                                
+                                React.createElement('div', {
+                                    key: 'hero-content',
+                                    className: "relative z-10"
+                                }, [
+                                    React.createElement('div', {
+                                        key: 'permission-label',
+                                        className: "flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-2 tracking-wide"
+                                    }, [
+                                        React.createElement('span', { key: 'check' }, '✅'),
+                                        React.createElement('span', { key: 'text' }, 'PRE-APPROVED TO SPEND')
+                                    ]),
                                     
-                                    {/* Header */}
-                                    <div className="flex justify-between items-center mb-8 p-6 bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl slide-in-from-top-4">
-                                        <div>
-                                            <h1 className="text-lg font-semibold mb-1">{getGreeting()}</h1>
-                                            <p className="text-sm text-slate-400">{getTimeContext()}</p>
-                                        </div>
-                                        <button onClick={() => setActiveTab('setup')} className="text-slate-400 hover:text-white transition-colors p-2">⚙️</button>
-                                    </div>
+                                    React.createElement('div', {
+                                        key: 'amount',
+                                        className: "text-6xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-3 hover:scale-105 transition-transform duration-300",
+                                        style: { letterSpacing: '-1px' }
+                                    }, `$${flowData.todayRemaining.toFixed(2)}`),
+                                    
+                                    React.createElement('p', {
+                                        key: 'encouragement',
+                                        className: "text-slate-300 font-medium mb-6"
+                                    }, "Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉"),
+                                    
+                                    // Progress Ring
+                                    React.createElement('div', {
+                                        key: 'progress-container',
+                                        className: "w-32 h-32 mx-auto relative mb-4"
+                                    }, [
+                                        React.createElement('svg', {
+                                            key: 'progress-svg',
+                                            className: "w-32 h-32 transform -rotate-90",
+                                            viewBox: "0 0 120 120"
+                                        }, [
+                                            React.createElement('circle', {
+                                                key: 'bg-circle',
+                                                cx: "60",
+                                                cy: "60",
+                                                r: "50",
+                                                stroke: "rgba(255, 255, 255, 0.1)",
+                                                strokeWidth: "8",
+                                                fill: "none"
+                                            }),
+                                            React.createElement('circle', {
+                                                key: 'progress-circle',
+                                                cx: "60",
+                                                cy: "60",
+                                                r: "50",
+                                                stroke: "url(#progressGradient)",
+                                                strokeWidth: "8",
+                                                fill: "none",
+                                                strokeLinecap: "round",
+                                                strokeDasharray: `${2 * Math.PI * 50}`,
+                                                strokeDashoffset: `${2 * Math.PI * 50 * (1 - flowData.spentPercentage)}`,
+                                                className: "transition-all duration-700"
+                                            }),
+                                            React.createElement('defs', { key: 'defs' }, 
+                                                React.createElement('linearGradient', {
+                                                    key: 'gradient',
+                                                    id: "progressGradient",
+                                                    x1: "0%",
+                                                    y1: "0%",
+                                                    x2: "100%",
+                                                    y2: "0%"
+                                                }, [
+                                                    React.createElement('stop', {
+                                                        key: 'stop1',
+                                                        offset: "0%",
+                                                        stopColor: "#10b981"
+                                                    }),
+                                                    React.createElement('stop', {
+                                                        key: 'stop2',
+                                                        offset: "100%",
+                                                        stopColor: "#22c55e"
+                                                    })
+                                                ])
+                                            )
+                                        ]),
+                                        React.createElement('div', {
+                                            key: 'spent-display',
+                                            className: "absolute inset-0 flex flex-col items-center justify-center"
+                                        }, [
+                                            React.createElement('div', {
+                                                key: 'spent-label',
+                                                className: "text-xs text-slate-400 mb-1"
+                                            }, 'Enjoyed Today'),
+                                            React.createElement('div', {
+                                                key: 'spent-value',
+                                                className: "text-lg font-bold text-emerald-400"
+                                            }, `$${flowData.todaySpent.toFixed(2)}`)
+                                        ])
+                                    ])
+                                ])
+                            ]),
 
-                                    {/* Hero: Daily Guilt-Free Amount */}
-                                    <div 
-                                        className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-8 text-center relative overflow-hidden cursor-pointer fade-in-scale"
-                                        style={{ boxShadow: '0 12px 32px rgba(16, 185, 129, 0.3)' }}
-                                        onClick={() => {
-                                            triggerHaptic('strong');
-                                            showPermissionToast();
-                                        }}>
-                                        
-                                        {/* Shimmer effect */}
-                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse opacity-60"></div>
-                                        
-                                        <div className="relative z-10">
-                                            {/* Permission label */}
-                                            <div className="flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-3 tracking-wide">
-                                                <span>✅</span>
-                                                <span>PRE-APPROVED TO SPEND</span>
-                                            </div>
-                                            
-                                            {/* Daily amount with proper spacing */}
-                                            <div 
-                                                className="text-6xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2 hover:scale-105 transition-transform duration-300"
-                                                style={{ letterSpacing: '-1px' }}>
-                                                ${flowData.todayRemaining.toFixed(2)}
-                                            </div>
-                                            
-                                            {/* Overspent indicator */}
-                                            {flowData.overspentAmount > 0 && (
-                                                <div className="text-sm font-medium text-orange-400 mb-3">
-                                                    ${flowData.overspentAmount.toFixed(2)} over today's budget
-                                                </div>
-                                            )}
-                                            
-                                            {/* Encouragement text with reduced spacing */}
-                                            <p className="text-slate-300 font-medium mb-5">
-                                                Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉
-                                            </p>
-                                            
-                                            {/* Progress Ring */}
-                                            {createProgressRing()}
-                                        </div>
-                                    </div>
+                            // Quick Spending Actions
+                            React.createElement('div', {
+                                key: 'quick-actions',
+                                className: "grid grid-cols-2 gap-4 slide-in-from-bottom-4"
+                            }, guiltFreeSuggestions.map((suggestion, idx) => 
+                                React.createElement('button', {
+                                    key: `suggestion-${idx}`,
+                                    onClick: () => {
+                                        triggerHaptic('medium');
+                                        if (suggestion.merchantId === 'custom') {
+                                            setCustomAmount('');
+                                        } else {
+                                            handleGuiltFreePurchase(suggestion.amount, suggestion.label, suggestion.merchantId);
+                                        }
+                                    },
+                                    className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95",
+                                    style: { boxShadow: '0 8px 25px rgba(99, 102, 241, 0.2)' }
+                                }, [
+                                    React.createElement('div', {
+                                        key: 'icon',
+                                        className: "text-3xl mb-3"
+                                    }, suggestion.icon),
+                                    React.createElement('div', {
+                                        key: 'label',
+                                        className: "font-semibold text-white mb-1"
+                                    }, suggestion.label),
+                                    React.createElement('div', {
+                                        key: 'desc',
+                                        className: "text-xs text-slate-400"
+                                    }, suggestion.description)
+                                ])
+                            )),
 
-                                    {/* Quick Spending Actions */}
-                                    <div className="grid grid-cols-2 gap-4 slide-in-from-bottom-4">
-                                        {guiltFreeSuggestions.map((suggestion, idx) => (
-                                            <button 
-                                                key={idx}
-                                                onClick={() => {
-                                                    triggerHaptic('medium');
-                                                    if (suggestion.merchantId === 'custom') {
-                                                        setCustomAmount('');
-                                                    } else {
-                                                        handleGuiltFreePurchase(suggestion.amount, suggestion.label, suggestion.merchantId);
-                                                    }
-                                                }}
-                                                className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95"
-                                                style={{ boxShadow: '0 8px 25px rgba(99, 102, 241, 0.2)' }}>
-                                                <div className="text-3xl mb-3">{suggestion.icon}</div>
-                                                <div className="font-semibold text-white mb-1">{suggestion.label}</div>
-                                                <div className="text-xs text-slate-400">{suggestion.description}</div>
-                                            </button>
-                                        ))}
-                                    </div>
+                            // Custom Amount Entry
+                            React.createElement('div', {
+                                key: 'custom-entry',
+                                className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6"
+                            }, [
+                                React.createElement('h3', {
+                                    key: 'custom-title',
+                                    className: "font-semibold mb-4 text-center"
+                                }, '💳 Custom Guilt-Free Amount'),
+                                React.createElement('div', {
+                                    key: 'custom-form',
+                                    className: "flex gap-3"
+                                }, [
+                                    React.createElement('input', {
+                                        key: 'custom-input',
+                                        type: "number",
+                                        placeholder: "Enter amount",
+                                        value: customAmount,
+                                        onChange: (e) => setCustomAmount(e.target.value),
+                                        className: "flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
+                                    }),
+                                    React.createElement('button', {
+                                        key: 'custom-btn',
+                                        onClick: handleCustomPurchase,
+                                        disabled: !customAmount || parseFloat(customAmount) <= 0,
+                                        className: "bg-gradient-to-r from-emerald-500 to-cyan-500 disabled:from-gray-600 disabled:to-gray-600 rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:scale-105 active:scale-95 disabled:cursor-not-allowed"
+                                    }, 'Approve')
+                                ])
+                            ]),
 
-                                    {/* Custom Amount Entry */}
-                                    <div className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6">
-                                        <h3 className="font-semibold mb-4 text-center">💳 Custom Guilt-Free Amount</h3>
-                                        <div className="flex gap-3">
-                                            <input 
-                                                type="number" 
-                                                placeholder="Enter amount" 
-                                                value={customAmount}
-                                                onChange={(e) => setCustomAmount(e.target.value)}
-                                                className="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50">
-                                            </input>
-                                            <button 
-                                                onClick={handleCustomPurchase}
-                                                disabled={!customAmount || parseFloat(customAmount) <= 0}
-                                                className="bg-gradient-to-r from-emerald-500 to-cyan-500 disabled:from-gray-600 disabled:to-gray-600 rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:scale-105 active:scale-95 disabled:cursor-not-allowed">
-                                                Approve
-                                            </button>
-                                        </div>
-                                    </div>
+                            // Spending Streak
+                            React.createElement('div', {
+                                key: 'streak',
+                                className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-left-4"
+                            }, [
+                                React.createElement('div', {
+                                    key: 'streak-header',
+                                    className: "flex items-center gap-3 mb-4"
+                                }, [
+                                    React.createElement('div', {
+                                        key: 'streak-icon',
+                                        className: "w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-2xl animate-pulse"
+                                    }, '🔥'),
+                                    React.createElement('div', { key: 'streak-text' }, [
+                                        React.createElement('div', {
+                                            key: 'streak-title',
+                                            className: "font-bold text-lg"
+                                        }, `${state.gamification.currentStreak}-Day Guilt-Free Streak!`),
+                                        React.createElement('div', {
+                                            key: 'streak-subtitle',
+                                            className: "text-sm text-slate-400"
+                                        }, "You're absolutely crushing this budget thing ✨")
+                                    ])
+                                ]),
+                                
+                                React.createElement('div', {
+                                    key: 'streak-days',
+                                    className: "flex gap-2"
+                                }, ['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, idx) => 
+                                    React.createElement('div', {
+                                        key: `day-${idx}`,
+                                        className: `w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold ${
+                                            idx < state.gamification.currentStreak 
+                                                ? 'bg-emerald-500 text-white' 
+                                                : idx === state.gamification.currentStreak 
+                                                    ? 'bg-cyan-500 text-white animate-pulse' 
+                                                    : 'bg-white/10 text-slate-400'
+                                        }`
+                                    }, day)
+                                ))
+                            ]),
 
-                                    {/* Tomorrow Preview */}
-                                    <div className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-right-4">
-                                        <div className="text-sm text-slate-400 mb-2">Tomorrow's Guilt-Free Amount</div>
-                                        <div className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                                            ${flowData.tomorrowAmount.toFixed(2)}
-                                        </div>
-                                        
-                                        {flowData.tomorrowAdjustment > 0 ? (
-                                            <div className="flex items-center gap-2 mt-3 text-sm text-orange-400 font-medium">
-                                                <span>⚠️</span>
-                                                <span>${flowData.tomorrowAdjustment.toFixed(2)} less due to today's overspending</span>
-                                            </div>
-                                        ) : flowData.todayRemaining > 0 ? (
-                                            <div className="flex items-center gap-2 mt-3 text-sm text-emerald-400 font-medium">
-                                                <span>🎁</span>
-                                                <span>Plus any leftover from today!</span>
-                                            </div>
-                                        ) : null}
-                                    </div>
+                            // Recent Guilt-Free Purchases
+                            React.createElement('div', {
+                                key: 'recent-purchases',
+                                className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 fade-in-scale"
+                            }, [
+                                React.createElement('div', {
+                                    key: 'purchases-header',
+                                    className: "flex justify-between items-center mb-5"
+                                }, [
+                                    React.createElement('h3', {
+                                        key: 'purchases-title',
+                                        className: "font-semibold flex items-center gap-2"
+                                    }, [
+                                        React.createElement('span', { key: 'heart' }, '💚'),
+                                        React.createElement('span', { key: 'title' }, 'Recent Guilt-Free Wins')
+                                    ]),
+                                    React.createElement('button', {
+                                        key: 'see-all',
+                                        className: "text-sm text-purple-400 font-medium hover:text-purple-300 transition-colors"
+                                    }, 'See all →')
+                                ]),
+                                
+                                React.createElement('div', {
+                                    key: 'purchases-list',
+                                    className: "space-y-3"
+                                }, state.transactions.slice(0, 3).map(tx => 
+                                    React.createElement('div', {
+                                        key: `tx-${tx.id}`,
+                                        className: "flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative"
+                                    }, [
+                                        React.createElement('div', {
+                                            key: 'check',
+                                            className: "absolute top-2 right-3 text-xs opacity-70"
+                                        }, '✅'),
+                                        React.createElement('div', {
+                                            key: 'icon',
+                                            className: "w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg"
+                                        }, tx.description.includes('Coffee') ? '☕' : 
+                                           tx.description.includes('Lunch') ? '🥗' : 
+                                           tx.description.includes('Ice Cream') ? '🍦' : '🍿'),
+                                        React.createElement('div', {
+                                            key: 'details',
+                                            className: "flex-1"
+                                        }, [
+                                            React.createElement('div', {
+                                                key: 'title',
+                                                className: "font-medium text-sm"
+                                            }, tx.description),
+                                            React.createElement('div', {
+                                                key: 'context',
+                                                className: "text-xs text-slate-400"
+                                            }, `Pre-approved • ${tx.timestamp.toLocaleDateString()} • Guilt-free ✨`)
+                                        ]),
+                                        React.createElement('div', {
+                                            key: 'amount',
+                                            className: "font-bold text-emerald-400"
+                                        }, `${tx.amount.toFixed(2)}`)
+                                    ])
+                                ))
+                            ])
+                        ]),
 
-                                    {/* Spending Streak */}
-                                    <div className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-left-4">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-2xl animate-pulse">🔥</div>
-                                            <div>
-                                                <div className="font-bold text-lg">{state.gamification.currentStreak}-Day Guilt-Free Streak!</div>
-                                                <div className="text-sm text-slate-400">You're absolutely crushing this budget thing ✨</div>
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-2">
-                                            {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, idx) => (
-                                                <div 
-                                                    key={idx}
-                                                    className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold ${
-                                                        idx < state.gamification.currentStreak 
-                                                            ? 'bg-emerald-500 text-white' 
-                                                            : idx === state.gamification.currentStreak 
-                                                                ? 'bg-cyan-500 text-white animate-pulse' 
-                                                                : 'bg-white/10 text-slate-400'
-                                                    }`}>
-                                                    {day}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
+                        // Other tabs (simplified)
+                        activeTab === 'setup' && React.createElement('div', {
+                            key: 'setup-tab',
+                            className: "px-6 space-y-6 slide-in-from-bottom-4"
+                        }, [
+                            React.createElement('h1', {
+                                key: 'setup-title',
+                                className: "text-2xl font-bold text-center mb-8"
+                            }, 'Setup Your Flow'),
+                            React.createElement('div', {
+                                key: 'setup-content',
+                                className: "bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6"
+                            }, [
+                                React.createElement('h3', {
+                                    key: 'settings-title',
+                                    className: "font-semibold mb-4"
+                                }, 'CURRENT SETTINGS'),
+                                React.createElement('div', {
+                                    key: 'settings-list',
+                                    className: "space-y-3 text-sm"
+                                }, [
+                                    React.createElement('div', {
+                                        key: 'income',
+                                        className: "flex justify-between"
+                                    }, [
+                                        React.createElement('span', {
+                                            key: 'income-label',
+                                            className: "text-slate-400"
+                                        }, 'Monthly Income:'),
+                                        React.createElement('span', {
+                                            key: 'income-value',
+                                            className: "font-semibold"
+                                        }, `${state.user.monthlyIncome.toLocaleString()}`)
+                                    ]),
+                                    React.createElement('div', {
+                                        key: 'expenses',
+                                        className: "flex justify-between"
+                                    }, [
+                                        React.createElement('span', {
+                                            key: 'expenses-label',
+                                            className: "text-slate-400"
+                                        }, 'Fixed Bills:'),
+                                        React.createElement('span', {
+                                            key: 'expenses-value',
+                                            className: "font-semibold"
+                                        }, `${state.budget.fixedExpenses.reduce((sum, exp) => sum + exp.amount, 0).toLocaleString()}`)
+                                    ])
+                                ])
+                            ])
+                        ])
+                    ]),
 
-                                    {/* Recent Guilt-Free Purchases */}
-                                    <div className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 fade-in-scale">
-                                        <div className="flex justify-between items-center mb-5">
-                                            <h3 className="font-semibold flex items-center gap-2">
-                                                <span>💚</span>
-                                                <span>Recent Guilt-Free Wins</span>
-                                            </h3>
-                                            <button className="text-sm text-purple-400 font-medium hover:text-purple-300 transition-colors">See all →</button>
-                                        </div>
-                                        <div className="space-y-3">
-                                            {state.transactions.slice(0, 3).map(tx => (
-                                                <div key={tx.id} className="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
-                                                    <div className="absolute top-2 right-3 text-xs opacity-70">✅</div>
-                                                    <div className="w-10 h-10 bg-gradient-to</script></body></html>
+                    // Floating Add Button
+                    React.createElement('button', {
+                        key: 'floating-add',
+                        onClick: () => {
+                            triggerHaptic('strong');
+                            showPermissionToast("💳 Ready to add a guilt-free purchase!");
+                        },
+                        className: "fixed bottom-32 right-6 w-16 h-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl flex items-center justify-center text-2xl shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 floating-add"
+                    }, '➕'),
+
+                    // Bottom Navigation
+                    React.createElement('div', {
+                        key: 'bottom-nav',
+                        className: "fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md px-6"
+                    }, React.createElement('div', {
+                        className: "bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-3"
+                    }, React.createElement('div', {
+                        className: "flex justify-around items-center"
+                    }, [
+                        React.createElement('button', {
+                            key: 'nav-guilt-free',
+                            onClick: () => {
+                                setActiveTab('guilt-free');
+                                triggerHaptic('light');
+                            },
+                            className: `flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 ${
+                                activeTab === 'guilt-free' 
+                                    ? 'bg-emerald-500/30 text-emerald-300' 
+                                    : 'text-slate-400 hover:text-white'
+                            }`
+                        }, [
+                            React.createElement('span', {
+                                key: 'icon',
+                                className: "text-lg"
+                            }, '💚'),
+                            React.createElement('span', {
+                                key: 'label',
+                                className: "text-xs font-semibold"
+                            }, 'Guilt-Free')
+                        ]),
+                        React.createElement('button', {
+                            key: 'nav-setup',
+                            onClick: () => {
+                                setActiveTab('setup');
+                                triggerHaptic('light');
+                            },
+                            className: `flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 ${
+                                activeTab === 'setup' 
+                                    ? 'bg-purple-500/30 text-purple-300' 
+                                    : 'text-slate-400 hover:text-white'
+                            }`
+                        }, [
+                            React.createElement('span', {
+                                key: 'icon',
+                                className: "text-lg"
+                            }, '⚙️'),
+                            React.createElement('span', {
+                                key: 'label',
+                                className: "text-xs font-semibold"
+                            }, 'Setup')
+                        ])
+                    ])))
+                ])
+            ]);
+        }
+
+        // Render the app
+        const root = createRoot(document.getElementById('root'));
+        root.render(React.createElement(FlowBudgetingApp));
+    </script>
+
+</body></html>
