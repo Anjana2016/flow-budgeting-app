@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0065)file:///Users/anjanasudhakar/Downloads/flow_budget_app_fixed.html -->
+<!-- saved from url=(0071)file:///Users/anjanasudhakar/Downloads/flow_budget_app_fixed%20(1).html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,6 +13,13 @@
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;text y=&#39;.9em&#39; font-size=&#39;90&#39;&gt;%F0%9F%92%9A&lt;/text&gt;&lt;/svg&gt;">
+    
+    <!-- React 18 from CDN -->
+    <script crossorigin="" src="./index_files/react.production.min.js"></script>
+    <script crossorigin="" src="./index_files/react-dom.production.min.js"></script>
+    
+    <!-- Babel for JSX transformation -->
+    <script src="./index_files/babel.min.js"></script>
     
     <!-- Tailwind CSS -->
     <script src="./index_files/tailwind.min.js"></script>
@@ -126,288 +133,20 @@
         }
         
         /* Dual progress ring system */
-        .progress-ring-dual {
-            position: relative;
-        }
-        
         .progress-ring-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
             animation: ringPulse 2s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
-    <div id="root">
-                <div class="min-h-screen bg-animated text-white relative overflow-hidden">
-                    
-                    <!-- Permission Toast -->
-                    
+    <div id="root"></div>
 
-                    <!-- Main Content Container -->
-                    <div class="max-w-md mx-auto min-h-screen relative z-10">
-                        <div class="pb-24 pt-6">
-                            
-                            
-                            <div class="px-6 space-y-6 slide-in-from-bottom-4">
-                                
-                                <!-- Header -->
-                                <div class="flex justify-between items-center mb-8 p-6 bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl slide-in-from-top-4">
-                                    <div>
-                                        <h1 class="text-lg font-semibold mb-1">Good afternoon, Sarah! ☀️</h1>
-                                        <p class="text-sm text-slate-400">Perfect time for a guilt-free treat</p>
-                                    </div>
-                                    <button onclick="setActiveTab(&#39;setup&#39;)" class="text-slate-400 hover:text-white transition-colors p-2">⚙️</button>
-                                </div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
 
-                                <!-- Hero: Daily Guilt-Free Amount -->
-                                
-                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-8 text-center relative overflow-hidden cursor-pointer fade-in-scale" style="box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);" onclick="handleHeroClick()">
-                    
-                    <!-- Shimmer effect -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse opacity-60"></div>
-                    
-                    <div class="relative z-10">
-                        <!-- Permission label -->
-                        <div class="flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-3 tracking-wide">
-                            <span>✅</span>
-                            <span>PRE-APPROVED TO SPEND</span>
-                        </div>
-                        
-                        <!-- Daily amount with proper spacing -->
-                        <div class="text-6xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2 hover:scale-105 transition-transform duration-300" style="letter-spacing: -1px;">
-                            $105.00
-                        </div>
-                        
-                        <!-- Overspent indicator -->
-                        
-                        
-                        <!-- Encouragement text with reduced spacing -->
-                        <p class="text-slate-300 font-medium mb-5">
-                            Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉
-                        </p>
-                        
-                        <!-- Progress Ring -->
-                        
-                <div class="w-32 h-32 mx-auto relative mb-4 progress-ring-dual">
-                    <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
-                        <!-- Background circle -->
-                        <circle cx="60" cy="60" r="50" stroke="rgba(255, 255, 255, 0.1)" stroke-width="8" fill="none"></circle>
-                        
-                        <!-- Green progress circle (base spending) -->
-                        <circle cx="60" cy="60" r="50" stroke="url(#progressGradient)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="314.1592653589793" stroke-dashoffset="314.1592653589793" class="transition-all duration-700">
-                        </circle>
-                        
-                        <!-- Red overlay circle (overspending) -->
-                        
-                        
-                        <defs>
-                            <lineargradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#10b981"></stop>
-                                <stop offset="100%" stop-color="#22c55e"></stop>
-                            </lineargradient>
-                            <lineargradient id="overspentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#ef4444"></stop>
-                                <stop offset="100%" stop-color="#f97316"></stop>
-                            </lineargradient>
-                        </defs>
-                    </svg>
-                    
-                    <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <div class="text-xs text-slate-400 mb-1">Enjoyed Today</div>
-                        <div class="text-lg font-bold text-emerald-400">
-                            $0.00
-                        </div>
-                    </div>
-                </div>
-            
-                    </div>
-                </div>
-            
-
-                                <!-- Quick Spending Actions -->
-                                <div class="grid grid-cols-2 gap-4 slide-in-from-bottom-4">
-                                    
-                                    <button onclick="handleQuickSpend(5, &#39;Coffee ☕&#39;, &#39;coffee_generic&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
-                                        <div class="text-3xl mb-3">☕</div>
-                                        <div class="font-semibold text-white mb-1">Coffee ☕</div>
-                                        <div class="text-xs text-slate-400">$5</div>
-                                    </button>
-                                    
-                                    <button onclick="handleQuickSpend(15, &#39;Lunch 🍕&#39;, &#39;lunch_generic&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
-                                        <div class="text-3xl mb-3">🍕</div>
-                                        <div class="font-semibold text-white mb-1">Lunch 🍕</div>
-                                        <div class="text-xs text-slate-400">$15</div>
-                                    </button>
-                                    
-                                    <button onclick="handleQuickSpend(5, &#39;Snack 🍿&#39;, &#39;snacks_generic&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
-                                        <div class="text-3xl mb-3">🍿</div>
-                                        <div class="font-semibold text-white mb-1">Snack 🍿</div>
-                                        <div class="text-xs text-slate-400">$5</div>
-                                    </button>
-                                    
-                                    <button onclick="handleQuickSpend(0, &#39;Custom 💳&#39;, &#39;custom&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
-                                        <div class="text-3xl mb-3">💳</div>
-                                        <div class="font-semibold text-white mb-1">Custom 💳</div>
-                                        <div class="text-xs text-slate-400">Custom</div>
-                                    </button>
-                                    
-                                </div>
-
-                                <!-- Custom Amount Entry -->
-                                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6">
-                                    <h3 class="font-semibold mb-4 text-center">💳 Custom Guilt-Free Amount</h3>
-                                    <div class="flex gap-3">
-                                        <input type="number" placeholder="Enter amount" value="" onchange="updateCustomAmount(event.target.value)" class="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50">
-                                        <button onclick="handleCustomPurchase()" disabled="" class="bg-gradient-to-r from-emerald-500 to-cyan-500 disabled:from-gray-600 disabled:to-gray-600 rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:scale-105 active:scale-95 disabled:cursor-not-allowed">
-                                            Approve
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Tomorrow Preview -->
-                                
-                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-right-4">
-                    <div class="tomorrow-title text-sm text-slate-400 mb-2">Tomorrow's Guilt-Free Amount</div>
-                    <div class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                        $105.00
-                    </div>
-                    
-                    
-                    <div class="flex items-center gap-2 mt-3 text-sm text-emerald-400 font-medium">
-                        <span>🎁</span>
-                        <span>Plus any leftover from today!</span>
-                    </div>
-                    
-                </div>
-            
-
-                                <!-- Spending Streak -->
-                                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-left-4">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-2xl animate-pulse">🔥</div>
-                                        <div>
-                                            <div class="font-bold text-lg">5-Day Guilt-Free Streak!</div>
-                                            <div class="text-sm text-slate-400">You're absolutely crushing this budget thing ✨</div>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-2">
-                                        
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">
-                                            M
-                                        </div>
-                                        
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">
-                                            T
-                                        </div>
-                                        
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">
-                                            W
-                                        </div>
-                                        
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">
-                                            T
-                                        </div>
-                                        
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-emerald-500 text-white">
-                                            F
-                                        </div>
-                                        
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-cyan-500 text-white animate-pulse">
-                                            S
-                                        </div>
-                                        
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold bg-white/10 text-slate-400">
-                                            S
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-
-                                <!-- Recent Guilt-Free Purchases -->
-                                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 fade-in-scale">
-                                    <div class="flex justify-between items-center mb-5">
-                                        <h3 class="font-semibold flex items-center gap-2">
-                                            <span>💚</span>
-                                            <span>Recent Guilt-Free Wins</span>
-                                        </h3>
-                                        <button class="text-sm text-purple-400 font-medium hover:text-purple-300 transition-colors">See all →</button>
-                                    </div>
-                                    <div class="space-y-3">
-                                        
-                                        <div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
-                                            <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
-                                            <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
-                                                🍿
-                                            </div>
-                                            <div class="flex-1">
-                                                <div class="font-medium text-sm">Morning Oat Latte</div>
-                                                <div class="text-xs text-slate-400">Pre-approved • 6/20/2024 • Guilt-free ✨</div>
-                                            </div>
-                                            <div class="font-bold text-emerald-400">6.50</div>
-                                        </div>
-                                        
-                                        <div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
-                                            <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
-                                            <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
-                                                🥗
-                                            </div>
-                                            <div class="flex-1">
-                                                <div class="font-medium text-sm">Healthy Lunch Bowl</div>
-                                                <div class="text-xs text-slate-400">Pre-approved • 6/19/2024 • Guilt-free ✨</div>
-                                            </div>
-                                            <div class="font-bold text-emerald-400">14.75</div>
-                                        </div>
-                                        
-                                        <div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
-                                            <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
-                                            <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
-                                                🍦
-                                            </div>
-                                            <div class="flex-1">
-                                                <div class="font-medium text-sm">Friday Ice Cream</div>
-                                                <div class="text-xs text-slate-400">Pre-approved • 6/19/2024 • Guilt-free ✨</div>
-                                            </div>
-                                            <div class="font-bold text-emerald-400">4.25</div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                            
-
-                        </div>
-
-                        <!-- Floating Add Button -->
-                        <button onclick="handleFloatingAdd()" class="fixed bottom-32 right-6 w-16 h-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl flex items-center justify-center text-2xl shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 floating-add">
-                            ➕
-                        </button>
-
-                        <!-- Bottom Navigation -->
-                        <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md px-6">
-                            <div class="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-3">
-                                <div class="flex justify-around items-center">
-                                    <button onclick="setActiveTab(&#39;guilt-free&#39;)" class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300">
-                                        <span class="text-lg">💚</span>
-                                        <span class="text-xs font-semibold">Guilt-Free</span>
-                                    </button>
-                                    <button onclick="setActiveTab(&#39;setup&#39;)" class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
-                                        <span class="text-lg">⚙️</span>
-                                        <span class="text-xs font-semibold">Setup</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-    <script>
-        // App State Management
-        let appState = {
+        // Initial state with guilt-free focused data structure
+        const initialState = {
             user: {
                 id: 'user_1',
                 name: 'Sarah',
@@ -446,515 +185,401 @@
                 totalGuiltFreeExpenses: 47,
                 achievements: ['5_day_streak', 'guilt_free_week', 'budget_champion'],
                 lastCelebration: new Date('2024-06-20T12:15:00')
-            },
-            ui: {
-                activeTab: 'guilt-free',
-                showToast: false,
-                toastMessage: '',
-                customAmount: ''
             }
         };
 
-        // Calculate Daily Guilt-Free Amount with proper $5 rounding
-        function calculateGuiltFreeFlow(state) {
-            const { user, budget, transactions, currentMonth } = state;
-            
-            const totalFixedExpenses = budget.fixedExpenses.reduce((sum, expense) => sum + expense.amount, 0);
-            const availableIncome = user.monthlyIncome - totalFixedExpenses;
-            const spendAllocation = availableIncome * budget.allocation.spend;
-            const totalSpent = transactions.reduce((sum, tx) => sum + tx.amount, 0);
-            const remainingSpendBudget = spendAllocation - totalSpent;
-            const rawDailyAmount = remainingSpendBudget / currentMonth.daysRemaining;
-            
-            // Round to nearest $5 increment
-            const dailyGuiltFreeAmount = Math.round(rawDailyAmount / 5) * 5;
-            
-            const today = new Date().toDateString();
-            const todaySpent = transactions
-                .filter(tx => tx.timestamp.toDateString() === today)
-                .reduce((sum, tx) => sum + tx.amount, 0);
-            
-            const todayRemaining = Math.max(0, dailyGuiltFreeAmount - todaySpent);
-            const spentPercentage = todaySpent / dailyGuiltFreeAmount;
-            const overspentAmount = Math.max(0, todaySpent - dailyGuiltFreeAmount);
-            
-            // Determine spending state for contextual messaging
-            let spendingState = 'under';
-            if (spentPercentage >= 0.95 && spentPercentage <= 1.05) {
-                spendingState = 'perfect';
-            } else if (spentPercentage > 1.05) {
-                spendingState = 'over';
-            }
-            
-            // Tomorrow calculation with overspending impact
-            const baseTomorrowAmount = Math.round(rawDailyAmount / 5) * 5;
-            const tomorrowAdjustment = overspentAmount > 0 ? Math.round(overspentAmount / 5) * 5 : 0;
-            const tomorrowAmount = Math.max(0, baseTomorrowAmount - tomorrowAdjustment);
-            
-            return {
-                dailyGuiltFreeAmount: Math.max(0, dailyGuiltFreeAmount),
-                todayRemaining,
-                todaySpent,
-                spentPercentage: Math.min(spentPercentage, 2), // Cap at 200% for visual
-                overspentAmount,
-                spendingState,
-                remainingSpendBudget,
-                totalSpent,
-                spendAllocation,
-                stashAmount: availableIncome * budget.allocation.stash,
-                saveAmount: availableIncome * budget.allocation.save,
-                progressPercentage: ((currentMonth.daysTotal - currentMonth.daysRemaining) / currentMonth.daysTotal) * 100,
-                tomorrowAmount,
-                tomorrowAdjustment
+        function FlowBudgetingApp() {
+            const [state, setState] = useState(initialState);
+            const [activeTab, setActiveTab] = useState('guilt-free');
+            const [showToast, setShowToast] = useState(false);
+            const [toastMessage, setToastMessage] = useState('');
+            const [customAmount, setCustomAmount] = useState('');
+
+            // Calculate Daily Guilt-Free Amount with proper $5 rounding
+            const calculateGuiltFreeFlow = () => {
+                const { user, budget, transactions, currentMonth } = state;
+                
+                const totalFixedExpenses = budget.fixedExpenses.reduce((sum, expense) => sum + expense.amount, 0);
+                const availableIncome = user.monthlyIncome - totalFixedExpenses;
+                const spendAllocation = availableIncome * budget.allocation.spend;
+                const totalSpent = transactions.reduce((sum, tx) => sum + tx.amount, 0);
+                const remainingSpendBudget = spendAllocation - totalSpent;
+                const rawDailyAmount = remainingSpendBudget / currentMonth.daysRemaining;
+                
+                // Round to nearest $5 increment
+                const dailyGuiltFreeAmount = Math.round(rawDailyAmount / 5) * 5;
+                
+                const today = new Date().toDateString();
+                const todaySpent = transactions
+                    .filter(tx => tx.timestamp.toDateString() === today)
+                    .reduce((sum, tx) => sum + tx.amount, 0);
+                
+                const todayRemaining = Math.max(0, dailyGuiltFreeAmount - todaySpent);
+                const spentPercentage = todaySpent / dailyGuiltFreeAmount;
+                const overspentAmount = Math.max(0, todaySpent - dailyGuiltFreeAmount);
+                
+                // Determine spending state for contextual messaging
+                let spendingState = 'under';
+                if (spentPercentage >= 0.95 && spentPercentage <= 1.05) {
+                    spendingState = 'perfect';
+                } else if (spentPercentage > 1.05) {
+                    spendingState = 'over';
+                }
+                
+                // Tomorrow calculation with overspending impact
+                const baseTomorrowAmount = Math.round(rawDailyAmount / 5) * 5;
+                const tomorrowAdjustment = overspentAmount > 0 ? Math.round(overspentAmount / 5) * 5 : 0;
+                const tomorrowAmount = Math.max(0, baseTomorrowAmount - tomorrowAdjustment);
+                
+                return {
+                    dailyGuiltFreeAmount: Math.max(0, dailyGuiltFreeAmount),
+                    todayRemaining,
+                    todaySpent,
+                    spentPercentage: Math.min(spentPercentage, 2), // Cap at 200% for visual
+                    overspentAmount,
+                    spendingState,
+                    remainingSpendBudget,
+                    totalSpent,
+                    spendAllocation,
+                    stashAmount: availableIncome * budget.allocation.stash,
+                    saveAmount: availableIncome * budget.allocation.save,
+                    progressPercentage: ((currentMonth.daysTotal - currentMonth.daysRemaining) / currentMonth.daysTotal) * 100,
+                    tomorrowAmount,
+                    tomorrowAdjustment
+                };
             };
-        }
 
-        // Quick suggestions for guilt-free spending
-        const guiltFreeSuggestions = [
-            { amount: 5, label: 'Coffee ☕', description: '$5', icon: '☕', merchantId: 'coffee_generic' },
-            { amount: 15, label: 'Lunch 🍕', description: '$15', icon: '🍕', merchantId: 'lunch_generic' },
-            { amount: 5, label: 'Snack 🍿', description: '$5', icon: '🍿', merchantId: 'snacks_generic' },
-            { amount: 0, label: 'Custom 💳', description: 'Custom', icon: '💳', merchantId: 'custom' }
-        ];
+            const flowData = calculateGuiltFreeFlow();
 
-        // Contextual guilt-free messages based on spending state
-        const guiltFreeMessages = {
-            under: [
-                "🎉 Guilt-free purchase confirmed! You're doing amazing!",
-                "✨ Perfect choice! This is exactly what your budget is for!",
-                "💚 Approved! You've earned this guilt-free spending!"
-            ],
-            perfect: [
-                "🎯 Amazing control! Almost perfect spending today!",
-                "⭐ You're hitting your target perfectly!",
-                "🔥 Incredible precision! You know your budget!"
-            ],
-            over: [
-                "💛 Using tomorrow's money - totally fine!",
-                "🤗 No worries! We'll adjust tomorrow's amount",
-                "✅ Still approved! Tomorrow gets a small adjustment"
-            ]
-        };
+            // Quick suggestions for guilt-free spending
+            const guiltFreeSuggestions = [
+                { amount: 5, label: 'Coffee ☕', description: '$5', icon: '☕', merchantId: 'coffee_generic' },
+                { amount: 15, label: 'Lunch 🍕', description: '$15', icon: '🍕', merchantId: 'lunch_generic' },
+                { amount: 5, label: 'Snack 🍿', description: '$5', icon: '🍿', merchantId: 'snacks_generic' },
+                { amount: 0, label: 'Custom 💳', description: 'Custom', icon: '💳', merchantId: 'custom' }
+            ];
 
-        // Show permission toast with contextual messaging
-        function showPermissionToast(flowData) {
-            const messages = guiltFreeMessages[flowData.spendingState];
-            const message = messages[Math.floor(Math.random() * messages.length)];
-            
-            appState.ui.toastMessage = message;
-            appState.ui.showToast = true;
-            
-            setTimeout(() => {
-                appState.ui.showToast = false;
-                renderApp();
-            }, 3000);
-            
-            renderApp();
-        }
-
-        // Handle guilt-free purchase with $5 rounding
-        function handleGuiltFreePurchase(amount, description, merchantId) {
-            // Round to nearest $5
-            const roundedAmount = Math.round(amount / 5) * 5;
-            
-            const newTransaction = {
-                id: Date.now(),
-                amount: roundedAmount,
-                description: description,
-                category: 'spend',
-                timestamp: new Date(),
-                merchantId: merchantId || null,
-                guiltFree: true
+            // Contextual guilt-free messages based on spending state
+            const guiltFreeMessages = {
+                under: [
+                    "🎉 Guilt-free purchase confirmed! You're doing amazing!",
+                    "✨ Perfect choice! This is exactly what your budget is for!",
+                    "💚 Approved! You've earned this guilt-free spending!"
+                ],
+                perfect: [
+                    "🎯 Amazing control! Almost perfect spending today!",
+                    "⭐ You're hitting your target perfectly!",
+                    "🔥 Incredible precision! You know your budget!"
+                ],
+                over: [
+                    "💛 Using tomorrow's money - totally fine!",
+                    "🤗 No worries! We'll adjust tomorrow's amount",
+                    "✅ Still approved! Tomorrow gets a small adjustment"
+                ]
             };
-            
-            appState.transactions.unshift(newTransaction);
-            appState.gamification.totalGuiltFreeExpenses += 1;
-            
-            // Random streak increase
-            if (Math.random() > 0.8) {
-                appState.gamification.currentStreak += 1;
-            }
-            
-            appState.ui.customAmount = '';
-            
-            setTimeout(() => {
-                const flowData = calculateGuiltFreeFlow(appState);
-                showPermissionToast(flowData);
-            }, 500);
-            
-            renderApp();
-        }
 
-        // Handle custom purchase
-        function handleCustomPurchase() {
-            const amount = parseFloat(appState.ui.customAmount);
-            if (amount > 0) {
-                handleGuiltFreePurchase(amount, 'Custom Purchase', 'custom');
-            }
-        }
+            // Show permission toast with contextual messaging
+            const showPermissionToast = () => {
+                const messages = guiltFreeMessages[flowData.spendingState];
+                const message = messages[Math.floor(Math.random() * messages.length)];
+                
+                setToastMessage(message);
+                setShowToast(true);
+                setTimeout(() => setShowToast(false), 3000);
+            };
 
-        // Simulate haptic feedback
-        function triggerHaptic(intensity = 'medium') {
-            if (navigator.vibrate) {
-                const patterns = { light: [10], medium: [20], strong: [50] };
-                navigator.vibrate(patterns[intensity] || patterns.medium);
-            }
-        }
+            // Handle guilt-free purchase with $5 rounding
+            const handleGuiltFreePurchase = (amount, description, merchantId) => {
+                // Round to nearest $5
+                const roundedAmount = Math.round(amount / 5) * 5;
+                
+                const newTransaction = {
+                    id: Date.now(),
+                    amount: roundedAmount,
+                    description: description,
+                    category: 'spend',
+                    timestamp: new Date(),
+                    merchantId: merchantId || null,
+                    guiltFree: true
+                };
+                
+                setState(prev => ({
+                    ...prev,
+                    transactions: [newTransaction, ...prev.transactions],
+                    gamification: {
+                        ...prev.gamification,
+                        totalGuiltFreeExpenses: prev.gamification.totalGuiltFreeExpenses + 1,
+                        currentStreak: prev.gamification.currentStreak + (Math.random() > 0.8 ? 1 : 0)
+                    }
+                }));
+                
+                setCustomAmount('');
+                
+                setTimeout(() => {
+                    showPermissionToast();
+                }, 500);
+            };
 
-        // Get time-based greeting
-        function getGreeting() {
-            const hour = new Date().getHours();
-            if (hour < 12) return 'Good morning, Sarah! ☀️';
-            if (hour < 17) return 'Good afternoon, Sarah! ☀️';
-            return 'Good evening, Sarah! 🌙';
-        }
+            // Handle custom purchase
+            const handleCustomPurchase = () => {
+                const amount = parseFloat(customAmount);
+                if (amount > 0) {
+                    handleGuiltFreePurchase(amount, 'Custom Purchase', 'custom');
+                }
+            };
 
-        function getTimeContext() {
-            const hour = new Date().getHours();
-            if (hour < 12) return 'Perfect time for a guilt-free coffee';
-            if (hour < 17) return 'Perfect time for a guilt-free treat';
-            return 'Perfect time to enjoy your money';
-        }
+            // Simulate haptic feedback
+            const triggerHaptic = (intensity = 'medium') => {
+                if (navigator.vibrate) {
+                    const patterns = { light: [10], medium: [20], strong: [50] };
+                    navigator.vibrate(patterns[intensity] || patterns.medium);
+                }
+            };
 
-        // Create dual progress ring system
-        function createProgressRing(flowData) {
-            const baseProgress = Math.min(flowData.spentPercentage, 1) * 100;
-            const overProgress = Math.max(0, flowData.spentPercentage - 1) * 100;
-            
-            return `
-                <div class="w-32 h-32 mx-auto relative mb-4 progress-ring-dual">
-                    <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
-                        <!-- Background circle -->
-                        <circle cx="60" cy="60" r="50" stroke="rgba(255, 255, 255, 0.1)" stroke-width="8" fill="none"></circle>
-                        
-                        <!-- Green progress circle (base spending) -->
-                        <circle cx="60" cy="60" r="50" 
-                                stroke="url(#progressGradient)" 
-                                stroke-width="8" 
-                                fill="none" 
-                                stroke-linecap="round" 
-                                stroke-dasharray="${2 * Math.PI * 50}" 
-                                stroke-dashoffset="${2 * Math.PI * 50 * (1 - Math.min(flowData.spentPercentage, 1))}" 
-                                class="transition-all duration-700">
-                        </circle>
-                        
-                        <!-- Red overlay circle (overspending) -->
-                        ${flowData.spentPercentage > 1 ? `
-                        <circle cx="60" cy="60" r="50" 
-                                stroke="url(#overspentGradient)" 
-                                stroke-width="6" 
-                                fill="none" 
-                                stroke-linecap="round" 
-                                stroke-dasharray="${2 * Math.PI * 50}" 
-                                stroke-dashoffset="${2 * Math.PI * 50 * (1 - Math.min(flowData.spentPercentage - 1, 1))}" 
-                                class="transition-all duration-700 progress-ring-overlay">
-                        </circle>
-                        ` : ''}
-                        
-                        <defs>
-                            <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#10b981"></stop>
-                                <stop offset="100%" stop-color="#22c55e"></stop>
-                            </linearGradient>
-                            <linearGradient id="overspentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#ef4444"></stop>
-                                <stop offset="100%" stop-color="#f97316"></stop>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    
-                    <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <div class="text-xs text-slate-400 mb-1">Enjoyed Today</div>
-                        <div class="text-lg font-bold ${flowData.overspentAmount > 0 ? 'text-orange-400' : 'text-emerald-400'}">
-                            $${flowData.todaySpent.toFixed(2)}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
+            // Get time-based greeting
+            const getGreeting = () => {
+                const hour = new Date().getHours();
+                if (hour < 12) return 'Good morning, Sarah! ☀️';
+                if (hour < 17) return 'Good afternoon, Sarah! ☀️';
+                return 'Good evening, Sarah! 🌙';
+            };
 
-        // Create hero section with proper spacing and overspent indicator
-        function createHeroSection(flowData) {
-            return `
-                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-8 text-center relative overflow-hidden cursor-pointer fade-in-scale"
-                     style="box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);"
-                     onclick="handleHeroClick()">
-                    
-                    <!-- Shimmer effect -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse opacity-60"></div>
-                    
-                    <div class="relative z-10">
-                        <!-- Permission label -->
-                        <div class="flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-3 tracking-wide">
-                            <span>✅</span>
-                            <span>PRE-APPROVED TO SPEND</span>
-                        </div>
-                        
-                        <!-- Daily amount with proper spacing -->
-                        <div class="text-6xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2 hover:scale-105 transition-transform duration-300"
-                             style="letter-spacing: -1px;">
-                            $${flowData.todayRemaining.toFixed(2)}
-                        </div>
-                        
-                        <!-- Overspent indicator -->
-                        ${flowData.overspentAmount > 0 ? `
-                        <div class="text-sm font-medium text-orange-400 mb-3">
-                            $${flowData.overspentAmount.toFixed(2)} over today's budget
-                        </div>
-                        ` : ''}
-                        
-                        <!-- Encouragement text with reduced spacing -->
-                        <p class="text-slate-300 font-medium mb-5">
-                            Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉
-                        </p>
-                        
-                        <!-- Progress Ring -->
-                        ${createProgressRing(flowData)}
-                    </div>
-                </div>
-            `;
-        }
+            const getTimeContext = () => {
+                const hour = new Date().getHours();
+                if (hour < 12) return 'Perfect time for a guilt-free coffee';
+                if (hour < 17) return 'Perfect time for a guilt-free treat';
+                return 'Perfect time to enjoy your money';
+            };
 
-        // Create tomorrow section with overspending impact
-        function createTomorrowSection(flowData) {
-            return `
-                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-right-4">
-                    <div class="tomorrow-title text-sm text-slate-400 mb-2">Tomorrow's Guilt-Free Amount</div>
-                    <div class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                        $${flowData.tomorrowAmount.toFixed(2)}
-                    </div>
-                    
-                    ${flowData.tomorrowAdjustment > 0 ? `
-                    <div class="flex items-center gap-2 mt-3 text-sm text-orange-400 font-medium">
-                        <span>⚠️</span>
-                        <span>$${flowData.tomorrowAdjustment.toFixed(2)} less due to today's overspending</span>
-                    </div>
-                    ` : flowData.todayRemaining > 0 ? `
-                    <div class="flex items-center gap-2 mt-3 text-sm text-emerald-400 font-medium">
-                        <span>🎁</span>
-                        <span>Plus any leftover from today!</span>
-                    </div>
-                    ` : ''}
-                </div>
-            `;
-        }
-
-        // Handle hero click
-        function handleHeroClick() {
-            triggerHaptic('strong');
-            const flowData = calculateGuiltFreeFlow(appState);
-            showPermissionToast(flowData);
-        }
-
-        // Render main app
-        function renderApp() {
-            const flowData = calculateGuiltFreeFlow(appState);
-            
-            const app = `
-                <div class="min-h-screen bg-animated text-white relative overflow-hidden">
-                    
-                    <!-- Permission Toast -->
-                    ${appState.ui.showToast ? `
-                    <div class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 slide-in-from-top-4">
-                        <div class="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl">
-                            ${appState.ui.toastMessage}
-                        </div>
-                    </div>
-                    ` : ''}
-
-                    <!-- Main Content Container -->
-                    <div class="max-w-md mx-auto min-h-screen relative z-10">
-                        <div class="pb-24 pt-6">
+            // Create dual progress ring
+            const createProgressRing = () => {
+                const baseProgress = Math.min(flowData.spentPercentage, 1);
+                const overProgress = Math.max(0, flowData.spentPercentage - 1);
+                
+                return (
+                    <div className="w-32 h-32 mx-auto relative mb-4">
+                        <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
+                            {/* Background circle */}
+                            <circle cx="60" cy="60" r="50" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="8" fill="none"></circle>
                             
-                            ${appState.ui.activeTab === 'guilt-free' ? `
-                            <div class="px-6 space-y-6 slide-in-from-bottom-4">
-                                
-                                <!-- Header -->
-                                <div class="flex justify-between items-center mb-8 p-6 bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl slide-in-from-top-4">
-                                    <div>
-                                        <h1 class="text-lg font-semibold mb-1">${getGreeting()}</h1>
-                                        <p class="text-sm text-slate-400">${getTimeContext()}</p>
-                                    </div>
-                                    <button onclick="setActiveTab('setup')" class="text-slate-400 hover:text-white transition-colors p-2">⚙️</button>
-                                </div>
-
-                                <!-- Hero: Daily Guilt-Free Amount -->
-                                ${createHeroSection(flowData)}
-
-                                <!-- Quick Spending Actions -->
-                                <div class="grid grid-cols-2 gap-4 slide-in-from-bottom-4">
-                                    ${guiltFreeSuggestions.map((suggestion, idx) => `
-                                    <button onclick="handleQuickSpend(${suggestion.amount}, '${suggestion.label}', '${suggestion.merchantId}')" 
-                                            class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95"
-                                            style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
-                                        <div class="text-3xl mb-3">${suggestion.icon}</div>
-                                        <div class="font-semibold text-white mb-1">${suggestion.label}</div>
-                                        <div class="text-xs text-slate-400">${suggestion.description}</div>
-                                    </button>
-                                    `).join('')}
-                                </div>
-
-                                <!-- Custom Amount Entry -->
-                                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6">
-                                    <h3 class="font-semibold mb-4 text-center">💳 Custom Guilt-Free Amount</h3>
-                                    <div class="flex gap-3">
-                                        <input type="number" 
-                                               placeholder="Enter amount" 
-                                               value="${appState.ui.customAmount}"
-                                               onchange="updateCustomAmount(event.target.value)"
-                                               class="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50">
-                                        <button onclick="handleCustomPurchase()" 
-                                                ${!appState.ui.customAmount || parseFloat(appState.ui.customAmount) <= 0 ? 'disabled' : ''}
-                                                class="bg-gradient-to-r from-emerald-500 to-cyan-500 disabled:from-gray-600 disabled:to-gray-600 rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:scale-105 active:scale-95 disabled:cursor-not-allowed">
-                                            Approve
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Tomorrow Preview -->
-                                ${createTomorrowSection(flowData)}
-
-                                <!-- Spending Streak -->
-                                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-left-4">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-2xl animate-pulse">🔥</div>
-                                        <div>
-                                            <div class="font-bold text-lg">${appState.gamification.currentStreak}-Day Guilt-Free Streak!</div>
-                                            <div class="text-sm text-slate-400">You're absolutely crushing this budget thing ✨</div>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-2">
-                                        ${['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, idx) => `
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold ${
-                                            idx < appState.gamification.currentStreak 
-                                                ? 'bg-emerald-500 text-white' 
-                                                : idx === appState.gamification.currentStreak 
-                                                    ? 'bg-cyan-500 text-white animate-pulse' 
-                                                    : 'bg-white/10 text-slate-400'
-                                        }">
-                                            ${day}
-                                        </div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-
-                                <!-- Recent Guilt-Free Purchases -->
-                                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 fade-in-scale">
-                                    <div class="flex justify-between items-center mb-5">
-                                        <h3 class="font-semibold flex items-center gap-2">
-                                            <span>💚</span>
-                                            <span>Recent Guilt-Free Wins</span>
-                                        </h3>
-                                        <button class="text-sm text-purple-400 font-medium hover:text-purple-300 transition-colors">See all →</button>
-                                    </div>
-                                    <div class="space-y-3">
-                                        ${appState.transactions.slice(0, 3).map(tx => `
-                                        <div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
-                                            <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
-                                            <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
-                                                ${tx.description.includes('Coffee') ? '☕' : 
-                                                  tx.description.includes('Lunch') ? '🥗' : 
-                                                  tx.description.includes('Ice Cream') ? '🍦' : '🍿'}
-                                            </div>
-                                            <div class="flex-1">
-                                                <div class="font-medium text-sm">${tx.description}</div>
-                                                <div class="text-xs text-slate-400">Pre-approved • ${tx.timestamp.toLocaleDateString()} • Guilt-free ✨</div>
-                                            </div>
-                                            <div class="font-bold text-emerald-400">${tx.amount.toFixed(2)}</div>
-                                        </div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                            </div>
-                            ` : ''}
-
-                            ${appState.ui.activeTab === 'setup' ? `
-                            <div class="px-6 space-y-6 slide-in-from-bottom-4">
-                                <h1 class="text-2xl font-bold text-center mb-8">Setup Your Flow</h1>
-                                <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6">
-                                    <h3 class="font-semibold mb-4">CURRENT SETTINGS</h3>
-                                    <div class="space-y-3 text-sm">
-                                        <div class="flex justify-between">
-                                            <span class="text-slate-400">Monthly Income:</span>
-                                            <span class="font-semibold">${appState.user.monthlyIncome.toLocaleString()}</span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-slate-400">Fixed Bills:</span>
-                                            <span class="font-semibold">${appState.budget.fixedExpenses.reduce((sum, exp) => sum + exp.amount, 0).toLocaleString()}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            ` : ''}
-
-                        </div>
-
-                        <!-- Floating Add Button -->
-                        <button onclick="handleFloatingAdd()" 
-                                class="fixed bottom-32 right-6 w-16 h-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl flex items-center justify-center text-2xl shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 floating-add">
-                            ➕
-                        </button>
-
-                        <!-- Bottom Navigation -->
-                        <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md px-6">
-                            <div class="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-3">
-                                <div class="flex justify-around items-center">
-                                    <button onclick="setActiveTab('guilt-free')" 
-                                            class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 ${appState.ui.activeTab === 'guilt-free' ? 'bg-emerald-500/30 text-emerald-300' : 'text-slate-400 hover:text-white'}">
-                                        <span class="text-lg">💚</span>
-                                        <span class="text-xs font-semibold">Guilt-Free</span>
-                                    </button>
-                                    <button onclick="setActiveTab('setup')" 
-                                            class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 ${appState.ui.activeTab === 'setup' ? 'bg-purple-500/30 text-purple-300' : 'text-slate-400 hover:text-white'}">
-                                        <span class="text-lg">⚙️</span>
-                                        <span class="text-xs font-semibold">Setup</span>
-                                    </button>
-                                </div>
+                            {/* Green progress circle (base spending) */}
+                            <circle 
+                                cx="60" cy="60" r="50" 
+                                stroke="url(#progressGradient)" 
+                                strokeWidth="8" 
+                                fill="none" 
+                                strokeLinecap="round" 
+                                strokeDasharray={2 * Math.PI * 50} 
+                                strokeDashoffset={2 * Math.PI * 50 * (1 - baseProgress)} 
+                                className="transition-all duration-700">
+                            </circle>
+                            
+                            {/* Red overlay circle (overspending) */}
+                            {flowData.spentPercentage > 1 && (
+                                <circle 
+                                    cx="60" cy="60" r="50" 
+                                    stroke="url(#overspentGradient)" 
+                                    strokeWidth="6" 
+                                    fill="none" 
+                                    strokeLinecap="round" 
+                                    strokeDasharray={2 * Math.PI * 50} 
+                                    strokeDashoffset={2 * Math.PI * 50 * (1 - Math.min(overProgress, 1))} 
+                                    className="transition-all duration-700 progress-ring-overlay">
+                                </circle>
+                            )}
+                            
+                            <defs>
+                                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stopColor="#10b981"></stop>
+                                    <stop offset="100%" stopColor="#22c55e"></stop>
+                                </linearGradient>
+                                <linearGradient id="overspentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stopColor="#ef4444"></stop>
+                                    <stop offset="100%" stopColor="#f97316"></stop>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        
+                        <div className="absolute inset-0 flex flex-col items-center justify-center">
+                            <div className="text-xs text-slate-400 mb-1">Enjoyed Today</div>
+                            <div className={`text-lg font-bold ${flowData.overspentAmount > 0 ? 'text-orange-400' : 'text-emerald-400'}`}>
+                                ${flowData.todaySpent.toFixed(2)}
                             </div>
                         </div>
                     </div>
-                </div>
-            `;
-            
-            document.getElementById('root').innerHTML = app;
-        }
+                );
+            };
 
-        // Global functions for event handling
-        function setActiveTab(tab) {
-            appState.ui.activeTab = tab;
-            triggerHaptic('light');
-            renderApp();
-        }
+            return (
+                <div className="min-h-screen bg-animated text-white relative overflow-hidden">
+                    
+                    {/* Permission Toast */}
+                    {showToast && (
+                        <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 slide-in-from-top-4">
+                            <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl">
+                                {toastMessage}
+                            </div>
+                        </div>
+                    )}
 
-        function handleQuickSpend(amount, description, merchantId) {
-            triggerHaptic('medium');
-            if (merchantId === 'custom') {
-                appState.ui.customAmount = '';
-                renderApp();
-            } else {
-                handleGuiltFreePurchase(amount, description, merchantId);
-            }
-        }
+                    {/* Main Content Container */}
+                    <div className="max-w-md mx-auto min-h-screen relative z-10">
+                        <div className="pb-24 pt-6">
+                            
+                            {activeTab === 'guilt-free' && (
+                                <div className="px-6 space-y-6 slide-in-from-bottom-4">
+                                    
+                                    {/* Header */}
+                                    <div className="flex justify-between items-center mb-8 p-6 bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl slide-in-from-top-4">
+                                        <div>
+                                            <h1 className="text-lg font-semibold mb-1">{getGreeting()}</h1>
+                                            <p className="text-sm text-slate-400">{getTimeContext()}</p>
+                                        </div>
+                                        <button onClick={() => setActiveTab('setup')} className="text-slate-400 hover:text-white transition-colors p-2">⚙️</button>
+                                    </div>
 
-        function updateCustomAmount(value) {
-            appState.ui.customAmount = value;
-            renderApp();
-        }
+                                    {/* Hero: Daily Guilt-Free Amount */}
+                                    <div 
+                                        className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-8 text-center relative overflow-hidden cursor-pointer fade-in-scale"
+                                        style={{ boxShadow: '0 12px 32px rgba(16, 185, 129, 0.3)' }}
+                                        onClick={() => {
+                                            triggerHaptic('strong');
+                                            showPermissionToast();
+                                        }}>
+                                        
+                                        {/* Shimmer effect */}
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse opacity-60"></div>
+                                        
+                                        <div className="relative z-10">
+                                            {/* Permission label */}
+                                            <div className="flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-3 tracking-wide">
+                                                <span>✅</span>
+                                                <span>PRE-APPROVED TO SPEND</span>
+                                            </div>
+                                            
+                                            {/* Daily amount with proper spacing */}
+                                            <div 
+                                                className="text-6xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2 hover:scale-105 transition-transform duration-300"
+                                                style={{ letterSpacing: '-1px' }}>
+                                                ${flowData.todayRemaining.toFixed(2)}
+                                            </div>
+                                            
+                                            {/* Overspent indicator */}
+                                            {flowData.overspentAmount > 0 && (
+                                                <div className="text-sm font-medium text-orange-400 mb-3">
+                                                    ${flowData.overspentAmount.toFixed(2)} over today's budget
+                                                </div>
+                                            )}
+                                            
+                                            {/* Encouragement text with reduced spacing */}
+                                            <p className="text-slate-300 font-medium mb-5">
+                                                Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉
+                                            </p>
+                                            
+                                            {/* Progress Ring */}
+                                            {createProgressRing()}
+                                        </div>
+                                    </div>
 
-        function handleFloatingAdd() {
-            triggerHaptic('strong');
-            const flowData = calculateGuiltFreeFlow(appState);
-            appState.ui.toastMessage = "💳 Ready to add a guilt-free purchase!";
-            appState.ui.showToast = true;
-            setTimeout(() => {
-                appState.ui.showToast = false;
-                renderApp();
-            }, 3000);
-            renderApp();
-        }
+                                    {/* Quick Spending Actions */}
+                                    <div className="grid grid-cols-2 gap-4 slide-in-from-bottom-4">
+                                        {guiltFreeSuggestions.map((suggestion, idx) => (
+                                            <button 
+                                                key={idx}
+                                                onClick={() => {
+                                                    triggerHaptic('medium');
+                                                    if (suggestion.merchantId === 'custom') {
+                                                        setCustomAmount('');
+                                                    } else {
+                                                        handleGuiltFreePurchase(suggestion.amount, suggestion.label, suggestion.merchantId);
+                                                    }
+                                                }}
+                                                className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95"
+                                                style={{ boxShadow: '0 8px 25px rgba(99, 102, 241, 0.2)' }}>
+                                                <div className="text-3xl mb-3">{suggestion.icon}</div>
+                                                <div className="font-semibold text-white mb-1">{suggestion.label}</div>
+                                                <div className="text-xs text-slate-400">{suggestion.description}</div>
+                                            </button>
+                                        ))}
+                                    </div>
 
-        // Initialize app
-        renderApp();
-    </script>
+                                    {/* Custom Amount Entry */}
+                                    <div className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6">
+                                        <h3 className="font-semibold mb-4 text-center">💳 Custom Guilt-Free Amount</h3>
+                                        <div className="flex gap-3">
+                                            <input 
+                                                type="number" 
+                                                placeholder="Enter amount" 
+                                                value={customAmount}
+                                                onChange={(e) => setCustomAmount(e.target.value)}
+                                                className="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50">
+                                            </input>
+                                            <button 
+                                                onClick={handleCustomPurchase}
+                                                disabled={!customAmount || parseFloat(customAmount) <= 0}
+                                                className="bg-gradient-to-r from-emerald-500 to-cyan-500 disabled:from-gray-600 disabled:to-gray-600 rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:scale-105 active:scale-95 disabled:cursor-not-allowed">
+                                                Approve
+                                            </button>
+                                        </div>
+                                    </div>
 
-</body></html>
+                                    {/* Tomorrow Preview */}
+                                    <div className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-right-4">
+                                        <div className="text-sm text-slate-400 mb-2">Tomorrow's Guilt-Free Amount</div>
+                                        <div className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                                            ${flowData.tomorrowAmount.toFixed(2)}
+                                        </div>
+                                        
+                                        {flowData.tomorrowAdjustment > 0 ? (
+                                            <div className="flex items-center gap-2 mt-3 text-sm text-orange-400 font-medium">
+                                                <span>⚠️</span>
+                                                <span>${flowData.tomorrowAdjustment.toFixed(2)} less due to today's overspending</span>
+                                            </div>
+                                        ) : flowData.todayRemaining > 0 ? (
+                                            <div className="flex items-center gap-2 mt-3 text-sm text-emerald-400 font-medium">
+                                                <span>🎁</span>
+                                                <span>Plus any leftover from today!</span>
+                                            </div>
+                                        ) : null}
+                                    </div>
+
+                                    {/* Spending Streak */}
+                                    <div className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-left-4">
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-2xl animate-pulse">🔥</div>
+                                            <div>
+                                                <div className="font-bold text-lg">{state.gamification.currentStreak}-Day Guilt-Free Streak!</div>
+                                                <div className="text-sm text-slate-400">You're absolutely crushing this budget thing ✨</div>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-2">
+                                            {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, idx) => (
+                                                <div 
+                                                    key={idx}
+                                                    className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold ${
+                                                        idx < state.gamification.currentStreak 
+                                                            ? 'bg-emerald-500 text-white' 
+                                                            : idx === state.gamification.currentStreak 
+                                                                ? 'bg-cyan-500 text-white animate-pulse' 
+                                                                : 'bg-white/10 text-slate-400'
+                                                    }`}>
+                                                    {day}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Recent Guilt-Free Purchases */}
+                                    <div className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 fade-in-scale">
+                                        <div className="flex justify-between items-center mb-5">
+                                            <h3 className="font-semibold flex items-center gap-2">
+                                                <span>💚</span>
+                                                <span>Recent Guilt-Free Wins</span>
+                                            </h3>
+                                            <button className="text-sm text-purple-400 font-medium hover:text-purple-300 transition-colors">See all →</button>
+                                        </div>
+                                        <div className="space-y-3">
+                                            {state.transactions.slice(0, 3).map(tx => (
+                                                <div key={tx.id} className="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
+                                                    <div className="absolute top-2 right-3 text-xs opacity-70">✅</div>
+                                                    <div className="w-10 h-10 bg-gradient-to</script></body></html>
