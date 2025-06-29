@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)file:///Users/anjanasudhakar/Downloads/deployment_package%20(2).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>💚 Flow Budgeting - Guilt-Free Zone</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Flow Budget">
+    <meta name="theme-color" content="#10b981">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;text y=&#39;.9em&#39; font-size=&#39;90&#39;&gt;%F0%9F%92%9A&lt;/text&gt;&lt;/svg&gt;">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom CSS for animations and special effects */
+        @keyframes subtleGradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes floatingPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 16px 40px rgba(16, 185, 129, 0.4); 
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 20px 50px rgba(16, 185, 129, 0.6); 
+            }
+        }
+        
+        @keyframes slideInDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInScale {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes celebrationPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .animate-in {
+            animation-fill-mode: both;
+        }
+        
+        .slide-in-from-bottom-4 {
+            animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .slide-in-from-top-4 {
+            animation: slideInDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .slide-in-from-left-4 {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .slide-in-from-right-4 {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        .fade-in-scale {
+            animation: fadeInScale 0.8s ease-out;
+        }
+        
+        .celebration-pulse {
+            animation: celebrationPulse 0.5s ease-out;
+        }
+        
+        /* Mobile optimization */
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 16px;
+            }
+        }
+        
+        /* Touch optimization */
+        button, input {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        /* Prevent zoom on input focus */
+        input[type="number"] {
+            font-size: 16px;
+        }
+        
+        /* PWA safe areas */
+        .container {
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-top: env(safe-area-inset-top);
+        }
+        
+        /* Custom gradient backgrounds */
+        .bg-animated {
+            background: linear-gradient(45deg, #0f0f1a, #1a1a2e, #16213e, #1a1a2e);
+            background-size: 400% 400%;
+            animation: subtleGradientShift 25s ease infinite;
+        }
+        
+        .floating-add {
+            animation: floatingPulse 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="min-h-screen bg-animated text-white relative overflow-hidden">
+        
+        <!-- Permission Toast -->
+        <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 slide-in-from-top-4 hidden">
+            <div id="toast-content" class="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl">
+                <span id="toast-message">Purchase confirmed!</span>
+            </div>
+        </div>
+
+        <!-- Main Content Container -->
+        <div class="max-w-md mx-auto min-h-screen relative z-10">
+            
+            <!-- Main Content -->
+            <div class="pb-24 pt-6">
+                
+                <!-- Guilt-Free Tab -->
+                <div id="guilt-free-tab" class="px-6 space-y-6 slide-in-from-bottom-4">
+                    
+                    <!-- Header -->
+                    <div class="flex justify-between items-center mb-8 p-6 bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl slide-in-from-top-4">
+                        <div>
+                            <h1 id="greeting" class="text-lg font-semibold mb-1">Good afternoon, Sarah! ☀️</h1>
+                            <p id="time-context" class="text-sm text-slate-400">Perfect time for a guilt-free treat</p>
+                        </div>
+                        <button onclick="switchTab(&#39;setup&#39;)" class="text-slate-400 hover:text-white transition-colors p-2">
+                            ⚙️
+                        </button>
+                    </div>
+
+                    <!-- Hero: Daily Guilt-Free Amount -->
+                    <div id="hero-section" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-10 text-center relative overflow-hidden cursor-pointer fade-in-scale" style="box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);" onclick="celebrateAmount()">
+                        
+                        <!-- Shimmer effect -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse opacity-60"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-2 tracking-wide">
+                                <span>💚</span>
+                                <span id="hero-status" class="flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-2 tracking-wide">GUILT-FREE TO SPEND</span>
+                            </div>
+                            
+                            <div id="daily-amount" class="text-5xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-3 hover:scale-105 transition-transform duration-300" style="letter-spacing: -1px;">20</div>
+                            
+                            <p id="hero-message" class="text-slate-300 font-medium mb-6">Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉</p>
+                            
+                            <!-- Progress Ring -->
+                            <div class="w-32 h-32 mx-auto relative mb-4">
+                                <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="50" stroke="rgba(255, 255, 255, 0.1)" stroke-width="8" fill="none"></circle>
+                                    <circle id="progress-circle" cx="60" cy="60" r="50" stroke="url(#progressGradient)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="220" class="transition-all duration-700" style="stroke-dashoffset: 139.626; stroke: url(&quot;#progressGradient&quot;);"></circle>
+                                    <defs>
+                                        <lineargradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#10b981"></stop>
+                                            <stop offset="100%" stop-color="#22c55e"></stop>
+                                        </lineargradient>
+                                    </defs>
+                                </svg>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                    <div class="text-xs text-slate-400 mb-1">Enjoyed Today</div>
+                                    <div id="spent-amount" class="text-lg font-bold text-emerald-400">25</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Spending Actions -->
+                    <div class="grid grid-cols-2 gap-4 slide-in-from-bottom-4">
+                        <button onclick="quickSpend(6.50, &#39;Coffee Run ☕&#39;, &#39;coffee&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
+                            <div class="text-3xl mb-3">☕</div>
+                            <div class="font-semibold text-white mb-1">Coffee Run</div>
+                            <div class="text-xs text-slate-400">$6.50</div>
+                        </button>
+                        
+                        <button onclick="quickSpend(14.75, &#39;Lunch Treat 🍕&#39;, &#39;lunch&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
+                            <div class="text-3xl mb-3">🍕</div>
+                            <div class="font-semibold text-white mb-1">Lunch Treat</div>
+                            <div class="text-xs text-slate-400">$14.75</div>
+                        </button>
+                        
+                        <button onclick="quickSpend(4.25, &#39;Snack Attack 🍿&#39;, &#39;snack&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
+                            <div class="text-3xl mb-3">🍿</div>
+                            <div class="font-semibold text-white mb-1">Snack Attack</div>
+                            <div class="text-xs text-slate-400">$4.25</div>
+                        </button>
+                        
+                        <button onclick="showCustomAmounts()" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
+                            <div class="text-3xl mb-3">💳</div>
+                            <div class="font-semibold text-white mb-1">Custom Amount</div>
+                            <div class="text-xs text-slate-400">Choose amount</div>
+                        </button>
+                    </div>
+
+                    <!-- Custom Amount Modal (Hidden by default) -->
+                    <div id="custom-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
+                        <div class="bg-slate-900 rounded-3xl border border-white/20 p-6 mx-6 w-full max-w-sm">
+                            <h3 class="text-lg font-semibold mb-4 text-center">Choose Amount</h3>
+                    <div class="space-y-3">
+                        <div class="flex gap-3 mb-4">
+                            <button onclick="quickSpend(15, &#39;Custom Purchase $15&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
+                                $15
+                            </button>
+                            <button onclick="quickSpend(20, &#39;Custom Purchase $20&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
+                                $20
+                            </button>
+                            <button onclick="quickSpend(25, &#39;Custom Purchase $25&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
+                                $25
+                            </button>
+                        </div>
+                        <div class="flex gap-3">
+                            <button onclick="quickSpend(30, &#39;Custom Purchase $30&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
+                                $30
+                            </button>
+                            <button onclick="quickSpend(35, &#39;Custom Purchase $35&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
+                                $35
+                            </button>
+                            <button onclick="quickSpend(40, &#39;Custom Purchase $40&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
+                                $40
+                            </button>
+                        </div>
+                    </div>
+                            <button onclick="hideCustomAmounts()" class="w-full bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl py-3 font-medium transition-all duration-300">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Spending Streak -->
+                    <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-left-4">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="text-2xl">🔥</div>
+                            <div>
+                                <div class="font-bold text-lg">5-Day Guilt-Free Streak!</div>
+                                <div class="text-sm text-slate-400">You're absolutely crushing this budget thing ✨</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-2">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-sm relative">
+                                🔥
+                                <div class="absolute bottom-1 text-xs font-bold">M</div>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-sm relative">
+                                🔥
+                                <div class="absolute bottom-1 text-xs font-bold">T</div>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-sm relative">
+                                🔥
+                                <div class="absolute bottom-1 text-xs font-bold">W</div>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-sm relative">
+                                🔥
+                                <div class="absolute bottom-1 text-xs font-bold">T</div>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold text-sm relative animate-pulse">
+                                🔥
+                                <div class="absolute bottom-1 text-xs font-bold">F</div>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-slate-400 font-bold text-sm">
+                                S
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-slate-400 font-bold text-sm">
+                                S
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tomorrow Preview -->
+                    <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-right-4">
+                        <div class="text-sm text-slate-400 mb-2">Tomorrow's Guilt-Free Amount</div>
+                        <div id="tomorrow-amount" class="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">65</div>
+                        <div id="rollover-info" class="flex items-center gap-2 text-sm text-emerald-400 font-medium"><span>🎁</span><span>Includes today's bonus rollover!</span></div>
+                    </div>
+
+                    <!-- Recent Guilt-Free Purchases -->
+                    <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 fade-in-scale">
+                        <div class="flex justify-between items-center mb-5">
+                            <h3 class="font-semibold flex items-center gap-2">
+                                <span>💚</span>
+                                <span>Recent Guilt-Free Wins</span>
+                            </h3>
+                            <button class="text-sm text-purple-400 font-medium hover:text-purple-300 transition-colors">
+                                See all →
+                            </button>
+                        </div>
+                        
+                        <div id="transactions-list" class="space-y-3"><div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
+                <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
+                <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
+                    💳
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium text-sm">Morning Oat Latte</div>
+                    <div class="text-xs text-slate-400">Pre-approved • Just now • Guilt-free ✨</div>
+                </div>
+                <div class="font-bold text-emerald-400">$5.00</div>
+            </div><div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
+                <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
+                <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
+                    🥗
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium text-sm">Healthy Lunch Bowl</div>
+                    <div class="text-xs text-slate-400">Pre-approved • Just now • Guilt-free ✨</div>
+                </div>
+                <div class="font-bold text-emerald-400">$15.00</div>
+            </div><div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
+                <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
+                <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
+                    💳
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium text-sm">Friday Ice Cream</div>
+                    <div class="text-xs text-slate-400">Pre-approved • Just now • Guilt-free ✨</div>
+                </div>
+                <div class="font-bold text-emerald-400">$5.00</div>
+            </div>
+                            <!-- Transactions will be dynamically added here -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Setup Tab (Hidden by default) -->
+                <div id="setup-tab" class="hidden px-6 space-y-6 slide-in-from-bottom-4">
+                    
+                    <!-- Settings Dashboard -->
+                    <div id="settings-dashboard" class="space-y-6">
+                        <h1 class="text-2xl font-bold text-center mb-8">Settings</h1>
+                        
+                        <!-- Settings Cards Grid -->
+                        <div class="grid grid-cols-1 gap-4">
+                            
+                            <!-- Income Management Card -->
+                            <div class="bg-white/8 backdrop-blur-sm border border-white/6 rounded-3xl p-6 cursor-pointer transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" onclick="openIncomeManagement()">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-3xl">💰</div>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-lg mb-1">Income Management</h3>
+                                        <p class="text-sm text-slate-400 mb-2">Monthly take-home pay</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xl font-bold text-emerald-400">$3,200</span>
+                                            <span class="text-xs text-slate-500">Tap to edit →</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fixed Expenses Card -->
+                            <div class="bg-white/8 backdrop-blur-sm border border-white/6 rounded-3xl p-6 cursor-pointer transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95 opacity-60">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-3xl">🏠</div>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-lg mb-1">Fixed Expenses</h3>
+                                        <p class="text-sm text-slate-400 mb-2">Monthly bills & recurring costs</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xl font-bold text-slate-400">$1,430</span>
+                                            <span class="text-xs text-slate-500">Coming soon</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Budget Allocation Card -->
+                            <div class="bg-white/8 backdrop-blur-sm border border-white/6 rounded-3xl p-6 cursor-pointer transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95 opacity-60">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-3xl">📊</div>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-lg mb-1">Budget Allocation</h3>
+                                        <p class="text-sm text-slate-400 mb-2">How you split your money</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm text-slate-400">Spend • Stash • Save</span>
+                                            <span class="text-xs text-slate-500">Coming soon</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI & Notifications Card -->
+                            <div class="bg-white/8 backdrop-blur-sm border border-white/6 rounded-3xl p-6 cursor-pointer transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95 opacity-60">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-3xl">🤖</div>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-lg mb-1">AI & Notifications</h3>
+                                        <p class="text-sm text-slate-400 mb-2">Smart nudges & chat settings</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm text-slate-400">All enabled</span>
+                                            <span class="text-xs text-slate-500">Coming soon</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Account & Data Card -->
+                            <div class="bg-white/8 backdrop-blur-sm border border-white/6 rounded-3xl p-6 cursor-pointer transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95 opacity-60">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-3xl">👤</div>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-lg mb-1">Account & Data</h3>
+                                        <p class="text-sm text-slate-400 mb-2">Export, privacy & account info</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm text-slate-400">Manage data</span>
+                                            <span class="text-xs text-slate-500">Coming soon</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- About & Help Card -->
+                            <div class="bg-white/8 backdrop-blur-sm border border-white/6 rounded-3xl p-6 cursor-pointer transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95 opacity-60">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-3xl">ℹ️</div>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-lg mb-1">About & Help</h3>
+                                        <p class="text-sm text-slate-400 mb-2">App info, support & tutorials</p>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm text-slate-400">Version 1.0</span>
+                                            <span class="text-xs text-slate-500">Coming soon</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Income Management Detail Screen (Hidden by default) -->
+                    <div id="income-management-detail" class="hidden space-y-6">
+                        
+                        <!-- Header with Back Button -->
+                        <div class="flex items-center gap-4 mb-6">
+                            <button onclick="backToSettings()" class="text-slate-400 hover:text-white transition-colors p-2">
+                                ← Back
+                            </button>
+                            <h1 class="text-2xl font-bold">Income Management</h1>
+                        </div>
+
+                        <!-- Current Income Card -->
+                        <div class="bg-white/8 backdrop-blur-sm border border-white/6 rounded-3xl p-6">
+                            <h3 class="font-semibold text-lg mb-4 flex items-center gap-2">
+                                <span>💰</span>
+                                <span>Monthly Income</span>
+                            </h3>
+                            
+                            <div class="text-center mb-6">
+                                <div class="text-sm text-slate-400 mb-2">Current monthly take-home</div>
+                                <div id="current-income-display" class="text-4xl font-bold text-emerald-400 mb-4 cursor-pointer hover:text-emerald-300 transition-colors" onclick="editIncome()">$3,200</div>
+                                <button onclick="editIncome()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
+                                    Update Income
+                                </button>
+                            </div>
+
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Last Updated:</span>
+                                    <span class="font-semibold">Never</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Next Month Preview:</span>
+                                    <span class="font-semibold text-emerald-400" id="next-month-preview">Daily Flow: $45</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Income History Card -->
+                        <div class="bg-white/8 backdrop-blur-sm border border-white/6 rounded-3xl p-6">
+                            <h3 class="font-semibold text-lg mb-4">Income History</h3>
+                            <div class="text-center text-slate-400 py-8">
+                                <div class="text-3xl mb-2">📊</div>
+                                <p>No income changes yet</p>
+                                <p class="text-sm">Changes will appear here</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md px-6">
+                <div class="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-3">
+                    <div class="flex justify-around items-center">
+                        <button id="nav-guilt-free" onclick="switchTab(&#39;guilt-free&#39;)" class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300">
+                            <span class="text-lg">💚</span>
+                            <span class="text-xs font-semibold">Guilt-Free</span>
+                        </button>
+                        <button id="nav-setup" onclick="switchTab(&#39;setup&#39;)" class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
+                            <span class="text-lg">⚙️</span>
+                            <span class="text-xs font-semibold">Setup</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // App State
+        let appState = {
+            currentTab: 'guilt-free',
+            dailyBudget: 45, // Base daily budget amount
+            todaySpent: 25,
+            monthlyIncome: 3200, // Add income to state
+            transactions: [
+                { id: 1, amount: 5, description: 'Morning Oat Latte', timestamp: new Date('2024-06-20T08:30:00') },
+                { id: 2, amount: 15, description: 'Healthy Lunch Bowl', timestamp: new Date('2024-06-19T12:15:00') },
+                { id: 3, amount: 5, description: 'Friday Ice Cream', timestamp: new Date('2024-06-19T18:00:00') }
+            ]
+        };
+
+        // Initialize display immediately when script loads
+        function initializeDisplay() {
+            // Set initial values immediately
+            document.getElementById('daily-amount').textContent = '20';
+            document.getElementById('spent-amount').textContent = '25';
+            
+            // Update tomorrow section immediately
+            const tomorrowAmount = document.getElementById('tomorrow-amount');
+            const rolloverInfo = document.getElementById('rollover-info');
+            tomorrowAmount.textContent = '65';
+            rolloverInfo.innerHTML = '<span>🎁</span><span>Includes today\'s 20 bonus rollover!</span>';
+        }
+
+        // Call immediately
+        initializeDisplay();
+
+        // Haptic feedback simulation
+        function triggerHaptic(intensity = 'medium') {
+            if (navigator.vibrate) {
+                const patterns = { light: [10], medium: [20], strong: [50] };
+                navigator.vibrate(patterns[intensity] || patterns.medium);
+            }
+        }
+
+        // Show contextual toast message based on spending state
+        function showToast(message, isOverBudget = false) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const toastContent = document.getElementById('toast-content');
+            
+            toastMessage.textContent = message;
+            
+            // Change toast style based on spending state
+            if (isOverBudget) {
+                toastContent.className = "bg-gradient-to-r from-orange-400 to-yellow-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl";
+            } else {
+                toastContent.className = "bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl";
+            }
+            
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Update display amounts
+        function updateDisplay() {
+            const dailyAmountEl = document.getElementById('daily-amount');
+            const spentAmountEl = document.getElementById('spent-amount');
+            const progressCircle = document.getElementById('progress-circle');
+            const heroStatus = document.getElementById('hero-status');
+            const heroMessage = document.getElementById('hero-message');
+            const tomorrowAmount = document.getElementById('tomorrow-amount');
+            const rolloverInfo = document.getElementById('rollover-info');
+            
+            const remaining = Math.max(0, appState.dailyBudget - appState.todaySpent);
+            const isOverBudget = appState.todaySpent > appState.dailyBudget;
+            const overspentAmount = Math.max(0, appState.todaySpent - appState.dailyBudget);
+            
+            // Update amounts (rounded to nearest $5)
+            dailyAmountEl.textContent = `${Math.round(remaining / 5) * 5}`;
+            spentAmountEl.textContent = `${Math.round(appState.todaySpent / 5) * 5}`;
+            
+            // Update hero section based on budget status
+            if (isOverBudget) {
+                heroStatus.textContent = "USING TOMORROW'S MONEY";
+                heroStatus.className = "flex items-center justify-center gap-2 text-orange-400 font-semibold text-sm mb-2 tracking-wide";
+                heroMessage.textContent = "You're dipping into tomorrow's budget - but that's okay! 💛";
+                dailyAmountEl.className = "text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-3 hover:scale-105 transition-transform duration-300";
+            } else {
+                heroStatus.textContent = "GUILT-FREE TO SPEND";
+                heroStatus.className = "flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-2 tracking-wide";
+                heroMessage.textContent = "Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉";
+                dailyAmountEl.className = "text-5xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-3 hover:scale-105 transition-transform duration-300";
+            }
+            
+            // Update progress ring
+            const spentPercentage = appState.todaySpent / appState.dailyBudget;
+            const circumference = 2 * Math.PI * 50;
+            const offset = circumference * (1 - Math.min(spentPercentage, 1));
+            progressCircle.style.strokeDashoffset = offset;
+            
+            // Change ring color if over budget
+            if (isOverBudget) {
+                progressCircle.style.stroke = "url(#warningGradient)";
+                // Add warning gradient if it doesn't exist
+                if (!document.getElementById('warningGradient')) {
+                    const defs = progressCircle.parentNode.querySelector('defs');
+                    const warningGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+                    warningGradient.id = "warningGradient";
+                    warningGradient.setAttribute("x1", "0%");
+                    warningGradient.setAttribute("y1", "0%");
+                    warningGradient.setAttribute("x2", "100%");
+                    warningGradient.setAttribute("y2", "0%");
+                    
+                    const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+                    stop1.setAttribute("offset", "0%");
+                    stop1.setAttribute("stop-color", "#f59e0b");
+                    
+                    const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+                    stop2.setAttribute("offset", "100%");
+                    stop2.setAttribute("stop-color", "#ef4444");
+                    
+                    warningGradient.appendChild(stop1);
+                    warningGradient.appendChild(stop2);
+                    defs.appendChild(warningGradient);
+                }
+            } else {
+                progressCircle.style.stroke = "url(#progressGradient)";
+            }
+            
+            // Update tomorrow's amount based on current spending
+            const baseDailyBudget = 45; // Tomorrow's base budget
+            if (isOverBudget) {
+                // If overspent, tomorrow starts with reduced amount
+                const tomorrowTotal = Math.max(0, baseDailyBudget - overspentAmount);
+                tomorrowAmount.textContent = `${Math.round(tomorrowTotal / 5) * 5}`;
+                rolloverInfo.innerHTML = `<span>⚠️</span><span>Reduced by $${Math.round(overspentAmount / 5) * 5} from today's overspending</span>`;
+                rolloverInfo.className = "flex items-center gap-2 text-sm text-orange-400 font-medium";
+            } else {
+                // If under budget, tomorrow gets bonus rollover
+                const leftover = remaining;
+                const tomorrowTotal = baseDailyBudget + leftover;
+                tomorrowAmount.textContent = `${Math.round(tomorrowTotal / 5) * 5}`;
+                
+                if (leftover > 0) {
+                    rolloverInfo.innerHTML = `<span>🎁</span><span>Includes today's $${Math.round(leftover / 5) * 5} bonus rollover!</span>`;
+                    rolloverInfo.className = "flex items-center gap-2 text-sm text-emerald-400 font-medium";
+                } else {
+                    rolloverInfo.innerHTML = `<span>⚡</span><span>Fresh start tomorrow with your full daily amount!</span>`;
+                    rolloverInfo.className = "flex items-center gap-2 text-sm text-emerald-400 font-medium";
+                }
+            }
+        }
+
+        // Add transaction to list
+        function addTransactionToList(transaction) {
+            const transactionsList = document.getElementById('transactions-list');
+            
+            const transactionEl = document.createElement('div');
+            transactionEl.className = 'flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative';
+            
+            const icon = transaction.description.includes('Coffee') ? '☕' : 
+                        transaction.description.includes('Lunch') ? '🥗' : 
+                        transaction.description.includes('Snack') ? '🍿' : '💳';
+            
+            transactionEl.innerHTML = `
+                <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
+                <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
+                    ${icon}
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium text-sm">${transaction.description}</div>
+                    <div class="text-xs text-slate-400">Pre-approved • Just now • Guilt-free ✨</div>
+                </div>
+                <div class="font-bold text-emerald-400">$${transaction.amount.toFixed(2)}</div>
+            `;
+            
+            transactionsList.insertBefore(transactionEl, transactionsList.firstChild);
+            
+            // Keep only the 3 most recent transactions visible
+            const transactions = transactionsList.children;
+            if (transactions.length > 3) {
+                transactionsList.removeChild(transactions[transactions.length - 1]);
+            }
+        }
+
+        // Quick spend function with contextual messaging
+        function quickSpend(amount, description, category) {
+            triggerHaptic('medium');
+            
+            // Add to transactions
+            const newTransaction = {
+                id: Date.now(),
+                amount: amount,
+                description: description,
+                timestamp: new Date()
+            };
+            
+            appState.transactions.unshift(newTransaction);
+            appState.todaySpent += amount;
+            
+            // Update display
+            updateDisplay();
+            addTransactionToList(newTransaction);
+            
+            // Show celebration
+            const heroSection = document.getElementById('hero-section');
+            heroSection.classList.add('celebration-pulse');
+            setTimeout(() => {
+                heroSection.classList.remove('celebration-pulse');
+            }, 500);
+            
+            // Show contextual toast based on spending state
+            const remaining = appState.dailyBudget - appState.todaySpent;
+            const isOverBudget = appState.todaySpent > appState.dailyBudget;
+            
+            let message;
+            if (remaining > 5) {
+                // Under budget
+                message = "🎉 Guilt-free purchase confirmed! You've earned this!";
+                showToast(message, false);
+            } else if (remaining >= 0) {
+                // Perfect spending (close to budget)
+                message = "🎯 Amazing control! Almost perfect spending!";
+                showToast(message, false);
+            } else {
+                // Over budget
+                message = "💛 Using tomorrow's money - totally fine!";
+                showToast(message, true);
+            }
+        }
+
+        // Celebrate amount tap
+        function celebrateAmount() {
+            triggerHaptic('strong');
+            const remaining = appState.dailyBudget - appState.todaySpent;
+            const isOverBudget = appState.todaySpent > appState.dailyBudget;
+            
+            let celebrationMessage;
+            if (remaining > 0) {
+                celebrationMessage = "✅ This amount is 100% guilt-free! Go enjoy it!";
+                showToast(celebrationMessage, false);
+            } else {
+                celebrationMessage = "💛 You're using tomorrow's money - and that's perfectly okay!";
+                showToast(celebrationMessage, true);
+            }
+            
+            const dailyAmount = document.getElementById('daily-amount');
+            dailyAmount.classList.add('celebration-pulse');
+            setTimeout(() => {
+                dailyAmount.classList.remove('celebration-pulse');
+            }, 500);
+        }
+
+        // Show custom amounts modal
+        function showCustomAmounts() {
+            triggerHaptic('light');
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        // Hide custom amounts modal
+        function hideCustomAmounts() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        // Navigate to Income Management detail screen
+        function openIncomeManagement() {
+            triggerHaptic('light');
+            document.getElementById('settings-dashboard').classList.add('hidden');
+            document.getElementById('income-management-detail').classList.remove('hidden');
+        }
+
+        // Navigate back to Settings dashboard
+        function backToSettings() {
+            triggerHaptic('light');
+            document.getElementById('income-management-detail').classList.add('hidden');
+            document.getElementById('settings-dashboard').classList.remove('hidden');
+        }
+
+        // Edit income function (placeholder for now)
+        function editIncome() {
+            triggerHaptic('medium');
+            // TODO: Implement income editing modal/inline editing
+            showToast("Income editing coming in next step!", false);
+        }
+
+        // Switch tabs
+        function switchTab(tabName) {
+            triggerHaptic('light');
+            
+            // Hide all tabs
+            document.getElementById('guilt-free-tab').classList.add('hidden');
+            document.getElementById('setup-tab').classList.add('hidden');
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.remove('hidden');
+            
+            // Update navigation
+            document.getElementById('nav-guilt-free').className = 
+                tabName === 'guilt-free' 
+                    ? 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300'
+                    : 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white';
+            
+            document.getElementById('nav-setup').className = 
+                tabName === 'setup' 
+                    ? 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-purple-500/30 text-purple-300'
+                    : 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white';
+            
+            appState.currentTab = tabName;
+        }
+
+        // Update greeting based on time
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            const greeting = document.getElementById('greeting');
+            const context = document.getElementById('time-context');
+            
+            if (hour < 12) {
+                greeting.textContent = 'Good morning, Sarah! ☀️';
+                context.textContent = 'Perfect time for a guilt-free coffee';
+            } else if (hour < 17) {
+                greeting.textContent = 'Good afternoon, Sarah! ☀️';
+                context.textContent = 'Perfect time for a guilt-free treat';
+            } else {
+                greeting.textContent = 'Good evening, Sarah! 🌙';
+                context.textContent = 'Perfect time to enjoy your money';
+            }
+        }
+
+        // Initialize app
+        function initApp() {
+            console.log('Initializing app...');
+            updateGreeting();
+            updateDisplay();
+            
+            // Populate initial transactions - clear existing first
+            const transactionsList = document.getElementById('transactions-list');
+            transactionsList.innerHTML = '';
+            
+            // Add fresh transactions
+            appState.transactions.slice(0, 3).reverse().forEach(transaction => {
+                addTransactionToList(transaction);
+            });
+            
+            console.log('App initialized successfully');
+        }
+
+        // Start the app when page loads AND run immediately
+        document.addEventListener('DOMContentLoaded', initApp);
+        
+        // Also run immediately in case DOM is already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+    </script>
+
+</body>
+</html>
