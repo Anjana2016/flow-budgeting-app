@@ -132,10 +132,53 @@
         }
 
         /* ===== TAB 2: LIGHTNING-FAST EXPENSE ENTRY ===== */
+        
+        /* Daily Flow Status Header */
+        .expense-flow-header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        .flow-status-label {
+            font-size: 14px;
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .flow-status-amount {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: var(--permission-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .flow-status-amount:hover {
+            transform: scale(1.05);
+        }
+
+        .flow-status-message {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
         .expense-header {
             text-align: center;
             margin-bottom: 32px;
-            animation: slideInDown 0.6s ease-out;
+            animation: slideInDown 0.6s ease-out 0.1s both;
         }
 
         @keyframes slideInDown {
@@ -1040,6 +1083,15 @@
 
         <!-- TAB 2: LIGHTNING-FAST EXPENSE ENTRY (NEW) -->
         <div id="tab-spend" class="tab-content">
+            <!-- Daily Flow Status Header -->
+            <div class="expense-flow-header">
+                <div class="flow-status">
+                    <div class="flow-status-label">💚 Today's Guilt-Free Amount</div>
+                    <div class="flow-status-amount" id="tab2DailyFlow" onclick="celebrateFlow()">$46</div>
+                    <div class="flow-status-message">Ready to spend without worry!</div>
+                </div>
+            </div>
+            
             <div class="expense-header">
                 <h1 class="expense-title">💸 Spend Guilt-Free</h1>
                 <p class="expense-subtitle">Lightning-fast expense logging in under 3 seconds</p>
@@ -1348,11 +1400,11 @@
             appState.todaySpent += amount;
             appState.dailyFlow = calculateDailyFlow();
             
-            // Show instant success feedback
-            showToast(`🎉 ${amount > appState.dailyFlow ? 'Perfect!' : 'Guilt-free!'} ${type} logged in ${Math.random() * 0.5 + 1.5 | 0}s`, 'success');
-            
-            // Update home tab if visible
+            // Update displays on BOTH tabs
             updateDailyFlowDisplay();
+            
+            // Show instant success feedback
+            showToast(`🎉 ${amount > appState.dailyFlow + amount ? 'Perfect!' : 'Guilt-free!'} ${type} logged in ${(Math.random() * 0.5 + 1.5).toFixed(1)}s`, 'success');
             
             // Trigger AI contextual response
             setTimeout(() => {
@@ -1484,7 +1536,7 @@
             appState.todaySpent += amount;
             appState.dailyFlow = calculateDailyFlow();
             
-            // Update display
+            // Update displays on BOTH tabs
             updateDailyFlowDisplay();
             
             // Show contextual feedback
@@ -1492,9 +1544,9 @@
             let message;
             
             if (remainingFlow > 10) {
-                message = `🎉 Guilt-free ${type} confirmed! $${remainingFlow.toFixed(0)} left today.`;
+                message = `🎉 Guilt-free ${type} confirmed! ${remainingFlow.toFixed(0)} left today.`;
             } else if (remainingFlow >= 0) {
-                message = `🎯 Perfect spending control! $${remainingFlow.toFixed(0)} remaining.`;
+                message = `🎯 Perfect spending control! ${remainingFlow.toFixed(0)} remaining.`;
             } else {
                 message = `💛 Using tomorrow's money - totally fine! Back on track tomorrow.`;
             }
@@ -1560,11 +1612,19 @@
         function updateDailyFlowDisplay() {
             const flowAmount = document.querySelector('.flow-amount');
             const flowMessage = document.querySelector('.flow-message');
+            const tab2FlowAmount = document.getElementById('tab2DailyFlow');
             
+            // Update Tab 1 (Home) display
             if (flowAmount) {
-                flowAmount.textContent = `$${Math.round(appState.dailyFlow)}`;
+                flowAmount.textContent = `${Math.round(appState.dailyFlow)}`;
             }
             
+            // Update Tab 2 (Spend) display
+            if (tab2FlowAmount) {
+                tab2FlowAmount.textContent = `${Math.round(appState.dailyFlow)}`;
+            }
+            
+            // Update contextual messages on both tabs
             if (flowMessage) {
                 const remaining = appState.dailyFlow;
                 if (remaining > 20) {
@@ -1573,6 +1633,19 @@
                     flowMessage.textContent = "Perfect! You're in complete control 🎯";
                 } else {
                     flowMessage.textContent = "Using tomorrow's flow - totally normal! 💛";
+                }
+            }
+            
+            // Update Tab 2 status message
+            const tab2Message = document.querySelector('.flow-status-message');
+            if (tab2Message) {
+                const remaining = appState.dailyFlow;
+                if (remaining > 20) {
+                    tab2Message.textContent = "Plenty left to enjoy guilt-free! 🌟";
+                } else if (remaining > 0) {
+                    tab2Message.textContent = "Ready to spend without worry!";
+                } else {
+                    tab2Message.textContent = "Using tomorrow's money - totally fine! 💛";
                 }
             }
         }
@@ -1726,6 +1799,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize with proper daily flow calculation
             appState.dailyFlow = calculateDailyFlow();
+            
+            // Update both Tab 1 and Tab 2 displays
             updateDailyFlowDisplay();
             
             // Add some demo transactions for today's spending view
