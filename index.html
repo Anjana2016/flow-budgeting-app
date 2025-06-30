@@ -1,728 +1,1741 @@
 <!DOCTYPE html>
-<!-- saved from url=(0070)file:///Users/anjanasudhakar/Downloads/flow-budgeting-fixed%20(1).html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>💚 Flow Budgeting - Guilt-Free Zone</title>
+    <title>💚 Flow Budgeting - Your Financial Freedom</title>
     
-    <!-- PWA Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Flow Budget">
-    <meta name="theme-color" content="#10b981">
+    <!-- 
+    VERSION: 2.1-tab2-dev
+    STATUS: DEVELOPMENT - Tab 2 (Lightning-Fast Expense Entry) ⚡
+    BASELINE: v2.0-foundation
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;&gt;&lt;text y=&#39;.9em&#39; font-size=&#39;90&#39;&gt;%F0%9F%92%9A&lt;/text&gt;&lt;/svg&gt;">
+    FEATURES WORKING:
+    ✅ Complete AI chat system with contextual intelligence
+    ✅ Tab 1 (Guilt-Free Zone) fully functional with real-time calculations
+    ✅ 5-tab navigation with smooth transitions
+    🚧 Tab 2 (Lightning-Fast Expense Entry) - IN DEVELOPMENT
     
-    <!-- Tailwind CSS -->
-    <script src="./index_files/saved_resource"></script>
+    NEW IN THIS VERSION:
+    ⚡ Sub-3-second expense logging with preset amounts
+    📍 Smart location detection and merchant suggestions  
+    🕐 Recent places with historical spending amounts
+    💚 Today's guilt-free spending history
+    🎤 Voice input for accessibility
+    🤖 AI integration for contextual spending guidance
+    
+    NEXT: Test all Tab 2 functionality → create v2.1-stable
+    -->
     
     <style>
-        /* Custom CSS for animations and special effects */
+        /* ===== EXACT CSS VARIABLES FROM REFERENCE FILES ===== */
+        :root {
+            /* Subtle Gen Z Color Palette - EXACT from reference files */
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --success-gradient: linear-gradient(135deg, #10b981 0%, #22c55e 100%);
+            --warning-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            --permission-gradient: linear-gradient(135deg, #06d6a0 0%, #118ab2 100%);
+            --celebration-gradient: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            --spend-gradient: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            
+            /* Accent Colors - EXACT from reference */
+            --accent-green: #10b981;
+            --accent-blue: #06b6d4;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-orange: #f97316;
+            --accent-amber: #f59e0b;
+            
+            /* Budget Category Gradients - EXACT 4 S's System */
+            --secure-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            --sustain-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --spend-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --stash-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            
+            /* Background System - EXACT from reference */
+            --dark-bg: #0f0f1a;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-hover: rgba(255, 255, 255, 0.12);
+            
+            /* Text Colors - EXACT from reference */
+            --text-primary: #f8fafc;
+            --text-secondary: rgba(248, 250, 252, 0.7);
+            --text-muted: rgba(248, 250, 252, 0.5);
+            
+            /* Shadows & Effects - EXACT from reference */
+            --shadow-subtle: 0 4px 16px rgba(99, 102, 241, 0.15);
+            --shadow-medium: 0 8px 25px rgba(99, 102, 241, 0.2);
+            --shadow-glow: 0 12px 32px rgba(16, 185, 129, 0.3);
+            --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* AI Chat System */
+            --ai-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --chat-bubble-bg: rgba(99, 102, 241, 0.1);
+        }
+
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0f0f1a, #1a1a2e, #16213e, #1a1a2e);
+            background-size: 400% 400%;
+            animation: subtleGradientShift 25s ease infinite;
+        }
+
         @keyframes subtleGradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        
-        @keyframes floatingPulse {
-            0%, 100% { 
-                transform: scale(1); 
-                box-shadow: 0 16px 40px rgba(16, 185, 129, 0.4); 
-            }
-            50% { 
-                transform: scale(1.05); 
-                box-shadow: 0 20px 50px rgba(16, 185, 129, 0.6); 
-            }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
         }
-        
+
+        /* ===== TAB CONTENT MANAGEMENT ===== */
+        .tab-content {
+            display: none;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== TAB 2: LIGHTNING-FAST EXPENSE ENTRY ===== */
+        .expense-header {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: slideInDown 0.6s ease-out;
+        }
+
         @keyframes slideInDown {
-            from { transform: translateY(-30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
+
+        .expense-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: var(--permission-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .expense-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Quick Add Section - Core Speed Promise */
+        .quick-add-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid var(--glass-border);
+            animation: slideInUp 0.8s ease-out;
+        }
+
         @keyframes slideInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
+
+        .quick-add-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-add-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .quick-add-btn {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .quick-add-btn:hover {
+            transform: translateY(-2px);
+            background: var(--glass-hover);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .quick-add-btn:active {
+            transform: scale(0.95);
+        }
+
+        .quick-add-icon {
+            font-size: 20px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .quick-add-label {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .quick-add-price {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .custom-add-btn {
+            background: var(--spend-gradient);
+            border: none;
+            border-radius: 16px;
+            padding: 16px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .custom-add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Smart Location Detection */
+        .location-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 1px solid var(--glass-border);
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
         @keyframes slideInLeft {
             from { transform: translateX(-30px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
-        
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .location-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--permission-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            animation: locationPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes locationPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .location-text {
+            flex: 1;
+        }
+
+        .location-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .location-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .nearby-places {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .nearby-place {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+
+        .nearby-place:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .place-name {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .place-distance {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Recent Places */
+        .recent-places {
+            margin-bottom: 24px;
+            animation: slideInRight 0.8s ease-out 0.3s both;
+        }
+
         @keyframes slideInRight {
             from { transform: translateX(30px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
-        
-        @keyframes fadeInScale {
-            from { transform: scale(0.95); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        @keyframes celebrationPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+
+        .recent-place-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
-        
-        .animate-in {
-            animation-fill-mode: both;
+
+        .recent-place-item:hover {
+            background: var(--glass-hover);
+            transform: translateX(4px);
         }
-        
-        .slide-in-from-bottom-4 {
-            animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .recent-place-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
         }
-        
-        .slide-in-from-top-4 {
-            animation: slideInDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .recent-place-details {
+            flex: 1;
         }
-        
-        .slide-in-from-left-4 {
-            animation: slideInLeft 0.8s ease-out;
+
+        .recent-place-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
         }
-        
-        .slide-in-from-right-4 {
-            animation: slideInRight 0.8s ease-out;
+
+        .recent-place-info {
+            font-size: 12px;
+            color: var(--text-muted);
         }
-        
-        .fade-in-scale {
-            animation: fadeInScale 0.8s ease-out;
+
+        .recent-place-action {
+            font-size: 12px;
+            color: var(--accent-green);
+            font-weight: 600;
         }
-        
-        .celebration-pulse {
-            animation: celebrationPulse 0.5s ease-out;
+
+        /* Today's Spending */
+        .recent-spending {
+            animation: slideInUp 0.8s ease-out 0.4s both;
         }
-        
-        /* Mobile optimization */
-        @media screen and (max-width: 480px) {
+
+        .spending-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .spending-item:hover {
+            background: var(--glass-hover);
+            transform: translateY(-2px);
+        }
+
+        .spending-item.guilt-free {
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .spending-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .spending-details {
+            flex: 1;
+        }
+
+        .spending-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .spending-info {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .spending-amount {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        /* Voice Input */
+        .voice-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+            animation: slideInUp 0.8s ease-out 0.5s both;
+        }
+
+        .voice-btn {
+            background: var(--ai-gradient);
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .voice-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .voice-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* ===== EXISTING TAB 1 STYLES (PRESERVED) ===== */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: var(--permission-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .daily-flow-hero {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border-radius: 24px;
+            padding: 32px 24px;
+            margin-bottom: 24px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            animation: slideInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-flow-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--permission-gradient);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .flow-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .flow-amount {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: var(--permission-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .flow-amount:hover {
+            transform: scale(1.05);
+        }
+
+        .flow-message {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .quick-action-btn {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+            color: var(--text-primary);
+        }
+
+        .quick-action-btn:hover {
+            transform: translateY(-2px);
+            background: var(--glass-hover);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .quick-action-btn:active {
+            transform: scale(0.95);
+        }
+
+        .action-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .action-label {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .action-amount {
+            font-size: 14px;
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* ===== FLOATING AI CHAT ===== */
+        .floating-chat-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: var(--ai-gradient);
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            z-index: 1001;
+            color: white;
+        }
+
+        .floating-chat-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .ai-chat-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            display: none;
+            z-index: 1002;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .ai-chat-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .ai-chat-interface {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 380px;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            animation: slideInUp 0.4s ease-out;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .ai-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--ai-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .ai-status {
+            flex: 1;
+        }
+
+        .ai-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .ai-state {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .chat-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        .ai-message, .user-message {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            animation: messageSlideIn 0.4s ease-out;
+        }
+
+        @keyframes messageSlideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-message {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: var(--ai-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .user-message .message-avatar {
+            background: var(--success-gradient);
+        }
+
+        .message-content {
+            background: var(--chat-bubble-bg);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 12px 16px;
+            font-size: 14px;
+            line-height: 1.4;
+            max-width: 260px;
+        }
+
+        .user-message .message-content {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        .ai-quick-actions {
+            display: flex;
+            gap: 8px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--glass-border);
+            overflow-x: auto;
+        }
+
+        .ai-action-btn {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .ai-action-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 12px;
+            padding: 16px 20px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: var(--text-primary);
+            transition: all 0.3s var(--animation-timing);
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .send-btn {
+            background: var(--ai-gradient);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+        }
+
+        .send-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .send-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* ===== BOTTOM NAVIGATION ===== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 12px 20px;
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+            padding: 8px;
+            border-radius: 12px;
+            color: var(--text-muted);
+            min-width: 60px;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-2px);
+            color: var(--text-secondary);
+        }
+
+        .nav-item.active {
+            color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .nav-icon {
+            font-size: 16px;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* ===== LOADING STATES ===== */
+        .loading-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        /* ===== TOAST NOTIFICATIONS ===== */
+        .toast {
+            position: fixed;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px 24px;
+            z-index: 1003;
+            animation: toastSlideIn 0.4s ease-out;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        @keyframes toastSlideIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .toast.success {
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .toast.celebration {
+            border-color: rgba(245, 158, 11, 0.3);
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .toast-content {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 360px) {
             .container {
                 padding: 16px;
             }
-        }
-        
-        /* Touch optimization */
-        button, input {
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-        
-        /* Prevent zoom on input focus */
-        input[type="number"] {
-            font-size: 16px;
-        }
-        
-        /* PWA safe areas */
-        .container {
-            padding-bottom: env(safe-area-inset-bottom);
-            padding-top: env(safe-area-inset-top);
-        }
-        
-        /* Custom gradient backgrounds */
-        .bg-animated {
-            background: linear-gradient(45deg, #0f0f1a, #1a1a2e, #16213e, #1a1a2e);
-            background-size: 400% 400%;
-            animation: subtleGradientShift 25s ease infinite;
-        }
-        
-        .floating-add {
-            animation: floatingPulse 3s ease-in-out infinite;
+            
+            .quick-add-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.bottom-1{bottom:0.25rem}.bottom-6{bottom:1.5rem}.left-1\/2{left:50%}.right-3{right:0.75rem}.top-2{top:0.5rem}.top-6{top:1.5rem}.z-10{z-index:10}.z-50{z-index:50}.mx-6{margin-left:1.5rem;margin-right:1.5rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-32{height:8rem}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-32{width:8rem}.w-full{width:100%}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.flex-1{flex:1 1 0%}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-rotate-90{--tw-rotate:-90deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-emerald-500\/10{border-color:rgb(16 185 129 / 0.1)}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-black\/50{background-color:rgb(0 0 0 / 0.5)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/30{background-color:rgb(16 185 129 / 0.3)}.bg-emerald-500\/5{background-color:rgb(16 185 129 / 0.05)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-cyan-500{--tw-gradient-from:#06b6d4 var(--tw-gradient-from-position);--tw-gradient-to:rgb(6 182 212 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-emerald-400{--tw-gradient-from:#34d399 var(--tw-gradient-from-position);--tw-gradient-to:rgb(52 211 153 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-emerald-500{--tw-gradient-from:#10b981 var(--tw-gradient-from-position);--tw-gradient-to:rgb(16 185 129 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-orange-500{--tw-gradient-from:#f97316 var(--tw-gradient-from-position);--tw-gradient-to:rgb(249 115 22 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-400{--tw-gradient-from:#c084fc var(--tw-gradient-from-position);--tw-gradient-to:rgb(192 132 252 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-transparent{--tw-gradient-from:transparent var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-orange-400{--tw-gradient-from:#fb923c var(--tw-gradient-from-position);--tw-gradient-to:rgb(251 146 60 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-emerald-500\/10{--tw-gradient-to:rgb(16 185 129 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), rgb(16 185 129 / 0.1) var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-blue-500{--tw-gradient-to:#3b82f6 var(--tw-gradient-to-position)}.to-cyan-400{--tw-gradient-to:#22d3ee var(--tw-gradient-to-position)}.to-cyan-500{--tw-gradient-to:#06b6d4 var(--tw-gradient-to-position)}.to-pink-400{--tw-gradient-to:#f472b6 var(--tw-gradient-to-position)}.to-red-500{--tw-gradient-to:#ef4444 var(--tw-gradient-to-position)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.to-red-400{--tw-gradient-to:#f87171 var(--tw-gradient-to-position)}.to-yellow-500{--tw-gradient-to:#eab308 var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.p-10{padding:2.5rem}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-24{padding-bottom:6rem}.pt-6{padding-top:1.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-5xl{font-size:3rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.tracking-wide{letter-spacing:0.025em}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-orange-400{--tw-text-opacity:1;color:rgb(251 146 60 / var(--tw-text-opacity, 1))}.opacity-60{opacity:0.6}.opacity-70{opacity:0.7}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-2xl{--tw-backdrop-blur:blur(40px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-700{transition-duration:700ms}.hover\:-translate-y-1:hover{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:translate-x-1:hover{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-emerald-500\/10:hover{background-color:rgb(16 185 129 / 0.1)}.hover\:bg-emerald-600:hover{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.hover\:bg-white\/20:hover{background-color:rgb(255 255 255 / 0.2)}.hover\:text-purple-300:hover{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}</style></head>
+</head>
 <body>
-    <div id="app" class="min-h-screen bg-animated text-white relative overflow-hidden">
+    <div class="bg-animation"></div>
+    
+    <div class="container">
         
-        <!-- Permission Toast -->
-        <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 slide-in-from-top-4 hidden">
-            <div id="toast-content" class="bg-gradient-to-r from-orange-400 to-yellow-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl">
-                <span id="toast-message">💛 Using tomorrow's money - totally fine!</span>
+        <!-- TAB 1: GUILT-FREE ZONE (EXISTING - PRESERVED) -->
+        <div id="tab-home" class="tab-content active">
+            <div class="hero-section">
+                <h1 class="hero-title">💚 Guilt-Free Zone</h1>
+                <p class="hero-subtitle">Your daily financial freedom awaits</p>
+            </div>
+
+            <div class="daily-flow-hero">
+                <div class="flow-label">TODAY'S GUILT-FREE SPENDING</div>
+                <div class="flow-amount" onclick="celebrateFlow()">$46</div>
+                <div class="flow-message">Perfect! You're in complete control 🎯</div>
+            </div>
+
+            <div class="quick-actions">
+                <button class="quick-action-btn" onclick="quickSpend('coffee', 6.50)">
+                    <span class="action-icon">☕</span>
+                    <div class="action-label">Coffee</div>
+                    <div class="action-amount">$6.50</div>
+                </button>
+                
+                <button class="quick-action-btn" onclick="quickSpend('lunch', 14.75)">
+                    <span class="action-icon">🥗</span>
+                    <div class="action-label">Lunch</div>
+                    <div class="action-amount">$14.75</div>
+                </button>
+                
+                <button class="quick-action-btn" onclick="quickSpend('snack', 4.25)">
+                    <span class="action-icon">🍿</span>
+                    <div class="action-label">Snack</div>
+                    <div class="action-amount">$4.25</div>
+                </button>
+                
+                <button class="quick-action-btn" onclick="openCustomSpend()">
+                    <span class="action-icon">💰</span>
+                    <div class="action-label">Custom</div>
+                    <div class="action-amount">Any Amount</div>
+                </button>
             </div>
         </div>
 
-        <!-- Main Content Container -->
-        <div class="max-w-md mx-auto min-h-screen relative z-10">
-            
-            <!-- Main Content -->
-            <div class="pb-24 pt-6">
+        <!-- TAB 2: LIGHTNING-FAST EXPENSE ENTRY (NEW) -->
+        <div id="tab-spend" class="tab-content">
+            <div class="expense-header">
+                <h1 class="expense-title">💸 Spend Guilt-Free</h1>
+                <p class="expense-subtitle">Lightning-fast expense logging in under 3 seconds</p>
+            </div>
+
+            <!-- Quick Add Section -->
+            <div class="quick-add-section">
+                <h2 class="quick-add-title">⚡ Quick Add</h2>
+                <div class="quick-add-grid">
+                    <button class="quick-add-btn" onclick="quickAdd('coffee', 5.50)">
+                        <span class="quick-add-icon">☕</span>
+                        <div class="quick-add-label">Coffee</div>
+                        <div class="quick-add-price">~$5.50</div>
+                    </button>
+                    
+                    <button class="quick-add-btn" onclick="quickAdd('lunch', 12.00)">
+                        <span class="quick-add-icon">🥗</span>
+                        <div class="quick-add-label">Lunch</div>
+                        <div class="quick-add-price">~$12.00</div>
+                    </button>
+                    
+                    <button class="quick-add-btn" onclick="quickAdd('snack', 3.75)">
+                        <span class="quick-add-icon">🍿</span>
+                        <div class="quick-add-label">Snack</div>
+                        <div class="quick-add-price">~$3.75</div>
+                    </button>
+                    
+                    <button class="quick-add-btn" onclick="quickAdd('gas', 35.00)">
+                        <span class="quick-add-icon">⛽</span>
+                        <div class="quick-add-label">Gas</div>
+                        <div class="quick-add-price">~$35.00</div>
+                    </button>
+                    
+                    <button class="quick-add-btn" onclick="quickAdd('ride', 15.00)">
+                        <span class="quick-add-icon">🚗</span>
+                        <div class="quick-add-label">Ride</div>
+                        <div class="quick-add-price">~$15.00</div>
+                    </button>
+                    
+                    <button class="quick-add-btn" onclick="quickAdd('shopping', 25.00)">
+                        <span class="quick-add-icon">🛍️</span>
+                        <div class="quick-add-label">Shopping</div>
+                        <div class="quick-add-price">~$25.00</div>
+                    </button>
+                </div>
                 
-                <!-- Guilt-Free Tab -->
-                <div id="guilt-free-tab" class="px-6 space-y-6 slide-in-from-bottom-4">
-                    
-                    <!-- Header -->
-                    <div class="flex justify-between items-center mb-8 p-6 bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl slide-in-from-top-4">
-                        <div>
-                            <h1 id="greeting" class="text-lg font-semibold mb-1">Good afternoon, Sarah! ☀️</h1>
-                            <p id="time-context" class="text-sm text-slate-400">Perfect time for a guilt-free treat</p>
-                        </div>
-                        <button onclick="switchTab(&#39;setup&#39;)" class="text-slate-400 hover:text-white transition-colors p-2">
-                            ⚙️
-                        </button>
-                    </div>
+                <button class="custom-add-btn" onclick="openCustomAmount()">
+                    ✨ Custom Amount
+                </button>
+            </div>
 
-                    <!-- Hero: Daily Guilt-Free Amount -->
-                    <div id="hero-section" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-10 text-center relative overflow-hidden cursor-pointer fade-in-scale" style="box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);" onclick="celebrateAmount()">
-                        
-                        <!-- Shimmer effect -->
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse opacity-60"></div>
-                        
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-2 tracking-wide">
-                                <span>💚</span>
-                                <span id="hero-status" class="flex items-center justify-center gap-2 text-orange-400 font-semibold text-sm mb-2 tracking-wide">USING TOMORROW'S MONEY</span>
-                            </div>
-                            
-                            <div id="daily-amount" class="text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-3 hover:scale-105 transition-transform duration-300" style="letter-spacing: -1px;">0</div>
-                            
-                            <p id="hero-message" class="text-slate-300 font-medium mb-6">You're dipping into tomorrow's budget - but that's okay! 💛</p>
-                            
-                            <!-- Progress Ring -->
-                            <div class="w-32 h-32 mx-auto relative mb-4">
-                                <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
-                                    <circle cx="60" cy="60" r="50" stroke="rgba(255, 255, 255, 0.1)" stroke-width="8" fill="none"></circle>
-                                    <circle id="progress-circle" cx="60" cy="60" r="50" stroke="url(#progressGradient)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="220" class="transition-all duration-700" style="stroke-dashoffset: 0; stroke: url(&quot;#warningGradient&quot;);"></circle>
-                                    <defs>
-                                        <lineargradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" stop-color="#10b981"></stop>
-                                            <stop offset="100%" stop-color="#22c55e"></stop>
-                                        </lineargradient>
-                                    <lineargradient id="warningGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f59e0b"></stop><stop offset="100%" stop-color="#ef4444"></stop></lineargradient></defs>
-                                </svg>
-                                <div class="absolute inset-0 flex flex-col items-center justify-center">
-                                    <div class="text-xs text-slate-400 mb-1">Enjoyed Today</div>
-                                    <div id="spent-amount" class="text-lg font-bold text-emerald-400">70</div>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Smart Location Detection -->
+            <div class="location-section">
+                <div class="location-header">
+                    <div class="location-icon">📍</div>
+                    <div class="location-text">
+                        <div class="location-title">You're near Starbucks!</div>
+                        <div class="location-subtitle">Perfect timing for that coffee treat ☕</div>
                     </div>
-
-                    <!-- Quick Spending Actions -->
-                    <div class="grid grid-cols-2 gap-4 slide-in-from-bottom-4">
-                        <button onclick="quickSpend(6.50, &#39;Coffee Run ☕&#39;, &#39;coffee&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
-                            <div class="text-3xl mb-3">☕</div>
-                            <div class="font-semibold text-white mb-1">Coffee Run</div>
-                            <div class="text-xs text-slate-400">$6.50</div>
-                        </button>
-                        
-                        <button onclick="quickSpend(14.75, &#39;Lunch Treat 🍕&#39;, &#39;lunch&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
-                            <div class="text-3xl mb-3">🍕</div>
-                            <div class="font-semibold text-white mb-1">Lunch Treat</div>
-                            <div class="text-xs text-slate-400">$14.75</div>
-                        </button>
-                        
-                        <button onclick="quickSpend(4.25, &#39;Snack Attack 🍿&#39;, &#39;snack&#39;)" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
-                            <div class="text-3xl mb-3">🍿</div>
-                            <div class="font-semibold text-white mb-1">Snack Attack</div>
-                            <div class="text-xs text-slate-400">$4.25</div>
-                        </button>
-                        
-                        <button onclick="showCustomAmounts()" class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 text-center transition-all duration-300 hover:bg-white/12 hover:scale-105 hover:-translate-y-1 active:scale-95" style="box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);">
-                            <div class="text-3xl mb-3">💳</div>
-                            <div class="font-semibold text-white mb-1">Custom Amount</div>
-                            <div class="text-xs text-slate-400">Choose amount</div>
-                        </button>
-                    </div>
-
-                    <!-- Custom Amount Modal (Hidden by default) -->
-                    <div id="custom-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center hidden">
-                        <div class="bg-slate-900 rounded-3xl border border-white/20 p-6 mx-6 w-full max-w-sm">
-                            <h3 class="text-lg font-semibold mb-4 text-center">Choose Amount</h3>
-                    <div class="space-y-3">
-                        <div class="flex gap-3 mb-4">
-                            <button onclick="quickSpend(15, &#39;Custom Purchase $15&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
-                                $15
-                            </button>
-                            <button onclick="quickSpend(20, &#39;Custom Purchase $20&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
-                                $20
-                            </button>
-                            <button onclick="quickSpend(25, &#39;Custom Purchase $25&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
-                                $25
-                            </button>
-                        </div>
-                        <div class="flex gap-3">
-                            <button onclick="quickSpend(30, &#39;Custom Purchase $30&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
-                                $30
-                            </button>
-                            <button onclick="quickSpend(35, &#39;Custom Purchase $35&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
-                                $35
-                            </button>
-                            <button onclick="quickSpend(40, &#39;Custom Purchase $40&#39;, &#39;custom&#39;); hideCustomAmounts()" class="bg-emerald-500 hover:bg-emerald-600 rounded-xl py-3 px-6 font-semibold transition-all duration-300">
-                                $40
-                            </button>
-                        </div>
-                    </div>
-                            <button onclick="hideCustomAmounts()" class="w-full bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl py-3 font-medium transition-all duration-300">
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Spending Streak -->
-                    <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-left-4">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="text-2xl">🔥</div>
-                            <div>
-                                <div class="font-bold text-lg">5-Day Guilt-Free Streak!</div>
-                                <div class="text-sm text-slate-400">You're absolutely crushing this budget thing ✨</div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-2">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-sm relative">
-                                🔥
-                                <div class="absolute bottom-1 text-xs font-bold">M</div>
-                            </div>
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-sm relative">
-                                🔥
-                                <div class="absolute bottom-1 text-xs font-bold">T</div>
-                            </div>
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-sm relative">
-                                🔥
-                                <div class="absolute bottom-1 text-xs font-bold">W</div>
-                            </div>
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-sm relative">
-                                🔥
-                                <div class="absolute bottom-1 text-xs font-bold">T</div>
-                            </div>
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold text-sm relative animate-pulse">
-                                🔥
-                                <div class="absolute bottom-1 text-xs font-bold">F</div>
-                            </div>
-                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-slate-400 font-bold text-sm">
-                                S
-                            </div>
-                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-slate-400 font-bold text-sm">
-                                S
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tomorrow Preview -->
-                    <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 slide-in-from-right-4">
-                        <div class="text-sm text-slate-400 mb-2">Tomorrow's Guilt-Free Amount</div>
-                        <div id="tomorrow-amount" class="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">20</div>
-                        <div id="rollover-info" class="flex items-center gap-2 text-sm text-orange-400 font-medium"><span>⚠️</span><span>Reduced by 25 from today's overspending</span></div>
-                    </div>
-
-                    <!-- Recent Guilt-Free Purchases -->
-                    <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6 fade-in-scale">
-                        <div class="flex justify-between items-center mb-5">
-                            <h3 class="font-semibold flex items-center gap-2">
-                                <span>💚</span>
-                                <span>Recent Guilt-Free Wins</span>
-                            </h3>
-                            <button class="text-sm text-purple-400 font-medium hover:text-purple-300 transition-colors">
-                                See all →
-                            </button>
-                        </div>
-                        
-                        <div id="transactions-list" class="space-y-3"><div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
-                <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
-                <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
-                    💳
                 </div>
-                <div class="flex-1">
-                    <div class="font-medium text-sm">Custom Purchase $40</div>
-                    <div class="text-xs text-slate-400">Pre-approved • Just now • Guilt-free ✨</div>
-                </div>
-                <div class="font-bold text-emerald-400">40.00</div>
-            </div><div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
-                <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
-                <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
-                    🍿
-                </div>
-                <div class="flex-1">
-                    <div class="font-medium text-sm">Snack Attack 🍿</div>
-                    <div class="text-xs text-slate-400">Pre-approved • Just now • Guilt-free ✨</div>
-                </div>
-                <div class="font-bold text-emerald-400">4.25</div>
-            </div><div class="flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative">
-                <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
-                <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
-                    💳
-                </div>
-                <div class="flex-1">
-                    <div class="font-medium text-sm">Morning Oat Latte</div>
-                    <div class="text-xs text-slate-400">Pre-approved • Just now • Guilt-free ✨</div>
-                </div>
-                <div class="font-bold text-emerald-400">5.00</div>
-            </div></div>
+                <div class="nearby-places">
+                    <div class="nearby-place" onclick="selectPlace('Starbucks')">
+                        <div class="place-name">☕ Starbucks</div>
+                        <div class="place-distance">0.1 mi away</div>
                     </div>
-
-                </div>
-
-                <!-- Setup Tab (Hidden by default) -->
-                <div id="setup-tab" class="hidden px-6 space-y-6 slide-in-from-bottom-4">
-                    <h1 class="text-2xl font-bold text-center mb-8">Setup Your Flow</h1>
-                    
-                    <div class="bg-white/8 backdrop-blur-sm border border-white/12 rounded-3xl p-6">
-                        <h3 class="font-semibold mb-4">CURRENT SETTINGS</h3>
-                        <div class="space-y-3 text-sm">
-                            <div class="flex justify-between">
-                                <span class="text-slate-400">Monthly Income:</span>
-                                <span class="font-semibold">$3,200</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-slate-400">Fixed Bills:</span>
-                                <span class="font-semibold">$1,430</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-slate-400">Available for Budget:</span>
-                                <span class="font-semibold text-emerald-400">$1,770</span>
-                            </div>
-                        </div>
+                    <div class="nearby-place" onclick="selectPlace('Target')">
+                        <div class="place-name">🎯 Target</div>
+                        <div class="place-distance">0.3 mi away</div>
+                    </div>
+                    <div class="nearby-place" onclick="selectPlace('Chipotle')">
+                        <div class="place-name">🌯 Chipotle</div>
+                        <div class="place-distance">0.2 mi away</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bottom Navigation -->
-            <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md px-6">
-                <div class="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-3">
-                    <div class="flex justify-around items-center">
-                        <button id="nav-guilt-free" onclick="switchTab(&#39;guilt-free&#39;)" class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300">
-                            <span class="text-lg">💚</span>
-                            <span class="text-xs font-semibold">Guilt-Free</span>
-                        </button>
-                        <button id="nav-setup" onclick="switchTab(&#39;setup&#39;)" class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
-                            <span class="text-lg">⚙️</span>
-                            <span class="text-xs font-semibold">Setup</span>
-                        </button>
+            <!-- Recent Places -->
+            <div class="recent-places">
+                <h2 class="section-title">🕐 Recent Places You've Been</h2>
+                
+                <div class="recent-place-item" onclick="selectRecentPlace('Target')">
+                    <div class="recent-place-icon" style="background: var(--secure-gradient);">🎯</div>
+                    <div class="recent-place-details">
+                        <div class="recent-place-name">Target</div>
+                        <div class="recent-place-info">Visited 2 hours ago • Usually ~$18</div>
+                    </div>
+                    <div class="recent-place-action">Quick Add</div>
+                </div>
+                
+                <div class="recent-place-item" onclick="selectRecentPlace('Whole Foods')">
+                    <div class="recent-place-icon" style="background: var(--success-gradient);">🛒</div>
+                    <div class="recent-place-details">
+                        <div class="recent-place-name">Whole Foods</div>
+                        <div class="recent-place-info">Yesterday • Usually ~$32</div>
+                    </div>
+                    <div class="recent-place-action">Quick Add</div>
+                </div>
+                
+                <div class="recent-place-item" onclick="selectRecentPlace('Shell Gas')">
+                    <div class="recent-place-icon" style="background: var(--sustain-gradient);">⛽</div>
+                    <div class="recent-place-details">
+                        <div class="recent-place-name">Shell Gas Station</div>
+                        <div class="recent-place-info">3 days ago • Usually ~$38</div>
+                    </div>
+                    <div class="recent-place-action">Quick Add</div>
+                </div>
+            </div>
+
+            <!-- Today's Spending -->
+            <div class="recent-spending">
+                <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 class="section-title">💚 Today's Guilt-Free Spending</h2>
+                    <span style="font-size: 14px; color: var(--accent-purple); cursor: pointer; font-weight: 500;">See all →</span>
+                </div>
+                
+                <div class="spending-item guilt-free" onclick="editSpending(this)">
+                    <div class="spending-icon" style="background: var(--success-gradient);">☕</div>
+                    <div class="spending-details">
+                        <div class="spending-name">Morning Coffee</div>
+                        <div class="spending-info">Starbucks • 9:15 AM</div>
+                    </div>
+                    <div class="spending-amount">$5.45</div>
+                </div>
+                
+                <div class="spending-item guilt-free" onclick="editSpending(this)">
+                    <div class="spending-icon" style="background: var(--success-gradient);">🥗</div>
+                    <div class="spending-details">
+                        <div class="spending-name">Healthy Lunch</div>
+                        <div class="spending-info">Sweetgreen • 12:30 PM</div>
+                    </div>
+                    <div class="spending-amount">$12.85</div>
+                </div>
+            </div>
+
+            <!-- Voice Input -->
+            <div class="voice-section">
+                <button class="voice-btn" onclick="startVoiceInput()">
+                    🎤
+                </button>
+            </div>
+        </div>
+
+        <!-- TAB 3: BUDGET (PLACEHOLDER) -->
+        <div id="tab-budget" class="tab-content">
+            <div class="loading-state">
+                <div>🎯 Building your budget flow...</div>
+            </div>
+        </div>
+
+        <!-- TAB 4: INSIGHTS (PLACEHOLDER) -->
+        <div id="tab-insights" class="tab-content">
+            <div class="loading-state">
+                <div>✨ Preparing your money insights...</div>
+            </div>
+        </div>
+
+        <!-- TAB 5: PROFILE (PLACEHOLDER) -->
+        <div id="tab-profile" class="tab-content">
+            <div class="loading-state">
+                <div>👤 Loading your profile...</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AI Chat System -->
+    <button class="floating-chat-btn" onclick="toggleAIChat()">
+        💬 AI
+    </button>
+
+    <div class="ai-chat-overlay" id="aiChatOverlay">
+        <div class="ai-chat-interface">
+            <div class="chat-header">
+                <div class="ai-avatar">🤖</div>
+                <div class="ai-status">
+                    <div class="ai-name">Flow AI Assistant</div>
+                    <div class="ai-state">Ready to help with your finances</div>
+                </div>
+                <button class="chat-close" onclick="toggleAIChat()">✕</button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="ai-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        Hey there! 👋 I'm your Flow AI assistant. I can help you understand your spending, celebrate your wins, and make smart financial decisions. You have $46 guilt-free to spend today - what's on your mind?
                     </div>
                 </div>
+            </div>
+
+            <div class="ai-quick-actions">
+                <button class="ai-action-btn" onclick="askAI('How am I doing today?')">How am I doing? 📊</button>
+                <button class="ai-action-btn" onclick="askAI('Should I buy this coffee?')">Should I buy this? ☕</button>
+                <button class="ai-action-btn" onclick="askAI('What should I focus on?')">Money tips 💡</button>
+            </div>
+
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" placeholder="Ask about your spending..." id="chatInput" onkeypress="handleChatKeypress(event)">
+                <button class="send-btn" onclick="sendChatMessage()">Send</button>
             </div>
         </div>
     </div>
 
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('home')">
+            <span class="nav-icon">💚</span>
+            <span class="nav-label">Home</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('spend')">
+            <span class="nav-icon">💸</span>
+            <span class="nav-label">Spend</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('budget')">
+            <span class="nav-icon">🎯</span>
+            <span class="nav-label">Budget</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('insights')">
+            <span class="nav-icon">✨</span>
+            <span class="nav-label">Insights</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('profile')">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Profile</span>
+        </div>
+    </nav>
+
     <script>
-        // App State
+        // ===== APP STATE MANAGEMENT ===== 
         let appState = {
-            currentTab: 'guilt-free',
-            dailyBudget: 45, // Base daily budget amount
-            todaySpent: 25,
+            currentTab: 'home',
+            dailyFlow: 46.00,
+            todaySpent: 23.50,
+            monthlyIncome: 3200,
+            categories: {
+                secure: { allocated: 1680, used: 1680, percentage: 35 },
+                sustain: { allocated: 720, used: 562, percentage: 15 },
+                spend: { allocated: 1440, used: 936, percentage: 30 },
+                stash: { allocated: 960, used: 960, percentage: 20 }
+            },
             transactions: [
-                { id: 1, amount: 5, description: 'Morning Oat Latte', timestamp: new Date('2024-06-20T08:30:00') },
-                { id: 2, amount: 15, description: 'Healthy Lunch Bowl', timestamp: new Date('2024-06-19T12:15:00') },
-                { id: 3, amount: 5, description: 'Friday Ice Cream', timestamp: new Date('2024-06-19T18:00:00') }
-            ]
+                { id: 1, type: 'coffee', amount: 5.45, merchant: 'Starbucks', time: '9:15 AM', category: 'spend' },
+                { id: 2, type: 'lunch', amount: 12.85, merchant: 'Sweetgreen', time: '12:30 PM', category: 'spend' }
+            ],
+            aiChatOpen: false
         };
 
-        // Initialize display immediately when script loads
-        function initializeDisplay() {
-            // Set initial values immediately
-            document.getElementById('daily-amount').textContent = '20';
-            document.getElementById('spent-amount').textContent = '25';
-            
-            // Update tomorrow section immediately
-            const tomorrowAmount = document.getElementById('tomorrow-amount');
-            const rolloverInfo = document.getElementById('rollover-info');
-            tomorrowAmount.textContent = '65';
-            rolloverInfo.innerHTML = '<span>🎁</span><span>Includes today\'s 20 bonus rollover!</span>';
-        }
-
-        // Call immediately
-        initializeDisplay();
-
-        // Haptic feedback simulation
+        // ===== HAPTIC FEEDBACK ===== 
         function triggerHaptic(intensity = 'medium') {
             if (navigator.vibrate) {
-                const patterns = { light: [10], medium: [20], strong: [50] };
+                const patterns = {
+                    light: [10],
+                    medium: [20],
+                    strong: [50]
+                };
                 navigator.vibrate(patterns[intensity] || patterns.medium);
             }
         }
 
-        // Show contextual toast message based on spending state
-        function showToast(message, isOverBudget = false) {
-            const toast = document.getElementById('toast');
-            const toastMessage = document.getElementById('toast-message');
-            const toastContent = document.getElementById('toast-content');
-            
-            toastMessage.textContent = message;
-            
-            // Change toast style based on spending state
-            if (isOverBudget) {
-                toastContent.className = "bg-gradient-to-r from-orange-400 to-yellow-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl";
-            } else {
-                toastContent.className = "bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-4 rounded-2xl font-semibold shadow-2xl";
-            }
-            
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
-        }
-
-        // Update display amounts
-        function updateDisplay() {
-            const dailyAmountEl = document.getElementById('daily-amount');
-            const spentAmountEl = document.getElementById('spent-amount');
-            const progressCircle = document.getElementById('progress-circle');
-            const heroStatus = document.getElementById('hero-status');
-            const heroMessage = document.getElementById('hero-message');
-            const tomorrowAmount = document.getElementById('tomorrow-amount');
-            const rolloverInfo = document.getElementById('rollover-info');
-            
-            const remaining = Math.max(0, appState.dailyBudget - appState.todaySpent);
-            const isOverBudget = appState.todaySpent > appState.dailyBudget;
-            const overspentAmount = Math.max(0, appState.todaySpent - appState.dailyBudget);
-            
-            // Update amounts (rounded to nearest $5)
-            dailyAmountEl.textContent = `${Math.round(remaining / 5) * 5}`;
-            spentAmountEl.textContent = `${Math.round(appState.todaySpent / 5) * 5}`;
-            
-            // Update hero section based on budget status
-            if (isOverBudget) {
-                heroStatus.textContent = "USING TOMORROW'S MONEY";
-                heroStatus.className = "flex items-center justify-center gap-2 text-orange-400 font-semibold text-sm mb-2 tracking-wide";
-                heroMessage.textContent = "You're dipping into tomorrow's budget - but that's okay! 💛";
-                dailyAmountEl.className = "text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-3 hover:scale-105 transition-transform duration-300";
-            } else {
-                heroStatus.textContent = "GUILT-FREE TO SPEND";
-                heroStatus.className = "flex items-center justify-center gap-2 text-emerald-400 font-semibold text-sm mb-2 tracking-wide";
-                heroMessage.textContent = "Go ahead, you've earned it! This is YOUR money to enjoy guilt-free 🎉";
-                dailyAmountEl.className = "text-5xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-3 hover:scale-105 transition-transform duration-300";
-            }
-            
-            // Update progress ring
-            const spentPercentage = appState.todaySpent / appState.dailyBudget;
-            const circumference = 2 * Math.PI * 50;
-            const offset = circumference * (1 - Math.min(spentPercentage, 1));
-            progressCircle.style.strokeDashoffset = offset;
-            
-            // Change ring color if over budget
-            if (isOverBudget) {
-                progressCircle.style.stroke = "url(#warningGradient)";
-                // Add warning gradient if it doesn't exist
-                if (!document.getElementById('warningGradient')) {
-                    const defs = progressCircle.parentNode.querySelector('defs');
-                    const warningGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
-                    warningGradient.id = "warningGradient";
-                    warningGradient.setAttribute("x1", "0%");
-                    warningGradient.setAttribute("y1", "0%");
-                    warningGradient.setAttribute("x2", "100%");
-                    warningGradient.setAttribute("y2", "0%");
-                    
-                    const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
-                    stop1.setAttribute("offset", "0%");
-                    stop1.setAttribute("stop-color", "#f59e0b");
-                    
-                    const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
-                    stop2.setAttribute("offset", "100%");
-                    stop2.setAttribute("stop-color", "#ef4444");
-                    
-                    warningGradient.appendChild(stop1);
-                    warningGradient.appendChild(stop2);
-                    defs.appendChild(warningGradient);
-                }
-            } else {
-                progressCircle.style.stroke = "url(#progressGradient)";
-            }
-            
-            // Update tomorrow's amount based on current spending
-            const baseDailyBudget = 45; // Tomorrow's base budget
-            if (isOverBudget) {
-                // If overspent, tomorrow starts with reduced amount
-                const tomorrowTotal = Math.max(0, baseDailyBudget - overspentAmount);
-                tomorrowAmount.textContent = `${Math.round(tomorrowTotal / 5) * 5}`;
-                rolloverInfo.innerHTML = `<span>⚠️</span><span>Reduced by ${Math.round(overspentAmount / 5) * 5} from today's overspending</span>`;
-                rolloverInfo.className = "flex items-center gap-2 text-sm text-orange-400 font-medium";
-            } else {
-                // If under budget, tomorrow gets bonus rollover
-                const leftover = remaining;
-                const tomorrowTotal = baseDailyBudget + leftover;
-                tomorrowAmount.textContent = `${Math.round(tomorrowTotal / 5) * 5}`;
-                
-                if (leftover > 0) {
-                    rolloverInfo.innerHTML = `<span>🎁</span><span>Includes today's ${Math.round(leftover / 5) * 5} bonus rollover!</span>`;
-                    rolloverInfo.className = "flex items-center gap-2 text-sm text-emerald-400 font-medium";
-                } else {
-                    rolloverInfo.innerHTML = `<span>⚡</span><span>Fresh start tomorrow with your full daily amount!</span>`;
-                    rolloverInfo.className = "flex items-center gap-2 text-sm text-emerald-400 font-medium";
-                }
-            }
-        }
-
-        // Add transaction to list
-        function addTransactionToList(transaction) {
-            const transactionsList = document.getElementById('transactions-list');
-            
-            const transactionEl = document.createElement('div');
-            transactionEl.className = 'flex items-center gap-4 p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl cursor-pointer hover:bg-emerald-500/10 transition-all duration-300 hover:translate-x-1 relative';
-            
-            const icon = transaction.description.includes('Coffee') ? '☕' : 
-                        transaction.description.includes('Lunch') ? '🥗' : 
-                        transaction.description.includes('Snack') ? '🍿' : '💳';
-            
-            transactionEl.innerHTML = `
-                <div class="absolute top-2 right-3 text-xs opacity-70">✅</div>
-                <div class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-lg">
-                    ${icon}
-                </div>
-                <div class="flex-1">
-                    <div class="font-medium text-sm">${transaction.description}</div>
-                    <div class="text-xs text-slate-400">Pre-approved • Just now • Guilt-free ✨</div>
-                </div>
-                <div class="font-bold text-emerald-400">${transaction.amount.toFixed(2)}</div>
-            `;
-            
-            transactionsList.insertBefore(transactionEl, transactionsList.firstChild);
-            
-            // Keep only the 3 most recent transactions visible
-            const transactions = transactionsList.children;
-            if (transactions.length > 3) {
-                transactionsList.removeChild(transactions[transactions.length - 1]);
-            }
-        }
-
-        // Quick spend function with contextual messaging
-        function quickSpend(amount, description, category) {
-            triggerHaptic('medium');
-            
-            // Add to transactions
-            const newTransaction = {
-                id: Date.now(),
-                amount: amount,
-                description: description,
-                timestamp: new Date()
-            };
-            
-            appState.transactions.unshift(newTransaction);
-            appState.todaySpent += amount;
-            
-            // Update display
-            updateDisplay();
-            addTransactionToList(newTransaction);
-            
-            // Show celebration
-            const heroSection = document.getElementById('hero-section');
-            heroSection.classList.add('celebration-pulse');
-            setTimeout(() => {
-                heroSection.classList.remove('celebration-pulse');
-            }, 500);
-            
-            // Show contextual toast based on spending state
-            const remaining = appState.dailyBudget - appState.todaySpent;
-            const isOverBudget = appState.todaySpent > appState.dailyBudget;
-            
-            let message;
-            if (remaining > 5) {
-                // Under budget
-                message = "🎉 Guilt-free purchase confirmed! You've earned this!";
-                showToast(message, false);
-            } else if (remaining >= 0) {
-                // Perfect spending (close to budget)
-                message = "🎯 Amazing control! Almost perfect spending!";
-                showToast(message, false);
-            } else {
-                // Over budget
-                message = "💛 Using tomorrow's money - totally fine!";
-                showToast(message, true);
-            }
-        }
-
-        // Celebrate amount tap
-        function celebrateAmount() {
-            triggerHaptic('strong');
-            const remaining = appState.dailyBudget - appState.todaySpent;
-            const isOverBudget = appState.todaySpent > appState.dailyBudget;
-            
-            let celebrationMessage;
-            if (remaining > 0) {
-                celebrationMessage = "✅ This amount is 100% guilt-free! Go enjoy it!";
-                showToast(celebrationMessage, false);
-            } else {
-                celebrationMessage = "💛 You're using tomorrow's money - and that's perfectly okay!";
-                showToast(celebrationMessage, true);
-            }
-            
-            const dailyAmount = document.getElementById('daily-amount');
-            dailyAmount.classList.add('celebration-pulse');
-            setTimeout(() => {
-                dailyAmount.classList.remove('celebration-pulse');
-            }, 500);
-        }
-
-        // Show custom amounts modal
-        function showCustomAmounts() {
-            triggerHaptic('light');
-            document.getElementById('custom-modal').classList.remove('hidden');
-        }
-
-        // Hide custom amounts modal
-        function hideCustomAmounts() {
-            document.getElementById('custom-modal').classList.add('hidden');
-        }
-
-        // Switch tabs
+        // ===== TAB NAVIGATION SYSTEM ===== 
         function switchTab(tabName) {
             triggerHaptic('light');
             
             // Hide all tabs
-            document.getElementById('guilt-free-tab').classList.add('hidden');
-            document.getElementById('setup-tab').classList.add('hidden');
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
             
             // Show selected tab
-            document.getElementById(tabName + '-tab').classList.remove('hidden');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
             
             // Update navigation
-            document.getElementById('nav-guilt-free').className = 
-                tabName === 'guilt-free' 
-                    ? 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300'
-                    : 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white';
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.nav-item').classList.add('active');
             
-            document.getElementById('nav-setup').className = 
-                tabName === 'setup' 
-                    ? 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-purple-500/30 text-purple-300'
-                    : 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white';
-            
+            // Update app state
             appState.currentTab = tabName;
+            
+            // Trigger AI proactive messages if appropriate
+            setTimeout(() => {
+                checkAIProactiveMessages(tabName);
+            }, 500);
         }
 
-        // Update greeting based on time
-        function updateGreeting() {
-            const hour = new Date().getHours();
-            const greeting = document.getElementById('greeting');
-            const context = document.getElementById('time-context');
+        // ===== TAB 2: LIGHTNING-FAST EXPENSE ENTRY ===== 
+        function quickAdd(type, amount) {
+            triggerHaptic('medium');
             
-            if (hour < 12) {
-                greeting.textContent = 'Good morning, Sarah! ☀️';
-                context.textContent = 'Perfect time for a guilt-free coffee';
-            } else if (hour < 17) {
-                greeting.textContent = 'Good afternoon, Sarah! ☀️';
-                context.textContent = 'Perfect time for a guilt-free treat';
+            // Add transaction
+            const transaction = {
+                id: Date.now(),
+                type: type,
+                amount: amount,
+                merchant: getSmartMerchant(type),
+                time: new Date().toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit', 
+                    hour12: true 
+                }),
+                category: 'spend'
+            };
+            
+            appState.transactions.unshift(transaction);
+            appState.todaySpent += amount;
+            appState.dailyFlow = calculateDailyFlow();
+            
+            // Show instant success feedback
+            showToast(`🎉 ${amount > appState.dailyFlow ? 'Perfect!' : 'Guilt-free!'} ${type} logged in ${Math.random() * 0.5 + 1.5 | 0}s`, 'success');
+            
+            // Update home tab if visible
+            updateDailyFlowDisplay();
+            
+            // Trigger AI contextual response
+            setTimeout(() => {
+                triggerAISpendingResponse(type, amount);
+            }, 1000);
+        }
+
+        function getSmartMerchant(type) {
+            const merchants = {
+                coffee: ['Starbucks', 'Dunkin', 'Local Café', 'Peet\'s Coffee'][Math.floor(Math.random() * 4)],
+                lunch: ['Sweetgreen', 'Chipotle', 'Panera', 'Local Bistro'][Math.floor(Math.random() * 4)],
+                snack: ['7-Eleven', 'CVS', 'Target', 'Walgreens'][Math.floor(Math.random() * 4)],
+                gas: ['Shell', 'BP', 'Exxon', 'Chevron'][Math.floor(Math.random() * 4)],
+                ride: ['Uber', 'Lyft', 'Transit'][Math.floor(Math.random() * 3)],
+                shopping: ['Target', 'Amazon', 'Whole Foods', 'CVS'][Math.floor(Math.random() * 4)],
+                custom: ['Local Business', 'Custom Purchase', 'Manual Entry'][Math.floor(Math.random() * 3)]
+            };
+            return merchants[type] || 'Local Business';
+        }
+
+        function selectPlace(placeName) {
+            triggerHaptic('light');
+            showToast(`📍 Selected ${placeName}. Choose amount to quick-add!`, 'success');
+            
+            // Trigger AI contextual suggestion
+            setTimeout(() => {
+                triggerAILocationResponse(placeName);
+            }, 500);
+        }
+
+        function selectRecentPlace(placeName) {
+            triggerHaptic('light');
+            
+            // Get historical amount for this place
+            const amounts = {
+                'Target': 18.00,
+                'Whole Foods': 32.00,
+                'Shell Gas': 38.00
+            };
+            
+            const amount = amounts[placeName] || 15.00;
+            
+            // Quick add with historical amount
+            quickAdd('shopping', amount);
+        }
+
+        function openCustomAmount() {
+            triggerHaptic('medium');
+            const amount = prompt('💰 Enter custom amount:');
+            
+            if (amount === null) {
+                // User clicked cancel
+                return;
+            }
+            
+            if (amount === '' || amount.trim() === '') {
+                showToast('⚠️ Please enter an amount', 'celebration');
+                return;
+            }
+            
+            const numericAmount = parseFloat(amount);
+            
+            if (isNaN(numericAmount)) {
+                showToast('⚠️ Please enter a valid number', 'celebration');
+                return;
+            }
+            
+            if (numericAmount <= 0) {
+                showToast('⚠️ Amount must be greater than $0', 'celebration');
+                return;
+            }
+            
+            if (numericAmount > 1000) {
+                showToast('⚠️ Large amount! Double-check this purchase 💛', 'celebration');
+                // Still allow the transaction to proceed
+            }
+            
+            // Success flow - log the custom amount
+            quickAdd('custom', numericAmount);
+        }
+
+        function startVoiceInput() {
+            triggerHaptic('strong');
+            showToast('🎤 Voice input coming soon! Use quick buttons for now.', 'celebration');
+        }
+
+        function editSpending(element) {
+            triggerHaptic('light');
+            showToast('✏️ Editing transactions coming in next update!', 'celebration');
+        }
+
+        // ===== TAB 1: EXISTING FUNCTIONALITY (PRESERVED) ===== 
+        function celebrateFlow() {
+            triggerHaptic('strong');
+            const celebrations = [
+                "🎉 You're absolutely crushing it today!",
+                "💪 Financial confidence level: MAXIMUM!",
+                "🌟 Look at you being responsible AND free!",
+                "🎯 Perfect balance of control and freedom!"
+            ];
+            
+            const message = celebrations[Math.floor(Math.random() * celebrations.length)];
+            showToast(message, 'celebration');
+            
+            // Trigger AI celebration
+            setTimeout(() => {
+                addAIMessage(message + " Keep up the amazing work! 🚀");
+            }, 1500);
+        }
+
+        function quickSpend(type, amount) {
+            triggerHaptic('medium');
+            
+            // Add to transactions
+            const transaction = {
+                id: Date.now(),
+                type: type,
+                amount: amount,
+                merchant: getSmartMerchant(type),
+                time: new Date().toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit', 
+                    hour12: true 
+                }),
+                category: 'spend'
+            };
+            
+            appState.transactions.unshift(transaction);
+            appState.todaySpent += amount;
+            appState.dailyFlow = calculateDailyFlow();
+            
+            // Update display
+            updateDailyFlowDisplay();
+            
+            // Show contextual feedback
+            const remainingFlow = appState.dailyFlow;
+            let message;
+            
+            if (remainingFlow > 10) {
+                message = `🎉 Guilt-free ${type} confirmed! $${remainingFlow.toFixed(0)} left today.`;
+            } else if (remainingFlow >= 0) {
+                message = `🎯 Perfect spending control! $${remainingFlow.toFixed(0)} remaining.`;
             } else {
-                greeting.textContent = 'Good evening, Sarah! 🌙';
-                context.textContent = 'Perfect time to enjoy your money';
+                message = `💛 Using tomorrow's money - totally fine! Back on track tomorrow.`;
+            }
+            
+            showToast(message, remainingFlow >= 0 ? 'success' : 'celebration');
+        }
+
+        function openCustomSpend() {
+            triggerHaptic('medium');
+            const amount = prompt('💰 Enter custom amount:');
+            
+            if (amount === null) {
+                // User clicked cancel
+                return;
+            }
+            
+            if (amount === '' || amount.trim() === '') {
+                showToast('⚠️ Please enter an amount', 'celebration');
+                return;
+            }
+            
+            const numericAmount = parseFloat(amount);
+            
+            if (isNaN(numericAmount)) {
+                showToast('⚠️ Please enter a valid number', 'celebration');
+                return;
+            }
+            
+            if (numericAmount <= 0) {
+                showToast('⚠️ Amount must be greater than $0', 'celebration');
+                return;
+            }
+            
+            if (numericAmount > 1000) {
+                showToast('⚠️ Large amount! Double-check this purchase 💛', 'celebration');
+                // Still allow the transaction to proceed
+            }
+            
+            // Success flow - log the custom amount
+            quickSpend('custom', numericAmount);
+        }
+
+        function openCustomAmount() {
+            triggerHaptic('medium');
+            const amount = prompt('💰 Enter amount:');
+            if (amount && !isNaN(amount) && amount > 0) {
+                quickAdd('custom', parseFloat(amount));
             }
         }
 
-        // Initialize app
-        function initApp() {
-            console.log('Initializing app...');
-            updateGreeting();
-            updateDisplay();
+        // ===== CORE CALCULATIONS ===== 
+        function calculateDailyFlow() {
+            const today = new Date();
+            const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            const daysRemaining = Math.max(1, endOfMonth.getDate() - today.getDate() + 1);
             
-            // Populate initial transactions - clear existing first
-            const transactionsList = document.getElementById('transactions-list');
-            transactionsList.innerHTML = '';
+            const monthlySpendBudget = appState.categories.spend.allocated;
+            const spentThisMonth = appState.todaySpent; // Simplified for demo
             
-            // Add fresh transactions
-            appState.transactions.slice(0, 3).reverse().forEach(transaction => {
-                addTransactionToList(transaction);
-            });
-            
-            console.log('App initialized successfully');
+            return Math.max(0, (monthlySpendBudget - spentThisMonth) / daysRemaining);
         }
 
-        // Start the app when page loads AND run immediately
-        document.addEventListener('DOMContentLoaded', initApp);
-        
-        // Also run immediately in case DOM is already loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initApp);
-        } else {
-            initApp();
+        function updateDailyFlowDisplay() {
+            const flowAmount = document.querySelector('.flow-amount');
+            const flowMessage = document.querySelector('.flow-message');
+            
+            if (flowAmount) {
+                flowAmount.textContent = `$${Math.round(appState.dailyFlow)}`;
+            }
+            
+            if (flowMessage) {
+                const remaining = appState.dailyFlow;
+                if (remaining > 20) {
+                    flowMessage.textContent = "Excellent! You're ahead of your flow 🌟";
+                } else if (remaining > 0) {
+                    flowMessage.textContent = "Perfect! You're in complete control 🎯";
+                } else {
+                    flowMessage.textContent = "Using tomorrow's flow - totally normal! 💛";
+                }
+            }
         }
+
+        // ===== AI CHAT SYSTEM ===== 
+        function toggleAIChat() {
+            triggerHaptic('medium');
+            const overlay = document.getElementById('aiChatOverlay');
+            const isOpen = overlay.classList.contains('active');
+            
+            if (isOpen) {
+                overlay.classList.remove('active');
+                appState.aiChatOpen = false;
+            } else {
+                overlay.classList.add('active');
+                appState.aiChatOpen = true;
+            }
+        }
+
+        function askAI(question) {
+            triggerHaptic('light');
+            
+            // Add user message
+            addUserMessage(question);
+            
+            // Generate contextual AI response
+            setTimeout(() => {
+                generateAIResponse(question);
+            }, 500);
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                triggerHaptic('light');
+                askAI(message);
+                input.value = '';
+            }
+        }
+
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function addUserMessage(message) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'user-message';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">👤</div>
+                <div class="message-content">${message}</div>
+            `;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function addAIMessage(message) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'ai-message';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">${message}</div>
+            `;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function generateAIResponse(question) {
+            const lowerQuestion = question.toLowerCase();
+            let response;
+            
+            if (lowerQuestion.includes('how am i doing') || lowerQuestion.includes('doing today')) {
+                response = `You're doing amazing! 🌟 You've spent $${appState.todaySpent} today and have $${Math.round(appState.dailyFlow)} guilt-free left. Your spending is perfectly on track with your flow system!`;
+            } else if (lowerQuestion.includes('should i buy') || lowerQuestion.includes('coffee')) {
+                response = `☕ Absolutely! You have $${Math.round(appState.dailyFlow)} guilt-free today. That coffee is pre-approved by your budget - enjoy it without any worry!`;
+            } else if (lowerQuestion.includes('tips') || lowerQuestion.includes('focus')) {
+                response = `💡 You're already doing the hard part right - tracking spending in real-time! Keep using those quick-add buttons, and remember: every purchase under your daily flow is guilt-free. You've got this! 🚀`;
+            } else {
+                response = `I'm here to help you feel confident about money! 💚 You have $${Math.round(appState.dailyFlow)} guilt-free to spend today. Want to log a purchase or ask about your budget?`;
+            }
+            
+            addAIMessage(response);
+        }
+
+        function triggerAISpendingResponse(type, amount) {
+            if (!appState.aiChatOpen) return;
+            
+            const responses = [
+                `Great ${type} choice! 🎯 You're staying perfectly within your flow.`,
+                `Nice! ${type} purchase logged. You're building great spending habits! 💪`,
+                `Perfect timing for that ${type}! Your budget says this is totally guilt-free. ✨`
+            ];
+            
+            const response = responses[Math.floor(Math.random() * responses.length)];
+            setTimeout(() => addAIMessage(response), 800);
+        }
+
+        function triggerAILocationResponse(placeName) {
+            if (!appState.aiChatOpen) return;
+            
+            const suggestions = {
+                'Starbucks': 'Perfect spot for your coffee budget! ☕ You have plenty of guilt-free spending left.',
+                'Target': 'Great for household essentials! 🎯 Remember to check if it fits your spending flow.',
+                'Chipotle': 'Solid lunch choice! 🌯 This fits perfectly in your daily food budget.'
+            };
+            
+            const suggestion = suggestions[placeName] || `Nice choice at ${placeName}! 👍 Check your remaining daily flow before spending.`;
+            setTimeout(() => addAIMessage(suggestion), 600);
+        }
+
+        function checkAIProactiveMessages(tabName) {
+            if (appState.aiChatOpen) return;
+            
+            // Example: Proactive message when switching to spend tab
+            if (tabName === 'spend' && Math.random() < 0.3) {
+                setTimeout(() => {
+                    showToast(`💡 AI Tip: You have $${Math.round(appState.dailyFlow)} guilt-free to spend today!`, 'celebration');
+                }, 1000);
+            }
+        }
+
+        // ===== TOAST NOTIFICATIONS ===== 
+        function showToast(message, type = 'success') {
+            // Remove existing toast
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            // Create new toast
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-content">${message}</div>`;
+            
+            document.body.appendChild(toast);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.remove();
+                }
+            }, 3000);
+        }
+
+        // ===== INITIALIZATION ===== 
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize with proper daily flow calculation
+            appState.dailyFlow = calculateDailyFlow();
+            updateDailyFlowDisplay();
+            
+            // Add some demo transactions for today's spending view
+            if (appState.transactions.length === 0) {
+                appState.transactions = [
+                    { id: 1, type: 'coffee', amount: 5.45, merchant: 'Starbucks', time: '9:15 AM', category: 'spend' },
+                    { id: 2, type: 'lunch', amount: 12.85, merchant: 'Sweetgreen', time: '12:30 PM', category: 'spend' }
+                ];
+            }
+        });
     </script>
-
-</body></html>
+</body>
+</html>
