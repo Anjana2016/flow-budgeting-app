@@ -6,77 +6,72 @@
     <title>💚 Flow Budgeting - Your Financial Freedom</title>
     
     <!-- 
-    VERSION: 2.1-tab2-dev
-    STATUS: DEVELOPMENT - Tab 2 (Lightning-Fast Expense Entry) ⚡
-    BASELINE: v2.0-foundation
+    VERSION: 2.2-tab3-dev
+    STATUS: TAB 3 DEVELOPMENT ⚡
+    DATE: June 29, 2025
     
-    FEATURES WORKING:
-    ✅ Complete AI chat system with contextual intelligence
-    ✅ Tab 1 (Guilt-Free Zone) fully functional with real-time calculations
-    ✅ 5-tab navigation with smooth transitions
-    🚧 Tab 2 (Lightning-Fast Expense Entry) - IN DEVELOPMENT
+    DEVELOPMENT FOCUS: 4 S's Budget System (Tab 3)
+    
+    BUILDING FROM v2.1-stable:
+    ✅ Tab 1 (Guilt-Free Zone) - Complete with celebrations
+    ✅ Tab 2 (Lightning-Fast Expense Entry) - Complete with sub-3-second logging 
+    ✅ Cross-Tab Synchronization - Real-time updates working
+    ✅ AI Chat Integration - Contextual intelligence
+    ✅ 5-Tab Navigation - Smooth transitions
     
     NEW IN THIS VERSION:
-    ⚡ Sub-3-second expense logging with preset amounts
-    📍 Smart location detection and merchant suggestions  
-    🕐 Recent places with historical spending amounts
-    💚 Today's guilt-free spending history
-    🎤 Voice input for accessibility
-    🤖 AI integration for contextual spending guidance
+    🎯 Tab 3: 4 S's Budget System with revolutionary psychology
+    - SECURE: Fixed bills & recurring payments (35%)
+    - SUSTAIN: Essentials & necessities (15%) 
+    - SPEND: Guilt-free spending zone (30%)
+    - STASH: Emergency & future protection (20%)
     
-    NEXT: Test all Tab 2 functionality → create v2.1-stable
+    DESIGN PRINCIPLES FOR TAB 3:
+    - Permission-based psychology (pre-allocation eliminates shame)
+    - Real-time progress visualization 
+    - Educational transparency (show the math)
+    - Micro-celebrations for positive actions
+    - Category expansion for detailed management
     -->
     
     <style>
-        /* ===== EXACT CSS VARIABLES FROM REFERENCE FILES ===== */
+        /* ===== CSS VARIABLES - EXACT REFERENCE COMPLIANCE ===== */
         :root {
-            /* Subtle Gen Z Color Palette - EXACT from reference files */
-            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            --success-gradient: linear-gradient(135deg, #10b981 0%, #22c55e 100%);
-            --warning-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-            --permission-gradient: linear-gradient(135deg, #06d6a0 0%, #118ab2 100%);
-            --celebration-gradient: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
-            --spend-gradient: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            /* Background System */
+            --dark-bg: #0f0f1a;
             
-            /* Accent Colors - EXACT from reference */
-            --accent-green: #10b981;
-            --accent-blue: #06b6d4;
-            --accent-yellow: #f59e0b;
-            --accent-red: #ef4444;
-            --accent-purple: #8b5cf6;
-            --accent-pink: #ec4899;
-            --accent-orange: #f97316;
-            --accent-amber: #f59e0b;
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.06);
             
-            /* Budget Category Gradients - EXACT 4 S's System */
+            /* 4 S's Category Gradients - EXACT FROM REFERENCE */
             --secure-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
             --sustain-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             --spend-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
             --stash-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             
-            /* Background System - EXACT from reference */
-            --dark-bg: #0f0f1a;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --glass-hover: rgba(255, 255, 255, 0.12);
+            /* Category Colors */
+            --accent-red: #ef4444;
+            --accent-amber: #f59e0b;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
             
-            /* Text Colors - EXACT from reference */
+            /* Typography */
             --text-primary: #f8fafc;
             --text-secondary: rgba(248, 250, 252, 0.7);
             --text-muted: rgba(248, 250, 252, 0.5);
             
-            /* Shadows & Effects - EXACT from reference */
+            /* Shadows & Effects */
             --shadow-subtle: 0 4px 16px rgba(99, 102, 241, 0.15);
             --shadow-medium: 0 8px 25px rgba(99, 102, 241, 0.2);
             --shadow-glow: 0 12px 32px rgba(16, 185, 129, 0.3);
-            --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-ai: 0 12px 32px rgba(99, 102, 241, 0.4);
             
-            /* AI Chat System */
-            --ai-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            --chat-bubble-bg: rgba(99, 102, 241, 0.1);
+            /* Animation System */
+            --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ===== BASE STYLES ===== */
+        /* ===== GLOBAL STYLES ===== */
         * {
             margin: 0;
             padding: 0;
@@ -89,8 +84,10 @@
             color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-tap-highlight-color: transparent;
         }
 
+        /* ===== ANIMATED BACKGROUND ===== */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -109,117 +106,236 @@
             100% { background-position: 0% 50%; }
         }
 
-        .container {
+        /* ===== MAIN APP CONTAINER ===== */
+        .app-container {
             max-width: 400px;
             margin: 0 auto;
-            padding: 20px;
             min-height: 100vh;
+            position: relative;
+            z-index: 10;
         }
 
-        /* ===== TAB CONTENT MANAGEMENT ===== */
+        /* ===== TAB CONTENT SYSTEM ===== */
         .tab-content {
+            padding: 20px;
+            padding-bottom: 120px;
+            min-height: 100vh;
             display: none;
-            animation: fadeInUp 0.5s ease-out;
         }
 
         .tab-content.active {
             display: block;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== TAB 2: LIGHTNING-FAST EXPENSE ENTRY ===== */
-        
-        /* Daily Flow Status Header */
-        .expense-flow-header {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid var(--glass-border);
-            text-align: center;
-            animation: slideInDown 0.6s ease-out;
-        }
-
-        .flow-status-label {
-            font-size: 14px;
-            color: var(--accent-green);
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .flow-status-amount {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            background: var(--permission-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .flow-status-amount:hover {
-            transform: scale(1.05);
-        }
-
-        .flow-status-message {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .expense-header {
-            text-align: center;
-            margin-bottom: 32px;
-            animation: slideInDown 0.6s ease-out 0.1s both;
-        }
-
-        @keyframes slideInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .expense-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: var(--permission-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .expense-subtitle {
-            font-size: 16px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        /* Quick Add Section - Core Speed Promise */
-        .quick-add-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border-radius: 24px;
-            padding: 24px;
-            margin-bottom: 24px;
-            border: 1px solid var(--glass-border);
-            animation: slideInUp 0.8s ease-out;
+            animation: slideInUp 0.5s var(--animation-timing);
         }
 
         @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                transform: translateY(20px); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0); 
+                opacity: 1; 
+            }
         }
 
-        .quick-add-title {
+        /* ===== SHARED GLASS CARD SYSTEM ===== */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s var(--animation-timing);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* ===== LOADING STATES ===== */
+        .loading-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+            color: var(--text-secondary);
             font-size: 18px;
+            gap: 16px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--glass-border);
+            border-top: 3px solid var(--accent-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== TAB 1: GUILT-FREE ZONE STYLES ===== */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .daily-flow-display {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 32px 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-glow);
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-flow-display:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .daily-flow-display:active {
+            transform: scale(0.98);
+        }
+
+        .daily-flow-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .daily-flow-amount {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .daily-flow-description {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .celebration-pulse {
+            animation: celebrationPulse 0.6s ease-out;
+        }
+
+        @keyframes celebrationPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Quick Actions Grid */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .action-btn {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .action-btn:active {
+            transform: scale(0.98);
+        }
+
+        .action-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .action-label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .action-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== TAB 2: EXPENSE ENTRY STYLES ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            padding: 20px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .tab-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .quick-status {
+            font-size: 14px;
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
+        /* Quick Add Grid */
+        .quick-add-section {
+            margin-bottom: 28px;
+            animation: slideInUp 0.8s ease-out 0.1s both;
+        }
+
+        .section-title {
+            font-size: 16px;
             font-weight: 600;
             margin-bottom: 16px;
             display: flex;
@@ -229,7 +345,7 @@
 
         .quick-add-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 12px;
             margin-bottom: 16px;
         }
@@ -239,489 +355,382 @@
             backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
-            padding: 16px;
+            padding: 16px 12px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s var(--animation-timing);
-            position: relative;
             color: var(--text-primary);
         }
 
         .quick-add-btn:hover {
             transform: translateY(-2px);
-            background: var(--glass-hover);
             box-shadow: var(--shadow-medium);
+            border-color: rgba(255, 255, 255, 0.12);
         }
 
         .quick-add-btn:active {
-            transform: scale(0.95);
+            transform: scale(0.98);
         }
 
         .quick-add-icon {
-            font-size: 20px;
-            margin-bottom: 6px;
+            font-size: 24px;
+            margin-bottom: 8px;
             display: block;
         }
 
         .quick-add-label {
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .quick-add-price {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .custom-add-btn {
-            background: var(--spend-gradient);
-            border: none;
-            border-radius: 16px;
-            padding: 16px;
-            width: 100%;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
             font-size: 14px;
-            color: white;
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .custom-add-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        /* Smart Location Detection */
-        .location-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 24px;
-            border: 1px solid var(--glass-border);
-            animation: slideInLeft 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes slideInLeft {
-            from { transform: translateX(-30px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .location-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .location-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: var(--permission-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            animation: locationPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes locationPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .location-text {
-            flex: 1;
-        }
-
-        .location-title {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .location-subtitle {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .nearby-places {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 8px;
-        }
-
-        .nearby-place {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 12px 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            min-width: fit-content;
-        }
-
-        .nearby-place:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .place-name {
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .place-distance {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        /* Recent Places */
-        .recent-places {
-            margin-bottom: 24px;
-            animation: slideInRight 0.8s ease-out 0.3s both;
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(30px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .recent-place-item {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .recent-place-item:hover {
-            background: var(--glass-hover);
-            transform: translateX(4px);
-        }
-
-        .recent-place-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-
-        .recent-place-details {
-            flex: 1;
-        }
-
-        .recent-place-name {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .recent-place-info {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .recent-place-action {
-            font-size: 12px;
-            color: var(--accent-green);
-            font-weight: 600;
-        }
-
-        /* Today's Spending */
-        .recent-spending {
-            animation: slideInUp 0.8s ease-out 0.4s both;
-        }
-
-        .spending-item {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .spending-item:hover {
-            background: var(--glass-hover);
-            transform: translateY(-2px);
-        }
-
-        .spending-item.guilt-free {
-            border-color: rgba(16, 185, 129, 0.3);
-            background: rgba(16, 185, 129, 0.05);
-        }
-
-        .spending-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-
-        .spending-details {
-            flex: 1;
-        }
-
-        .spending-name {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .spending-info {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .spending-amount {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--accent-green);
-        }
-
-        /* Voice Input */
-        .voice-section {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 24px;
-            animation: slideInUp 0.8s ease-out 0.5s both;
-        }
-
-        .voice-btn {
-            background: var(--ai-gradient);
-            border: none;
-            border-radius: 50%;
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .voice-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
-        }
-
-        .voice-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* ===== EXISTING TAB 1 STYLES (PRESERVED) ===== */
-        .hero-section {
-            text-align: center;
-            margin-bottom: 32px;
-            animation: slideInDown 0.6s ease-out;
-        }
-
-        .hero-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: var(--permission-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 16px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .daily-flow-hero {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border-radius: 24px;
-            padding: 32px 24px;
-            margin-bottom: 24px;
-            border: 1px solid var(--glass-border);
-            text-align: center;
-            animation: slideInUp 0.8s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .daily-flow-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--permission-gradient);
-            animation: shimmer 2s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .flow-label {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .flow-amount {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            background: var(--permission-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .flow-amount:hover {
-            transform: scale(1.05);
-        }
-
-        .flow-message {
-            font-size: 15px;
-            color: var(--text-secondary);
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        .quick-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 24px;
-            animation: slideInLeft 0.8s ease-out 0.2s both;
-        }
-
-        .quick-action-btn {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 16px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s var(--animation-timing);
-            color: var(--text-primary);
-        }
-
-        .quick-action-btn:hover {
-            transform: translateY(-2px);
-            background: var(--glass-hover);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .quick-action-btn:active {
-            transform: scale(0.95);
-        }
-
-        .action-icon {
-            font-size: 20px;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .action-label {
-            font-size: 12px;
             font-weight: 600;
             margin-bottom: 4px;
         }
 
-        .action-amount {
-            font-size: 14px;
-            color: var(--accent-green);
-            font-weight: 700;
+        .quick-add-price {
+            font-size: 11px;
+            color: var(--text-secondary);
         }
 
-        /* ===== FLOATING AI CHAT ===== */
-        .floating-chat-btn {
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            background: var(--ai-gradient);
-            border: none;
-            border-radius: 50%;
-            width: 56px;
-            height: 56px;
+        /* ===== TAB 3: 4 S'S BUDGET SYSTEM ===== */
+        .budget-header {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .budget-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .budget-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        /* Income Overview */
+        .income-overview {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 28px;
+            text-align: center;
+            animation: slideInUp 0.8s ease-out 0.1s both;
+        }
+
+        .income-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .income-amount {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .income-period {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Budget Categories */
+        .budget-flow {
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .budget-category {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .budget-category:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .budget-category:active {
+            transform: scale(0.99);
+        }
+
+        /* Category Headers */
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .secure .category-icon { background: var(--secure-gradient); }
+        .sustain .category-icon { background: var(--sustain-gradient); }
+        .spend .category-icon { background: var(--spend-gradient); }
+        .stash .category-icon { background: var(--stash-gradient); }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .category-description {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        /* Category Amounts */
+        .category-amount {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .secure .category-amount { color: var(--accent-red); }
+        .sustain .category-amount { color: var(--accent-amber); }
+        .spend .category-amount { color: var(--accent-green); }
+        .stash .category-amount { color: var(--accent-blue); }
+
+        /* Progress Bars */
+        .progress-container {
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+
+        .secure .progress-fill { background: var(--secure-gradient); }
+        .sustain .progress-fill { background: var(--sustain-gradient); }
+        .spend .progress-fill { background: var(--spend-gradient); }
+        .stash .progress-fill { background: var(--stash-gradient); }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Allocation Examples */
+        .allocation-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 12px;
+            opacity: 0.8;
+        }
+
+        .example-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Daily Preview */
+        .daily-preview {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border-radius: 20px;
+            padding: 24px;
+            margin-top: 32px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            animation: slideInUp 0.8s ease-out 0.3s both;
+        }
+
+        .daily-title {
             font-size: 16px;
             font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .daily-amount {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+        }
+
+        .daily-description {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .calculation-breakdown {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: left;
+        }
+
+        .calculation-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .calculation-line:last-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 8px;
+            margin-top: 8px;
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        /* ===== NAVIGATION SYSTEM ===== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px 20px 0 0;
+            padding: 16px 32px 20px;
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            max-width: 400px;
+            z-index: 100;
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-medium);
-            z-index: 1001;
-            color: white;
+            padding: 12px 8px;
+            border-radius: 16px;
+            transition: all 0.3s var(--animation-timing);
+            color: var(--text-secondary);
+            font-size: 10px;
+            font-weight: 500;
+            text-decoration: none;
         }
 
-        .floating-chat-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            transform: translateY(-2px);
         }
 
-        .ai-chat-overlay {
+        .nav-item:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .nav-label {
+            font-size: 10px;
+        }
+
+        /* ===== AI CHAT SYSTEM ===== */
+        .ai-chat-toggle {
+            position: fixed;
+            bottom: 120px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-ai);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s var(--animation-timing);
+        }
+
+        .ai-chat-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .ai-chat-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .ai-chat-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(8px);
+            z-index: 1000;
             display: none;
-            z-index: 1002;
-            padding: 20px;
-            box-sizing: border-box;
+            animation: fadeIn 0.3s ease-out;
         }
 
-        .ai-chat-overlay.active {
+        .ai-chat-modal.active {
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s ease-out;
+            padding: 20px;
         }
 
         @keyframes fadeIn {
@@ -729,263 +738,95 @@
             to { opacity: 1; }
         }
 
-        .ai-chat-interface {
+        .ai-chat-container {
             background: var(--glass-bg);
             backdrop-filter: blur(24px);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             width: 100%;
-            max-width: 380px;
+            max-width: 360px;
             max-height: 70vh;
             display: flex;
             flex-direction: column;
-            animation: slideInUp 0.4s ease-out;
+            animation: slideInUp 0.3s ease-out;
         }
 
-        .chat-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .ai-chat-header {
             padding: 20px;
             border-bottom: 1px solid var(--glass-border);
-        }
-
-        .ai-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: var(--ai-gradient);
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+        }
+
+        .ai-chat-title {
             font-size: 18px;
-        }
-
-        .ai-status {
-            flex: 1;
-        }
-
-        .ai-name {
-            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 2px;
         }
 
-        .ai-state {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .chat-close {
+        .ai-chat-close {
             background: none;
             border: none;
-            font-size: 18px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
+            font-size: 24px;
             cursor: pointer;
             padding: 4px;
             border-radius: 8px;
             transition: all 0.2s ease;
         }
 
-        .chat-close:hover {
+        .ai-chat-close:hover {
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-primary);
         }
 
-        .chat-messages {
+        .ai-chat-messages {
             flex: 1;
             padding: 20px;
             overflow-y: auto;
+            min-height: 200px;
             max-height: 300px;
         }
 
-        .ai-message, .user-message {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-            animation: messageSlideIn 0.4s ease-out;
-        }
-
-        @keyframes messageSlideIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .user-message {
-            flex-direction: row-reverse;
-        }
-
-        .message-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            background: var(--ai-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .user-message .message-avatar {
-            background: var(--success-gradient);
-        }
-
-        .message-content {
-            background: var(--chat-bubble-bg);
-            border: 1px solid rgba(99, 102, 241, 0.2);
+        .ai-message {
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             padding: 12px 16px;
+            margin-bottom: 12px;
             font-size: 14px;
             line-height: 1.4;
-            max-width: 260px;
         }
 
-        .user-message .message-content {
-            background: rgba(16, 185, 129, 0.1);
-            border-color: rgba(16, 185, 129, 0.2);
-        }
-
-        .ai-quick-actions {
-            display: flex;
-            gap: 8px;
-            padding: 16px 20px;
-            border-top: 1px solid var(--glass-border);
-            overflow-x: auto;
-        }
-
-        .ai-action-btn {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 12px;
-            padding: 8px 12px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .ai-action-btn:hover {
-            background: rgba(99, 102, 241, 0.2);
-            transform: translateY(-1px);
-        }
-
-        .chat-input-container {
-            display: flex;
-            gap: 12px;
-            padding: 16px 20px;
+        .ai-chat-input-container {
+            padding: 20px;
             border-top: 1px solid var(--glass-border);
         }
 
-        .chat-input {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 12px 16px;
-            font-size: 14px;
-            color: var(--text-primary);
-            transition: all 0.3s var(--animation-timing);
-        }
-
-        .chat-input:focus {
-            outline: none;
-            border-color: var(--accent-purple);
+        .ai-chat-input {
+            width: 100%;
             background: rgba(255, 255, 255, 0.1);
-        }
-
-        .chat-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .send-btn {
-            background: var(--ai-gradient);
-            border: none;
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s var(--animation-timing);
-        }
-
-        .send-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .send-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* ===== BOTTOM NAVIGATION ===== */
-        .bottom-nav {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 12px 20px;
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-            box-shadow: var(--shadow-medium);
+            border-radius: 16px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
         }
 
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            cursor: pointer;
-            transition: all 0.3s var(--animation-timing);
-            padding: 8px;
-            border-radius: 12px;
-            color: var(--text-muted);
-            min-width: 60px;
+        .ai-chat-input:focus {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        .nav-item:hover {
-            transform: translateY(-2px);
-            color: var(--text-secondary);
-        }
-
-        .nav-item.active {
-            color: var(--accent-green);
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .nav-icon {
-            font-size: 16px;
-        }
-
-        .nav-label {
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        /* ===== LOADING STATES ===== */
-        .loading-state {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 200px;
-            text-align: center;
-            font-size: 16px;
+        .ai-chat-input::placeholder {
             color: var(--text-muted);
         }
 
-        /* ===== TOAST NOTIFICATIONS ===== */
+        /* ===== TOAST NOTIFICATION SYSTEM ===== */
         .toast {
             position: fixed;
-            top: 40px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--glass-bg);
@@ -993,15 +834,14 @@
             border: 1px solid var(--glass-border);
             border-radius: 16px;
             padding: 16px 24px;
-            z-index: 1003;
-            animation: toastSlideIn 0.4s ease-out;
-            max-width: 350px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 2000;
+            box-shadow: var(--shadow-medium);
+            animation: slideInDown 0.5s ease-out;
+            max-width: 320px;
             text-align: center;
-        }
-
-        @keyframes toastSlideIn {
-            from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
 
         .toast.success {
@@ -1009,321 +849,379 @@
             background: rgba(16, 185, 129, 0.1);
         }
 
-        .toast.celebration {
+        .toast.warning {
             border-color: rgba(245, 158, 11, 0.3);
             background: rgba(245, 158, 11, 0.1);
         }
 
-        .toast-content {
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
         /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 360px) {
-            .container {
-                padding: 16px;
+        @media (max-width: 380px) {
+            .app-container {
+                padding: 0 16px;
             }
             
             .quick-add-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
             
             .quick-actions {
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ===== HAPTIC FEEDBACK CLASSES ===== */
+        .haptic-light {
+            /* Triggers light haptic feedback via JavaScript */
+        }
+
+        .haptic-medium {
+            /* Triggers medium haptic feedback via JavaScript */
+        }
+
+        .haptic-heavy {
+            /* Triggers heavy haptic feedback via JavaScript */
+        }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
     <div class="bg-animation"></div>
-    
-    <div class="container">
+
+    <!-- Main App Container -->
+    <div class="app-container">
         
-        <!-- TAB 1: GUILT-FREE ZONE (EXISTING - PRESERVED) -->
-        <div id="tab-home" class="tab-content active">
+        <!-- TAB 1: GUILT-FREE ZONE -->
+        <div id="tab-guilt-free" class="tab-content active">
             <div class="hero-section">
-                <h1 class="hero-title">💚 Guilt-Free Zone</h1>
-                <p class="hero-subtitle">Your daily financial freedom awaits</p>
+                <div class="daily-flow-display" onclick="celebrateFlow()">
+                    <div class="daily-flow-label">💚 Today's Guilt-Free Amount</div>
+                    <div class="daily-flow-amount" id="daily-flow-amount">$46.45</div>
+                    <div class="daily-flow-description">
+                        This is YOUR money to enjoy guilt-free 🎉
+                    </div>
+                </div>
             </div>
 
-            <div class="daily-flow-hero">
-                <div class="flow-label">TODAY'S GUILT-FREE SPENDING</div>
-                <div class="flow-amount" onclick="celebrateFlow()">$46</div>
-                <div class="flow-message">Perfect! You're in complete control 🎯</div>
-            </div>
-
+            <!-- Quick Spend Actions -->
             <div class="quick-actions">
-                <button class="quick-action-btn" onclick="quickSpend('coffee', 6.50)">
+                <div class="action-btn haptic-medium" onclick="quickSpend(6.50, 'Coffee Run ☕')">
                     <span class="action-icon">☕</span>
-                    <div class="action-label">Coffee</div>
-                    <div class="action-amount">$6.50</div>
-                </button>
-                
-                <button class="quick-action-btn" onclick="quickSpend('lunch', 14.75)">
-                    <span class="action-icon">🥗</span>
-                    <div class="action-label">Lunch</div>
-                    <div class="action-amount">$14.75</div>
-                </button>
-                
-                <button class="quick-action-btn" onclick="quickSpend('snack', 4.25)">
+                    <div class="action-label">Coffee Run</div>
+                    <div class="action-desc">$6.50</div>
+                </div>
+                <div class="action-btn haptic-medium" onclick="quickSpend(14.75, 'Lunch Treat 🍕')">
+                    <span class="action-icon">🍕</span>
+                    <div class="action-label">Lunch Treat</div>
+                    <div class="action-desc">$14.75</div>
+                </div>
+                <div class="action-btn haptic-medium" onclick="quickSpend(4.25, 'Snack Attack 🍿')">
                     <span class="action-icon">🍿</span>
-                    <div class="action-label">Snack</div>
-                    <div class="action-amount">$4.25</div>
-                </button>
-                
-                <button class="quick-action-btn" onclick="openCustomSpend()">
-                    <span class="action-icon">💰</span>
-                    <div class="action-label">Custom</div>
-                    <div class="action-amount">Any Amount</div>
-                </button>
+                    <div class="action-label">Snack Attack</div>
+                    <div class="action-desc">$4.25</div>
+                </div>
+                <div class="action-btn haptic-light" onclick="showCustomAmount()">
+                    <span class="action-icon">💳</span>
+                    <div class="action-label">Custom Amount</div>
+                    <div class="action-desc">You choose!</div>
+                </div>
+            </div>
+
+            <!-- Streak Display -->
+            <div class="glass-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <div style="font-size: 32px;">🔥</div>
+                    <div>
+                        <div style="font-size: 18px; font-weight: 700;">5-Day Guilt-Free Streak!</div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">You're absolutely crushing this budget thing ✨</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- TAB 2: LIGHTNING-FAST EXPENSE ENTRY (NEW) -->
-        <div id="tab-spend" class="tab-content">
-            <!-- Daily Flow Status Header -->
-            <div class="expense-flow-header">
-                <div class="flow-status">
-                    <div class="flow-status-label">💚 Today's Guilt-Free Amount</div>
-                    <div class="flow-status-amount" id="tab2DailyFlow" onclick="celebrateFlow()">$46</div>
-                    <div class="flow-status-message">Ready to spend without worry!</div>
+        <!-- TAB 2: SPENDING ENTRY -->
+        <div id="tab-spending" class="tab-content">
+            <!-- Header with Daily Flow Display -->
+            <header class="header">
+                <div class="header-info">
+                    <h1 class="tab-title">Add Spending 💸</h1>
+                    <p class="quick-status" id="tab2-daily-flow">$46.45 left guilt-free today!</p>
                 </div>
-            </div>
-            
-            <div class="expense-header">
-                <h1 class="expense-title">💸 Spend Guilt-Free</h1>
-                <p class="expense-subtitle">Lightning-fast expense logging in under 3 seconds</p>
-            </div>
+                <div style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 8px 12px; font-size: 12px; color: var(--accent-green); font-weight: 600;">
+                    ✅ Pre-approved
+                </div>
+            </header>
 
-            <!-- Quick Add Section -->
+            <!-- Lightning Fast Quick Add -->
             <div class="quick-add-section">
-                <h2 class="quick-add-title">⚡ Quick Add</h2>
+                <h2 class="section-title">⚡ Lightning Quick Add</h2>
                 <div class="quick-add-grid">
-                    <button class="quick-add-btn" onclick="quickAdd('coffee', 5.50)">
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('coffee', 5.50)">
                         <span class="quick-add-icon">☕</span>
                         <div class="quick-add-label">Coffee</div>
                         <div class="quick-add-price">~$5.50</div>
-                    </button>
-                    
-                    <button class="quick-add-btn" onclick="quickAdd('lunch', 12.00)">
-                        <span class="quick-add-icon">🥗</span>
+                    </div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('lunch', 12.00)">
+                        <span class="quick-add-icon">🍕</span>
                         <div class="quick-add-label">Lunch</div>
                         <div class="quick-add-price">~$12.00</div>
-                    </button>
-                    
-                    <button class="quick-add-btn" onclick="quickAdd('snack', 3.75)">
+                    </div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('snack', 3.75)">
                         <span class="quick-add-icon">🍿</span>
                         <div class="quick-add-label">Snack</div>
                         <div class="quick-add-price">~$3.75</div>
-                    </button>
-                    
-                    <button class="quick-add-btn" onclick="quickAdd('gas', 35.00)">
+                    </div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('gas', 35.00)">
                         <span class="quick-add-icon">⛽</span>
                         <div class="quick-add-label">Gas</div>
                         <div class="quick-add-price">~$35.00</div>
-                    </button>
-                    
-                    <button class="quick-add-btn" onclick="quickAdd('ride', 15.00)">
+                    </div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('uber', 15.00)">
                         <span class="quick-add-icon">🚗</span>
                         <div class="quick-add-label">Ride</div>
                         <div class="quick-add-price">~$15.00</div>
-                    </button>
-                    
-                    <button class="quick-add-btn" onclick="quickAdd('shopping', 25.00)">
+                    </div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('shopping', 25.00)">
                         <span class="quick-add-icon">🛍️</span>
                         <div class="quick-add-label">Shopping</div>
                         <div class="quick-add-price">~$25.00</div>
-                    </button>
-                </div>
-                
-                <button class="custom-add-btn" onclick="openCustomAmount()">
-                    ✨ Custom Amount
-                </button>
-            </div>
-
-            <!-- Smart Location Detection -->
-            <div class="location-section">
-                <div class="location-header">
-                    <div class="location-icon">📍</div>
-                    <div class="location-text">
-                        <div class="location-title">You're near Starbucks!</div>
-                        <div class="location-subtitle">Perfect timing for that coffee treat ☕</div>
-                    </div>
-                </div>
-                <div class="nearby-places">
-                    <div class="nearby-place" onclick="selectPlace('Starbucks')">
-                        <div class="place-name">☕ Starbucks</div>
-                        <div class="place-distance">0.1 mi away</div>
-                    </div>
-                    <div class="nearby-place" onclick="selectPlace('Target')">
-                        <div class="place-name">🎯 Target</div>
-                        <div class="place-distance">0.3 mi away</div>
-                    </div>
-                    <div class="nearby-place" onclick="selectPlace('Chipotle')">
-                        <div class="place-name">🌯 Chipotle</div>
-                        <div class="place-distance">0.2 mi away</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Recent Places -->
-            <div class="recent-places">
-                <h2 class="section-title">🕐 Recent Places You've Been</h2>
-                
-                <div class="recent-place-item" onclick="selectRecentPlace('Target')">
-                    <div class="recent-place-icon" style="background: var(--secure-gradient);">🎯</div>
-                    <div class="recent-place-details">
-                        <div class="recent-place-name">Target</div>
-                        <div class="recent-place-info">Visited 2 hours ago • Usually ~$18</div>
+            <!-- Today's Activity -->
+            <div class="glass-card">
+                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                    📊 Today's Activity
+                </h3>
+                <div id="todays-transactions">
+                    <div style="text-align: center; color: var(--text-muted); padding: 20px;">
+                        No spending today - your Daily Flow is fully available! 🎉
                     </div>
-                    <div class="recent-place-action">Quick Add</div>
                 </div>
-                
-                <div class="recent-place-item" onclick="selectRecentPlace('Whole Foods')">
-                    <div class="recent-place-icon" style="background: var(--success-gradient);">🛒</div>
-                    <div class="recent-place-details">
-                        <div class="recent-place-name">Whole Foods</div>
-                        <div class="recent-place-info">Yesterday • Usually ~$32</div>
-                    </div>
-                    <div class="recent-place-action">Quick Add</div>
-                </div>
-                
-                <div class="recent-place-item" onclick="selectRecentPlace('Shell Gas')">
-                    <div class="recent-place-icon" style="background: var(--sustain-gradient);">⛽</div>
-                    <div class="recent-place-details">
-                        <div class="recent-place-name">Shell Gas Station</div>
-                        <div class="recent-place-info">3 days ago • Usually ~$38</div>
-                    </div>
-                    <div class="recent-place-action">Quick Add</div>
-                </div>
-            </div>
-
-            <!-- Today's Spending -->
-            <div class="recent-spending">
-                <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h2 class="section-title">💚 Today's Guilt-Free Spending</h2>
-                    <span style="font-size: 14px; color: var(--accent-purple); cursor: pointer; font-weight: 500;">See all →</span>
-                </div>
-                
-                <div class="spending-item guilt-free" onclick="editSpending(this)">
-                    <div class="spending-icon" style="background: var(--success-gradient);">☕</div>
-                    <div class="spending-details">
-                        <div class="spending-name">Morning Coffee</div>
-                        <div class="spending-info">Starbucks • 9:15 AM</div>
-                    </div>
-                    <div class="spending-amount">$5.45</div>
-                </div>
-                
-                <div class="spending-item guilt-free" onclick="editSpending(this)">
-                    <div class="spending-icon" style="background: var(--success-gradient);">🥗</div>
-                    <div class="spending-details">
-                        <div class="spending-name">Healthy Lunch</div>
-                        <div class="spending-info">Sweetgreen • 12:30 PM</div>
-                    </div>
-                    <div class="spending-amount">$12.85</div>
-                </div>
-            </div>
-
-            <!-- Voice Input -->
-            <div class="voice-section">
-                <button class="voice-btn" onclick="startVoiceInput()">
-                    🎤
-                </button>
             </div>
         </div>
 
-        <!-- TAB 3: BUDGET (PLACEHOLDER) -->
+        <!-- TAB 3: 4 S'S BUDGET SYSTEM - NEW DEVELOPMENT -->
         <div id="tab-budget" class="tab-content">
-            <div class="loading-state">
-                <div>🎯 Building your budget flow...</div>
+            <!-- Budget Header -->
+            <div class="budget-header">
+                <h1 class="budget-title">🎯 Your Budget Flow</h1>
+                <p class="budget-subtitle">The 4 S's that build your financial confidence</p>
+            </div>
+
+            <!-- Income Overview -->
+            <div class="income-overview">
+                <div class="income-label">Monthly Income</div>
+                <div class="income-amount">$3,200</div>
+                <div class="income-period">Working for your freedom ✨</div>
+            </div>
+
+            <!-- The 4 S's Budget Categories -->
+            <div class="budget-flow">
+                
+                <!-- SECURE -->
+                <div class="budget-category secure" onclick="expandCategory('secure')">
+                    <div class="category-header">
+                        <div class="category-icon">🛡️</div>
+                        <div class="category-info">
+                            <div class="category-name">Secure</div>
+                            <div class="category-description">Lock it down - untouchable recurring payments</div>
+                        </div>
+                    </div>
+                    <div class="category-amount">$1,680</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>$1,680 allocated</span>
+                            <span>35% of income</span>
+                        </div>
+                    </div>
+                    <div class="allocation-examples">
+                        <div class="example-item">🏠 Rent: $1,200</div>
+                        <div class="example-item">📱 Phone: $80</div>
+                        <div class="example-item">📺 Netflix: $15</div>
+                        <div class="example-item">🛡️ Insurance: $385</div>
+                    </div>
+                </div>
+
+                <!-- SUSTAIN -->
+                <div class="budget-category sustain" onclick="expandCategory('sustain')">
+                    <div class="category-header">
+                        <div class="category-icon">🌱</div>
+                        <div class="category-info">
+                            <div class="category-name">Sustain</div>
+                            <div class="category-description">Keep you going - essentials &amp; necessities</div>
+                        </div>
+                    </div>
+                    <div class="category-amount">$720</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 78%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>$562 used this month</span>
+                            <span>15% of income</span>
+                        </div>
+                    </div>
+                    <div class="allocation-examples">
+                        <div class="example-item">🛒 Groceries: $400</div>
+                        <div class="example-item">⛽ Gas: $120</div>
+                        <div class="example-item">🧽 Household: $80</div>
+                        <div class="example-item">💊 Health: $120</div>
+                    </div>
+                </div>
+
+                <!-- SPEND -->
+                <div class="budget-category spend" onclick="expandCategory('spend')">
+                    <div class="category-header">
+                        <div class="category-icon">💚</div>
+                        <div class="category-info">
+                            <div class="category-name">Spend</div>
+                            <div class="category-description">Live your life - 100% guilt-free zone!</div>
+                        </div>
+                    </div>
+                    <div class="category-amount">$1,440</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>$936 enjoyed so far</span>
+                            <span>30% of income</span>
+                        </div>
+                    </div>
+                    <div class="allocation-examples">
+                        <div class="example-item">☕ Coffee: $150</div>
+                        <div class="example-item">🍕 Dining: $400</div>
+                        <div class="example-item">🎬 Entertainment: $200</div>
+                        <div class="example-item">🛍️ Shopping: $690</div>
+                    </div>
+                </div>
+
+                <!-- STASH -->
+                <div class="budget-category stash" onclick="expandCategory('stash')">
+                    <div class="category-header">
+                        <div class="category-icon">💎</div>
+                        <div class="category-info">
+                            <div class="category-name">Stash</div>
+                            <div class="category-description">Future you - buffer &amp; emergency protection</div>
+                        </div>
+                    </div>
+                    <div class="category-amount">$960</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>$960 protected</span>
+                            <span>20% of income</span>
+                        </div>
+                    </div>
+                    <div class="allocation-examples">
+                        <div class="example-item">🛡️ Emergency: $400</div>
+                        <div class="example-item">🏖️ Vacation: $200</div>
+                        <div class="example-item">💰 Buffer: $240</div>
+                        <div class="example-item">📈 Investment: $120</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Daily Spending Preview -->
+            <div class="daily-preview">
+                <h2 class="daily-title">📅 Your Daily Guilt-Free Amount</h2>
+                <div class="daily-amount">$46.45</div>
+                <div class="daily-description">This is what you can spend TODAY without any guilt or worry!</div>
+                
+                <!-- Calculation Breakdown -->
+                <div class="calculation-breakdown">
+                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">How we calculate this:</div>
+                    <div class="calculation-line">
+                        <span>Spend category remaining:</span>
+                        <span>$504</span>
+                    </div>
+                    <div class="calculation-line">
+                        <span>Days left in month:</span>
+                        <span>11 days</span>
+                    </div>
+                    <div class="calculation-line">
+                        <span>Your daily freedom:</span>
+                        <span>$46.45</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- TAB 4: INSIGHTS (PLACEHOLDER) -->
+        <!-- TAB 4: INSIGHTS -->
         <div id="tab-insights" class="tab-content">
             <div class="loading-state">
-                <div>✨ Preparing your money insights...</div>
+                <div class="loading-spinner"></div>
+                <div>✨ Building your insights dashboard...</div>
             </div>
         </div>
 
-        <!-- TAB 5: PROFILE (PLACEHOLDER) -->
-        <div id="tab-profile" class="tab-content">
+        <!-- TAB 5: SETTINGS -->
+        <div id="tab-settings" class="tab-content">
             <div class="loading-state">
-                <div>👤 Loading your profile...</div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- AI Chat System -->
-    <button class="floating-chat-btn" onclick="toggleAIChat()">
-        💬 AI
-    </button>
-
-    <div class="ai-chat-overlay" id="aiChatOverlay">
-        <div class="ai-chat-interface">
-            <div class="chat-header">
-                <div class="ai-avatar">🤖</div>
-                <div class="ai-status">
-                    <div class="ai-name">Flow AI Assistant</div>
-                    <div class="ai-state">Ready to help with your finances</div>
-                </div>
-                <button class="chat-close" onclick="toggleAIChat()">✕</button>
-            </div>
-
-            <div class="chat-messages" id="chatMessages">
-                <div class="ai-message">
-                    <div class="message-avatar">🤖</div>
-                    <div class="message-content">
-                        Hey there! 👋 I'm your Flow AI assistant. I can help you understand your spending, celebrate your wins, and make smart financial decisions. You have $46 guilt-free to spend today - what's on your mind?
-                    </div>
-                </div>
-            </div>
-
-            <div class="ai-quick-actions">
-                <button class="ai-action-btn" onclick="askAI('How am I doing today?')">How am I doing? 📊</button>
-                <button class="ai-action-btn" onclick="askAI('Should I buy this coffee?')">Should I buy this? ☕</button>
-                <button class="ai-action-btn" onclick="askAI('What should I focus on?')">Money tips 💡</button>
-            </div>
-
-            <div class="chat-input-container">
-                <input type="text" class="chat-input" placeholder="Ask about your spending..." id="chatInput" onkeypress="handleChatKeypress(event)">
-                <button class="send-btn" onclick="sendChatMessage()">Send</button>
+                <div class="loading-spinner"></div>
+                <div>👤 Setting up your profile...</div>
             </div>
         </div>
     </div>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
-        <div class="nav-item active" onclick="switchTab('home')">
+        <a href="#" class="nav-item active" onclick="switchTab('guilt-free')">
             <span class="nav-icon">💚</span>
-            <span class="nav-label">Home</span>
-        </div>
-        <div class="nav-item" onclick="switchTab('spend')">
+            <span class="nav-label">Flow</span>
+        </a>
+        <a href="#" class="nav-item" onclick="switchTab('spending')">
             <span class="nav-icon">💸</span>
             <span class="nav-label">Spend</span>
-        </div>
-        <div class="nav-item" onclick="switchTab('budget')">
+        </a>
+        <a href="#" class="nav-item" onclick="switchTab('budget')">
             <span class="nav-icon">🎯</span>
             <span class="nav-label">Budget</span>
-        </div>
-        <div class="nav-item" onclick="switchTab('insights')">
+        </a>
+        <a href="#" class="nav-item" onclick="switchTab('insights')">
             <span class="nav-icon">✨</span>
             <span class="nav-label">Insights</span>
-        </div>
-        <div class="nav-item" onclick="switchTab('profile')">
+        </a>
+        <a href="#" class="nav-item" onclick="switchTab('settings')">
             <span class="nav-icon">👤</span>
-            <span class="nav-label">Profile</span>
-        </div>
+            <span class="nav-label">You</span>
+        </a>
     </nav>
 
+    <!-- AI Chat Toggle -->
+    <button class="ai-chat-toggle haptic-medium" onclick="toggleAIChat()">
+        🤖
+    </button>
+
+    <!-- AI Chat Modal -->
+    <div id="ai-chat-modal" class="ai-chat-modal">
+        <div class="ai-chat-container">
+            <div class="ai-chat-header">
+                <h3 class="ai-chat-title">💬 Your Money Coach</h3>
+                <button class="ai-chat-close" onclick="toggleAIChat()">×</button>
+            </div>
+            <div class="ai-chat-messages" id="ai-chat-messages">
+                <div class="ai-message">
+                    Hi! I'm your financial wellness assistant. I can see you have $46.45 available guilt-free today and you're doing great with your budget! How can I help? 💚
+                </div>
+            </div>
+            <div class="ai-chat-input-container">
+                <input type="text" class="ai-chat-input" placeholder="Ask about your budget..." id="ai-chat-input" onkeypress="handleAIChatInput(event)">
+            </div>
+        </div>
+    </div>
+
     <script>
-        // ===== APP STATE MANAGEMENT ===== 
+        // ===== APP STATE MANAGEMENT =====
         let appState = {
-            currentTab: 'home',
-            dailyFlow: 46.00,
+            dailyFlow: 46.45,
             todaySpent: 23.50,
             monthlyIncome: 3200,
             categories: {
@@ -1332,485 +1230,319 @@
                 spend: { allocated: 1440, used: 936, percentage: 30 },
                 stash: { allocated: 960, used: 960, percentage: 20 }
             },
-            transactions: [
-                { id: 1, type: 'coffee', amount: 5.45, merchant: 'Starbucks', time: '9:15 AM', category: 'spend' },
-                { id: 2, type: 'lunch', amount: 12.85, merchant: 'Sweetgreen', time: '12:30 PM', category: 'spend' }
-            ],
+            transactions: [],
+            currentTab: 'guilt-free',
             aiChatOpen: false
         };
 
-        // ===== HAPTIC FEEDBACK ===== 
-        function triggerHaptic(intensity = 'medium') {
-            if (navigator.vibrate) {
-                const patterns = {
-                    light: [10],
-                    medium: [20],
-                    strong: [50]
-                };
-                navigator.vibrate(patterns[intensity] || patterns.medium);
-            }
-        }
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDailyFlowDisplay();
+            updateTransactionsList();
+            console.log('🎉 Flow Budgeting App v2.2-tab3-dev initialized with 4 S\'s Budget System');
+        });
 
-        // ===== TAB NAVIGATION SYSTEM ===== 
+        // ===== TAB NAVIGATION SYSTEM =====
         function switchTab(tabName) {
+            // Haptic feedback
             triggerHaptic('light');
             
-            // Hide all tabs
+            // Update active states
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
             });
             
             // Show selected tab
             document.getElementById(`tab-${tabName}`).classList.add('active');
-            
-            // Update navigation
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            event.target.closest('.nav-item').classList.add('active');
+            event.currentTarget.classList.add('active');
             
             // Update app state
             appState.currentTab = tabName;
             
-            // Trigger AI proactive messages if appropriate
-            setTimeout(() => {
-                checkAIProactiveMessages(tabName);
-            }, 500);
+            // Tab-specific initialization
+            if (tabName === 'budget') {
+                initializeBudgetTab();
+            }
         }
 
-        // ===== TAB 2: LIGHTNING-FAST EXPENSE ENTRY ===== 
-        function quickAdd(type, amount) {
+        // ===== TAB 3: BUDGET SYSTEM FUNCTIONALITY =====
+        function initializeBudgetTab() {
+            // Update progress bars based on current state
+            updateBudgetProgress();
+            updateDailyFlowCalculation();
+        }
+
+        function updateBudgetProgress() {
+            // Calculate real-time progress for each category
+            const secureProgress = (appState.categories.secure.used / appState.categories.secure.allocated) * 100;
+            const sustainProgress = (appState.categories.sustain.used / appState.categories.sustain.allocated) * 100;
+            const spendProgress = (appState.categories.spend.used / appState.categories.spend.allocated) * 100;
+            const stashProgress = (appState.categories.stash.used / appState.categories.stash.allocated) * 100;
+
+            // Update progress bars (this would update the actual DOM elements)
+            console.log('Budget progress updated:', {
+                secure: secureProgress + '%',
+                sustain: sustainProgress + '%', 
+                spend: spendProgress + '%',
+                stash: stashProgress + '%'
+            });
+        }
+
+        function expandCategory(categoryType) {
+            // Haptic feedback for interaction
             triggerHaptic('medium');
+            
+            // Add expansion functionality here
+            console.log(`Expanding category: ${categoryType}`);
+            
+            // Future: Show detailed breakdown, editing options, historical data
+            showToast(`📊 ${categoryType} details coming soon!`, 'success');
+        }
+
+        function updateDailyFlowCalculation() {
+            // Calculate remaining in spend category
+            const spendRemaining = appState.categories.spend.allocated - appState.categories.spend.used;
+            
+            // Calculate days remaining in month (simplified to 11 for demo)
+            const daysRemaining = 11;
+            
+            // Calculate daily flow
+            const newDailyFlow = spendRemaining / daysRemaining;
+            
+            // Update state
+            appState.dailyFlow = newDailyFlow;
+            
+            // Update displays across all tabs
+            updateDailyFlowDisplay();
+            
+            console.log('Daily flow recalculated:', {
+                spendRemaining: spendRemaining,
+                daysRemaining: daysRemaining,
+                dailyFlow: newDailyFlow.toFixed(2)
+            });
+        }
+
+        // ===== QUICK SPENDING ACTIONS (TAB 1) =====
+        function quickSpend(amount, description) {
+            triggerHaptic('medium');
+            
+            // Update state
+            appState.todaySpent += amount;
+            appState.dailyFlow -= amount;
+            appState.categories.spend.used += amount;
             
             // Add transaction
             const transaction = {
                 id: Date.now(),
-                type: type,
                 amount: amount,
-                merchant: getSmartMerchant(type),
-                time: new Date().toLocaleTimeString('en-US', { 
-                    hour: 'numeric', 
-                    minute: '2-digit', 
-                    hour12: true 
-                }),
+                description: description,
+                timestamp: new Date(),
                 category: 'spend'
             };
-            
             appState.transactions.unshift(transaction);
-            appState.todaySpent += amount;
-            appState.dailyFlow = calculateDailyFlow();
             
-            // Update displays on BOTH tabs
+            // Update displays
             updateDailyFlowDisplay();
+            updateTransactionsList();
+            updateBudgetProgress();
             
-            // Show instant success feedback
-            showToast(`🎉 ${amount > appState.dailyFlow + amount ? 'Perfect!' : 'Guilt-free!'} ${type} logged in ${(Math.random() * 0.5 + 1.5).toFixed(1)}s`, 'success');
-            
-            // Trigger AI contextual response
-            setTimeout(() => {
-                triggerAISpendingResponse(type, amount);
-            }, 1000);
-        }
-
-        function getSmartMerchant(type) {
-            const merchants = {
-                coffee: ['Starbucks', 'Dunkin', 'Local Café', 'Peet\'s Coffee'][Math.floor(Math.random() * 4)],
-                lunch: ['Sweetgreen', 'Chipotle', 'Panera', 'Local Bistro'][Math.floor(Math.random() * 4)],
-                snack: ['7-Eleven', 'CVS', 'Target', 'Walgreens'][Math.floor(Math.random() * 4)],
-                gas: ['Shell', 'BP', 'Exxon', 'Chevron'][Math.floor(Math.random() * 4)],
-                ride: ['Uber', 'Lyft', 'Transit'][Math.floor(Math.random() * 3)],
-                shopping: ['Target', 'Amazon', 'Whole Foods', 'CVS'][Math.floor(Math.random() * 4)],
-                custom: ['Local Business', 'Custom Purchase', 'Manual Entry'][Math.floor(Math.random() * 3)]
-            };
-            return merchants[type] || 'Local Business';
-        }
-
-        function selectPlace(placeName) {
-            triggerHaptic('light');
-            showToast(`📍 Selected ${placeName}. Choose amount to quick-add!`, 'success');
-            
-            // Trigger AI contextual suggestion
-            setTimeout(() => {
-                triggerAILocationResponse(placeName);
-            }, 500);
-        }
-
-        function selectRecentPlace(placeName) {
-            triggerHaptic('light');
-            
-            // Get historical amount for this place
-            const amounts = {
-                'Target': 18.00,
-                'Whole Foods': 32.00,
-                'Shell Gas': 38.00
-            };
-            
-            const amount = amounts[placeName] || 15.00;
-            
-            // Quick add with historical amount
-            quickAdd('shopping', amount);
-        }
-
-        function openCustomAmount() {
-            triggerHaptic('medium');
-            const amount = prompt('💰 Enter custom amount:');
-            
-            if (amount === null) {
-                // User clicked cancel
-                return;
-            }
-            
-            if (amount === '' || amount.trim() === '') {
-                showToast('⚠️ Please enter an amount', 'celebration');
-                return;
-            }
-            
-            const numericAmount = parseFloat(amount);
-            
-            if (isNaN(numericAmount)) {
-                showToast('⚠️ Please enter a valid number', 'celebration');
-                return;
-            }
-            
-            if (numericAmount <= 0) {
-                showToast('⚠️ Amount must be greater than $0', 'celebration');
-                return;
-            }
-            
-            if (numericAmount > 1000) {
-                showToast('⚠️ Large amount! Double-check this purchase 💛', 'celebration');
-                // Still allow the transaction to proceed
-            }
-            
-            // Success flow - log the custom amount
-            quickAdd('custom', numericAmount);
-        }
-
-        function startVoiceInput() {
-            triggerHaptic('strong');
-            showToast('🎤 Voice input coming soon! Use quick buttons for now.', 'celebration');
-        }
-
-        function editSpending(element) {
-            triggerHaptic('light');
-            showToast('✏️ Editing transactions coming in next update!', 'celebration');
-        }
-
-        // ===== TAB 1: EXISTING FUNCTIONALITY (PRESERVED) ===== 
-        function celebrateFlow() {
-            triggerHaptic('strong');
-            const celebrations = [
-                "🎉 You're absolutely crushing it today!",
-                "💪 Financial confidence level: MAXIMUM!",
-                "🌟 Look at you being responsible AND free!",
-                "🎯 Perfect balance of control and freedom!"
-            ];
-            
-            const message = celebrations[Math.floor(Math.random() * celebrations.length)];
-            showToast(message, 'celebration');
-            
-            // Trigger AI celebration
-            setTimeout(() => {
-                addAIMessage(message + " Keep up the amazing work! 🚀");
-            }, 1500);
-        }
-
-        function quickSpend(type, amount) {
-            triggerHaptic('medium');
-            
-            // Add to transactions
-            const transaction = {
-                id: Date.now(),
-                type: type,
-                amount: amount,
-                merchant: getSmartMerchant(type),
-                time: new Date().toLocaleTimeString('en-US', { 
-                    hour: 'numeric', 
-                    minute: '2-digit', 
-                    hour12: true 
-                }),
-                category: 'spend'
-            };
-            
-            appState.transactions.unshift(transaction);
-            appState.todaySpent += amount;
-            appState.dailyFlow = calculateDailyFlow();
-            
-            // Update displays on BOTH tabs
-            updateDailyFlowDisplay();
-            
-            // Show contextual feedback
-            const remainingFlow = appState.dailyFlow;
-            let message;
-            
-            if (remainingFlow > 10) {
-                message = `🎉 Guilt-free ${type} confirmed! ${remainingFlow.toFixed(0)} left today.`;
-            } else if (remainingFlow >= 0) {
-                message = `🎯 Perfect spending control! ${remainingFlow.toFixed(0)} remaining.`;
+            // Show success message
+            if (appState.dailyFlow >= 0) {
+                showToast(`🎉 ${description} - Guilt-free purchase confirmed!`, 'success');
             } else {
-                message = `💛 Using tomorrow's money - totally fine! Back on track tomorrow.`;
+                showToast(`💛 ${description} - Using tomorrow's flow, totally fine!`, 'warning');
             }
             
-            showToast(message, remainingFlow >= 0 ? 'success' : 'celebration');
+            // Celebrate the flow display
+            celebrateFlow();
         }
 
-        function openCustomSpend() {
+        // ===== QUICK ADD ACTIONS (TAB 2) =====
+        function quickAdd(type, amount) {
             triggerHaptic('medium');
-            const amount = prompt('💰 Enter custom amount:');
             
-            if (amount === null) {
-                // User clicked cancel
-                return;
-            }
+            const descriptions = {
+                coffee: 'Coffee ☕',
+                lunch: 'Lunch 🍕', 
+                snack: 'Snack 🍿',
+                gas: 'Gas ⛽',
+                uber: 'Ride 🚗',
+                shopping: 'Shopping 🛍️'
+            };
             
-            if (amount === '' || amount.trim() === '') {
-                showToast('⚠️ Please enter an amount', 'celebration');
-                return;
-            }
-            
-            const numericAmount = parseFloat(amount);
-            
-            if (isNaN(numericAmount)) {
-                showToast('⚠️ Please enter a valid number', 'celebration');
-                return;
-            }
-            
-            if (numericAmount <= 0) {
-                showToast('⚠️ Amount must be greater than $0', 'celebration');
-                return;
-            }
-            
-            if (numericAmount > 1000) {
-                showToast('⚠️ Large amount! Double-check this purchase 💛', 'celebration');
-                // Still allow the transaction to proceed
-            }
-            
-            // Success flow - log the custom amount
-            quickSpend('custom', numericAmount);
+            quickSpend(amount, descriptions[type] || 'Purchase');
         }
 
-        function openCustomAmount() {
-            triggerHaptic('medium');
-            const amount = prompt('💰 Enter amount:');
-            if (amount && !isNaN(amount) && amount > 0) {
-                quickAdd('custom', parseFloat(amount));
-            }
-        }
-
-        // ===== CORE CALCULATIONS ===== 
-        function calculateDailyFlow() {
-            const today = new Date();
-            const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-            const daysRemaining = Math.max(1, endOfMonth.getDate() - today.getDate() + 1);
-            
-            const monthlySpendBudget = appState.categories.spend.allocated;
-            const spentThisMonth = appState.todaySpent; // Simplified for demo
-            
-            return Math.max(0, (monthlySpendBudget - spentThisMonth) / daysRemaining);
-        }
-
+        // ===== DISPLAY UPDATES =====
         function updateDailyFlowDisplay() {
-            const flowAmount = document.querySelector('.flow-amount');
-            const flowMessage = document.querySelector('.flow-message');
-            const tab2FlowAmount = document.getElementById('tab2DailyFlow');
+            const flowAmount = Math.max(0, appState.dailyFlow).toFixed(2);
             
-            // Update Tab 1 (Home) display
-            if (flowAmount) {
-                flowAmount.textContent = `${Math.round(appState.dailyFlow)}`;
+            // Update Tab 1 display
+            const tab1Display = document.getElementById('daily-flow-amount');
+            if (tab1Display) {
+                tab1Display.textContent = `$${flowAmount}`;
             }
             
-            // Update Tab 2 (Spend) display
-            if (tab2FlowAmount) {
-                tab2FlowAmount.textContent = `${Math.round(appState.dailyFlow)}`;
-            }
-            
-            // Update contextual messages on both tabs
-            if (flowMessage) {
-                const remaining = appState.dailyFlow;
-                if (remaining > 20) {
-                    flowMessage.textContent = "Excellent! You're ahead of your flow 🌟";
-                } else if (remaining > 0) {
-                    flowMessage.textContent = "Perfect! You're in complete control 🎯";
-                } else {
-                    flowMessage.textContent = "Using tomorrow's flow - totally normal! 💛";
-                }
-            }
-            
-            // Update Tab 2 status message
-            const tab2Message = document.querySelector('.flow-status-message');
-            if (tab2Message) {
-                const remaining = appState.dailyFlow;
-                if (remaining > 20) {
-                    tab2Message.textContent = "Plenty left to enjoy guilt-free! 🌟";
-                } else if (remaining > 0) {
-                    tab2Message.textContent = "Ready to spend without worry!";
-                } else {
-                    tab2Message.textContent = "Using tomorrow's money - totally fine! 💛";
-                }
+            // Update Tab 2 display
+            const tab2Display = document.getElementById('tab2-daily-flow');
+            if (tab2Display) {
+                tab2Display.textContent = `$${flowAmount} left guilt-free today!`;
             }
         }
 
-        // ===== AI CHAT SYSTEM ===== 
+        function updateTransactionsList() {
+            const container = document.getElementById('todays-transactions');
+            if (!container) return;
+            
+            if (appState.transactions.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; color: var(--text-muted); padding: 20px;">
+                        No spending today - your Daily Flow is fully available! 🎉
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = appState.transactions.map(transaction => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div>
+                        <div style="font-weight: 600;">${transaction.description}</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">${transaction.timestamp.toLocaleTimeString()}</div>
+                    </div>
+                    <div style="font-weight: 700; color: var(--accent-green);">$${transaction.amount.toFixed(2)}</div>
+                </div>
+            `).join('');
+        }
+
+        // ===== CELEBRATION SYSTEM =====
+        function celebrateFlow() {
+            triggerHaptic('light');
+            const display = document.querySelector('.daily-flow-display');
+            if (display) {
+                display.classList.add('celebration-pulse');
+                setTimeout(() => {
+                    display.classList.remove('celebration-pulse');
+                }, 600);
+            }
+        }
+
+        function showCustomAmount() {
+            triggerHaptic('light');
+            const amount = prompt('Enter custom amount:');
+            if (amount && !isNaN(amount) && amount > 0) {
+                quickSpend(parseFloat(amount), `Custom Purchase 💳`);
+            }
+        }
+
+        // ===== AI CHAT SYSTEM =====
         function toggleAIChat() {
             triggerHaptic('medium');
-            const overlay = document.getElementById('aiChatOverlay');
-            const isOpen = overlay.classList.contains('active');
+            const modal = document.getElementById('ai-chat-modal');
+            appState.aiChatOpen = !appState.aiChatOpen;
             
-            if (isOpen) {
-                overlay.classList.remove('active');
-                appState.aiChatOpen = false;
+            if (appState.aiChatOpen) {
+                modal.classList.add('active');
+                document.getElementById('ai-chat-input').focus();
             } else {
-                overlay.classList.add('active');
-                appState.aiChatOpen = true;
+                modal.classList.remove('active');
             }
         }
 
-        function askAI(question) {
-            triggerHaptic('light');
-            
-            // Add user message
-            addUserMessage(question);
-            
-            // Generate contextual AI response
-            setTimeout(() => {
-                generateAIResponse(question);
-            }, 500);
-        }
-
-        function sendChatMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            
-            if (message) {
-                triggerHaptic('light');
-                askAI(message);
-                input.value = '';
-            }
-        }
-
-        function handleChatKeypress(event) {
+        function handleAIChatInput(event) {
             if (event.key === 'Enter') {
-                sendChatMessage();
+                const input = document.getElementById('ai-chat-input');
+                const message = input.value.trim();
+                
+                if (message) {
+                    addAIMessage(`You: ${message}`, 'user');
+                    input.value = '';
+                    
+                    // Simulate AI response
+                    setTimeout(() => {
+                        generateAIResponse(message);
+                    }, 1000);
+                }
             }
         }
 
-        function addUserMessage(message) {
-            const messagesContainer = document.getElementById('chatMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'user-message';
-            messageDiv.innerHTML = `
-                <div class="message-avatar">👤</div>
-                <div class="message-content">${message}</div>
-            `;
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function addAIMessage(message) {
-            const messagesContainer = document.getElementById('chatMessages');
+        function addAIMessage(message, type = 'ai') {
+            const container = document.getElementById('ai-chat-messages');
             const messageDiv = document.createElement('div');
             messageDiv.className = 'ai-message';
-            messageDiv.innerHTML = `
-                <div class="message-avatar">🤖</div>
-                <div class="message-content">${message}</div>
-            `;
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            messageDiv.textContent = message;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
         }
 
-        function generateAIResponse(question) {
-            const lowerQuestion = question.toLowerCase();
-            let response;
-            
-            if (lowerQuestion.includes('how am i doing') || lowerQuestion.includes('doing today')) {
-                response = `You're doing amazing! 🌟 You've spent $${appState.todaySpent} today and have $${Math.round(appState.dailyFlow)} guilt-free left. Your spending is perfectly on track with your flow system!`;
-            } else if (lowerQuestion.includes('should i buy') || lowerQuestion.includes('coffee')) {
-                response = `☕ Absolutely! You have $${Math.round(appState.dailyFlow)} guilt-free today. That coffee is pre-approved by your budget - enjoy it without any worry!`;
-            } else if (lowerQuestion.includes('tips') || lowerQuestion.includes('focus')) {
-                response = `💡 You're already doing the hard part right - tracking spending in real-time! Keep using those quick-add buttons, and remember: every purchase under your daily flow is guilt-free. You've got this! 🚀`;
-            } else {
-                response = `I'm here to help you feel confident about money! 💚 You have $${Math.round(appState.dailyFlow)} guilt-free to spend today. Want to log a purchase or ask about your budget?`;
-            }
-            
-            addAIMessage(response);
-        }
-
-        function triggerAISpendingResponse(type, amount) {
-            if (!appState.aiChatOpen) return;
-            
+        function generateAIResponse(userMessage) {
             const responses = [
-                `Great ${type} choice! 🎯 You're staying perfectly within your flow.`,
-                `Nice! ${type} purchase logged. You're building great spending habits! 💪`,
-                `Perfect timing for that ${type}! Your budget says this is totally guilt-free. ✨`
+                `I see you have $${appState.dailyFlow.toFixed(2)} available guilt-free today. You're doing great! 💚`,
+                `Your Spend category is at ${Math.round((appState.categories.spend.used / appState.categories.spend.allocated) * 100)}% - perfectly on track! 🎯`,
+                `Remember, this is pre-approved money - no guilt, just enjoy! ✨`,
+                `Your 4 S's budget is working perfectly. Secure locked down, essentials covered, fun money ready! 🚀`
             ];
             
-            const response = responses[Math.floor(Math.random() * responses.length)];
-            setTimeout(() => addAIMessage(response), 800);
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            addAIMessage(randomResponse);
         }
 
-        function triggerAILocationResponse(placeName) {
-            if (!appState.aiChatOpen) return;
-            
-            const suggestions = {
-                'Starbucks': 'Perfect spot for your coffee budget! ☕ You have plenty of guilt-free spending left.',
-                'Target': 'Great for household essentials! 🎯 Remember to check if it fits your spending flow.',
-                'Chipotle': 'Solid lunch choice! 🌯 This fits perfectly in your daily food budget.'
-            };
-            
-            const suggestion = suggestions[placeName] || `Nice choice at ${placeName}! 👍 Check your remaining daily flow before spending.`;
-            setTimeout(() => addAIMessage(suggestion), 600);
-        }
-
-        function checkAIProactiveMessages(tabName) {
-            if (appState.aiChatOpen) return;
-            
-            // Example: Proactive message when switching to spend tab
-            if (tabName === 'spend' && Math.random() < 0.3) {
-                setTimeout(() => {
-                    showToast(`💡 AI Tip: You have $${Math.round(appState.dailyFlow)} guilt-free to spend today!`, 'celebration');
-                }, 1000);
-            }
-        }
-
-        // ===== TOAST NOTIFICATIONS ===== 
+        // ===== TOAST NOTIFICATIONS =====
         function showToast(message, type = 'success') {
-            // Remove existing toast
-            const existingToast = document.querySelector('.toast');
-            if (existingToast) {
-                existingToast.remove();
-            }
-            
-            // Create new toast
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
-            toast.innerHTML = `<div class="toast-content">${message}</div>`;
+            toast.textContent = message;
             
             document.body.appendChild(toast);
             
-            // Auto remove after 3 seconds
             setTimeout(() => {
-                if (toast.parentNode) {
-                    toast.remove();
-                }
+                toast.remove();
             }, 3000);
         }
 
-        // ===== INITIALIZATION ===== 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize with proper daily flow calculation
-            appState.dailyFlow = calculateDailyFlow();
-            
-            // Update both Tab 1 and Tab 2 displays
-            updateDailyFlowDisplay();
-            
-            // Add some demo transactions for today's spending view
-            if (appState.transactions.length === 0) {
-                appState.transactions = [
-                    { id: 1, type: 'coffee', amount: 5.45, merchant: 'Starbucks', time: '9:15 AM', category: 'spend' },
-                    { id: 2, type: 'lunch', amount: 12.85, merchant: 'Sweetgreen', time: '12:30 PM', category: 'spend' }
-                ];
+        // ===== HAPTIC FEEDBACK =====
+        function triggerHaptic(intensity = 'light') {
+            if (navigator.vibrate) {
+                const patterns = {
+                    light: [10],
+                    medium: [20],
+                    heavy: [30]
+                };
+                navigator.vibrate(patterns[intensity] || patterns.light);
             }
-        });
+        }
+
+        // ===== UTILITY FUNCTIONS =====
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(amount);
+        }
+
+        // ===== ERROR HANDLING =====
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            console.error('App Error:', {
+                message: msg,
+                source: url,
+                line: lineNo,
+                column: columnNo,
+                error: error
+            });
+            
+            showToast('Something went wrong. Please refresh the app.', 'warning');
+            return false;
+        };
+
+        // ===== SERVICE WORKER REGISTRATION (PWA) =====
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // Service worker registration would go here for PWA functionality
+                console.log('PWA capability detected');
+            });
+        }
     </script>
 </body>
 </html>
