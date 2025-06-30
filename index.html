@@ -6,32 +6,31 @@
     <title>💚 Flow Budgeting - Your Financial Freedom</title>
     
     <!-- 
-    VERSION: 2.2-tab3-dev
-    STATUS: TAB 3 DEVELOPMENT ⚡
+    VERSION: 2.2-stable ✅
+    STATUS: STABLE BASELINE WITH 3 COMPLETE TABS
     DATE: June 29, 2025
     
-    DEVELOPMENT FOCUS: 4 S's Budget System (Tab 3)
+    STABLE FEATURES:
+    ✅ Tab 1 (Guilt-Free Zone) - Complete with celebrations, real-time calculations
+    ✅ Tab 2 (Lightning-Fast Expense Entry) - Complete with sub-3-second logging, custom entry
+    ✅ Tab 3 (4 S's Budget System) - Revolutionary budget categories with progress tracking
+    ✅ Cross-Tab Synchronization - Real-time updates across all tabs
+    ✅ AI Chat Integration - Contextual intelligence across tabs
+    ✅ 5-Tab Navigation - Smooth transitions with proper state management
+    ✅ Design Consistency - Exact colors and patterns from reference files
     
-    BUILDING FROM v2.1-stable:
-    ✅ Tab 1 (Guilt-Free Zone) - Complete with celebrations
-    ✅ Tab 2 (Lightning-Fast Expense Entry) - Complete with sub-3-second logging 
-    ✅ Cross-Tab Synchronization - Real-time updates working
-    ✅ AI Chat Integration - Contextual intelligence
-    ✅ 5-Tab Navigation - Smooth transitions
+    KNOWN DEFECTS (DOCUMENTED IN DEFECT LOG):
+    🐛 DEF-001: Daily flow deduction amounts (critical)
+    🐛 DEF-002: Progress bar text updates (critical)
     
-    NEW IN THIS VERSION:
-    🎯 Tab 3: 4 S's Budget System with revolutionary psychology
-    - SECURE: Fixed bills & recurring payments (35%)
-    - SUSTAIN: Essentials & necessities (15%) 
-    - SPEND: Guilt-free spending zone (30%)
-    - STASH: Emergency & future protection (20%)
+    NEXT DEVELOPMENT:
+    - Tab 4: Analytics and insights dashboard
+    - Tab 5: Settings and profile management
+    - Defect resolution when prioritized
     
-    DESIGN PRINCIPLES FOR TAB 3:
-    - Permission-based psychology (pre-allocation eliminates shame)
-    - Real-time progress visualization 
-    - Educational transparency (show the math)
-    - Micro-celebrations for positive actions
-    - Category expansion for detailed management
+    ROLLBACK INSTRUCTIONS:
+    This is the stable checkpoint with 3 working tabs.
+    Use this version for any rollback needs during Tab 4/5 development.
     -->
     
     <style>
@@ -1008,7 +1007,7 @@
             </div>
         </div>
 
-        <!-- TAB 3: 4 S'S BUDGET SYSTEM - NEW DEVELOPMENT -->
+        <!-- TAB 3: 4 S'S BUDGET SYSTEM -->
         <div id="tab-budget" class="tab-content">
             <!-- Budget Header -->
             <div class="budget-header">
@@ -1229,12 +1228,12 @@
         // ===== APP STATE MANAGEMENT =====
         let appState = {
             dailyFlow: 46.45,
-            todaySpent: 0, // Reset to 0 for accurate tracking
+            todaySpent: 0,
             monthlyIncome: 3200,
             categories: {
                 secure: { allocated: 1680, used: 1680, percentage: 35 },
                 sustain: { allocated: 720, used: 562, percentage: 15 },
-                spend: { allocated: 1440, used: 936, percentage: 30 }, // Starting with some spent already
+                spend: { allocated: 1440, used: 936, percentage: 30 },
                 stash: { allocated: 960, used: 960, percentage: 20 }
             },
             transactions: [],
@@ -1244,24 +1243,21 @@
 
         // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Initializing Flow Budgeting App v2.2-tab3-dev');
+            console.log('🚀 Initializing Flow Budgeting App v2.2-stable');
             console.log('📊 Initial app state:', appState);
             
-            // Initialize all displays
-            updateDailyFlowCalculation(); // This will set the correct daily flow
+            updateDailyFlowCalculation();
             updateDailyFlowDisplay();
             updateTransactionsList();
             updateBudgetProgress();
             
-            console.log('✅ App fully initialized with real-time 4 S\'s Budget System');
+            console.log('✅ v2.2-stable initialized - 3 complete tabs with 4 S\'s Budget System');
         });
 
         // ===== TAB NAVIGATION SYSTEM =====
         function switchTab(tabName) {
-            // Haptic feedback
             triggerHaptic('light');
             
-            // Update active states
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
@@ -1269,14 +1265,11 @@
                 item.classList.remove('active');
             });
             
-            // Show selected tab
             document.getElementById(`tab-${tabName}`).classList.add('active');
             event.currentTarget.classList.add('active');
             
-            // Update app state
             appState.currentTab = tabName;
             
-            // Tab-specific initialization
             if (tabName === 'budget') {
                 initializeBudgetTab();
             }
@@ -1284,98 +1277,91 @@
 
         // ===== TAB 3: BUDGET SYSTEM FUNCTIONALITY =====
         function initializeBudgetTab() {
-            // Update progress bars based on current state
             updateBudgetProgress();
             updateDailyFlowCalculation();
             console.log('✅ Tab 3 initialized with current budget state');
         }
 
         function updateBudgetProgress() {
-            // Calculate real-time progress for each category
             const categories = ['secure', 'sustain', 'spend', 'stash'];
             
             categories.forEach(categoryName => {
                 const category = appState.categories[categoryName];
                 const progressPercent = Math.min((category.used / category.allocated) * 100, 100);
                 
-                // Update progress bar fill
-                const progressFill = document.querySelector(`.${categoryName} .progress-fill`);
-                if (progressFill) {
-                    progressFill.style.width = `${progressPercent}%`;
-                }
-                
-                // Update progress text
-                const progressText = document.querySelector(`.${categoryName} .progress-text`);
-                if (progressText) {
-                    const remaining = category.allocated - category.used;
-                    if (categoryName === 'spend') {
-                        progressText.innerHTML = `
-                            <span>${category.used.toFixed(0)} enjoyed so far</span>
-                            <span>${category.percentage}% of income</span>
-                        `;
-                    } else if (categoryName === 'sustain') {
-                        progressText.innerHTML = `
-                            <span>${category.used.toFixed(0)} used this month</span>
-                            <span>${category.percentage}% of income</span>
-                        `;
-                    } else if (categoryName === 'secure') {
-                        progressText.innerHTML = `
-                            <span>${category.allocated.toFixed(0)} allocated</span>
-                            <span>${category.percentage}% of income</span>
-                        `;
-                    } else if (categoryName === 'stash') {
-                        progressText.innerHTML = `
-                            <span>${category.allocated.toFixed(0)} protected</span>
-                            <span>${category.percentage}% of income</span>
-                        `;
+                const categoryElement = document.querySelector(`.budget-category.${categoryName}`);
+                if (categoryElement) {
+                    const progressFill = categoryElement.querySelector('.progress-fill');
+                    if (progressFill) {
+                        progressFill.style.width = `${progressPercent}%`;
+                        console.log(`✅ Updated ${categoryName} progress bar to ${progressPercent.toFixed(1)}%`);
+                    }
+                    
+                    const progressText = categoryElement.querySelector('.progress-text');
+                    if (progressText) {
+                        if (categoryName === 'secure') {
+                            progressText.innerHTML = `
+                                <span>$${category.used.toFixed(0)} allocated</span>
+                                <span>${category.percentage}% of income</span>
+                            `;
+                        } else if (categoryName === 'sustain') {
+                            progressText.innerHTML = `
+                                <span>$${category.used.toFixed(0)} used this month</span>
+                                <span>${category.percentage}% of income</span>
+                            `;
+                        } else if (categoryName === 'spend') {
+                            progressText.innerHTML = `
+                                <span>$${category.used.toFixed(0)} enjoyed so far</span>
+                                <span>${category.percentage}% of income</span>
+                            `;
+                        } else if (categoryName === 'stash') {
+                            progressText.innerHTML = `
+                                <span>$${category.used.toFixed(0)} protected</span>
+                                <span>${category.percentage}% of income</span>
+                            `;
+                        }
+                        console.log(`✅ Updated ${categoryName} text: $${category.used.toFixed(0)} of $${category.allocated.toFixed(0)}`);
                     }
                 }
             });
             
-            console.log('✅ Budget progress bars updated in real-time');
+            console.log('✅ All budget progress bars updated. Current spend category:', appState.categories.spend);
         }
 
         function expandCategory(categoryType) {
-            // Haptic feedback for interaction
             triggerHaptic('medium');
-            
-            // Add expansion functionality here
             console.log(`Expanding category: ${categoryType}`);
-            
-            // Future: Show detailed breakdown, editing options, historical data
             showToast(`📊 ${categoryType} details coming soon!`, 'success');
         }
 
         function updateDailyFlowCalculation() {
-            // Calculate remaining in spend category
-            const spendRemaining = appState.categories.spend.allocated - appState.categories.spend.used;
-            
-            // Calculate days remaining in month (simplified to 11 for demo)
+            const spendRemaining = Math.max(0, appState.categories.spend.allocated - appState.categories.spend.used);
             const daysRemaining = 11;
-            
-            // Calculate daily flow
             const newDailyFlow = Math.max(0, spendRemaining / daysRemaining);
             
-            // Update state
-            appState.dailyFlow = newDailyFlow;
+            console.log('🧮 Daily Flow Calculation:', {
+                spendAllocated: appState.categories.spend.allocated,
+                spendUsed: appState.categories.spend.used,
+                spendRemaining: spendRemaining,
+                daysRemaining: daysRemaining,
+                newDailyFlow: newDailyFlow.toFixed(2)
+            });
             
-            // Update displays across all tabs
+            appState.dailyFlow = newDailyFlow;
             updateDailyFlowDisplay();
             
-            // Update Tab 3 daily preview section
             const dailyAmountElement = document.querySelector('.daily-preview .daily-amount');
             if (dailyAmountElement) {
-                dailyAmountElement.textContent = `${newDailyFlow.toFixed(2)}`;
+                dailyAmountElement.textContent = `$${newDailyFlow.toFixed(2)}`;
             }
             
-            // Update calculation breakdown
             const calculationBreakdown = document.querySelector('.calculation-breakdown');
             if (calculationBreakdown) {
                 calculationBreakdown.innerHTML = `
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">How we calculate this:</div>
                     <div class="calculation-line">
                         <span>Spend category remaining:</span>
-                        <span>${spendRemaining.toFixed(0)}</span>
+                        <span>$${spendRemaining.toFixed(0)}</span>
                     </div>
                     <div class="calculation-line">
                         <span>Days left in month:</span>
@@ -1383,32 +1369,26 @@
                     </div>
                     <div class="calculation-line">
                         <span>Your daily freedom:</span>
-                        <span>${newDailyFlow.toFixed(2)}</span>
+                        <span>$${newDailyFlow.toFixed(2)}</span>
                     </div>
                 `;
             }
             
-            console.log('✅ Daily flow recalculated and Tab 3 updated:', {
-                spendRemaining: spendRemaining.toFixed(2),
-                daysRemaining: daysRemaining,
-                dailyFlow: newDailyFlow.toFixed(2)
-            });
+            console.log('✅ Daily flow recalculated and all displays updated');
         }
 
         // ===== QUICK SPENDING ACTIONS (TAB 1) =====
         function quickSpend(amount, description) {
             triggerHaptic('medium');
             
-            console.log(`💸 Processing purchase: ${description} for ${amount}`);
+            console.log(`💸 Processing purchase: ${description} for $${amount}`);
             console.log('📊 Before purchase - Spend category:', appState.categories.spend);
             
-            // Update state - add to spend category used amount
             appState.todaySpent += amount;
             appState.categories.spend.used += amount;
             
             console.log('📊 After purchase - Spend category:', appState.categories.spend);
             
-            // Add transaction
             const transaction = {
                 id: Date.now(),
                 amount: amount,
@@ -1418,21 +1398,16 @@
             };
             appState.transactions.unshift(transaction);
             
-            // Recalculate daily flow based on new spending
             updateDailyFlowCalculation();
-            
-            // Update all displays
             updateTransactionsList();
             updateBudgetProgress();
             
-            // Show success message
             if (appState.dailyFlow >= 0) {
                 showToast(`🎉 ${description} - Guilt-free purchase confirmed!`, 'success');
             } else {
                 showToast(`💛 ${description} - Using tomorrow's flow, totally fine!`, 'warning');
             }
             
-            // Celebrate the flow display
             celebrateFlow();
         }
 
@@ -1456,13 +1431,11 @@
         function updateDailyFlowDisplay() {
             const flowAmount = Math.max(0, appState.dailyFlow).toFixed(2);
             
-            // Update Tab 1 display
             const tab1Display = document.getElementById('daily-flow-amount');
             if (tab1Display) {
                 tab1Display.textContent = `$${flowAmount}`;
             }
             
-            // Update Tab 2 display
             const tab2Display = document.getElementById('tab2-daily-flow');
             if (tab2Display) {
                 tab2Display.textContent = `$${flowAmount} left guilt-free today!`;
@@ -1509,7 +1482,7 @@
             triggerHaptic('light');
             const amount = prompt('Enter custom amount:');
             if (amount && !isNaN(amount) && parseFloat(amount) > 0) {
-                quickSpend(parseFloat(amount), `Custom Purchase 💳 (${parseFloat(amount).toFixed(2)})`);
+                quickSpend(parseFloat(amount), `Custom Purchase 💳 ($${parseFloat(amount).toFixed(2)})`);
             } else if (amount !== null) {
                 showToast('Please enter a valid amount greater than 0', 'warning');
             }
@@ -1538,7 +1511,6 @@
                     addAIMessage(`You: ${message}`, 'user');
                     input.value = '';
                     
-                    // Simulate AI response
                     setTimeout(() => {
                         generateAIResponse(message);
                     }, 1000);
@@ -1592,14 +1564,6 @@
             }
         }
 
-        // ===== UTILITY FUNCTIONS =====
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD'
-            }).format(amount);
-        }
-
         // ===== ERROR HANDLING =====
         window.onerror = function(msg, url, lineNo, columnNo, error) {
             console.error('App Error:', {
@@ -1613,14 +1577,6 @@
             showToast('Something went wrong. Please refresh the app.', 'warning');
             return false;
         };
-
-        // ===== SERVICE WORKER REGISTRATION (PWA) =====
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                // Service worker registration would go here for PWA functionality
-                console.log('PWA capability detected');
-            });
-        }
     </script>
 </body>
 </html>
