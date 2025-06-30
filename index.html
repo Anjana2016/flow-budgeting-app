@@ -986,6 +986,13 @@
                         <div class="quick-add-price">~$25.00</div>
                     </div>
                 </div>
+                
+                <!-- Custom Amount Button -->
+                <button class="quick-add-btn haptic-light" onclick="showCustomAmount()" style="width: 100%; margin-top: 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 16px; cursor: pointer; color: var(--text-primary); font-family: inherit;">
+                    <span style="font-size: 24px; margin-bottom: 8px; display: block;">➕</span>
+                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">Custom Amount</div>
+                    <div style="font-size: 11px; color: var(--text-secondary);">Anything Goes!</div>
+                </button>
             </div>
 
             <!-- Today's Activity -->
@@ -1222,12 +1229,12 @@
         // ===== APP STATE MANAGEMENT =====
         let appState = {
             dailyFlow: 46.45,
-            todaySpent: 23.50,
+            todaySpent: 0, // Reset to 0 for accurate tracking
             monthlyIncome: 3200,
             categories: {
                 secure: { allocated: 1680, used: 1680, percentage: 35 },
                 sustain: { allocated: 720, used: 562, percentage: 15 },
-                spend: { allocated: 1440, used: 936, percentage: 30 },
+                spend: { allocated: 1440, used: 936, percentage: 30 }, // Starting with some spent already
                 stash: { allocated: 960, used: 960, percentage: 20 }
             },
             transactions: [],
@@ -1237,11 +1244,16 @@
 
         // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Initializing Flow Budgeting App v2.2-tab3-dev');
+            console.log('📊 Initial app state:', appState);
+            
+            // Initialize all displays
+            updateDailyFlowCalculation(); // This will set the correct daily flow
             updateDailyFlowDisplay();
             updateTransactionsList();
             updateBudgetProgress();
-            updateDailyFlowCalculation();
-            console.log('🎉 Flow Budgeting App v2.2-tab3-dev initialized with real-time 4 S\'s Budget System');
+            
+            console.log('✅ App fully initialized with real-time 4 S\'s Budget System');
         });
 
         // ===== TAB NAVIGATION SYSTEM =====
@@ -1387,9 +1399,14 @@
         function quickSpend(amount, description) {
             triggerHaptic('medium');
             
-            // Update state
+            console.log(`💸 Processing purchase: ${description} for ${amount}`);
+            console.log('📊 Before purchase - Spend category:', appState.categories.spend);
+            
+            // Update state - add to spend category used amount
             appState.todaySpent += amount;
             appState.categories.spend.used += amount;
+            
+            console.log('📊 After purchase - Spend category:', appState.categories.spend);
             
             // Add transaction
             const transaction = {
@@ -1491,8 +1508,10 @@
         function showCustomAmount() {
             triggerHaptic('light');
             const amount = prompt('Enter custom amount:');
-            if (amount && !isNaN(amount) && amount > 0) {
-                quickSpend(parseFloat(amount), `Custom Purchase 💳`);
+            if (amount && !isNaN(amount) && parseFloat(amount) > 0) {
+                quickSpend(parseFloat(amount), `Custom Purchase 💳 (${parseFloat(amount).toFixed(2)})`);
+            } else if (amount !== null) {
+                showToast('Please enter a valid amount greater than 0', 'warning');
             }
         }
 
