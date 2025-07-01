@@ -146,7 +146,7 @@
                                 stroke="url(#progressGradient)" stroke-width="8" 
                                 stroke-linecap="round"
                                 stroke-dasharray="314" 
-                                stroke-dashoffset="157"
+                                stroke-dashoffset="69"
                                 style="transition: stroke-dashoffset 0.5s ease;"/>
                         <defs>
                             <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -158,7 +158,7 @@
                     
                     <!-- Central Amount Display -->
                     <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <div id="daily-flow" class="text-3xl font-bold text-emerald-300 cursor-pointer hover-scale">$46</div>
+                        <div id="daily-flow" class="text-3xl font-bold text-emerald-300 cursor-pointer hover-scale">$22</div>
                         <div id="flow-label" class="text-sm text-slate-400">Guilt-Free Today</div>
                         <div id="stash-indicator" class="text-xs text-orange-400 hidden">Emergency Mode</div>
                     </div>
@@ -166,10 +166,10 @@
                 
                 <div class="mt-4 text-center">
                     <div id="spending-status" class="text-sm text-slate-300">
-                        <span id="spent-today">$26.50</span> spent today
+                        <span id="spent-today">$0.00</span> spent today
                     </div>
                     <div id="tomorrow-impact" class="text-xs text-slate-500 mt-1">
-                        Tomorrow: $48.50 (+$2 bonus!)
+                        Tomorrow: $22 (standard pace)
                     </div>
                 </div>
             </div>
@@ -503,11 +503,11 @@
                 }
             },
             
-            // PRESERVED: Transaction system
+            // PRESERVED: Transaction system (cleared for testing)
             transactions: [
-                { amount: 5.50, description: 'Morning coffee', time: '09:15 AM', category: 'spend' },
-                { amount: 12.75, description: 'Lunch', time: '12:30 PM', category: 'spend' },
-                { amount: 8.25, description: 'Snack', time: '03:45 PM', category: 'spend' }
+                { amount: 5, description: 'Yesterday: Morning coffee', time: 'Yesterday', category: 'spend' },
+                { amount: 15, description: 'Yesterday: Lunch', time: 'Yesterday', category: 'spend' },
+                { amount: 10, description: 'Yesterday: Snack', time: 'Yesterday', category: 'spend' }
             ]
         };
 
@@ -523,12 +523,12 @@
             
             if (spendRemaining > 0) {
                 // Normal mode: use SPEND category
-                const dailyBudget = (spendRemaining - appState.todaySpent) / appState.daysLeft;
+                const dailyBudget = spendRemaining / appState.daysLeft;
                 appState.dailyFlow = roundToNearestFive(Math.max(0, dailyBudget));
                 appState.stashActive = false;
             } else if (stashRemaining > 0) {
                 // Emergency mode: auto-activate STASH
-                const dailyBudget = (stashRemaining - appState.todaySpent) / appState.daysLeft;
+                const dailyBudget = stashRemaining / appState.daysLeft;
                 appState.dailyFlow = roundToNearestFive(Math.max(0, dailyBudget));
                 appState.stashActive = true;
                 
@@ -542,6 +542,7 @@
                 showToast("🚨 All budgets depleted - wait for next month", "error");
             }
             
+            console.log(`💰 Daily flow calculated: ${appState.dailyFlow} (${appState.stashActive ? 'STASH' : 'SPEND'} mode)`);
             return appState.dailyFlow;
         }
 
@@ -625,20 +626,28 @@
         // ================================================================
 
         function addExpense(amount, description = '') {
+            console.log(`💸 Adding expense: ${amount} - ${description}`);
+            
             // NEW: Round to nearest $5 (Flow requirement)
             const roundedAmount = roundToNearestFive(amount);
+            console.log(`💰 Rounded to: ${roundedAmount}`);
             
             // PRESERVED: Update today's spending
+            const oldTodaySpent = appState.todaySpent;
             appState.todaySpent += roundedAmount;
+            console.log(`📊 Today spent: ${oldTodaySpent} → ${appState.todaySpent}`);
             
             // NEW: Determine which category to use
             let targetCategory = 'spend';
             if (appState.stashActive) {
                 targetCategory = 'stash';
             }
+            console.log(`🎯 Using category: ${targetCategory}`);
             
             // PRESERVED: Update category usage
+            const oldCategoryUsed = appState.categories[targetCategory].used;
             appState.categories[targetCategory].used += roundedAmount;
+            console.log(`📈 ${targetCategory} used: ${oldCategoryUsed} → ${appState.categories[targetCategory].used}`);
             
             // PRESERVED: Add to transactions
             const transaction = {
@@ -655,7 +664,10 @@
             }
             
             // PRESERVED: Recalculate and update display
+            const oldDailyFlow = appState.dailyFlow;
             calculateDailyFlow();
+            console.log(`🔄 Daily flow: ${oldDailyFlow} → ${appState.dailyFlow}`);
+            
             updateDisplay();
             
             // NEW: Check for STASH activation
@@ -669,7 +681,14 @@
                 navigator.vibrate(50);
             }
             
-            console.log(`✅ Expense processed: $${roundedAmount} via ${targetCategory}`);
+            console.log(`✅ Expense processed successfully`);
+            console.log(`📊 Current state:`, {
+                todaySpent: appState.todaySpent,
+                dailyFlow: appState.dailyFlow,
+                spendUsed: appState.categories.spend.used,
+                spendAllocated: appState.categories.spend.allocated,
+                spendRemaining: appState.categories.spend.allocated - appState.categories.spend.used
+            });
         }
 
         function showContextualMessage(amount) {
@@ -704,8 +723,11 @@
             const stashIndicator = document.getElementById('stash-indicator');
             const spentTodayElement = document.getElementById('spent-today');
             
+            // Calculate today's remaining budget
+            const todayRemaining = Math.max(0, appState.dailyFlow - appState.todaySpent);
+            
             if (dailyFlowElement) {
-                dailyFlowElement.textContent = `$${appState.dailyFlow}`;
+                dailyFlowElement.textContent = `${todayRemaining}`;
             }
             
             if (flowLabelElement) {
@@ -722,8 +744,10 @@
             }
             
             if (spentTodayElement) {
-                spentTodayElement.textContent = `$${appState.todaySpent}`;
+                spentTodayElement.textContent = `${appState.todaySpent.toFixed(2)}`;
             }
+            
+            console.log(`🎯 Hero updated: ${todayRemaining} remaining today (daily budget: ${appState.dailyFlow}, spent: ${appState.todaySpent})`);
         }
 
         function updateProgressRing() {
@@ -737,8 +761,12 @@
             
             circle.style.strokeDashoffset = offset;
             
+            console.log(`🔄 Progress ring: ${usagePercent.toFixed(1)}% usage (${spendCategory.used}/${spendCategory.allocated})`);
+            
             // Change color based on usage
-            if (usagePercent >= 90) {
+            if (appState.stashActive) {
+                circle.style.stroke = '#f59e0b'; // Orange for emergency mode
+            } else if (usagePercent >= 90) {
                 circle.style.stroke = '#f59e0b'; // Orange warning
             } else if (usagePercent >= 100) {
                 circle.style.stroke = '#ef4444'; // Red over-budget
@@ -755,45 +783,60 @@
             const tomorrowBudget = roundToNearestFive(spendRemaining / (appState.daysLeft - 1));
             const todayRemaining = Math.max(0, appState.dailyFlow - appState.todaySpent);
             
+            console.log(`🌅 Tomorrow calculation: remaining=${spendRemaining}, days=${appState.daysLeft-1}, tomorrow=${tomorrowBudget}, todayLeft=${todayRemaining}`);
+            
             if (todayRemaining > 0) {
-                tomorrowElement.textContent = `Tomorrow: $${tomorrowBudget + todayRemaining} (+$${todayRemaining} bonus!)`;
+                tomorrowElement.textContent = `Tomorrow: ${tomorrowBudget} (${todayRemaining > 0 ? `+${todayRemaining} if you save today` : 'standard pace'})`;
                 tomorrowElement.className = 'text-xs text-emerald-400 mt-1';
-            } else {
-                tomorrowElement.textContent = `Tomorrow: $${Math.max(0, tomorrowBudget)} (adjusted)`;
+            } else if (appState.todaySpent > appState.dailyFlow) {
+                const overspend = appState.todaySpent - appState.dailyFlow;
+                tomorrowElement.textContent = `Tomorrow: ${Math.max(0, tomorrowBudget)} (adjusted for ${overspend} overspend)`;
                 tomorrowElement.className = 'text-xs text-orange-400 mt-1';
+            } else {
+                tomorrowElement.textContent = `Tomorrow: ${tomorrowBudget} (standard pace)`;
+                tomorrowElement.className = 'text-xs text-slate-400 mt-1';
             }
         }
 
         function updateBudgetTab() {
+            console.log('📊 Updating budget tab...');
+            
             // Update budget category displays
             Object.keys(appState.categories).forEach(categoryKey => {
                 const category = appState.categories[categoryKey];
                 
                 // Update amounts
                 const amountElement = document.getElementById(`${categoryKey}-amount`);
-                if (amountElement) amountElement.textContent = `$${category.allocated}`;
+                if (amountElement) {
+                    amountElement.textContent = `${category.allocated}`;
+                }
                 
                 // Update percentages
                 const percentageElement = document.getElementById(`${categoryKey}-percentage`);
-                if (percentageElement) percentageElement.textContent = `${category.percentage}%`;
+                if (percentageElement) {
+                    percentageElement.textContent = `${category.percentage}%`;
+                }
                 
                 // Update progress bars
                 const progressElement = document.getElementById(`${categoryKey}-progress`);
                 if (progressElement) {
                     const percentage = category.allocated > 0 ? (category.used / category.allocated) * 100 : 0;
                     progressElement.style.width = `${Math.min(percentage, 100)}%`;
+                    console.log(`📈 ${categoryKey}: ${percentage.toFixed(1)}% (${category.used}/${category.allocated})`);
                 }
                 
                 // Update usage text
                 const usedElement = document.getElementById(`${categoryKey}-used`);
                 if (usedElement) {
                     if (categoryKey === 'save') {
-                        usedElement.textContent = `$${category.allocated} allocated (always accumulates)`;
+                        usedElement.textContent = `${category.allocated} allocated (always accumulates)`;
                     } else {
-                        usedElement.textContent = `$${category.used} used this month`;
+                        usedElement.textContent = `${category.used} used this month`;
                     }
                 }
             });
+            
+            console.log('✅ Budget tab updated');
         }
 
         function updateTransactionsList() {
@@ -1035,7 +1078,33 @@
             switchProfile,
             switchTab,
             getState: () => appState,
-            getProfiles: () => FLOW_PROFILES
+            getProfiles: () => FLOW_PROFILES,
+            
+            // Test functions
+            testExpense: (amount = 5) => {
+                console.log(`🧪 Test: Adding ${amount} expense`);
+                addExpense(amount, `Test expense ${amount}`);
+            },
+            
+            resetTodaySpent: () => {
+                console.log(`🔄 Resetting today's spending from ${appState.todaySpent} to $0`);
+                appState.todaySpent = 0;
+                updateDisplay();
+            },
+            
+            showCurrentState: () => {
+                console.log('📊 CURRENT STATE:', {
+                    todaySpent: appState.todaySpent,
+                    dailyFlow: appState.dailyFlow,
+                    daysLeft: appState.daysLeft,
+                    categories: Object.fromEntries(
+                        Object.entries(appState.categories).map(([key, cat]) => [
+                            key, 
+                            { used: cat.used, allocated: cat.allocated, remaining: cat.allocated - cat.used }
+                        ])
+                    )
+                });
+            }
         };
 
         console.log('💚 Flow Budgeting System v2.4 - Flow System Complete!');
