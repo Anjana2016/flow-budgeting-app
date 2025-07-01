@@ -70,12 +70,35 @@
         .stash-active {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
+
+        /* Bottom Navigation Enhancement */
+        .touch-manipulation {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* Ensure proper button accessibility */
+        button {
+            cursor: pointer;
+            outline: none;
+        }
+        
+        button:focus {
+            outline: 2px solid rgba(16, 185, 129, 0.5);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body class="min-h-screen text-white font-sans">
     <div class="bg-animation"></div>
     
-    <div class="container max-w-md mx-auto px-4 py-6 relative z-10">
+    <div class="container max-w-md mx-auto px-4 py-6 pb-24 relative z-10">
         <!-- Header with greeting -->
         <header class="mb-8">
             <div class="flex justify-between items-center mb-2">
@@ -332,49 +355,49 @@
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/80 backdrop-blur-lg border-t border-white/10">
-        <div class="max-w-md mx-auto px-4 py-2">
-            <div class="flex justify-around">
+    <!-- Bottom Navigation - Fixed Accessibility -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-t border-white/10 z-50">
+        <div class="max-w-md mx-auto px-2 py-3 safe-area-bottom">
+            <div class="flex justify-around items-center">
                 <button id="nav-guilt-free" onclick="switchTab('guilt-free')" 
-                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300 min-w-[60px] min-h-[60px] touch-manipulation">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
-                    <span class="text-xs">Guilt-Free</span>
+                    <span class="text-xs font-medium">Home</span>
                 </button>
                 
                 <button id="nav-budget" onclick="switchTab('budget')" 
-                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                     </svg>
-                    <span class="text-xs">Budget</span>
+                    <span class="text-xs font-medium">Budget</span>
                 </button>
                 
                 <button id="nav-insights" onclick="switchTab('insights')" 
-                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                     </svg>
-                    <span class="text-xs">Insights</span>
+                    <span class="text-xs font-medium">Insights</span>
                 </button>
                 
                 <button id="nav-ai" onclick="switchTab('ai')" 
-                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                     </svg>
-                    <span class="text-xs">AI</span>
+                    <span class="text-xs font-medium">AI</span>
                 </button>
                 
                 <button id="nav-settings" onclick="switchTab('settings')" 
-                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
-                    <span class="text-xs">Settings</span>
+                    <span class="text-xs font-medium">Settings</span>
                 </button>
             </div>
         </div>
@@ -808,30 +831,44 @@
         // ================================================================
 
         function switchTab(tabName) {
+            console.log(`🔄 Switching to tab: ${tabName}`);
+            
             // Hide all tab content
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.add('hidden');
             });
             
             // Show selected tab
-            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            const targetTab = document.getElementById(`tab-${tabName}`);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+                console.log(`✅ Tab ${tabName} now visible`);
+            } else {
+                console.error(`❌ Tab ${tabName} not found`);
+            }
             
             // Update navigation state
             document.querySelectorAll('[id^="nav-"]').forEach(nav => {
-                nav.className = 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white';
+                nav.className = 'flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation';
             });
             
             // Highlight active tab
             const activeNav = document.getElementById(`nav-${tabName}`);
             if (activeNav) {
                 if (tabName === 'guilt-free') {
-                    activeNav.className = 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300';
+                    activeNav.className = 'flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300 min-w-[60px] min-h-[60px] touch-manipulation';
                 } else {
-                    activeNav.className = 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-blue-500/30 text-blue-300';
+                    activeNav.className = 'flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 bg-blue-500/30 text-blue-300 min-w-[60px] min-h-[60px] touch-manipulation';
                 }
+                console.log(`✅ Navigation updated for ${tabName}`);
             }
             
             appState.currentTab = tabName;
+            
+            // Add haptic feedback for tab switches
+            if (navigator.vibrate) {
+                navigator.vibrate(30);
+            }
         }
 
         // ================================================================
@@ -926,12 +963,15 @@
             calculateDailyFlow();
             updateDisplay();
             
+            // Ensure correct tab is displayed and navigation is set
+            switchTab('guilt-free');
+            
             console.log('✅ Flow system initialized successfully');
             console.log('💰 Flow allocations:', {
-                secure: `$${appState.categories.secure.allocated} (${appState.categories.secure.percentage}%)`,
-                save: `$${appState.categories.save.allocated} (${appState.categories.save.percentage}%)`,
-                spend: `$${appState.categories.spend.allocated} (${appState.categories.spend.percentage}%)`,
-                stash: `$${appState.categories.stash.allocated} (${appState.categories.stash.percentage}%)`
+                secure: `${appState.categories.secure.allocated} (${appState.categories.secure.percentage}%)`,
+                save: `${appState.categories.save.allocated} (${appState.categories.save.percentage}%)`,
+                spend: `${appState.categories.spend.allocated} (${appState.categories.spend.percentage}%)`,
+                stash: `${appState.categories.stash.allocated} (${appState.categories.stash.percentage}%)`
             });
         }
 
@@ -948,12 +988,45 @@
             }
         });
 
+        // Add touch event handlers for better mobile compatibility
+        function addTouchHandlers() {
+            const navButtons = ['nav-guilt-free', 'nav-budget', 'nav-insights', 'nav-ai', 'nav-settings'];
+            const tabNames = ['guilt-free', 'budget', 'insights', 'ai', 'settings'];
+            
+            navButtons.forEach((buttonId, index) => {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    // Add touchstart event as backup
+                    button.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        switchTab(tabNames[index]);
+                    }, { passive: false });
+                    
+                    // Add click event as primary
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        switchTab(tabNames[index]);
+                    });
+                }
+            });
+            
+            console.log('✅ Touch handlers added for navigation');
+        }
+
         // Start the app
-        document.addEventListener('DOMContentLoaded', initApp);
+        document.addEventListener('DOMContentLoaded', function() {
+            initApp();
+            addTouchHandlers();
+        });
+        
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initApp);
+            document.addEventListener('DOMContentLoaded', function() {
+                initApp();
+                addTouchHandlers();
+            });
         } else {
             initApp();
+            addTouchHandlers();
         }
 
         // Make functions available globally for testing
