@@ -2,1581 +2,970 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>💚 Flow Budgeting - Your Financial Freedom</title>
-    
-    <!-- 
-    VERSION: 2.2-stable ✅
-    STATUS: STABLE BASELINE WITH 3 COMPLETE TABS
-    DATE: June 29, 2025
-    
-    STABLE FEATURES:
-    ✅ Tab 1 (Guilt-Free Zone) - Complete with celebrations, real-time calculations
-    ✅ Tab 2 (Lightning-Fast Expense Entry) - Complete with sub-3-second logging, custom entry
-    ✅ Tab 3 (4 S's Budget System) - Revolutionary budget categories with progress tracking
-    ✅ Cross-Tab Synchronization - Real-time updates across all tabs
-    ✅ AI Chat Integration - Contextual intelligence across tabs
-    ✅ 5-Tab Navigation - Smooth transitions with proper state management
-    ✅ Design Consistency - Exact colors and patterns from reference files
-    
-    KNOWN DEFECTS (DOCUMENTED IN DEFECT LOG):
-    🐛 DEF-001: Daily flow deduction amounts (critical)
-    🐛 DEF-002: Progress bar text updates (critical)
-    
-    NEXT DEVELOPMENT:
-    - Tab 4: Analytics and insights dashboard
-    - Tab 5: Settings and profile management
-    - Defect resolution when prioritized
-    
-    ROLLBACK INSTRUCTIONS:
-    This is the stable checkpoint with 3 working tabs.
-    Use this version for any rollback needs during Tab 4/5 development.
-    -->
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Budgeting - v2.4 Flow System Complete</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* ===== CSS VARIABLES - EXACT REFERENCE COMPLIANCE ===== */
-        :root {
-            /* Background System */
-            --dark-bg: #0f0f1a;
-            
-            /* Glass Effects */
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.06);
-            
-            /* 4 S's Category Gradients - EXACT FROM REFERENCE */
-            --secure-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            --sustain-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            --spend-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            --stash-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            
-            /* Category Colors */
-            --accent-red: #ef4444;
-            --accent-amber: #f59e0b;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
-            
-            /* Typography */
-            --text-primary: #f8fafc;
-            --text-secondary: rgba(248, 250, 252, 0.7);
-            --text-muted: rgba(248, 250, 252, 0.5);
-            
-            /* Shadows & Effects */
-            --shadow-subtle: 0 4px 16px rgba(99, 102, 241, 0.15);
-            --shadow-medium: 0 8px 25px rgba(99, 102, 241, 0.2);
-            --shadow-glow: 0 12px 32px rgba(16, 185, 129, 0.3);
-            --shadow-ai: 0 12px 32px rgba(99, 102, 241, 0.4);
-            
-            /* Animation System */
-            --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* ===== GLOBAL STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* ===== ANIMATED BACKGROUND ===== */
+        /* Background animation */
         .bg-animation {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
             background: linear-gradient(45deg, #0f0f1a, #1a1a2e, #16213e, #1a1a2e);
             background-size: 400% 400%;
-            animation: subtleGradientShift 25s ease infinite;
+            animation: gradientShift 15s ease infinite;
+            z-index: -1;
         }
-
-        @keyframes subtleGradientShift {
+        
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* ===== MAIN APP CONTAINER ===== */
-        .app-container {
-            max-width: 400px;
-            margin: 0 auto;
-            min-height: 100vh;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* ===== TAB CONTENT SYSTEM ===== */
-        .tab-content {
-            padding: 20px;
-            padding-bottom: 120px;
-            min-height: 100vh;
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: slideInUp 0.5s var(--animation-timing);
-        }
-
-        @keyframes slideInUp {
-            from { 
-                transform: translateY(20px); 
-                opacity: 0; 
-            }
-            to { 
-                transform: translateY(0); 
-                opacity: 1; 
-            }
-        }
-
-        /* ===== SHARED GLASS CARD SYSTEM ===== */
+        
+        /* Glass morphism effects */
         .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-subtle);
-            transition: all 0.3s var(--animation-timing);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        /* Progress ring animation */
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        
+        /* Hover effects */
+        .hover-scale {
+            transition: transform 0.2s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Pulse animation for notifications */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
         }
 
-        .glass-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        /* ===== LOADING STATES ===== */
-        .loading-state {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 60vh;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 18px;
-            gap: 16px;
-        }
-
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--glass-border);
-            border-top: 3px solid var(--accent-green);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* ===== TAB 1: GUILT-FREE ZONE STYLES ===== */
-        .hero-section {
-            text-align: center;
-            margin-bottom: 32px;
-            animation: slideInDown 0.8s ease-out;
-        }
-
-        @keyframes slideInDown {
-            from { transform: translateY(-30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .daily-flow-display {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 32px 24px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-glow);
-            cursor: pointer;
-            transition: all 0.3s var(--animation-timing);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .daily-flow-display:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .daily-flow-display:active {
-            transform: scale(0.98);
-        }
-
-        .daily-flow-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .daily-flow-amount {
-            font-size: 48px;
-            font-weight: 800;
-            color: var(--accent-green);
-            margin-bottom: 8px;
-            text-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
-        }
-
-        .daily-flow-description {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-
-        .celebration-pulse {
-            animation: celebrationPulse 0.6s ease-out;
-        }
-
-        @keyframes celebrationPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Quick Actions Grid */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 32px;
-            animation: slideInUp 0.8s ease-out 0.2s both;
-        }
-
-        .action-btn {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 24px 16px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s var(--animation-timing);
-            text-decoration: none;
-            color: var(--text-primary);
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .action-btn:active {
-            transform: scale(0.98);
-        }
-
-        .action-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .action-label {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .action-desc {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        /* ===== TAB 2: EXPENSE ENTRY STYLES ===== */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 28px;
-            padding: 20px 24px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            animation: slideInDown 0.8s ease-out;
-        }
-
-        .header-info {
-            flex: 1;
-        }
-
-        .tab-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .quick-status {
-            font-size: 14px;
-            color: var(--accent-green);
-            font-weight: 500;
-        }
-
-        /* Quick Add Grid */
-        .quick-add-section {
-            margin-bottom: 28px;
-            animation: slideInUp 0.8s ease-out 0.1s both;
-        }
-
-        .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .quick-add-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .quick-add-btn {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 16px 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s var(--animation-timing);
-            color: var(--text-primary);
-        }
-
-        .quick-add-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .quick-add-btn:active {
-            transform: scale(0.98);
-        }
-
-        .quick-add-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .quick-add-label {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .quick-add-price {
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-
-        /* ===== TAB 3: 4 S'S BUDGET SYSTEM ===== */
-        .budget-header {
-            text-align: center;
-            margin-bottom: 32px;
-            animation: slideInDown 0.8s ease-out;
-        }
-
-        .budget-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .budget-subtitle {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        /* Income Overview */
-        .income-overview {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 28px;
-            text-align: center;
-            animation: slideInUp 0.8s ease-out 0.1s both;
-        }
-
-        .income-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-        }
-
-        .income-amount {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .income-period {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* Budget Categories */
-        .budget-flow {
-            animation: slideInUp 0.8s ease-out 0.2s both;
-        }
-
-        .budget-category {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 20px;
-            cursor: pointer;
-            transition: all 0.3s var(--animation-timing);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .budget-category:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .budget-category:active {
-            transform: scale(0.99);
-        }
-
-        /* Category Headers */
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .category-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 600;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .secure .category-icon { background: var(--secure-gradient); }
-        .sustain .category-icon { background: var(--sustain-gradient); }
-        .spend .category-icon { background: var(--spend-gradient); }
-        .stash .category-icon { background: var(--stash-gradient); }
-
-        .category-info {
-            flex: 1;
-        }
-
-        .category-name {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .category-description {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        /* Category Amounts */
-        .category-amount {
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .secure .category-amount { color: var(--accent-red); }
-        .sustain .category-amount { color: var(--accent-amber); }
-        .spend .category-amount { color: var(--accent-green); }
-        .stash .category-amount { color: var(--accent-blue); }
-
-        /* Progress Bars */
-        .progress-container {
-            margin-bottom: 12px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            border-radius: 20px;
-            transition: width 0.5s ease;
-        }
-
-        .secure .progress-fill { background: var(--secure-gradient); }
-        .sustain .progress-fill { background: var(--sustain-gradient); }
-        .spend .progress-fill { background: var(--spend-gradient); }
-        .stash .progress-fill { background: var(--stash-gradient); }
-
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* Allocation Examples */
-        .allocation-examples {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 12px;
-            opacity: 0.8;
-        }
-
-        .example-item {
+        /* Flow System specific styles */
+        .profile-selector {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 8px 10px;
-            font-size: 11px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        /* Daily Preview */
-        .daily-preview {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border-radius: 20px;
-            padding: 24px;
-            margin-top: 32px;
-            text-align: center;
-            border: 1px solid var(--glass-border);
-            animation: slideInUp 0.8s ease-out 0.3s both;
+        
+        .profile-active {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
-
-        .daily-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .daily-amount {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--accent-green);
-            margin-bottom: 8px;
-        }
-
-        .daily-description {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .calculation-breakdown {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 16px;
-            font-size: 12px;
-            color: var(--text-muted);
-            text-align: left;
-        }
-
-        .calculation-line {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4px;
-        }
-
-        .calculation-line:last-child {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 8px;
-            margin-top: 8px;
-            font-weight: 600;
-            color: var(--accent-green);
-        }
-
-        /* ===== NAVIGATION SYSTEM ===== */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px 20px 0 0;
-            padding: 16px 32px 20px;
-            display: flex;
-            gap: 8px;
-            width: 100%;
-            max-width: 400px;
-            z-index: 100;
-        }
-
-        .nav-item {
-            flex: 1;
-            text-align: center;
-            cursor: pointer;
-            padding: 12px 8px;
-            border-radius: 16px;
-            transition: all 0.3s var(--animation-timing);
-            color: var(--text-secondary);
-            font-size: 10px;
-            font-weight: 500;
-            text-decoration: none;
-        }
-
-        .nav-item.active {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            transform: translateY(-2px);
-        }
-
-        .nav-item:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
-        }
-
-        .nav-icon {
-            font-size: 20px;
-            margin-bottom: 4px;
-            display: block;
-        }
-
-        .nav-label {
-            font-size: 10px;
-        }
-
-        /* ===== AI CHAT SYSTEM ===== */
-        .ai-chat-toggle {
-            position: fixed;
-            bottom: 120px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-ai);
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            transition: all 0.3s var(--animation-timing);
-        }
-
-        .ai-chat-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .ai-chat-toggle:active {
-            transform: scale(0.95);
-        }
-
-        .ai-chat-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: none;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .ai-chat-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .ai-chat-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            width: 100%;
-            max-width: 360px;
-            max-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            animation: slideInUp 0.3s ease-out;
-        }
-
-        .ai-chat-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .ai-chat-title {
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .ai-chat-close {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 24px;
-            cursor: pointer;
-            padding: 4px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .ai-chat-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-        }
-
-        .ai-chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            min-height: 200px;
-            max-height: 300px;
-        }
-
-        .ai-message {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 12px 16px;
-            margin-bottom: 12px;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        .ai-chat-input-container {
-            padding: 20px;
-            border-top: 1px solid var(--glass-border);
-        }
-
-        .ai-chat-input {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 12px 16px;
-            color: var(--text-primary);
-            font-size: 14px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .ai-chat-input:focus {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .ai-chat-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        /* ===== TOAST NOTIFICATION SYSTEM ===== */
-        .toast {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 16px 24px;
-            color: var(--text-primary);
-            font-size: 14px;
-            font-weight: 500;
-            z-index: 2000;
-            box-shadow: var(--shadow-medium);
-            animation: slideInDown 0.5s ease-out;
-            max-width: 320px;
-            text-align: center;
-        }
-
-        .toast.success {
-            border-color: rgba(16, 185, 129, 0.3);
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .toast.warning {
-            border-color: rgba(245, 158, 11, 0.3);
-            background: rgba(245, 158, 11, 0.1);
-        }
-
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 380px) {
-            .app-container {
-                padding: 0 16px;
-            }
-            
-            .quick-add-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .quick-actions {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== HAPTIC FEEDBACK CLASSES ===== */
-        .haptic-light {
-            /* Triggers light haptic feedback via JavaScript */
-        }
-
-        .haptic-medium {
-            /* Triggers medium haptic feedback via JavaScript */
-        }
-
-        .haptic-heavy {
-            /* Triggers heavy haptic feedback via JavaScript */
+        
+        .stash-active {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
     </style>
 </head>
-<body>
-    <!-- Animated Background -->
+<body class="min-h-screen text-white font-sans">
     <div class="bg-animation"></div>
+    
+    <div class="container max-w-md mx-auto px-4 py-6 relative z-10">
+        <!-- Header with greeting -->
+        <header class="mb-8">
+            <div class="flex justify-between items-center mb-2">
+                <div>
+                    <h1 id="greeting" class="text-xl font-medium">Good morning, Sarah! ☀️</h1>
+                    <p id="time-context" class="text-slate-400 text-sm">Perfect time for a guilt-free coffee</p>
+                </div>
+                <button class="p-2 rounded-full glass-card hover-scale">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Flow Profile Selector -->
+            <div class="mb-4">
+                <div class="flex gap-2 text-xs">
+                    <button id="profile-starting" onclick="switchProfile('starting_out')" 
+                            class="profile-selector px-3 py-1 rounded-full text-emerald-300 profile-active">
+                        Starting Out
+                    </button>
+                    <button id="profile-serious" onclick="switchProfile('getting_serious')" 
+                            class="profile-selector px-3 py-1 rounded-full text-slate-400">
+                        Getting Serious  
+                    </button>
+                    <button id="profile-wealth" onclick="switchProfile('wealth_building')" 
+                            class="profile-selector px-3 py-1 rounded-full text-slate-400">
+                        Wealth Building
+                    </button>
+                </div>
+                <p id="profile-description" class="text-xs text-slate-500 mt-1">Building good habits while enjoying life</p>
+            </div>
+        </header>
 
-    <!-- Main App Container -->
-    <div class="app-container">
-        
-        <!-- TAB 1: GUILT-FREE ZONE -->
-        <div id="tab-guilt-free" class="tab-content active">
-            <div class="hero-section">
-                <div class="daily-flow-display" onclick="celebrateFlow()">
-                    <div class="daily-flow-label">💚 Today's Guilt-Free Amount</div>
-                    <div class="daily-flow-amount" id="daily-flow-amount">$46.45</div>
-                    <div class="daily-flow-description">
-                        This is YOUR money to enjoy guilt-free 🎉
+        <!-- Main content area -->
+        <div id="tab-guilt-free" class="tab-content">
+            <!-- Hero Daily Flow Section -->
+            <div class="text-center mb-8">
+                <div class="relative inline-block">
+                    <!-- Progress Ring -->
+                    <svg class="w-32 h-32 progress-ring" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
+                        <circle id="progress-circle" cx="60" cy="60" r="50" fill="none" 
+                                stroke="url(#progressGradient)" stroke-width="8" 
+                                stroke-linecap="round"
+                                stroke-dasharray="314" 
+                                stroke-dashoffset="157"
+                                style="transition: stroke-dashoffset 0.5s ease;"/>
+                        <defs>
+                            <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#10b981"/>
+                                <stop offset="100%" style="stop-color:#22c55e"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    
+                    <!-- Central Amount Display -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div id="daily-flow" class="text-3xl font-bold text-emerald-300 cursor-pointer hover-scale">$46</div>
+                        <div id="flow-label" class="text-sm text-slate-400">Guilt-Free Today</div>
+                        <div id="stash-indicator" class="text-xs text-orange-400 hidden">Emergency Mode</div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 text-center">
+                    <div id="spending-status" class="text-sm text-slate-300">
+                        <span id="spent-today">$26.50</span> spent today
+                    </div>
+                    <div id="tomorrow-impact" class="text-xs text-slate-500 mt-1">
+                        Tomorrow: $48.50 (+$2 bonus!)
                     </div>
                 </div>
             </div>
 
             <!-- Quick Spend Actions -->
-            <div class="quick-actions">
-                <div class="action-btn haptic-medium" onclick="quickSpend(6.50, 'Coffee Run ☕')">
-                    <span class="action-icon">☕</span>
-                    <div class="action-label">Coffee Run</div>
-                    <div class="action-desc">$6.50</div>
-                </div>
-                <div class="action-btn haptic-medium" onclick="quickSpend(14.75, 'Lunch Treat 🍕')">
-                    <span class="action-icon">🍕</span>
-                    <div class="action-label">Lunch Treat</div>
-                    <div class="action-desc">$14.75</div>
-                </div>
-                <div class="action-btn haptic-medium" onclick="quickSpend(4.25, 'Snack Attack 🍿')">
-                    <span class="action-icon">🍿</span>
-                    <div class="action-label">Snack Attack</div>
-                    <div class="action-desc">$4.25</div>
-                </div>
-                <div class="action-btn haptic-light" onclick="showCustomAmount()">
-                    <span class="action-icon">💳</span>
-                    <div class="action-label">Custom Amount</div>
-                    <div class="action-desc">You choose!</div>
-                </div>
-            </div>
-
-            <!-- Streak Display -->
-            <div class="glass-card">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                    <div style="font-size: 32px;">🔥</div>
-                    <div>
-                        <div style="font-size: 18px; font-weight: 700;">5-Day Guilt-Free Streak!</div>
-                        <div style="font-size: 14px; color: var(--text-secondary);">You're absolutely crushing this budget thing ✨</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 2: SPENDING ENTRY -->
-        <div id="tab-spending" class="tab-content">
-            <!-- Header with Daily Flow Display -->
-            <header class="header">
-                <div class="header-info">
-                    <h1 class="tab-title">Add Spending 💸</h1>
-                    <p class="quick-status" id="tab2-daily-flow">$46.45 left guilt-free today!</p>
-                </div>
-                <div style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 8px 12px; font-size: 12px; color: var(--accent-green); font-weight: 600;">
-                    ✅ Pre-approved
-                </div>
-            </header>
-
-            <!-- Lightning Fast Quick Add -->
-            <div class="quick-add-section">
-                <h2 class="section-title">⚡ Lightning Quick Add</h2>
-                <div class="quick-add-grid">
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('coffee', 5.50)">
-                        <span class="quick-add-icon">☕</span>
-                        <div class="quick-add-label">Coffee</div>
-                        <div class="quick-add-price">~$5.50</div>
-                    </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('lunch', 12.00)">
-                        <span class="quick-add-icon">🍕</span>
-                        <div class="quick-add-label">Lunch</div>
-                        <div class="quick-add-price">~$12.00</div>
-                    </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('snack', 3.75)">
-                        <span class="quick-add-icon">🍿</span>
-                        <div class="quick-add-label">Snack</div>
-                        <div class="quick-add-price">~$3.75</div>
-                    </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('gas', 35.00)">
-                        <span class="quick-add-icon">⛽</span>
-                        <div class="quick-add-label">Gas</div>
-                        <div class="quick-add-price">~$35.00</div>
-                    </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('uber', 15.00)">
-                        <span class="quick-add-icon">🚗</span>
-                        <div class="quick-add-label">Ride</div>
-                        <div class="quick-add-price">~$15.00</div>
-                    </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('shopping', 25.00)">
-                        <span class="quick-add-icon">🛍️</span>
-                        <div class="quick-add-label">Shopping</div>
-                        <div class="quick-add-price">~$25.00</div>
-                    </div>
-                </div>
-                
-                <!-- Custom Amount Button -->
-                <button class="quick-add-btn haptic-light" onclick="showCustomAmount()" style="width: 100%; margin-top: 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 16px; cursor: pointer; color: var(--text-primary); font-family: inherit;">
-                    <span style="font-size: 24px; margin-bottom: 8px; display: block;">➕</span>
-                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">Custom Amount</div>
-                    <div style="font-size: 11px; color: var(--text-secondary);">Anything Goes!</div>
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <button onclick="addExpense(5, 'Coffee')" class="glass-card p-4 rounded-2xl hover-scale text-center">
+                    <div class="text-2xl mb-2">☕</div>
+                    <div class="text-lg font-medium">$5</div>
+                    <div class="text-xs text-slate-400">Coffee</div>
+                </button>
+                <button onclick="addExpense(15, 'Lunch')" class="glass-card p-4 rounded-2xl hover-scale text-center">
+                    <div class="text-2xl mb-2">🍕</div>
+                    <div class="text-lg font-medium">$15</div>
+                    <div class="text-xs text-slate-400">Lunch</div>
+                </button>
+                <button onclick="addExpense(25, 'Dinner')" class="glass-card p-4 rounded-2xl hover-scale text-center">
+                    <div class="text-2xl mb-2">🍽️</div>
+                    <div class="text-lg font-medium">$25</div>
+                    <div class="text-xs text-slate-400">Dinner</div>
+                </button>
+                <button onclick="showCustomExpenseModal()" class="glass-card p-4 rounded-2xl hover-scale text-center">
+                    <div class="text-2xl mb-2">💰</div>
+                    <div class="text-lg font-medium">Custom</div>
+                    <div class="text-xs text-slate-400">Any amount</div>
                 </button>
             </div>
 
-            <!-- Today's Activity -->
-            <div class="glass-card">
-                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-                    📊 Today's Activity
-                </h3>
-                <div id="todays-transactions">
-                    <div style="text-align: center; color: var(--text-muted); padding: 20px;">
-                        No spending today - your Daily Flow is fully available! 🎉
+            <!-- Streak Card -->
+            <div class="glass-card p-4 rounded-2xl mb-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl">🔥</span>
+                            <span class="text-lg font-medium">5-Day Streak</span>
+                        </div>
+                        <div class="text-sm text-slate-400">Budget awareness master</div>
                     </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-emerald-300" id="streak-count">5</div>
+                        <div class="text-xs text-slate-500">days</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="glass-card p-4 rounded-2xl">
+                <h3 class="text-lg font-medium mb-4">Recent Spending</h3>
+                <div id="transactions-list" class="space-y-3">
+                    <!-- Transactions will be populated by JavaScript -->
                 </div>
             </div>
         </div>
 
-        <!-- TAB 3: 4 S'S BUDGET SYSTEM -->
-        <div id="tab-budget" class="tab-content">
-            <!-- Budget Header -->
-            <div class="budget-header">
-                <h1 class="budget-title">🎯 Your Budget Flow</h1>
-                <p class="budget-subtitle">The 4 S's that build your financial confidence</p>
-            </div>
+        <!-- Tab 2: Budget Overview (placeholder) -->
+        <div id="tab-budget" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-6">Budget Overview</h2>
+            
+            <!-- Flow Categories Display -->
+            <div class="space-y-4">
+                <!-- SECURE Category -->
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🔒</span>
+                            <div>
+                                <div class="font-medium">Secure</div>
+                                <div class="text-xs text-slate-400">Fixed bills & recurring</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-medium" id="secure-amount">$1,760</div>
+                            <div class="text-xs text-slate-400">55%</div>
+                        </div>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2">
+                        <div id="secure-progress" class="bg-red-500 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                    <div class="text-xs text-slate-400 mt-1" id="secure-used">$1,680 used this month</div>
+                </div>
 
-            <!-- Income Overview -->
-            <div class="income-overview">
-                <div class="income-label">Monthly Income</div>
-                <div class="income-amount">$3,200</div>
-                <div class="income-period">Working for your freedom ✨</div>
-            </div>
+                <!-- SAVE Category -->
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">💎</span>
+                            <div>
+                                <div class="font-medium">Save</div>
+                                <div class="text-xs text-slate-400">Long-term wealth building</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-medium" id="save-amount">$160</div>
+                            <div class="text-xs text-slate-400" id="save-percentage">5%</div>
+                        </div>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2">
+                        <div id="save-progress" class="bg-yellow-500 h-2 rounded-full" style="width: 100%"></div>
+                    </div>
+                    <div class="text-xs text-slate-400 mt-1" id="save-used">$160 allocated (always accumulates)</div>
+                </div>
 
-            <!-- The 4 S's Budget Categories -->
-            <div class="budget-flow">
+                <!-- SPEND Category -->
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">💚</span>
+                            <div>
+                                <div class="font-medium">Spend</div>
+                                <div class="text-xs text-slate-400">Guilt-free daily spending</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-medium" id="spend-amount">$1,120</div>
+                            <div class="text-xs text-slate-400" id="spend-percentage">35%</div>
+                        </div>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2">
+                        <div id="spend-progress" class="bg-emerald-500 h-2 rounded-full" style="width: 78%"></div>
+                    </div>
+                    <div class="text-xs text-slate-400 mt-1" id="spend-used">$876 used this month</div>
+                </div>
+
+                <!-- STASH Category -->
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🛡️</span>
+                            <div>
+                                <div class="font-medium">Stash</div>
+                                <div class="text-xs text-slate-400">Emergency safety net</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-medium" id="stash-amount">$160</div>
+                            <div class="text-xs text-slate-400">5%</div>
+                        </div>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2">
+                        <div id="stash-progress" class="bg-blue-500 h-2 rounded-full" style="width: 25%"></div>
+                    </div>
+                    <div class="text-xs text-slate-400 mt-1" id="stash-used">$40 used this month</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Insights (placeholder) -->
+        <div id="tab-insights" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-6">Your Insights</h2>
+            <div class="glass-card p-6 rounded-2xl text-center">
+                <div class="text-4xl mb-4">📊</div>
+                <div class="text-lg font-medium mb-2">Coming Soon</div>
+                <div class="text-sm text-slate-400">Advanced insights and analytics</div>
+            </div>
+        </div>
+
+        <!-- Tab 4: AI Chat (placeholder) -->
+        <div id="tab-ai" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-6">AI Assistant</h2>
+            <div class="glass-card p-6 rounded-2xl text-center">
+                <div class="text-4xl mb-4">🤖</div>
+                <div class="text-lg font-medium mb-2">Coming Soon</div>
+                <div class="text-sm text-slate-400">Intelligent financial guidance</div>
+            </div>
+        </div>
+
+        <!-- Tab 5: Settings (placeholder) -->
+        <div id="tab-settings" class="tab-content hidden">
+            <h2 class="text-2xl font-bold mb-6">Settings</h2>
+            <div class="space-y-4">
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="font-medium mb-2">Monthly Income</div>
+                    <div class="text-2xl font-bold text-emerald-300">$3,200</div>
+                    <div class="text-xs text-slate-400 mt-1">Last updated: Today</div>
+                </div>
                 
-                <!-- SECURE -->
-                <div class="budget-category secure" onclick="expandCategory('secure')">
-                    <div class="category-header">
-                        <div class="category-icon">🛡️</div>
-                        <div class="category-info">
-                            <div class="category-name">Secure</div>
-                            <div class="category-description">Lock it down - untouchable recurring payments</div>
-                        </div>
-                    </div>
-                    <div class="category-amount">$1,680</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span>$1,680 allocated</span>
-                            <span>35% of income</span>
-                        </div>
-                    </div>
-                    <div class="allocation-examples">
-                        <div class="example-item">🏠 Rent: $1,200</div>
-                        <div class="example-item">📱 Phone: $80</div>
-                        <div class="example-item">📺 Netflix: $15</div>
-                        <div class="example-item">🛡️ Insurance: $385</div>
-                    </div>
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="font-medium mb-2">Current Profile</div>
+                    <div class="text-lg" id="current-profile-display">Starting Out</div>
+                    <div class="text-xs text-slate-400 mt-1">Building good habits while enjoying life</div>
                 </div>
-
-                <!-- SUSTAIN -->
-                <div class="budget-category sustain" onclick="expandCategory('sustain')">
-                    <div class="category-header">
-                        <div class="category-icon">🌱</div>
-                        <div class="category-info">
-                            <div class="category-name">Sustain</div>
-                            <div class="category-description">Keep you going - essentials &amp; necessities</div>
-                        </div>
-                    </div>
-                    <div class="category-amount">$720</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span>$562 used this month</span>
-                            <span>15% of income</span>
-                        </div>
-                    </div>
-                    <div class="allocation-examples">
-                        <div class="example-item">🛒 Groceries: $400</div>
-                        <div class="example-item">⛽ Gas: $120</div>
-                        <div class="example-item">🧽 Household: $80</div>
-                        <div class="example-item">💊 Health: $120</div>
-                    </div>
-                </div>
-
-                <!-- SPEND -->
-                <div class="budget-category spend" onclick="expandCategory('spend')">
-                    <div class="category-header">
-                        <div class="category-icon">💚</div>
-                        <div class="category-info">
-                            <div class="category-name">Spend</div>
-                            <div class="category-description">Live your life - 100% guilt-free zone!</div>
-                        </div>
-                    </div>
-                    <div class="category-amount">$1,440</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span>$936 enjoyed so far</span>
-                            <span>30% of income</span>
-                        </div>
-                    </div>
-                    <div class="allocation-examples">
-                        <div class="example-item">☕ Coffee: $150</div>
-                        <div class="example-item">🍕 Dining: $400</div>
-                        <div class="example-item">🎬 Entertainment: $200</div>
-                        <div class="example-item">🛍️ Shopping: $690</div>
-                    </div>
-                </div>
-
-                <!-- STASH -->
-                <div class="budget-category stash" onclick="expandCategory('stash')">
-                    <div class="category-header">
-                        <div class="category-icon">💎</div>
-                        <div class="category-info">
-                            <div class="category-name">Stash</div>
-                            <div class="category-description">Future you - buffer &amp; emergency protection</div>
-                        </div>
-                    </div>
-                    <div class="category-amount">$960</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span>$960 protected</span>
-                            <span>20% of income</span>
-                        </div>
-                    </div>
-                    <div class="allocation-examples">
-                        <div class="example-item">🛡️ Emergency: $400</div>
-                        <div class="example-item">🏖️ Vacation: $200</div>
-                        <div class="example-item">💰 Buffer: $240</div>
-                        <div class="example-item">📈 Investment: $120</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Daily Spending Preview -->
-            <div class="daily-preview">
-                <h2 class="daily-title">📅 Your Daily Guilt-Free Amount</h2>
-                <div class="daily-amount">$46.45</div>
-                <div class="daily-description">This is what you can spend TODAY without any guilt or worry!</div>
-                
-                <!-- Calculation Breakdown -->
-                <div class="calculation-breakdown">
-                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">How we calculate this:</div>
-                    <div class="calculation-line">
-                        <span>Spend category remaining:</span>
-                        <span>$504</span>
-                    </div>
-                    <div class="calculation-line">
-                        <span>Days left in month:</span>
-                        <span>11 days</span>
-                    </div>
-                    <div class="calculation-line">
-                        <span>Your daily freedom:</span>
-                        <span>$46.45</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 4: INSIGHTS -->
-        <div id="tab-insights" class="tab-content">
-            <div class="loading-state">
-                <div class="loading-spinner"></div>
-                <div>✨ Building your insights dashboard...</div>
-            </div>
-        </div>
-
-        <!-- TAB 5: SETTINGS -->
-        <div id="tab-settings" class="tab-content">
-            <div class="loading-state">
-                <div class="loading-spinner"></div>
-                <div>👤 Setting up your profile...</div>
             </div>
         </div>
     </div>
 
     <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item active" onclick="switchTab('guilt-free')">
-            <span class="nav-icon">💚</span>
-            <span class="nav-label">Flow</span>
-        </a>
-        <a href="#" class="nav-item" onclick="switchTab('spending')">
-            <span class="nav-icon">💸</span>
-            <span class="nav-label">Spend</span>
-        </a>
-        <a href="#" class="nav-item" onclick="switchTab('budget')">
-            <span class="nav-icon">🎯</span>
-            <span class="nav-label">Budget</span>
-        </a>
-        <a href="#" class="nav-item" onclick="switchTab('insights')">
-            <span class="nav-icon">✨</span>
-            <span class="nav-label">Insights</span>
-        </a>
-        <a href="#" class="nav-item" onclick="switchTab('settings')">
-            <span class="nav-icon">👤</span>
-            <span class="nav-label">You</span>
-        </a>
+    <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/80 backdrop-blur-lg border-t border-white/10">
+        <div class="max-w-md mx-auto px-4 py-2">
+            <div class="flex justify-around">
+                <button id="nav-guilt-free" onclick="switchTab('guilt-free')" 
+                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span class="text-xs">Guilt-Free</span>
+                </button>
+                
+                <button id="nav-budget" onclick="switchTab('budget')" 
+                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    <span class="text-xs">Budget</span>
+                </button>
+                
+                <button id="nav-insights" onclick="switchTab('insights')" 
+                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    <span class="text-xs">Insights</span>
+                </button>
+                
+                <button id="nav-ai" onclick="switchTab('ai')" 
+                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    <span class="text-xs">AI</span>
+                </button>
+                
+                <button id="nav-settings" onclick="switchTab('settings')" 
+                        class="flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="text-xs">Settings</span>
+                </button>
+            </div>
+        </div>
     </nav>
 
-    <!-- AI Chat Toggle -->
-    <button class="ai-chat-toggle haptic-medium" onclick="toggleAIChat()">
-        🤖
-    </button>
-
-    <!-- AI Chat Modal -->
-    <div id="ai-chat-modal" class="ai-chat-modal">
-        <div class="ai-chat-container">
-            <div class="ai-chat-header">
-                <h3 class="ai-chat-title">💬 Your Money Coach</h3>
-                <button class="ai-chat-close" onclick="toggleAIChat()">×</button>
-            </div>
-            <div class="ai-chat-messages" id="ai-chat-messages">
-                <div class="ai-message">
-                    Hi! I'm your financial wellness assistant. I can see you have $46.45 available guilt-free today and you're doing great with your budget! How can I help? 💚
-                </div>
-            </div>
-            <div class="ai-chat-input-container">
-                <input type="text" class="ai-chat-input" placeholder="Ask about your budget..." id="ai-chat-input" onkeypress="handleAIChatInput(event)">
+    <!-- Custom Expense Modal -->
+    <div id="custom-expense-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center hidden z-50">
+        <div class="glass-card p-6 rounded-2xl mx-4 w-full max-w-sm">
+            <h3 class="text-lg font-medium mb-4">Add Custom Expense</h3>
+            <input type="number" id="custom-amount" placeholder="Amount" 
+                   class="w-full p-3 rounded-xl bg-slate-800 border border-slate-600 text-white mb-4">
+            <input type="text" id="custom-description" placeholder="Description (optional)" 
+                   class="w-full p-3 rounded-xl bg-slate-800 border border-slate-600 text-white mb-4">
+            <div class="flex gap-3">
+                <button onclick="addCustomExpense()" 
+                        class="flex-1 bg-emerald-600 text-white p-3 rounded-xl font-medium hover:bg-emerald-700">
+                    Add Expense
+                </button>
+                <button onclick="hideCustomExpenseModal()" 
+                        class="flex-1 bg-slate-600 text-white p-3 rounded-xl font-medium hover:bg-slate-700">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>
 
+    <!-- Toast notification container -->
+    <div id="toast-container" class="fixed top-4 left-4 right-4 z-50 pointer-events-none"></div>
+
     <script>
-        // ===== APP STATE MANAGEMENT =====
-        let appState = {
-            dailyFlow: 46.45,
-            todaySpent: 0,
-            monthlyIncome: 3200,
-            categories: {
-                secure: { allocated: 1680, used: 1680, percentage: 35 },
-                sustain: { allocated: 720, used: 562, percentage: 15 },
-                spend: { allocated: 1440, used: 936, percentage: 30 },
-                stash: { allocated: 960, used: 960, percentage: 20 }
+        // 🚀 FLOW BUDGETING SYSTEM v2.4 - Flow System Complete
+        // ================================================================
+        // Integrates Flow methodology with existing Daily Budget System
+        
+        // FLOW PROFILE SYSTEM
+        const FLOW_PROFILES = {
+            starting_out: {
+                name: "Starting Out",
+                description: "Building good habits while enjoying life",
+                savePercentage: 5,   // $160 from $3200
+                spendPercentage: 35, // $1120 from $3200
+                dailyPace: 35
             },
-            transactions: [],
-            currentTab: 'guilt-free',
-            aiChatOpen: false
+            getting_serious: {
+                name: "Getting Serious", 
+                description: "Accelerating wealth building",
+                savePercentage: 10,  // $320 from $3200
+                spendPercentage: 30, // $960 from $3200  
+                dailyPace: 30
+            },
+            wealth_building: {
+                name: "Wealth Building",
+                description: "Maximum wealth accumulation",
+                savePercentage: 20,  // $640 from $3200
+                spendPercentage: 20, // $640 from $3200
+                dailyPace: 20
+            }
         };
 
-        // ===== INITIALIZATION =====
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Initializing Flow Budgeting App v2.2-stable');
-            console.log('📊 Initial app state:', appState);
+        // ENHANCED APP STATE with Flow methodology
+        let appState = {
+            monthlyIncome: 3200,
+            todaySpent: 26.50,  // PRESERVED
+            dailyFlow: 46,      // PRESERVED - will be recalculated
+            daysLeft: 11,       // PRESERVED
+            streakCount: 5,     // PRESERVED
+            currentTab: 'guilt-free',  // PRESERVED
             
-            updateDailyFlowCalculation();
-            updateDailyFlowDisplay();
-            updateTransactionsList();
-            updateBudgetProgress();
+            // NEW: Flow system state
+            currentProfile: "starting_out",
+            stashActive: false,
+            stashWarningShown: false,
             
-            console.log('✅ v2.2-stable initialized - 3 complete tabs with 4 S\'s Budget System');
-        });
-
-        // ===== TAB NAVIGATION SYSTEM =====
-        function switchTab(tabName) {
-            triggerHaptic('light');
-            
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            document.getElementById(`tab-${tabName}`).classList.add('active');
-            event.currentTarget.classList.add('active');
-            
-            appState.currentTab = tabName;
-            
-            if (tabName === 'budget') {
-                initializeBudgetTab();
-            }
-        }
-
-        // ===== TAB 3: BUDGET SYSTEM FUNCTIONALITY =====
-        function initializeBudgetTab() {
-            updateBudgetProgress();
-            updateDailyFlowCalculation();
-            console.log('✅ Tab 3 initialized with current budget state');
-        }
-
-        function updateBudgetProgress() {
-            const categories = ['secure', 'sustain', 'spend', 'stash'];
-            
-            categories.forEach(categoryName => {
-                const category = appState.categories[categoryName];
-                const progressPercent = Math.min((category.used / category.allocated) * 100, 100);
-                
-                const categoryElement = document.querySelector(`.budget-category.${categoryName}`);
-                if (categoryElement) {
-                    const progressFill = categoryElement.querySelector('.progress-fill');
-                    if (progressFill) {
-                        progressFill.style.width = `${progressPercent}%`;
-                        console.log(`✅ Updated ${categoryName} progress bar to ${progressPercent.toFixed(1)}%`);
-                    }
-                    
-                    const progressText = categoryElement.querySelector('.progress-text');
-                    if (progressText) {
-                        if (categoryName === 'secure') {
-                            progressText.innerHTML = `
-                                <span>$${category.used.toFixed(0)} allocated</span>
-                                <span>${category.percentage}% of income</span>
-                            `;
-                        } else if (categoryName === 'sustain') {
-                            progressText.innerHTML = `
-                                <span>$${category.used.toFixed(0)} used this month</span>
-                                <span>${category.percentage}% of income</span>
-                            `;
-                        } else if (categoryName === 'spend') {
-                            progressText.innerHTML = `
-                                <span>$${category.used.toFixed(0)} enjoyed so far</span>
-                                <span>${category.percentage}% of income</span>
-                            `;
-                        } else if (categoryName === 'stash') {
-                            progressText.innerHTML = `
-                                <span>$${category.used.toFixed(0)} protected</span>
-                                <span>${category.percentage}% of income</span>
-                            `;
-                        }
-                        console.log(`✅ Updated ${categoryName} text: $${category.used.toFixed(0)} of $${category.allocated.toFixed(0)}`);
-                    }
+            // UPDATED: Categories with Flow percentages
+            categories: {
+                secure: { 
+                    used: 1680, 
+                    allocated: 1760,  // 55% of $3200
+                    percentage: 55,
+                    name: "Secure",
+                    description: "Fixed bills & recurring payments"
+                },
+                save: { 
+                    used: 160,        // Always accumulates
+                    allocated: 160,   // 5% for starting_out profile
+                    percentage: 5,
+                    name: "Save", 
+                    description: "Long-term wealth building"
+                },
+                spend: { 
+                    used: 876, 
+                    allocated: 1120,  // 35% for starting_out profile
+                    percentage: 35,
+                    name: "Spend",
+                    description: "Guilt-free daily spending"
+                },
+                stash: { 
+                    used: 40, 
+                    allocated: 160,   // 5% of $3200
+                    percentage: 5,
+                    name: "Stash",
+                    description: "Emergency safety net"
                 }
-            });
+            },
             
-            console.log('✅ All budget progress bars updated. Current spend category:', appState.categories.spend);
-        }
+            // PRESERVED: Transaction system
+            transactions: [
+                { amount: 5.50, description: 'Morning coffee', time: '09:15 AM', category: 'spend' },
+                { amount: 12.75, description: 'Lunch', time: '12:30 PM', category: 'spend' },
+                { amount: 8.25, description: 'Snack', time: '03:45 PM', category: 'spend' }
+            ]
+        };
 
-        function expandCategory(categoryType) {
-            triggerHaptic('medium');
-            console.log(`Expanding category: ${categoryType}`);
-            showToast(`📊 ${categoryType} details coming soon!`, 'success');
-        }
+        // ================================================================
+        // FLOW CALCULATION ENGINE (Enhanced existing functions)
+        // ================================================================
 
-        function updateDailyFlowCalculation() {
-            const spendRemaining = Math.max(0, appState.categories.spend.allocated - appState.categories.spend.used);
-            const daysRemaining = 11;
-            const newDailyFlow = Math.max(0, spendRemaining / daysRemaining);
+        function calculateDailyFlow() {
+            const spendCategory = appState.categories.spend;
+            const stashCategory = appState.categories.stash;
+            const spendRemaining = spendCategory.allocated - spendCategory.used;
+            const stashRemaining = stashCategory.allocated - stashCategory.used;
             
-            console.log('🧮 Daily Flow Calculation:', {
-                spendAllocated: appState.categories.spend.allocated,
-                spendUsed: appState.categories.spend.used,
-                spendRemaining: spendRemaining,
-                daysRemaining: daysRemaining,
-                newDailyFlow: newDailyFlow.toFixed(2)
-            });
-            
-            appState.dailyFlow = newDailyFlow;
-            updateDailyFlowDisplay();
-            
-            const dailyAmountElement = document.querySelector('.daily-preview .daily-amount');
-            if (dailyAmountElement) {
-                dailyAmountElement.textContent = `$${newDailyFlow.toFixed(2)}`;
-            }
-            
-            const calculationBreakdown = document.querySelector('.calculation-breakdown');
-            if (calculationBreakdown) {
-                calculationBreakdown.innerHTML = `
-                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">How we calculate this:</div>
-                    <div class="calculation-line">
-                        <span>Spend category remaining:</span>
-                        <span>$${spendRemaining.toFixed(0)}</span>
-                    </div>
-                    <div class="calculation-line">
-                        <span>Days left in month:</span>
-                        <span>${daysRemaining} days</span>
-                    </div>
-                    <div class="calculation-line">
-                        <span>Your daily freedom:</span>
-                        <span>$${newDailyFlow.toFixed(2)}</span>
-                    </div>
-                `;
-            }
-            
-            console.log('✅ Daily flow recalculated and all displays updated');
-        }
-
-        // ===== QUICK SPENDING ACTIONS (TAB 1) =====
-        function quickSpend(amount, description) {
-            triggerHaptic('medium');
-            
-            console.log(`💸 Processing purchase: ${description} for $${amount}`);
-            console.log('📊 Before purchase - Spend category:', appState.categories.spend);
-            
-            appState.todaySpent += amount;
-            appState.categories.spend.used += amount;
-            
-            console.log('📊 After purchase - Spend category:', appState.categories.spend);
-            
-            const transaction = {
-                id: Date.now(),
-                amount: amount,
-                description: description,
-                timestamp: new Date(),
-                category: 'spend'
-            };
-            appState.transactions.unshift(transaction);
-            
-            updateDailyFlowCalculation();
-            updateTransactionsList();
-            updateBudgetProgress();
-            
-            if (appState.dailyFlow >= 0) {
-                showToast(`🎉 ${description} - Guilt-free purchase confirmed!`, 'success');
+            if (spendRemaining > 0) {
+                // Normal mode: use SPEND category
+                const dailyBudget = (spendRemaining - appState.todaySpent) / appState.daysLeft;
+                appState.dailyFlow = roundToNearestFive(Math.max(0, dailyBudget));
+                appState.stashActive = false;
+            } else if (stashRemaining > 0) {
+                // Emergency mode: auto-activate STASH
+                const dailyBudget = (stashRemaining - appState.todaySpent) / appState.daysLeft;
+                appState.dailyFlow = roundToNearestFive(Math.max(0, dailyBudget));
+                appState.stashActive = true;
+                
+                if (!appState.stashWarningShown) {
+                    showToast("🛡️ Emergency mode: STASH budget now active", "warning");
+                    appState.stashWarningShown = true;
+                }
             } else {
-                showToast(`💛 ${description} - Using tomorrow's flow, totally fine!`, 'warning');
+                // No budget remaining
+                appState.dailyFlow = 0;
+                showToast("🚨 All budgets depleted - wait for next month", "error");
             }
             
-            celebrateFlow();
+            return appState.dailyFlow;
         }
 
-        // ===== QUICK ADD ACTIONS (TAB 2) =====
-        function quickAdd(type, amount) {
-            triggerHaptic('medium');
-            
-            const descriptions = {
-                coffee: 'Coffee ☕',
-                lunch: 'Lunch 🍕', 
-                snack: 'Snack 🍿',
-                gas: 'Gas ⛽',
-                uber: 'Ride 🚗',
-                shopping: 'Shopping 🛍️'
-            };
-            
-            quickSpend(amount, descriptions[type] || 'Purchase');
+        function roundToNearestFive(amount) {
+            return Math.round(amount / 5) * 5;
         }
 
-        // ===== DISPLAY UPDATES =====
-        function updateDailyFlowDisplay() {
-            const flowAmount = Math.max(0, appState.dailyFlow).toFixed(2);
+        function checkStashActivation() {
+            const spendRemaining = appState.categories.spend.allocated - appState.categories.spend.used;
+            const stashRemaining = appState.categories.stash.allocated - appState.categories.stash.used;
             
-            const tab1Display = document.getElementById('daily-flow-amount');
-            if (tab1Display) {
-                tab1Display.textContent = `$${flowAmount}`;
-            }
-            
-            const tab2Display = document.getElementById('tab2-daily-flow');
-            if (tab2Display) {
-                tab2Display.textContent = `$${flowAmount} left guilt-free today!`;
+            // Warn when approaching SPEND depletion (90% used)
+            const spendUsagePercent = appState.categories.spend.used / appState.categories.spend.allocated;
+            if (spendUsagePercent >= 0.9 && spendRemaining > 0 && !appState.stashWarningShown) {
+                showToast("⚠️ Emergency buffer will activate soon", "warning");
+                appState.stashWarningShown = true;
             }
         }
 
-        function updateTransactionsList() {
-            const container = document.getElementById('todays-transactions');
-            if (!container) return;
-            
-            if (appState.transactions.length === 0) {
-                container.innerHTML = `
-                    <div style="text-align: center; color: var(--text-muted); padding: 20px;">
-                        No spending today - your Daily Flow is fully available! 🎉
-                    </div>
-                `;
+        // ================================================================
+        // PROFILE MANAGEMENT SYSTEM
+        // ================================================================
+
+        function switchProfile(profileKey) {
+            if (!FLOW_PROFILES[profileKey]) {
+                console.error("Invalid profile:", profileKey);
                 return;
             }
             
-            container.innerHTML = appState.transactions.map(transaction => `
-                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                    <div>
-                        <div style="font-weight: 600;">${transaction.description}</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">${transaction.timestamp.toLocaleTimeString()}</div>
-                    </div>
-                    <div style="font-weight: 700; color: var(--accent-green);">$${transaction.amount.toFixed(2)}</div>
-                </div>
-            `).join('');
-        }
-
-        // ===== CELEBRATION SYSTEM =====
-        function celebrateFlow() {
-            triggerHaptic('light');
-            const display = document.querySelector('.daily-flow-display');
-            if (display) {
-                display.classList.add('celebration-pulse');
-                setTimeout(() => {
-                    display.classList.remove('celebration-pulse');
-                }, 600);
-            }
-        }
-
-        function showCustomAmount() {
-            triggerHaptic('light');
-            const amount = prompt('Enter custom amount:');
-            if (amount && !isNaN(amount) && parseFloat(amount) > 0) {
-                quickSpend(parseFloat(amount), `Custom Purchase 💳 ($${parseFloat(amount).toFixed(2)})`);
-            } else if (amount !== null) {
-                showToast('Please enter a valid amount greater than 0', 'warning');
-            }
-        }
-
-        // ===== AI CHAT SYSTEM =====
-        function toggleAIChat() {
-            triggerHaptic('medium');
-            const modal = document.getElementById('ai-chat-modal');
-            appState.aiChatOpen = !appState.aiChatOpen;
+            const oldProfile = appState.currentProfile;
+            appState.currentProfile = profileKey;
+            const profile = FLOW_PROFILES[profileKey];
             
-            if (appState.aiChatOpen) {
-                modal.classList.add('active');
-                document.getElementById('ai-chat-input').focus();
+            // Update category allocations
+            const income = appState.monthlyIncome;
+            appState.categories.save.allocated = roundToNearestFive(income * profile.savePercentage / 100);
+            appState.categories.save.percentage = profile.savePercentage;
+            appState.categories.spend.allocated = roundToNearestFive(income * profile.spendPercentage / 100);
+            appState.categories.spend.percentage = profile.spendPercentage;
+            
+            // Update UI
+            updateProfileUI();
+            calculateDailyFlow();
+            updateDisplay();
+            
+            console.log(`Profile switched: ${oldProfile} → ${profileKey}`);
+            showToast(`✅ Switched to ${profile.name} profile`, "success");
+        }
+
+        function updateProfileUI() {
+            const profile = FLOW_PROFILES[appState.currentProfile];
+            
+            // Update profile selector buttons
+            document.querySelectorAll('.profile-selector').forEach(btn => {
+                btn.classList.remove('profile-active');
+                btn.classList.add('text-slate-400');
+            });
+            
+            let activeButton;
+            if (appState.currentProfile === 'starting_out') activeButton = document.getElementById('profile-starting');
+            else if (appState.currentProfile === 'getting_serious') activeButton = document.getElementById('profile-serious');
+            else if (appState.currentProfile === 'wealth_building') activeButton = document.getElementById('profile-wealth');
+            
+            if (activeButton) {
+                activeButton.classList.add('profile-active');
+                activeButton.classList.remove('text-slate-400');
+                activeButton.classList.add('text-emerald-300');
+            }
+            
+            // Update profile description
+            const descElement = document.getElementById('profile-description');
+            if (descElement) descElement.textContent = profile.description;
+            
+            // Update current profile display in settings
+            const currentProfileDisplay = document.getElementById('current-profile-display');
+            if (currentProfileDisplay) currentProfileDisplay.textContent = profile.name;
+        }
+
+        // ================================================================
+        // ENHANCED EXPENSE PROCESSING (Preserves existing functionality)
+        // ================================================================
+
+        function addExpense(amount, description = '') {
+            // NEW: Round to nearest $5 (Flow requirement)
+            const roundedAmount = roundToNearestFive(amount);
+            
+            // PRESERVED: Update today's spending
+            appState.todaySpent += roundedAmount;
+            
+            // NEW: Determine which category to use
+            let targetCategory = 'spend';
+            if (appState.stashActive) {
+                targetCategory = 'stash';
+            }
+            
+            // PRESERVED: Update category usage
+            appState.categories[targetCategory].used += roundedAmount;
+            
+            // PRESERVED: Add to transactions
+            const transaction = {
+                amount: roundedAmount,
+                description: description || 'Quick expense',
+                time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                category: targetCategory
+            };
+            appState.transactions.unshift(transaction);
+            
+            // Keep only last 10 transactions
+            if (appState.transactions.length > 10) {
+                appState.transactions.pop();
+            }
+            
+            // PRESERVED: Recalculate and update display
+            calculateDailyFlow();
+            updateDisplay();
+            
+            // NEW: Check for STASH activation
+            checkStashActivation();
+            
+            // PRESERVED: Show feedback with Flow enhancements
+            showContextualMessage(roundedAmount);
+            
+            // Add haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+            
+            console.log(`✅ Expense processed: $${roundedAmount} via ${targetCategory}`);
+        }
+
+        function showContextualMessage(amount) {
+            const remaining = appState.dailyFlow;
+            
+            if (appState.stashActive) {
+                showToast(`💛 $${amount} from emergency fund - totally fine!`, "warning");
+            } else if (remaining >= 20) {
+                showToast(`💚 $${amount} spent - you're doing great!`, "success");
+            } else if (remaining >= 0) {
+                showToast(`🎯 $${amount} spent - perfect pacing!`, "success");
             } else {
-                modal.classList.remove('active');
+                showToast(`💛 Using tomorrow's money - no worries!`, "warning");
             }
         }
 
-        function handleAIChatInput(event) {
-            if (event.key === 'Enter') {
-                const input = document.getElementById('ai-chat-input');
-                const message = input.value.trim();
-                
-                if (message) {
-                    addAIMessage(`You: ${message}`, 'user');
-                    input.value = '';
-                    
-                    setTimeout(() => {
-                        generateAIResponse(message);
-                    }, 1000);
+        // ================================================================
+        // UI UPDATE FUNCTIONS (Enhanced existing)
+        // ================================================================
+
+        function updateDisplay() {
+            updateHeroDisplay();
+            updateProgressRing();
+            updateTomorrowImpact();
+            updateTransactionsList();
+            updateBudgetTab();
+        }
+
+        function updateHeroDisplay() {
+            const dailyFlowElement = document.getElementById('daily-flow');
+            const flowLabelElement = document.getElementById('flow-label');
+            const stashIndicator = document.getElementById('stash-indicator');
+            const spentTodayElement = document.getElementById('spent-today');
+            
+            if (dailyFlowElement) {
+                dailyFlowElement.textContent = `$${appState.dailyFlow}`;
+            }
+            
+            if (flowLabelElement) {
+                flowLabelElement.textContent = appState.stashActive ? "Emergency Today" : "Guilt-Free Today";
+            }
+            
+            if (stashIndicator) {
+                if (appState.stashActive) {
+                    stashIndicator.classList.remove('hidden');
+                    stashIndicator.textContent = "Emergency Mode";
+                } else {
+                    stashIndicator.classList.add('hidden');
                 }
             }
-        }
-
-        function addAIMessage(message, type = 'ai') {
-            const container = document.getElementById('ai-chat-messages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'ai-message';
-            messageDiv.textContent = message;
-            container.appendChild(messageDiv);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function generateAIResponse(userMessage) {
-            const responses = [
-                `I see you have $${appState.dailyFlow.toFixed(2)} available guilt-free today. You're doing great! 💚`,
-                `Your Spend category is at ${Math.round((appState.categories.spend.used / appState.categories.spend.allocated) * 100)}% - perfectly on track! 🎯`,
-                `Remember, this is pre-approved money - no guilt, just enjoy! ✨`,
-                `Your 4 S's budget is working perfectly. Secure locked down, essentials covered, fun money ready! 🚀`
-            ];
             
-            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-            addAIMessage(randomResponse);
+            if (spentTodayElement) {
+                spentTodayElement.textContent = `$${appState.todaySpent}`;
+            }
         }
 
-        // ===== TOAST NOTIFICATIONS =====
-        function showToast(message, type = 'success') {
+        function updateProgressRing() {
+            const circle = document.getElementById('progress-circle');
+            if (!circle) return;
+            
+            const spendCategory = appState.categories.spend;
+            const usagePercent = (spendCategory.used / spendCategory.allocated) * 100;
+            const circumference = 2 * Math.PI * 50; // radius = 50
+            const offset = circumference - (Math.min(usagePercent, 100) / 100) * circumference;
+            
+            circle.style.strokeDashoffset = offset;
+            
+            // Change color based on usage
+            if (usagePercent >= 90) {
+                circle.style.stroke = '#f59e0b'; // Orange warning
+            } else if (usagePercent >= 100) {
+                circle.style.stroke = '#ef4444'; // Red over-budget
+            } else {
+                circle.style.stroke = 'url(#progressGradient)'; // Normal green
+            }
+        }
+
+        function updateTomorrowImpact() {
+            const tomorrowElement = document.getElementById('tomorrow-impact');
+            if (!tomorrowElement) return;
+            
+            const spendRemaining = appState.categories.spend.allocated - appState.categories.spend.used;
+            const tomorrowBudget = roundToNearestFive(spendRemaining / (appState.daysLeft - 1));
+            const todayRemaining = Math.max(0, appState.dailyFlow - appState.todaySpent);
+            
+            if (todayRemaining > 0) {
+                tomorrowElement.textContent = `Tomorrow: $${tomorrowBudget + todayRemaining} (+$${todayRemaining} bonus!)`;
+                tomorrowElement.className = 'text-xs text-emerald-400 mt-1';
+            } else {
+                tomorrowElement.textContent = `Tomorrow: $${Math.max(0, tomorrowBudget)} (adjusted)`;
+                tomorrowElement.className = 'text-xs text-orange-400 mt-1';
+            }
+        }
+
+        function updateBudgetTab() {
+            // Update budget category displays
+            Object.keys(appState.categories).forEach(categoryKey => {
+                const category = appState.categories[categoryKey];
+                
+                // Update amounts
+                const amountElement = document.getElementById(`${categoryKey}-amount`);
+                if (amountElement) amountElement.textContent = `$${category.allocated}`;
+                
+                // Update percentages
+                const percentageElement = document.getElementById(`${categoryKey}-percentage`);
+                if (percentageElement) percentageElement.textContent = `${category.percentage}%`;
+                
+                // Update progress bars
+                const progressElement = document.getElementById(`${categoryKey}-progress`);
+                if (progressElement) {
+                    const percentage = category.allocated > 0 ? (category.used / category.allocated) * 100 : 0;
+                    progressElement.style.width = `${Math.min(percentage, 100)}%`;
+                }
+                
+                // Update usage text
+                const usedElement = document.getElementById(`${categoryKey}-used`);
+                if (usedElement) {
+                    if (categoryKey === 'save') {
+                        usedElement.textContent = `$${category.allocated} allocated (always accumulates)`;
+                    } else {
+                        usedElement.textContent = `$${category.used} used this month`;
+                    }
+                }
+            });
+        }
+
+        function updateTransactionsList() {
+            const transactionsList = document.getElementById('transactions-list');
+            if (!transactionsList) return;
+            
+            transactionsList.innerHTML = '';
+            
+            appState.transactions.slice(0, 5).forEach(transaction => {
+                const transactionElement = document.createElement('div');
+                transactionElement.className = 'flex items-center justify-between p-3 rounded-xl bg-slate-800/50';
+                
+                const categoryIcon = transaction.category === 'stash' ? '🛡️' : '💸';
+                
+                transactionElement.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">${categoryIcon}</span>
+                        <div>
+                            <div class="font-medium">${transaction.description}</div>
+                            <div class="text-xs text-slate-400">${transaction.time}</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-medium">$${transaction.amount}</div>
+                        <div class="text-xs text-slate-400">${transaction.category}</div>
+                    </div>
+                `;
+                
+                transactionsList.appendChild(transactionElement);
+            });
+        }
+
+        // ================================================================
+        // TAB NAVIGATION (Preserved existing)
+        // ================================================================
+
+        function switchTab(tabName) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            // Show selected tab
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            
+            // Update navigation state
+            document.querySelectorAll('[id^="nav-"]').forEach(nav => {
+                nav.className = 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white';
+            });
+            
+            // Highlight active tab
+            const activeNav = document.getElementById(`nav-${tabName}`);
+            if (activeNav) {
+                if (tabName === 'guilt-free') {
+                    activeNav.className = 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300';
+                } else {
+                    activeNav.className = 'flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 bg-blue-500/30 text-blue-300';
+                }
+            }
+            
+            appState.currentTab = tabName;
+        }
+
+        // ================================================================
+        // CUSTOM EXPENSE MODAL (Preserved existing)
+        // ================================================================
+
+        function showCustomExpenseModal() {
+            document.getElementById('custom-expense-modal').classList.remove('hidden');
+            document.getElementById('custom-amount').focus();
+        }
+
+        function hideCustomExpenseModal() {
+            document.getElementById('custom-expense-modal').classList.add('hidden');
+            document.getElementById('custom-amount').value = '';
+            document.getElementById('custom-description').value = '';
+        }
+
+        function addCustomExpense() {
+            const amount = parseFloat(document.getElementById('custom-amount').value);
+            const description = document.getElementById('custom-description').value || 'Custom expense';
+            
+            if (amount && amount > 0) {
+                addExpense(amount, description);
+                hideCustomExpenseModal();
+            } else {
+                showToast("Please enter a valid amount", "error");
+            }
+        }
+
+        // ================================================================
+        // TOAST SYSTEM (Enhanced existing)
+        // ================================================================
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            
             const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
+            toast.className = `glass-card p-4 rounded-xl mb-2 transition-all duration-300 transform translate-y-0 opacity-100`;
+            
+            let bgColor = 'bg-slate-700/90';
+            if (type === 'success') bgColor = 'bg-emerald-600/90';
+            else if (type === 'warning') bgColor = 'bg-orange-600/90';
+            else if (type === 'error') bgColor = 'bg-red-600/90';
+            
+            toast.classList.add(bgColor);
             toast.textContent = message;
             
-            document.body.appendChild(toast);
+            container.appendChild(toast);
             
             setTimeout(() => {
-                toast.remove();
+                toast.style.transform = 'translateY(-100%)';
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
             }, 3000);
         }
 
-        // ===== HAPTIC FEEDBACK =====
-        function triggerHaptic(intensity = 'light') {
-            if (navigator.vibrate) {
-                const patterns = {
-                    light: [10],
-                    medium: [20],
-                    heavy: [30]
-                };
-                navigator.vibrate(patterns[intensity] || patterns.light);
+        // ================================================================
+        // UTILITY FUNCTIONS (Preserved existing)
+        // ================================================================
+
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            const greeting = document.getElementById('greeting');
+            const context = document.getElementById('time-context');
+            
+            if (hour < 12) {
+                greeting.textContent = 'Good morning, Sarah! ☀️';
+                context.textContent = 'Perfect time for a guilt-free coffee';
+            } else if (hour < 17) {
+                greeting.textContent = 'Good afternoon, Sarah! ☀️';
+                context.textContent = 'Perfect time for a guilt-free treat';
+            } else {
+                greeting.textContent = 'Good evening, Sarah! 🌙';
+                context.textContent = 'Perfect time to enjoy your money';
             }
         }
 
-        // ===== ERROR HANDLING =====
-        window.onerror = function(msg, url, lineNo, columnNo, error) {
-            console.error('App Error:', {
-                message: msg,
-                source: url,
-                line: lineNo,
-                column: columnNo,
-                error: error
-            });
+        // ================================================================
+        // INITIALIZATION (Enhanced existing)
+        // ================================================================
+
+        function initApp() {
+            console.log('🚀 Initializing Flow Budgeting System v2.4...');
             
-            showToast('Something went wrong. Please refresh the app.', 'warning');
-            return false;
+            updateGreeting();
+            updateProfileUI();
+            calculateDailyFlow();
+            updateDisplay();
+            
+            console.log('✅ Flow system initialized successfully');
+            console.log('💰 Flow allocations:', {
+                secure: `$${appState.categories.secure.allocated} (${appState.categories.secure.percentage}%)`,
+                save: `$${appState.categories.save.allocated} (${appState.categories.save.percentage}%)`,
+                spend: `$${appState.categories.spend.allocated} (${appState.categories.spend.percentage}%)`,
+                stash: `$${appState.categories.stash.allocated} (${appState.categories.stash.percentage}%)`
+            });
+        }
+
+        // ================================================================
+        // EVENT LISTENERS
+        // ================================================================
+
+        // Handle Enter key in custom expense modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !document.getElementById('custom-expense-modal').classList.contains('hidden')) {
+                addCustomExpense();
+            } else if (e.key === 'Escape') {
+                hideCustomExpenseModal();
+            }
+        });
+
+        // Start the app
+        document.addEventListener('DOMContentLoaded', initApp);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+
+        // Make functions available globally for testing
+        window.FlowBudgetingSystem = {
+            addExpense,
+            switchProfile,
+            switchTab,
+            getState: () => appState,
+            getProfiles: () => FLOW_PROFILES
         };
+
+        console.log('💚 Flow Budgeting System v2.4 - Flow System Complete!');
     </script>
 </body>
 </html>
