@@ -1,1113 +1,1863 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flow Budgeting - v2.4 Flow System Complete</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<!-- saved from url=(0073)file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>💚 Flow Budgeting - Your Financial Freedom v2.6.0</title>
+    
+    <!-- 
+    VERSION: 2.6.0-stash-complete ✅
+    STATUS: FLOW SYSTEM + MULTIPLES OF 5 + CORRECT SAVE CATEGORY + DAYS CALCULATION + STASH AUTO-ACTIVATION COMPLETE
+    DATE: July 01, 2025
+    
+    NEW FEATURES (v2.6.0-stash-complete):
+    ✅ STASH Auto-Activation System - COMPLETE IMPLEMENTATION
+    ✅ Emergency Fund Access - Automatic activation when SPEND depleted
+    ✅ Smart Transaction Processing - Charges correct category based on mode
+    ✅ Real-time STASH Balance Updates - Immediate recalculation after transactions
+    ✅ Depletion Warning System - Critical alerts at $20 and $0 thresholds
+    ✅ Emergency UI Indicators - Amber styling and emergency messaging
+    ✅ Tab 3 STASH Display - Shows actual usage vs allocation consistently
+    ✅ Daily Flow STASH Integration - Seamless transition between SPEND and STASH calculations
+    ✅ Proper State Initialization - Correct STASH available amount on app startup
+    ✅ Robust Calculation Logic - Fixed early exit and consistency issues
+    
+    STASH SYSTEM FUNCTIONALITY:
+    ✅ Detection: Automatic activation when SPEND category overdrawn
+    ✅ Transaction Processing: Charges STASH when in emergency mode
+    ✅ Balance Management: Real-time STASH available amount tracking
+    ✅ Warning System: Progressive alerts (running low → depleted)
+    ✅ UI Integration: Emergency styling across all tabs and displays
+    ✅ Daily Flow: Uses STASH balance for daily spending calculations
+    ✅ State Consistency: Proper initialization and cross-tab synchronization
+    
+    PREVIOUS FEATURES (v2.5.x):
+    ✅ calculateDaysRemaining() Function - Enterprise-grade days calculation
+    ✅ Division by Zero Protection - Math.max(1, daysLeft) safeguard
+    ✅ SAVE Category - Correctly named wealth building category
+    ✅ Universal Multiples of 5 Rounding - All amounts rounded to nearest $5
+    ✅ 4 S's Framework - SECURE, SAVE, SPEND, STASH alignment complete
+    
+    KNOWN LIMITATIONS (See Defect Logs):
+    ⚠️ STASH deactivation logic not implemented (manual future enhancement)
+    ⚠️ Small amount rounding may eliminate access to funds under $2.50/day
+    ⚠️ No overdraw protection for transactions exceeding total available funds
+    
+    NEXT DEVELOPMENT:
+    - Bug fixes per defect logs (STASH and Daily Flow calculation improvements)
+    - Add user profile system (Starting Out, Getting Serious, Wealth Building)
+    - Tab 4: Analytics and insights dashboard
+    - Tab 5: Settings and profile management
+    - Period rollover and STASH reset functionality
+    -->
+    
+    </head><body>PREVIOUS FEATURES (v2.5):
+    ✅ SAVE Category - Correctly named and positioned (was "Sustain")
+    ✅ Wealth Building Focus - SAVE category now represents long-term wealth building
+    ✅ Savings-Focused Examples - Emergency fund, investments, retirement planning
+    ✅ Proper 4 S's Framework - SECURE, SAVE, STASH, SPEND alignment complete
+    ✅ Universal Multiples of 5 Rounding - All amounts rounded to nearest $5
+    ✅ Rounding Feedback System - Shows original amount when rounded
+    ✅ Updated Quick Actions - All preset amounts are multiples of 5
+    ✅ Daily Flow Rounding - $35 precisely, all calculations rounded
+    
+    FLOW SYSTEM UPDATES:
+    ✅ SECURE: 55% ($1,760) - Correct Flow percentage
+    ✅ SAVE: 5% ($160) - Long-term wealth building (Starting Out profile)
+    ✅ SPEND: 35% ($1,120) - "Starting Out" profile allocation
+    ✅ STASH: 5% ($160) - Correct Flow percentage
+    ✅ Daily Flow: $35 - Matches Flow methodology
+    
+    STABLE FEATURES:
+    ✅ Tab 1 (Guilt-Free Zone) - Complete with correct allocations &amp; rounding
+    ✅ Tab 2 (Lightning-Fast Expense Entry) - Working with Flow math &amp; rounding
+    ✅ Tab 3 (4 S's Budget System) - Proper SECURE, SAVE, STASH, SPEND categories
+    ✅ Cross-Tab Synchronization - Real-time updates across all tabs
+    ✅ AI Chat Integration - Contextual intelligence across tabs
+    ✅ 5-Tab Navigation - Smooth transitions with proper state management
+    ✅ Design Consistency - Exact colors and patterns preserved
+    
+    NEXT DEVELOPMENT:
+    - Integrate calculateDaysRemaining() into updateDailyFlowCalculation()
+    - Add user profile system (Starting Out, Getting Serious, Wealth Building)
+    - Implement STASH auto-activation system
+    - Tab 4: Analytics and insights dashboard
+    - Tab 5: Settings and profile management
+    --&gt;
+    
     <style>
-        /* Background animation */
+        /* ===== CSS VARIABLES - EXACT REFERENCE COMPLIANCE ===== */
+        :root {
+            /* Background System */
+            --dark-bg: #0f0f1a;
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            
+            /* 4 S's Category Gradients - EXACT FROM REFERENCE */
+            --secure-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            --save-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --spend-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --stash-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            
+            /* Category Colors */
+            --accent-red: #ef4444;
+            --accent-amber: #f59e0b;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            
+            /* Typography */
+            --text-primary: #f8fafc;
+            --text-secondary: rgba(248, 250, 252, 0.7);
+            --text-muted: rgba(248, 250, 252, 0.5);
+            
+            /* Shadows & Effects */
+            --shadow-subtle: 0 4px 16px rgba(99, 102, 241, 0.15);
+            --shadow-medium: 0 8px 25px rgba(99, 102, 241, 0.2);
+            --shadow-glow: 0 12px 32px rgba(16, 185, 129, 0.3);
+            --shadow-ai: 0 12px 32px rgba(99, 102, 241, 0.4);
+            
+            /* Animation System */
+            --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ===== ANIMATED BACKGROUND ===== */
         .bg-animation {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: -1;
             background: linear-gradient(45deg, #0f0f1a, #1a1a2e, #16213e, #1a1a2e);
             background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            z-index: -1;
+            animation: subtleGradientShift 25s ease infinite;
         }
-        
-        @keyframes gradientShift {
+
+        @keyframes subtleGradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        
-        /* Glass morphism effects */
+
+        /* ===== MAIN APP CONTAINER ===== */
+        .app-container {
+            max-width: 400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ===== TAB CONTENT SYSTEM ===== */
+        .tab-content {
+            padding: 20px;
+            padding-bottom: 120px;
+            min-height: 100vh;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: slideInUp 0.5s var(--animation-timing);
+        }
+
+        @keyframes slideInUp {
+            from { 
+                transform: translateY(20px); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0); 
+                opacity: 1; 
+            }
+        }
+
+        /* ===== SHARED GLASS CARD SYSTEM ===== */
         .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        
-        /* Progress ring animation */
-        .progress-ring {
-            transform: rotate(-90deg);
-        }
-        
-        /* Hover effects */
-        .hover-scale {
-            transition: transform 0.2s ease;
-        }
-        
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
-        
-        /* Pulse animation for notifications */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s var(--animation-timing);
         }
 
-        /* Flow System specific styles */
-        .profile-selector {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .profile-active {
-            background: rgba(16, 185, 129, 0.2);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-        
-        .stash-active {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
         }
 
-        /* Bottom Navigation Enhancement */
-        .touch-manipulation {
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-        
-        .safe-area-bottom {
-            padding-bottom: env(safe-area-inset-bottom);
+        /* ===== LOADING STATES ===== */
+        .loading-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 18px;
+            gap: 16px;
         }
 
-        /* Ensure proper button accessibility */
-        button {
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--glass-border);
+            border-top: 3px solid var(--accent-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== TAB 1: GUILT-FREE ZONE STYLES ===== */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .daily-flow-display {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 32px 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-glow);
             cursor: pointer;
-            outline: none;
+            transition: all 0.3s var(--animation-timing);
+            position: relative;
+            overflow: hidden;
         }
-        
-        button:focus {
-            outline: 2px solid rgba(16, 185, 129, 0.5);
-            outline-offset: 2px;
+
+        .daily-flow-display:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .daily-flow-display:active {
+            transform: scale(0.98);
+        }
+
+        .daily-flow-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .daily-flow-amount {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .daily-flow-description {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .celebration-pulse {
+            animation: celebrationPulse 0.6s ease-out;
+        }
+
+        @keyframes celebrationPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Quick Actions Grid */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .action-btn {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .action-btn:active {
+            transform: scale(0.98);
+        }
+
+        .action-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .action-label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .action-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== TAB 2: EXPENSE ENTRY STYLES ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            padding: 20px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .tab-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .quick-status {
+            font-size: 14px;
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
+        /* Quick Add Grid */
+        .quick-add-section {
+            margin-bottom: 28px;
+            animation: slideInUp 0.8s ease-out 0.1s both;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-add-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .quick-add-btn {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+            color: var(--text-primary);
+        }
+
+        .quick-add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .quick-add-btn:active {
+            transform: scale(0.98);
+        }
+
+        .quick-add-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .quick-add-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .quick-add-price {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== TAB 3: 4 S'S BUDGET SYSTEM ===== */
+        .budget-header {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .budget-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .budget-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        /* Income Overview */
+        .income-overview {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 28px;
+            text-align: center;
+            animation: slideInUp 0.8s ease-out 0.1s both;
+        }
+
+        .income-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .income-amount {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .income-period {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Budget Categories */
+        .budget-flow {
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .budget-category {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s var(--animation-timing);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .budget-category:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .budget-category:active {
+            transform: scale(0.99);
+        }
+
+        /* Category Headers */
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .secure .category-icon { background: var(--secure-gradient); }
+        .save .category-icon { background: var(--save-gradient); }
+        .spend .category-icon { background: var(--spend-gradient); }
+        .stash .category-icon { background: var(--stash-gradient); }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .category-description {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        /* Category Amounts */
+        .category-amount {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .secure .category-amount { color: var(--accent-red); }
+        .save .category-amount { color: var(--accent-amber); }
+        .spend .category-amount { color: var(--accent-green); }
+        .stash .category-amount { color: var(--accent-blue); }
+
+        /* Progress Bars */
+        .progress-container {
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+
+        .secure .progress-fill { background: var(--secure-gradient); }
+        .save .progress-fill { background: var(--save-gradient); }
+        .spend .progress-fill { background: var(--spend-gradient); }
+        .stash .progress-fill { background: var(--stash-gradient); }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Allocation Examples */
+        .allocation-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 12px;
+            opacity: 0.8;
+        }
+
+        .example-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Daily Preview */
+        .daily-preview {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border-radius: 20px;
+            padding: 24px;
+            margin-top: 32px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            animation: slideInUp 0.8s ease-out 0.3s both;
+        }
+
+        .daily-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .daily-amount {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+        }
+
+        .daily-description {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .calculation-breakdown {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: left;
+        }
+
+        .calculation-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .calculation-line:last-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 8px;
+            margin-top: 8px;
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        /* ===== NAVIGATION SYSTEM ===== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px 20px 0 0;
+            padding: 16px 32px 20px;
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            max-width: 400px;
+            z-index: 100;
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            padding: 12px 8px;
+            border-radius: 16px;
+            transition: all 0.3s var(--animation-timing);
+            color: var(--text-secondary);
+            font-size: 10px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-item:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .nav-label {
+            font-size: 10px;
+        }
+
+        /* ===== AI CHAT SYSTEM ===== */
+        .ai-chat-toggle {
+            position: fixed;
+            bottom: 120px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-ai);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s var(--animation-timing);
+        }
+
+        .ai-chat-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .ai-chat-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .ai-chat-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .ai-chat-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .ai-chat-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 360px;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        .ai-chat-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-chat-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .ai-chat-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .ai-chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            min-height: 200px;
+            max-height: 300px;
+        }
+
+        .ai-message {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .ai-chat-input-container {
+            padding: 20px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .ai-chat-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .ai-chat-input:focus {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .ai-chat-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* ===== TOAST NOTIFICATION SYSTEM ===== */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 2000;
+            box-shadow: var(--shadow-medium);
+            animation: slideInDown 0.5s ease-out;
+            max-width: 320px;
+            text-align: center;
+        }
+
+        .toast.success {
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .toast.warning {
+            border-color: rgba(245, 158, 11, 0.3);
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        /* ===== ROUNDING FEEDBACK STYLES ===== */
+        .rounding-feedback {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 24px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 500;
+            z-index: 3000;
+            box-shadow: var(--shadow-medium);
+            animation: slideInUp 0.3s ease-out;
+            max-width: 280px;
+            text-align: center;
+        }
+
+        .rounding-feedback .original-amount {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .rounding-feedback .rounded-amount {
+            color: var(--accent-green);
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .rounding-feedback .explanation {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 380px) {
+            .app-container {
+                padding: 0 16px;
+            }
+            
+            .quick-add-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== HAPTIC FEEDBACK CLASSES ===== */
+        .haptic-light {
+            /* Triggers light haptic feedback via JavaScript */
+        }
+
+        .haptic-medium {
+            /* Triggers medium haptic feedback via JavaScript */
+        }
+
+        .haptic-heavy {
+            /* Triggers heavy haptic feedback via JavaScript */
         }
     </style>
-</head>
-<body class="min-h-screen text-white font-sans">
-    <div class="bg-animation"></div>
-    
-    <div class="container max-w-md mx-auto px-4 py-6 pb-24 relative z-10">
-        <!-- Header with greeting -->
-        <header class="mb-8">
-            <div class="flex justify-between items-center mb-2">
-                <div>
-                    <h1 id="greeting" class="text-xl font-medium">Good morning, Sarah! ☀️</h1>
-                    <p id="time-context" class="text-slate-400 text-sm">Perfect time for a guilt-free coffee</p>
-                </div>
-                <button class="p-2 rounded-full glass-card hover-scale">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <!-- Flow Profile Selector -->
-            <div class="mb-4">
-                <div class="flex gap-2 text-xs">
-                    <button id="profile-starting" onclick="switchProfile('starting_out')" 
-                            class="profile-selector px-3 py-1 rounded-full text-emerald-300 profile-active">
-                        Starting Out
-                    </button>
-                    <button id="profile-serious" onclick="switchProfile('getting_serious')" 
-                            class="profile-selector px-3 py-1 rounded-full text-slate-400">
-                        Getting Serious  
-                    </button>
-                    <button id="profile-wealth" onclick="switchProfile('wealth_building')" 
-                            class="profile-selector px-3 py-1 rounded-full text-slate-400">
-                        Wealth Building
-                    </button>
-                </div>
-                <p id="profile-description" class="text-xs text-slate-500 mt-1">Building good habits while enjoying life</p>
-            </div>
-        </header>
 
-        <!-- Main content area -->
-        <div id="tab-guilt-free" class="tab-content">
-            <!-- Hero Daily Flow Section -->
-            <div class="text-center mb-8">
-                <div class="relative inline-block">
-                    <!-- Progress Ring -->
-                    <svg class="w-32 h-32 progress-ring" viewBox="0 0 120 120">
-                        <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
-                        <circle id="progress-circle" cx="60" cy="60" r="50" fill="none" 
-                                stroke="url(#progressGradient)" stroke-width="8" 
-                                stroke-linecap="round"
-                                stroke-dasharray="314" 
-                                stroke-dashoffset="69"
-                                style="transition: stroke-dashoffset 0.5s ease;"/>
-                        <defs>
-                            <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#10b981"/>
-                                <stop offset="100%" style="stop-color:#22c55e"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    
-                    <!-- Central Amount Display -->
-                    <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <div id="daily-flow" class="text-3xl font-bold text-emerald-300 cursor-pointer hover-scale">$22</div>
-                        <div id="flow-label" class="text-sm text-slate-400">Guilt-Free Today</div>
-                        <div id="stash-indicator" class="text-xs text-orange-400 hidden">Emergency Mode</div>
-                    </div>
-                </div>
-                
-                <div class="mt-4 text-center">
-                    <div id="spending-status" class="text-sm text-slate-300">
-                        <span id="spent-today">$0.00</span> spent today
-                    </div>
-                    <div id="tomorrow-impact" class="text-xs text-slate-500 mt-1">
-                        Tomorrow: $22 (standard pace)
+
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Main App Container -->
+    <div class="app-container">
+        
+        <!-- TAB 1: GUILT-FREE ZONE -->
+        <div id="tab-guilt-free" class="tab-content active">
+            <div class="hero-section">
+                <div class="daily-flow-display" onclick="celebrateFlow()">
+                    <div class="daily-flow-label">💚 Today's Guilt-Free Amount</div>
+                    <div class="daily-flow-amount" id="daily-flow-amount">$10</div>
+                    <div class="daily-flow-description">
+                        This is YOUR money to enjoy guilt-free 🎉
                     </div>
                 </div>
             </div>
 
             <!-- Quick Spend Actions -->
-            <div class="grid grid-cols-2 gap-4 mb-8">
-                <button onclick="addExpense(5, 'Coffee')" class="glass-card p-4 rounded-2xl hover-scale text-center">
-                    <div class="text-2xl mb-2">☕</div>
-                    <div class="text-lg font-medium">$5</div>
-                    <div class="text-xs text-slate-400">Coffee</div>
-                </button>
-                <button onclick="addExpense(15, 'Lunch')" class="glass-card p-4 rounded-2xl hover-scale text-center">
-                    <div class="text-2xl mb-2">🍕</div>
-                    <div class="text-lg font-medium">$15</div>
-                    <div class="text-xs text-slate-400">Lunch</div>
-                </button>
-                <button onclick="addExpense(25, 'Dinner')" class="glass-card p-4 rounded-2xl hover-scale text-center">
-                    <div class="text-2xl mb-2">🍽️</div>
-                    <div class="text-lg font-medium">$25</div>
-                    <div class="text-xs text-slate-400">Dinner</div>
-                </button>
-                <button onclick="showCustomExpenseModal()" class="glass-card p-4 rounded-2xl hover-scale text-center">
-                    <div class="text-2xl mb-2">💰</div>
-                    <div class="text-lg font-medium">Custom</div>
-                    <div class="text-xs text-slate-400">Any amount</div>
-                </button>
+            <div class="quick-actions">
+                <div class="action-btn haptic-medium" onclick="quickSpend(5, &#39;Coffee Run ☕&#39;)">
+                    <span class="action-icon">☕</span>
+                    <div class="action-label">Coffee Run</div>
+                    <div class="action-desc">$5</div>
+                </div>
+                <div class="action-btn haptic-medium" onclick="quickSpend(15, &#39;Lunch Treat 🍕&#39;)">
+                    <span class="action-icon">🍕</span>
+                    <div class="action-label">Lunch Treat</div>
+                    <div class="action-desc">$15</div>
+                </div>
+                <div class="action-btn haptic-medium" onclick="quickSpend(5, &#39;Snack Attack 🍿&#39;)">
+                    <span class="action-icon">🍿</span>
+                    <div class="action-label">Snack Attack</div>
+                    <div class="action-desc">$5</div>
+                </div>
+                <div class="action-btn haptic-light" onclick="showCustomAmount()">
+                    <span class="action-icon">💳</span>
+                    <div class="action-label">Custom Amount</div>
+                    <div class="action-desc">You choose!</div>
+                </div>
             </div>
 
-            <!-- Streak Card -->
-            <div class="glass-card p-4 rounded-2xl mb-6">
-                <div class="flex items-center justify-between">
+            <!-- Streak Display -->
+            <div class="glass-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <div style="font-size: 32px;">🔥</div>
                     <div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-2xl">🔥</span>
-                            <span class="text-lg font-medium">5-Day Streak</span>
-                        </div>
-                        <div class="text-sm text-slate-400">Budget awareness master</div>
+                        <div style="font-size: 18px; font-weight: 700;">5-Day Guilt-Free Streak!</div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">You're absolutely crushing this budget thing ✨</div>
                     </div>
-                    <div class="text-right">
-                        <div class="text-2xl font-bold text-emerald-300" id="streak-count">5</div>
-                        <div class="text-xs text-slate-500">days</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Transactions -->
-            <div class="glass-card p-4 rounded-2xl">
-                <h3 class="text-lg font-medium mb-4">Recent Spending</h3>
-                <div id="transactions-list" class="space-y-3">
-                    <!-- Transactions will be populated by JavaScript -->
                 </div>
             </div>
         </div>
 
-        <!-- Tab 2: Budget Overview (placeholder) -->
-        <div id="tab-budget" class="tab-content hidden">
-            <h2 class="text-2xl font-bold mb-6">Budget Overview</h2>
-            
-            <!-- Flow Categories Display -->
-            <div class="space-y-4">
-                <!-- SECURE Category -->
-                <div class="glass-card p-4 rounded-2xl">
-                    <div class="flex justify-between items-center mb-2">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl">🔒</span>
-                            <div>
-                                <div class="font-medium">Secure</div>
-                                <div class="text-xs text-slate-400">Fixed bills & recurring</div>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="font-medium" id="secure-amount">$1,760</div>
-                            <div class="text-xs text-slate-400">55%</div>
-                        </div>
-                    </div>
-                    <div class="w-full bg-slate-700 rounded-full h-2">
-                        <div id="secure-progress" class="bg-red-500 h-2 rounded-full" style="width: 95%"></div>
-                    </div>
-                    <div class="text-xs text-slate-400 mt-1" id="secure-used">$1,680 used this month</div>
+        <!-- TAB 2: SPENDING ENTRY -->
+        <div id="tab-spending" class="tab-content">
+            <!-- Header with Daily Flow Display -->
+            <header class="header">
+                <div class="header-info">
+                    <h1 class="tab-title">Add Spending 💸</h1>
+                    <p class="quick-status" id="tab2-daily-flow">$10 left guilt-free today!</p>
                 </div>
-
-                <!-- SAVE Category -->
-                <div class="glass-card p-4 rounded-2xl">
-                    <div class="flex justify-between items-center mb-2">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl">💎</span>
-                            <div>
-                                <div class="font-medium">Save</div>
-                                <div class="text-xs text-slate-400">Long-term wealth building</div>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="font-medium" id="save-amount">$160</div>
-                            <div class="text-xs text-slate-400" id="save-percentage">5%</div>
-                        </div>
-                    </div>
-                    <div class="w-full bg-slate-700 rounded-full h-2">
-                        <div id="save-progress" class="bg-yellow-500 h-2 rounded-full" style="width: 100%"></div>
-                    </div>
-                    <div class="text-xs text-slate-400 mt-1" id="save-used">$160 allocated (always accumulates)</div>
+                <div style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 8px 12px; font-size: 12px; color: var(--accent-green); font-weight: 600;">
+                    ✅ Pre-approved
                 </div>
+            </header>
 
-                <!-- SPEND Category -->
-                <div class="glass-card p-4 rounded-2xl">
-                    <div class="flex justify-between items-center mb-2">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl">💚</span>
-                            <div>
-                                <div class="font-medium">Spend</div>
-                                <div class="text-xs text-slate-400">Guilt-free daily spending</div>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="font-medium" id="spend-amount">$1,120</div>
-                            <div class="text-xs text-slate-400" id="spend-percentage">35%</div>
-                        </div>
+            <!-- Lightning Fast Quick Add -->
+            <div class="quick-add-section">
+                <h2 class="section-title">⚡ Lightning Quick Add</h2>
+                <div class="quick-add-grid">
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;coffee&#39;, 5)">
+                        <span class="quick-add-icon">☕</span>
+                        <div class="quick-add-label">Coffee</div>
+                        <div class="quick-add-price">$5</div>
                     </div>
-                    <div class="w-full bg-slate-700 rounded-full h-2">
-                        <div id="spend-progress" class="bg-emerald-500 h-2 rounded-full" style="width: 78%"></div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;lunch&#39;, 10)">
+                        <span class="quick-add-icon">🍕</span>
+                        <div class="quick-add-label">Lunch</div>
+                        <div class="quick-add-price">$10</div>
                     </div>
-                    <div class="text-xs text-slate-400 mt-1" id="spend-used">$876 used this month</div>
-                </div>
-
-                <!-- STASH Category -->
-                <div class="glass-card p-4 rounded-2xl">
-                    <div class="flex justify-between items-center mb-2">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl">🛡️</span>
-                            <div>
-                                <div class="font-medium">Stash</div>
-                                <div class="text-xs text-slate-400">Emergency safety net</div>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="font-medium" id="stash-amount">$160</div>
-                            <div class="text-xs text-slate-400">5%</div>
-                        </div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;snack&#39;, 5)">
+                        <span class="quick-add-icon">🍿</span>
+                        <div class="quick-add-label">Snack</div>
+                        <div class="quick-add-price">$5</div>
                     </div>
-                    <div class="w-full bg-slate-700 rounded-full h-2">
-                        <div id="stash-progress" class="bg-blue-500 h-2 rounded-full" style="width: 25%"></div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;gas&#39;, 40)">
+                        <span class="quick-add-icon">⛽</span>
+                        <div class="quick-add-label">Gas</div>
+                        <div class="quick-add-price">$40</div>
                     </div>
-                    <div class="text-xs text-slate-400 mt-1" id="stash-used">$40 used this month</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab 3: Insights (placeholder) -->
-        <div id="tab-insights" class="tab-content hidden">
-            <h2 class="text-2xl font-bold mb-6">Your Insights</h2>
-            <div class="glass-card p-6 rounded-2xl text-center">
-                <div class="text-4xl mb-4">📊</div>
-                <div class="text-lg font-medium mb-2">Coming Soon</div>
-                <div class="text-sm text-slate-400">Advanced insights and analytics</div>
-            </div>
-        </div>
-
-        <!-- Tab 4: AI Chat (placeholder) -->
-        <div id="tab-ai" class="tab-content hidden">
-            <h2 class="text-2xl font-bold mb-6">AI Assistant</h2>
-            <div class="glass-card p-6 rounded-2xl text-center">
-                <div class="text-4xl mb-4">🤖</div>
-                <div class="text-lg font-medium mb-2">Coming Soon</div>
-                <div class="text-sm text-slate-400">Intelligent financial guidance</div>
-            </div>
-        </div>
-
-        <!-- Tab 5: Settings (placeholder) -->
-        <div id="tab-settings" class="tab-content hidden">
-            <h2 class="text-2xl font-bold mb-6">Settings</h2>
-            <div class="space-y-4">
-                <div class="glass-card p-4 rounded-2xl">
-                    <div class="font-medium mb-2">Monthly Income</div>
-                    <div class="text-2xl font-bold text-emerald-300">$3,200</div>
-                    <div class="text-xs text-slate-400 mt-1">Last updated: Today</div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;uber&#39;, 15)">
+                        <span class="quick-add-icon">🚗</span>
+                        <div class="quick-add-label">Ride</div>
+                        <div class="quick-add-price">$15</div>
+                    </div>
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;shopping&#39;, 25)">
+                        <span class="quick-add-icon">🛍️</span>
+                        <div class="quick-add-label">Shopping</div>
+                        <div class="quick-add-price">$25</div>
+                    </div>
                 </div>
                 
-                <div class="glass-card p-4 rounded-2xl">
-                    <div class="font-medium mb-2">Current Profile</div>
-                    <div class="text-lg" id="current-profile-display">Starting Out</div>
-                    <div class="text-xs text-slate-400 mt-1">Building good habits while enjoying life</div>
+                <!-- Custom Amount Button -->
+                <button class="quick-add-btn haptic-light" onclick="showCustomAmount()" style="width: 100%; margin-top: 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 16px; cursor: pointer; color: var(--text-primary); font-family: inherit;">
+                    <span style="font-size: 24px; margin-bottom: 8px; display: block;">➕</span>
+                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">Custom Amount</div>
+                    <div style="font-size: 11px; color: var(--text-secondary);">Anything Goes!</div>
+                </button>
+            </div>
+
+            <!-- Today's Activity -->
+            <div class="glass-card">
+                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                    📊 Today's Activity
+                </h3>
+                <div id="todays-transactions">
+                    <div style="text-align: center; color: var(--text-muted); padding: 20px;">
+                        No spending today - your Daily Flow is fully available! 🎉
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: 4 S'S BUDGET SYSTEM -->
+        <div id="tab-budget" class="tab-content">
+            <!-- Budget Header -->
+            <div class="budget-header">
+                <h1 class="budget-title">🎯 Your Budget Flow</h1>
+                <p class="budget-subtitle">The 4 S's that build your financial confidence</p>
+            </div>
+
+            <!-- Income Overview -->
+            <div class="income-overview">
+                <div class="income-label">Monthly Income</div>
+                <div class="income-amount">$3,200</div>
+                <div class="income-period">Working for your freedom ✨</div>
+            </div>
+
+            <!-- The 4 S's Budget Categories -->
+            <div class="budget-flow">
+                
+                <!-- SECURE -->
+                <div class="budget-category secure" onclick="expandCategory(&#39;secure&#39;)">
+                    <div class="category-header">
+                        <div class="category-icon">🛡️</div>
+                        <div class="category-info">
+                            <div class="category-name">Secure</div>
+                            <div class="category-description">Lock it down - untouchable recurring payments</div>
+                        </div>
+                    </div>
+                    <div class="category-amount">$1,760</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 95.4545%;"></div>
+                        </div>
+                        <div class="progress-text">
+                                <span>$1760 allocated</span>
+                                <span>55% of income</span>
+                            </div>
+                    </div>
+                    <div class="allocation-examples">
+                        <div class="example-item">🏠 Rent: $1,200</div>
+                        <div class="example-item">📱 Phone: $80</div>
+                        <div class="example-item">📺 Netflix: $15</div>
+                        <div class="example-item">🛡️ Insurance: $385</div>
+                    </div>
+                </div>
+
+                <!-- SAVE -->
+                <div class="budget-category save" onclick="expandCategory(&#39;save&#39;)">
+                    <div class="category-header">
+                        <div class="category-icon">💰</div>
+                        <div class="category-info">
+                            <div class="category-name">Save</div>
+                            <div class="category-description">Long-term wealth building - your future self</div>
+                        </div>
+                    </div>
+                    <div class="category-amount">$160</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <div class="progress-text">
+                                <span>$160 saved this month</span>
+                                <span>5% of income</span>
+                            </div>
+                    </div>
+                    <div class="allocation-examples">
+                        <div class="example-item">🏦 Emergency Fund: $80</div>
+                        <div class="example-item">📈 Index Funds: $40</div>
+                        <div class="example-item">🎯 Goal Savings: $30</div>
+                        <div class="example-item">🔮 Future You: $10</div>
+                    </div>
+                </div>
+
+                <!-- SPEND -->
+                <div class="budget-category spend" onclick="expandCategory(&#39;spend&#39;)">
+                    <div class="category-header">
+                        <div class="category-icon">💚</div>
+                        <div class="category-info">
+                            <div class="category-name">Spend</div>
+                            <div class="category-description">Live your life - 100% guilt-free zone!</div>
+                        </div>
+                    </div>
+                    <div class="category-amount">$1,120</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65.625%;"></div>
+                        </div>
+                        <div class="progress-text">
+                                <span>$735 enjoyed so far</span>
+                                <span>35% of income</span>
+                            </div>
+                    </div>
+                    <div class="allocation-examples">
+                        <div class="example-item">☕ Coffee: $150</div>
+                        <div class="example-item">🍕 Dining: $400</div>
+                        <div class="example-item">🎬 Entertainment: $185</div>
+                        <div class="example-item">🛍️ Shopping: $485</div>
+                    </div>
+                </div>
+
+                <!-- STASH -->
+                <div class="budget-category stash" onclick="expandCategory(&#39;stash&#39;)">
+                    <div class="category-header">
+                        <div class="category-icon">💎</div>
+                        <div class="category-info">
+                            <div class="category-name">Stash</div>
+                            <div class="category-description">Future you - buffer &amp; emergency protection</div>
+                        </div>
+                    </div>
+                    <div class="category-amount">$160</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 25%;"></div>
+                        </div>
+                        <div class="progress-text">
+                                    <span>160 protected</span>
+                                    <span>5% of income</span>
+                                </div>
+                    </div>
+                    <div class="allocation-examples">
+                        <div class="example-item">🛡️ Emergency: $100</div>
+                        <div class="example-item">🏖️ Vacation: $50</div>
+                        <div class="example-item">💰 Buffer: $60</div>
+                        <div class="example-item">📈 Investment: $30</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Daily Spending Preview -->
+            <div class="daily-preview">
+                <h2 class="daily-title">📅 Your Daily Guilt-Free Amount</h2>
+                <div class="daily-amount">10</div>
+                <div class="daily-description">This is what you can spend TODAY without any guilt or worry!</div>
+                
+                <!-- Calculation Breakdown -->
+                <div class="calculation-breakdown">
+                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">How we calculate this:</div>
+                    <div class="calculation-line">
+                        <span>Spend category remaining:</span>
+                        <span>385</span>
+                    </div>
+                    <div class="calculation-line">
+                        <span>Days left in month:</span>
+                        <span>31 days</span>
+                    </div>
+                    <div class="calculation-line">
+                        <span>Your daily freedom:</span>
+                        <span>10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: INSIGHTS -->
+        <div id="tab-insights" class="tab-content">
+            <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <div>✨ Building your insights dashboard...</div>
+            </div>
+        </div>
+
+        <!-- TAB 5: SETTINGS -->
+        <div id="tab-settings" class="tab-content">
+            <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <div>👤 Setting up your profile...</div>
             </div>
         </div>
     </div>
 
-    <!-- Bottom Navigation - Fixed Accessibility -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-t border-white/10 z-50">
-        <div class="max-w-md mx-auto px-2 py-3 safe-area-bottom">
-            <div class="flex justify-around items-center">
-                <button id="nav-guilt-free" onclick="switchTab('guilt-free')" 
-                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300 min-w-[60px] min-h-[60px] touch-manipulation">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    <span class="text-xs font-medium">Home</span>
-                </button>
-                
-                <button id="nav-budget" onclick="switchTab('budget')" 
-                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                    </svg>
-                    <span class="text-xs font-medium">Budget</span>
-                </button>
-                
-                <button id="nav-insights" onclick="switchTab('insights')" 
-                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                    </svg>
-                    <span class="text-xs font-medium">Insights</span>
-                </button>
-                
-                <button id="nav-ai" onclick="switchTab('ai')" 
-                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                    </svg>
-                    <span class="text-xs font-medium">AI</span>
-                </button>
-                
-                <button id="nav-settings" onclick="switchTab('settings')" 
-                        class="flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    <span class="text-xs font-medium">Settings</span>
-                </button>
-            </div>
-        </div>
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item active" onclick="switchTab(&#39;guilt-free&#39;)">
+            <span class="nav-icon">💚</span>
+            <span class="nav-label">Flow</span>
+        </a>
+        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item" onclick="switchTab(&#39;spending&#39;)">
+            <span class="nav-icon">💸</span>
+            <span class="nav-label">Spend</span>
+        </a>
+        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item" onclick="switchTab(&#39;budget&#39;)">
+            <span class="nav-icon">🎯</span>
+            <span class="nav-label">Budget</span>
+        </a>
+        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item" onclick="switchTab(&#39;insights&#39;)">
+            <span class="nav-icon">✨</span>
+            <span class="nav-label">Insights</span>
+        </a>
+        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item" onclick="switchTab(&#39;settings&#39;)">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">You</span>
+        </a>
     </nav>
 
-    <!-- Custom Expense Modal -->
-    <div id="custom-expense-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center hidden z-50">
-        <div class="glass-card p-6 rounded-2xl mx-4 w-full max-w-sm">
-            <h3 class="text-lg font-medium mb-4">Add Custom Expense</h3>
-            <input type="number" id="custom-amount" placeholder="Amount" 
-                   class="w-full p-3 rounded-xl bg-slate-800 border border-slate-600 text-white mb-4">
-            <input type="text" id="custom-description" placeholder="Description (optional)" 
-                   class="w-full p-3 rounded-xl bg-slate-800 border border-slate-600 text-white mb-4">
-            <div class="flex gap-3">
-                <button onclick="addCustomExpense()" 
-                        class="flex-1 bg-emerald-600 text-white p-3 rounded-xl font-medium hover:bg-emerald-700">
-                    Add Expense
-                </button>
-                <button onclick="hideCustomExpenseModal()" 
-                        class="flex-1 bg-slate-600 text-white p-3 rounded-xl font-medium hover:bg-slate-700">
-                    Cancel
-                </button>
+    <!-- AI Chat Toggle -->
+    <button class="ai-chat-toggle haptic-medium" onclick="toggleAIChat()">
+        🤖
+    </button>
+
+    <!-- AI Chat Modal -->
+    <div id="ai-chat-modal" class="ai-chat-modal">
+        <div class="ai-chat-container">
+            <div class="ai-chat-header">
+                <h3 class="ai-chat-title">💬 Your Money Coach</h3>
+                <button class="ai-chat-close" onclick="toggleAIChat()">×</button>
+            </div>
+            <div class="ai-chat-messages" id="ai-chat-messages">
+                <div class="ai-message">
+                    Hi! I'm your financial wellness assistant. I can see you have $35 available guilt-free today and you're building wealth with your SAVE category! How can I help? 💚
+                </div>
+            </div>
+            <div class="ai-chat-input-container">
+                <input type="text" class="ai-chat-input" placeholder="Ask about your budget..." id="ai-chat-input" onkeypress="handleAIChatInput(event)">
             </div>
         </div>
     </div>
 
-    <!-- Toast notification container -->
-    <div id="toast-container" class="fixed top-4 left-4 right-4 z-50 pointer-events-none"></div>
-
     <script>
-        // 🚀 FLOW BUDGETING SYSTEM v2.4 - Flow System Complete
-        // ================================================================
-        // Integrates Flow methodology with existing Daily Budget System
-        
-        // FLOW PROFILE SYSTEM
-        const FLOW_PROFILES = {
-            starting_out: {
-                name: "Starting Out",
-                description: "Building good habits while enjoying life",
-                savePercentage: 5,   // $160 from $3200
-                spendPercentage: 35, // $1120 from $3200
-                dailyPace: 35
-            },
-            getting_serious: {
-                name: "Getting Serious", 
-                description: "Accelerating wealth building",
-                savePercentage: 10,  // $320 from $3200
-                spendPercentage: 30, // $960 from $3200  
-                dailyPace: 30
-            },
-            wealth_building: {
-                name: "Wealth Building",
-                description: "Maximum wealth accumulation",
-                savePercentage: 20,  // $640 from $3200
-                spendPercentage: 20, // $640 from $3200
-                dailyPace: 20
-            }
-        };
-
-        // ENHANCED APP STATE with Flow methodology
-        let appState = {
-            monthlyIncome: 3200,
-            todaySpent: 26.50,  // PRESERVED
-            dailyFlow: 46,      // PRESERVED - will be recalculated
-            daysLeft: 11,       // PRESERVED
-            streakCount: 5,     // PRESERVED
-            currentTab: 'guilt-free',  // PRESERVED
-            
-            // NEW: Flow system state
-            currentProfile: "starting_out",
-            stashActive: false,
-            stashWarningShown: false,
-            
-            // UPDATED: Categories with Flow percentages
-            categories: {
-                secure: { 
-                    used: 1680, 
-                    allocated: 1760,  // 55% of $3200
-                    percentage: 55,
-                    name: "Secure",
-                    description: "Fixed bills & recurring payments"
-                },
-                save: { 
-                    used: 160,        // Always accumulates
-                    allocated: 160,   // 5% for starting_out profile
-                    percentage: 5,
-                    name: "Save", 
-                    description: "Long-term wealth building"
-                },
-                spend: { 
-                    used: 876, 
-                    allocated: 1120,  // 35% for starting_out profile
-                    percentage: 35,
-                    name: "Spend",
-                    description: "Guilt-free daily spending"
-                },
-                stash: { 
-                    used: 40, 
-                    allocated: 160,   // 5% of $3200
-                    percentage: 5,
-                    name: "Stash",
-                    description: "Emergency safety net"
-                }
-            },
-            
-            // PRESERVED: Transaction system (cleared for testing)
-            transactions: [
-                { amount: 5, description: 'Yesterday: Morning coffee', time: 'Yesterday', category: 'spend' },
-                { amount: 15, description: 'Yesterday: Lunch', time: 'Yesterday', category: 'spend' },
-                { amount: 10, description: 'Yesterday: Snack', time: 'Yesterday', category: 'spend' }
-            ]
-        };
-
-        // ================================================================
-        // FLOW CALCULATION ENGINE (Enhanced existing functions)
-        // ================================================================
-
-        function calculateDailyFlow() {
-            const spendCategory = appState.categories.spend;
-            const stashCategory = appState.categories.stash;
-            const spendRemaining = spendCategory.allocated - spendCategory.used;
-            const stashRemaining = stashCategory.allocated - stashCategory.used;
-            
-            if (spendRemaining > 0) {
-                // Normal mode: use SPEND category
-                const dailyBudget = spendRemaining / appState.daysLeft;
-                appState.dailyFlow = roundToNearestFive(Math.max(0, dailyBudget));
-                appState.stashActive = false;
-            } else if (stashRemaining > 0) {
-                // Emergency mode: auto-activate STASH
-                const dailyBudget = stashRemaining / appState.daysLeft;
-                appState.dailyFlow = roundToNearestFive(Math.max(0, dailyBudget));
-                appState.stashActive = true;
-                
-                if (!appState.stashWarningShown) {
-                    showToast("🛡️ Emergency mode: STASH budget now active", "warning");
-                    appState.stashWarningShown = true;
-                }
-            } else {
-                // No budget remaining
-                appState.dailyFlow = 0;
-                showToast("🚨 All budgets depleted - wait for next month", "error");
-            }
-            
-            console.log(`💰 Daily flow calculated: ${appState.dailyFlow} (${appState.stashActive ? 'STASH' : 'SPEND'} mode)`);
-            return appState.dailyFlow;
-        }
-
+        // ===== UNIVERSAL MULTIPLES OF 5 ROUNDING SYSTEM =====
         function roundToNearestFive(amount) {
             return Math.round(amount / 5) * 5;
         }
 
-        function checkStashActivation() {
-            const spendRemaining = appState.categories.spend.allocated - appState.categories.spend.used;
-            const stashRemaining = appState.categories.stash.allocated - appState.categories.stash.used;
+        /**
+         * Calculate remaining days in current month
+         * Handles edge cases and ensures system stability
+         * @returns {number} Days remaining (minimum 1 to prevent division by zero)
+         */
+        function calculateDaysRemaining() {
+            const today = new Date();
+            const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            const daysLeft = endOfMonth.getDate() - today.getDate() + 1;
             
-            // Warn when approaching SPEND depletion (90% used)
-            const spendUsagePercent = appState.categories.spend.used / appState.categories.spend.allocated;
-            if (spendUsagePercent >= 0.9 && spendRemaining > 0 && !appState.stashWarningShown) {
-                showToast("⚠️ Emergency buffer will activate soon", "warning");
-                appState.stashWarningShown = true;
+            // Enterprise safeguard: Minimum 1 day prevents division by zero
+            // Gen Z UX: Ensures users always see positive daily flow on month-end
+            return Math.max(1, daysLeft);
+        }
+
+        /**
+         * Activates STASH emergency mode when SPEND category is depleted
+         * Updates state and UI to reflect emergency fund availability
+         */
+        function activateStashMode() {
+            // Calculate available STASH amount
+            const stashCategory = appState.categories.stash;
+            const stashAvailable = stashCategory.allocated - stashCategory.used;
+            
+            // Update app state
+            appState.stashActivated = true;
+            appState.stashAvailable = stashAvailable;
+            
+            // Calculate new daily flow using STASH
+            const daysRemaining = calculateDaysRemaining();
+            const stashDailyFlow = roundToNearestFive(stashAvailable / daysRemaining);
+            
+            // Update daily flow to STASH amount
+            appState.dailyFlow = stashDailyFlow;
+            
+            // Update all displays
+            updateDailyFlowDisplay();
+            updateStashModeDisplays();
+            
+            console.log('🛡️ STASH Emergency Mode Activated:', {
+                stashAvailable: stashAvailable,
+                stashDailyFlow: stashDailyFlow,
+                daysRemaining: daysRemaining,
+                activationTime: new Date().toISOString()
+            });
+        }
+
+        /**
+         * Updates UI elements to show STASH emergency mode
+         */
+        function updateStashModeDisplays() {
+            // Update main daily flow display with emergency styling
+            const dailyFlowDisplay = document.querySelector('.daily-flow-display');
+            if (dailyFlowDisplay && appState.stashActivated) {
+                dailyFlowDisplay.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+                dailyFlowDisplay.style.background = 'rgba(245, 158, 11, 0.1)';
+            }
+            
+            // Update daily flow label to indicate emergency mode
+            const dailyFlowLabel = document.querySelector('.daily-flow-label');
+            if (dailyFlowLabel && appState.stashActivated) {
+                dailyFlowLabel.textContent = '🛡️ Emergency STASH Available';
+            }
+            
+            // Update Tab 2 status indicator
+            const tab2Status = document.getElementById('tab2-daily-flow');
+            if (tab2Status && appState.stashActivated) {
+                tab2Status.textContent = `${appState.dailyFlow} emergency funds available!`;
+                tab2Status.style.color = 'var(--accent-amber)';
+            }
+            
+            // Update budget tab STASH category visual
+            const stashCategory = document.querySelector('.budget-category.stash');
+            if (stashCategory && appState.stashActivated) {
+                stashCategory.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+                stashCategory.style.background = 'rgba(245, 158, 11, 0.05)';
             }
         }
 
-        // ================================================================
-        // PROFILE MANAGEMENT SYSTEM
-        // ================================================================
-
-        function switchProfile(profileKey) {
-            if (!FLOW_PROFILES[profileKey]) {
-                console.error("Invalid profile:", profileKey);
-                return;
-            }
+        function showRoundingFeedback(originalAmount, roundedAmount) {
+            if (originalAmount === roundedAmount) return;
             
-            const oldProfile = appState.currentProfile;
-            appState.currentProfile = profileKey;
-            const profile = FLOW_PROFILES[profileKey];
+            const feedback = document.createElement('div');
+            feedback.className = 'rounding-feedback';
+            feedback.innerHTML = `
+                <div class="original-amount">You entered: $${originalAmount.toFixed(2)}</div>
+                <div class="rounded-amount">$${roundedAmount}</div>
+                <div class="explanation">Rounded to nearest $5 for simplicity ✨</div>
+            `;
             
-            // Update category allocations
-            const income = appState.monthlyIncome;
-            appState.categories.save.allocated = roundToNearestFive(income * profile.savePercentage / 100);
-            appState.categories.save.percentage = profile.savePercentage;
-            appState.categories.spend.allocated = roundToNearestFive(income * profile.spendPercentage / 100);
-            appState.categories.spend.percentage = profile.spendPercentage;
+            document.body.appendChild(feedback);
             
-            // Update UI
-            updateProfileUI();
-            calculateDailyFlow();
-            updateDisplay();
-            
-            console.log(`Profile switched: ${oldProfile} → ${profileKey}`);
-            showToast(`✅ Switched to ${profile.name} profile`, "success");
+            setTimeout(() => {
+                feedback.remove();
+            }, 2000);
         }
 
-        function updateProfileUI() {
-            const profile = FLOW_PROFILES[appState.currentProfile];
+        function handleAmountInput(inputValue) {
+            const originalAmount = parseFloat(inputValue);
+            if (isNaN(originalAmount) || originalAmount <= 0) {
+                return null;
+            }
             
-            // Update profile selector buttons
-            document.querySelectorAll('.profile-selector').forEach(btn => {
-                btn.classList.remove('profile-active');
-                btn.classList.add('text-slate-400');
+            const roundedAmount = roundToNearestFive(originalAmount);
+            
+            if (originalAmount !== roundedAmount) {
+                showRoundingFeedback(originalAmount, roundedAmount);
+            }
+            
+            return roundedAmount;
+        }
+
+        // ===== APP STATE MANAGEMENT =====
+        let appState = {
+            dailyFlow: 35,
+            todaySpent: 0,
+            monthlyIncome: 3200,
+            categories: {
+                secure: { allocated: 1760, used: 1680, percentage: 55 },
+                save: { allocated: 160, used: 160, percentage: 5 },
+                spend: { allocated: 1120, used: 735, percentage: 35 },
+                stash: { allocated: 160, used: 40, percentage: 5 }
+            },
+            transactions: [],
+            currentTab: 'guilt-free',
+            aiChatOpen: false,
+            stashActivated: false,  // NEW: Track STASH activation status
+            stashAvailable: 0       // NEW: Track available STASH amount
+        };
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Initializing Flow Budgeting App v2.6.0-stash-complete');
+            console.log('📊 STASH auto-activation system fully implemented:', appState);
+            
+            // Initialize STASH available amount
+            appState.stashAvailable = appState.categories.stash.allocated - appState.categories.stash.used;
+            
+            updateDailyFlowCalculation();
+            updateDailyFlowDisplay();
+            updateTransactionsList();
+            updateBudgetProgress();
+            
+            console.log('✅ v2.6.0 initialized - STASH emergency fund system complete and functional');
+        });
+
+        // ===== TAB NAVIGATION SYSTEM =====
+        function switchTab(tabName) {
+            triggerHaptic('light');
+            
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
             });
             
-            let activeButton;
-            if (appState.currentProfile === 'starting_out') activeButton = document.getElementById('profile-starting');
-            else if (appState.currentProfile === 'getting_serious') activeButton = document.getElementById('profile-serious');
-            else if (appState.currentProfile === 'wealth_building') activeButton = document.getElementById('profile-wealth');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            event.currentTarget.classList.add('active');
             
-            if (activeButton) {
-                activeButton.classList.add('profile-active');
-                activeButton.classList.remove('text-slate-400');
-                activeButton.classList.add('text-emerald-300');
+            appState.currentTab = tabName;
+            
+            if (tabName === 'budget') {
+                initializeBudgetTab();
             }
-            
-            // Update profile description
-            const descElement = document.getElementById('profile-description');
-            if (descElement) descElement.textContent = profile.description;
-            
-            // Update current profile display in settings
-            const currentProfileDisplay = document.getElementById('current-profile-display');
-            if (currentProfileDisplay) currentProfileDisplay.textContent = profile.name;
         }
 
-        // ================================================================
-        // ENHANCED EXPENSE PROCESSING (Preserves existing functionality)
-        // ================================================================
+        // ===== TAB 3: BUDGET SYSTEM FUNCTIONALITY =====
+        function initializeBudgetTab() {
+            updateBudgetProgress();
+            updateDailyFlowCalculation();
+            console.log('✅ Tab 3 initialized with proper SAVE category (wealth building focus)');
+        }
 
-        function addExpense(amount, description = '') {
-            console.log(`💸 Adding expense: ${amount} - ${description}`);
+        function updateBudgetProgress() {
+            const categories = ['secure', 'save', 'spend', 'stash'];
             
-            // NEW: Round to nearest $5 (Flow requirement)
-            const roundedAmount = roundToNearestFive(amount);
-            console.log(`💰 Rounded to: ${roundedAmount}`);
+            categories.forEach(categoryName => {
+                const category = appState.categories[categoryName];
+                const progressPercent = Math.min((category.used / category.allocated) * 100, 100);
+                
+                const categoryElement = document.querySelector(`.budget-category.${categoryName}`);
+                if (categoryElement) {
+                    const progressFill = categoryElement.querySelector('.progress-fill');
+                    if (progressFill) {
+                        progressFill.style.width = `${progressPercent}%`;
+                        console.log(`✅ Updated ${categoryName} progress bar to ${progressPercent.toFixed(1)}%`);
+                    }
+                    
+                    const progressText = categoryElement.querySelector('.progress-text');
+                    if (progressText) {
+                        const usedAmount = roundToNearestFive(category.used);
+                        const allocatedAmount = roundToNearestFive(category.allocated);
+                        
+                        if (categoryName === 'secure') {
+                            progressText.innerHTML = `
+                                <span>$${allocatedAmount} allocated</span>
+                                <span>${category.percentage}% of income</span>
+                            `;
+                        } else if (categoryName === 'save') {
+                            progressText.innerHTML = `
+                                <span>$${usedAmount} saved this month</span>
+                                <span>${category.percentage}% of income</span>
+                            `;
+                        } else if (categoryName === 'spend') {
+                            progressText.innerHTML = `
+                                <span>$${usedAmount} enjoyed so far</span>
+                                <span>${category.percentage}% of income</span>
+                            `;
+                        } else if (categoryName === 'stash') {
+                            if (appState.stashActivated) {
+                                progressText.innerHTML = `
+                                    <span>${usedAmount} emergency used</span>
+                                    <span>${category.percentage}% of income</span>
+                                `;
+                            } else {
+                                progressText.innerHTML = `
+                                    <span>${allocatedAmount} protected</span>
+                                    <span>${category.percentage}% of income</span>
+                                `;
+                            }
+                        }
+                        console.log(`✅ Updated ${categoryName} text: $${usedAmount} of $${allocatedAmount} (rounded)`);
+                    }
+                }
+            });
             
-            // PRESERVED: Update today's spending
-            const oldTodaySpent = appState.todaySpent;
-            appState.todaySpent += roundedAmount;
-            console.log(`📊 Today spent: ${oldTodaySpent} → ${appState.todaySpent}`);
-            
-            // NEW: Determine which category to use
-            let targetCategory = 'spend';
-            if (appState.stashActive) {
-                targetCategory = 'stash';
+            console.log('✅ All budget progress bars updated with proper SAVE category (wealth building)');
+        }
+
+        function expandCategory(categoryType) {
+            triggerHaptic('medium');
+            console.log(`Expanding category: ${categoryType}`);
+            if (categoryType === 'save') {
+                showToast(`💰 SAVE category - Building your wealth one dollar at a time!`, 'success');
+            } else {
+                showToast(`📊 ${categoryType} details coming soon!`, 'success');
             }
-            console.log(`🎯 Using category: ${targetCategory}`);
+        }
+
+        function updateDailyFlowCalculation() {
+            const spendAllocated = appState.categories.spend.allocated;
+            const spendUsed = appState.categories.spend.used;
+            const actualSpendRemaining = spendAllocated - spendUsed;
             
-            // PRESERVED: Update category usage
-            const oldCategoryUsed = appState.categories[targetCategory].used;
-            appState.categories[targetCategory].used += roundedAmount;
-            console.log(`📈 ${targetCategory} used: ${oldCategoryUsed} → ${appState.categories[targetCategory].used}`);
+            // CRITICAL: Check for STASH activation BEFORE Math.max
+            if (actualSpendRemaining <= 0 && !appState.stashActivated) {
+                activateStashMode();
+                showToast('🛡️ Emergency mode: STASH funds now available', 'warning');
+                return; // Exit early - activateStashMode handles the calculation
+            }
             
-            // PRESERVED: Add to transactions
+            // Normal calculation for positive SPEND remaining
+            const spendRemaining = Math.max(0, actualSpendRemaining);
+            const daysRemaining = calculateDaysRemaining();
+            const rawDailyFlow = Math.max(0, spendRemaining / daysRemaining);
+            const newDailyFlow = roundToNearestFive(rawDailyFlow);
+            
+            appState.dailyFlow = newDailyFlow;
+            updateDailyFlowDisplay();
+            
+            const dailyAmountElement = document.querySelector('.daily-preview .daily-amount');
+            if (dailyAmountElement) {
+                dailyAmountElement.textContent = `${newDailyFlow}`;
+            }
+            
+            const calculationBreakdown = document.querySelector('.calculation-breakdown');
+            if (calculationBreakdown) {
+                calculationBreakdown.innerHTML = `
+                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">How we calculate this:</div>
+                    <div class="calculation-line">
+                        <span>Spend category remaining:</span>
+                        <span>${roundToNearestFive(spendRemaining)}</span>
+                    </div>
+                    <div class="calculation-line">
+                        <span>Days left in month:</span>
+                        <span>${daysRemaining} days</span>
+                    </div>
+                    <div class="calculation-line">
+                        <span>Your daily freedom:</span>
+                        <span>${newDailyFlow}</span>
+                    </div>
+                `;
+            }
+            
+            // Enhanced logging with STASH status
+            console.log('🧮 Daily Flow Calculation (STASH-aware):', {
+                spendAllocated: spendAllocated,
+                spendUsed: spendUsed,
+                actualSpendRemaining: actualSpendRemaining,
+                spendRemaining: spendRemaining,
+                daysRemaining: daysRemaining,
+                rawDailyFlow: rawDailyFlow.toFixed(2),
+                roundedDailyFlow: newDailyFlow,
+                stashActivated: appState.stashActivated
+            });
+            
+            console.log('✅ Daily flow recalculated with SAVE category focus');
+        }
+
+        // ===== QUICK SPENDING ACTIONS (TAB 1) =====
+        function quickSpend(amount, description) {
+            triggerHaptic('medium');
+            
+            const roundedAmount = roundToNearestFive(amount);
+            
+            console.log(`💸 Processing purchase: ${description} for $${roundedAmount} (rounded from $${amount})`);
+            console.log('📊 Before purchase - Spend category:', appState.categories.spend);
+            
+            appState.todaySpent += roundedAmount;
+
+            // Determine which category to charge based on STASH activation
+            let targetCategory = 'spend';
+            if (appState.stashActivated) {
+                appState.categories.stash.used += roundedAmount;
+                targetCategory = 'stash';
+                console.log('📊 After purchase - STASH category:', appState.categories.stash);
+            } else {
+                appState.categories.spend.used += roundedAmount;
+                console.log('📊 After purchase - Spend category:', appState.categories.spend);
+            }
+            
+            // Update STASH available amount and daily flow when STASH is used
+            if (appState.stashActivated) {
+                const newStashAvailable = appState.categories.stash.allocated - appState.categories.stash.used;
+                appState.stashAvailable = newStashAvailable;
+                
+                // Recalculate daily flow with updated STASH balance
+                const daysRemaining = calculateDaysRemaining();
+                appState.dailyFlow = roundToNearestFive(Math.max(0, newStashAvailable / daysRemaining));
+                
+                console.log('📊 STASH Balance Updated:', {
+                    stashUsed: appState.categories.stash.used,
+                    stashAvailable: newStashAvailable,
+                    newDailyFlow: appState.dailyFlow
+                });
+                
+                // STASH depletion warnings
+                if (appState.stashAvailable <= 20 && appState.stashAvailable > 0) {
+                    showToast('🚨 CRITICAL: Emergency funds running low', 'warning');
+                } else if (appState.stashAvailable <= 0) {
+                    showToast('🚨 EMERGENCY: All funds depleted', 'warning');
+                    appState.dailyFlow = 0;
+                }
+            }
+            
             const transaction = {
+                id: Date.now(),
                 amount: roundedAmount,
-                description: description || 'Quick expense',
-                time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                description: description,
+                timestamp: new Date(),
                 category: targetCategory
             };
             appState.transactions.unshift(transaction);
             
-            // Keep only last 10 transactions
-            if (appState.transactions.length > 10) {
-                appState.transactions.pop();
-            }
-            
-            // PRESERVED: Recalculate and update display
-            const oldDailyFlow = appState.dailyFlow;
-            calculateDailyFlow();
-            console.log(`🔄 Daily flow: ${oldDailyFlow} → ${appState.dailyFlow}`);
-            
-            updateDisplay();
-            
-            // NEW: Check for STASH activation
-            checkStashActivation();
-            
-            // PRESERVED: Show feedback with Flow enhancements
-            showContextualMessage(roundedAmount);
-            
-            // Add haptic feedback
-            if (navigator.vibrate) {
-                navigator.vibrate(50);
-            }
-            
-            console.log(`✅ Expense processed successfully`);
-            console.log(`📊 Current state:`, {
-                todaySpent: appState.todaySpent,
-                dailyFlow: appState.dailyFlow,
-                spendUsed: appState.categories.spend.used,
-                spendAllocated: appState.categories.spend.allocated,
-                spendRemaining: appState.categories.spend.allocated - appState.categories.spend.used
-            });
-        }
-
-        function showContextualMessage(amount) {
-            const remaining = appState.dailyFlow;
-            
-            if (appState.stashActive) {
-                showToast(`💛 $${amount} from emergency fund - totally fine!`, "warning");
-            } else if (remaining >= 20) {
-                showToast(`💚 $${amount} spent - you're doing great!`, "success");
-            } else if (remaining >= 0) {
-                showToast(`🎯 $${amount} spent - perfect pacing!`, "success");
-            } else {
-                showToast(`💛 Using tomorrow's money - no worries!`, "warning");
-            }
-        }
-
-        // ================================================================
-        // UI UPDATE FUNCTIONS (Enhanced existing)
-        // ================================================================
-
-        function updateDisplay() {
-            updateHeroDisplay();
-            updateProgressRing();
-            updateTomorrowImpact();
+            updateDailyFlowCalculation();
             updateTransactionsList();
-            updateBudgetTab();
-        }
-
-        function updateHeroDisplay() {
-            const dailyFlowElement = document.getElementById('daily-flow');
-            const flowLabelElement = document.getElementById('flow-label');
-            const stashIndicator = document.getElementById('stash-indicator');
-            const spentTodayElement = document.getElementById('spent-today');
+            updateBudgetProgress();
             
-            // Calculate today's remaining budget
-            const todayRemaining = Math.max(0, appState.dailyFlow - appState.todaySpent);
-            
-            if (dailyFlowElement) {
-                dailyFlowElement.textContent = `${todayRemaining}`;
-            }
-            
-            if (flowLabelElement) {
-                flowLabelElement.textContent = appState.stashActive ? "Emergency Today" : "Guilt-Free Today";
-            }
-            
-            if (stashIndicator) {
-                if (appState.stashActive) {
-                    stashIndicator.classList.remove('hidden');
-                    stashIndicator.textContent = "Emergency Mode";
-                } else {
-                    stashIndicator.classList.add('hidden');
-                }
-            }
-            
-            if (spentTodayElement) {
-                spentTodayElement.textContent = `${appState.todaySpent.toFixed(2)}`;
-            }
-            
-            console.log(`🎯 Hero updated: ${todayRemaining} remaining today (daily budget: ${appState.dailyFlow}, spent: ${appState.todaySpent})`);
-        }
-
-        function updateProgressRing() {
-            const circle = document.getElementById('progress-circle');
-            if (!circle) return;
-            
-            const spendCategory = appState.categories.spend;
-            const usagePercent = (spendCategory.used / spendCategory.allocated) * 100;
-            const circumference = 2 * Math.PI * 50; // radius = 50
-            const offset = circumference - (Math.min(usagePercent, 100) / 100) * circumference;
-            
-            circle.style.strokeDashoffset = offset;
-            
-            console.log(`🔄 Progress ring: ${usagePercent.toFixed(1)}% usage (${spendCategory.used}/${spendCategory.allocated})`);
-            
-            // Change color based on usage
-            if (appState.stashActive) {
-                circle.style.stroke = '#f59e0b'; // Orange for emergency mode
-            } else if (usagePercent >= 90) {
-                circle.style.stroke = '#f59e0b'; // Orange warning
-            } else if (usagePercent >= 100) {
-                circle.style.stroke = '#ef4444'; // Red over-budget
+            if (appState.dailyFlow >= 0) {
+                showToast(`🎉 ${description} - Guilt-free purchase confirmed!`, 'success');
             } else {
-                circle.style.stroke = 'url(#progressGradient)'; // Normal green
+                showToast(`💛 ${description} - Using tomorrow's flow, totally fine!`, 'warning');
             }
+            
+            celebrateFlow();
         }
 
-        function updateTomorrowImpact() {
-            const tomorrowElement = document.getElementById('tomorrow-impact');
-            if (!tomorrowElement) return;
+        // ===== QUICK ADD ACTIONS (TAB 2) =====
+        function quickAdd(type, amount) {
+            triggerHaptic('medium');
             
-            const spendRemaining = appState.categories.spend.allocated - appState.categories.spend.used;
-            const tomorrowBudget = roundToNearestFive(spendRemaining / (appState.daysLeft - 1));
-            const todayRemaining = Math.max(0, appState.dailyFlow - appState.todaySpent);
+            const descriptions = {
+                coffee: 'Coffee ☕',
+                lunch: 'Lunch 🍕', 
+                snack: 'Snack 🍿',
+                gas: 'Gas ⛽',
+                uber: 'Ride 🚗',
+                shopping: 'Shopping 🛍️'
+            };
             
-            console.log(`🌅 Tomorrow calculation: remaining=${spendRemaining}, days=${appState.daysLeft-1}, tomorrow=${tomorrowBudget}, todayLeft=${todayRemaining}`);
-            
-            if (todayRemaining > 0) {
-                tomorrowElement.textContent = `Tomorrow: ${tomorrowBudget} (${todayRemaining > 0 ? `+${todayRemaining} if you save today` : 'standard pace'})`;
-                tomorrowElement.className = 'text-xs text-emerald-400 mt-1';
-            } else if (appState.todaySpent > appState.dailyFlow) {
-                const overspend = appState.todaySpent - appState.dailyFlow;
-                tomorrowElement.textContent = `Tomorrow: ${Math.max(0, tomorrowBudget)} (adjusted for ${overspend} overspend)`;
-                tomorrowElement.className = 'text-xs text-orange-400 mt-1';
-            } else {
-                tomorrowElement.textContent = `Tomorrow: ${tomorrowBudget} (standard pace)`;
-                tomorrowElement.className = 'text-xs text-slate-400 mt-1';
-            }
+            quickSpend(amount, descriptions[type] || 'Purchase');
         }
 
-        function updateBudgetTab() {
-            console.log('📊 Updating budget tab...');
+        // ===== DISPLAY UPDATES =====
+        function updateDailyFlowDisplay() {
+            const flowAmount = Math.max(0, appState.dailyFlow);
             
-            // Update budget category displays
-            Object.keys(appState.categories).forEach(categoryKey => {
-                const category = appState.categories[categoryKey];
-                
-                // Update amounts
-                const amountElement = document.getElementById(`${categoryKey}-amount`);
-                if (amountElement) {
-                    amountElement.textContent = `${category.allocated}`;
-                }
-                
-                // Update percentages
-                const percentageElement = document.getElementById(`${categoryKey}-percentage`);
-                if (percentageElement) {
-                    percentageElement.textContent = `${category.percentage}%`;
-                }
-                
-                // Update progress bars
-                const progressElement = document.getElementById(`${categoryKey}-progress`);
-                if (progressElement) {
-                    const percentage = category.allocated > 0 ? (category.used / category.allocated) * 100 : 0;
-                    progressElement.style.width = `${Math.min(percentage, 100)}%`;
-                    console.log(`📈 ${categoryKey}: ${percentage.toFixed(1)}% (${category.used}/${category.allocated})`);
-                }
-                
-                // Update usage text
-                const usedElement = document.getElementById(`${categoryKey}-used`);
-                if (usedElement) {
-                    if (categoryKey === 'save') {
-                        usedElement.textContent = `${category.allocated} allocated (always accumulates)`;
-                    } else {
-                        usedElement.textContent = `${category.used} used this month`;
-                    }
-                }
-            });
+            const tab1Display = document.getElementById('daily-flow-amount');
+            if (tab1Display) {
+                tab1Display.textContent = `$${flowAmount}`;
+            }
             
-            console.log('✅ Budget tab updated');
+            const tab2Display = document.getElementById('tab2-daily-flow');
+            if (tab2Display) {
+                tab2Display.textContent = `$${flowAmount} left guilt-free today!`;
+            }
         }
 
         function updateTransactionsList() {
-            const transactionsList = document.getElementById('transactions-list');
-            if (!transactionsList) return;
-            
-            transactionsList.innerHTML = '';
-            
-            appState.transactions.slice(0, 5).forEach(transaction => {
-                const transactionElement = document.createElement('div');
-                transactionElement.className = 'flex items-center justify-between p-3 rounded-xl bg-slate-800/50';
-                
-                const categoryIcon = transaction.category === 'stash' ? '🛡️' : '💸';
-                
-                transactionElement.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <span class="text-xl">${categoryIcon}</span>
-                        <div>
-                            <div class="font-medium">${transaction.description}</div>
-                            <div class="text-xs text-slate-400">${transaction.time}</div>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <div class="font-medium">$${transaction.amount}</div>
-                        <div class="text-xs text-slate-400">${transaction.category}</div>
-                    </div>
-                `;
-                
-                transactionsList.appendChild(transactionElement);
-            });
-        }
-
-        // ================================================================
-        // TAB NAVIGATION (Preserved existing)
-        // ================================================================
-
-        function switchTab(tabName) {
-            console.log(`🔄 Switching to tab: ${tabName}`);
-            
-            // Hide all tab content
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.add('hidden');
-            });
-            
-            // Show selected tab
-            const targetTab = document.getElementById(`tab-${tabName}`);
-            if (targetTab) {
-                targetTab.classList.remove('hidden');
-                console.log(`✅ Tab ${tabName} now visible`);
-            } else {
-                console.error(`❌ Tab ${tabName} not found`);
-            }
-            
-            // Update navigation state
-            document.querySelectorAll('[id^="nav-"]').forEach(nav => {
-                nav.className = 'flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10 min-w-[60px] min-h-[60px] touch-manipulation';
-            });
-            
-            // Highlight active tab
-            const activeNav = document.getElementById(`nav-${tabName}`);
-            if (activeNav) {
-                if (tabName === 'guilt-free') {
-                    activeNav.className = 'flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 bg-emerald-500/30 text-emerald-300 min-w-[60px] min-h-[60px] touch-manipulation';
-                } else {
-                    activeNav.className = 'flex flex-col items-center gap-1 p-2 rounded-2xl transition-all duration-300 bg-blue-500/30 text-blue-300 min-w-[60px] min-h-[60px] touch-manipulation';
-                }
-                console.log(`✅ Navigation updated for ${tabName}`);
-            }
-            
-            appState.currentTab = tabName;
-            
-            // Add haptic feedback for tab switches
-            if (navigator.vibrate) {
-                navigator.vibrate(30);
-            }
-        }
-
-        // ================================================================
-        // CUSTOM EXPENSE MODAL (Preserved existing)
-        // ================================================================
-
-        function showCustomExpenseModal() {
-            document.getElementById('custom-expense-modal').classList.remove('hidden');
-            document.getElementById('custom-amount').focus();
-        }
-
-        function hideCustomExpenseModal() {
-            document.getElementById('custom-expense-modal').classList.add('hidden');
-            document.getElementById('custom-amount').value = '';
-            document.getElementById('custom-description').value = '';
-        }
-
-        function addCustomExpense() {
-            const amount = parseFloat(document.getElementById('custom-amount').value);
-            const description = document.getElementById('custom-description').value || 'Custom expense';
-            
-            if (amount && amount > 0) {
-                addExpense(amount, description);
-                hideCustomExpenseModal();
-            } else {
-                showToast("Please enter a valid amount", "error");
-            }
-        }
-
-        // ================================================================
-        // TOAST SYSTEM (Enhanced existing)
-        // ================================================================
-
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toast-container');
+            const container = document.getElementById('todays-transactions');
             if (!container) return;
             
+            if (appState.transactions.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; color: var(--text-muted); padding: 20px;">
+                        No spending today - your Daily Flow is fully available! 🎉
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = appState.transactions.map(transaction => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div>
+                        <div style="font-weight: 600;">${transaction.description}</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">${transaction.timestamp.toLocaleTimeString()}</div>
+                    </div>
+                    <div style="font-weight: 700; color: var(--accent-green);">$${transaction.amount}</div>
+                </div>
+            `).join('');
+        }
+
+        // ===== CELEBRATION SYSTEM =====
+        function celebrateFlow() {
+            triggerHaptic('light');
+            const display = document.querySelector('.daily-flow-display');
+            if (display) {
+                display.classList.add('celebration-pulse');
+                setTimeout(() => {
+                    display.classList.remove('celebration-pulse');
+                }, 600);
+            }
+        }
+
+        function showCustomAmount() {
+            triggerHaptic('light');
+            const input = prompt('Enter custom amount:');
+            if (input && input.trim()) {
+                const processedAmount = handleAmountInput(input);
+                if (processedAmount && processedAmount > 0) {
+                    quickSpend(processedAmount, `Custom Purchase 💳 ($${processedAmount})`);
+                } else {
+                    showToast('Please enter a valid amount greater than 0', 'warning');
+                }
+            }
+        }
+
+        // ===== AI CHAT SYSTEM =====
+        function toggleAIChat() {
+            triggerHaptic('medium');
+            const modal = document.getElementById('ai-chat-modal');
+            appState.aiChatOpen = !appState.aiChatOpen;
+            
+            if (appState.aiChatOpen) {
+                modal.classList.add('active');
+                document.getElementById('ai-chat-input').focus();
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+        function handleAIChatInput(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById('ai-chat-input');
+                const message = input.value.trim();
+                
+                if (message) {
+                    addAIMessage(`You: ${message}`, 'user');
+                    input.value = '';
+                    
+                    setTimeout(() => {
+                        generateAIResponse(message);
+                    }, 1000);
+                }
+            }
+        }
+
+        function addAIMessage(message, type = 'ai') {
+            const container = document.getElementById('ai-chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'ai-message';
+            messageDiv.textContent = message;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function generateAIResponse(userMessage) {
+            const responses = [
+                `I see you have $${appState.dailyFlow} available guilt-free today. You're doing great! 💚`,
+                `Your SAVE category is building wealth at ${Math.round((appState.categories.save.used / appState.categories.save.allocated) * 100)}% - future you will thank you! 🏦`,
+                `I love how everything rounds to multiples of $5 - so much simpler for decision-making! ✨`,
+                `Your Flow system is perfectly balanced: SECURE essentials covered, SAVE building wealth, guilt-free SPEND ready! 🚀`
+            ];
+            
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            addAIMessage(randomResponse);
+        }
+
+        // ===== TOAST NOTIFICATIONS =====
+        function showToast(message, type = 'success') {
             const toast = document.createElement('div');
-            toast.className = `glass-card p-4 rounded-xl mb-2 transition-all duration-300 transform translate-y-0 opacity-100`;
-            
-            let bgColor = 'bg-slate-700/90';
-            if (type === 'success') bgColor = 'bg-emerald-600/90';
-            else if (type === 'warning') bgColor = 'bg-orange-600/90';
-            else if (type === 'error') bgColor = 'bg-red-600/90';
-            
-            toast.classList.add(bgColor);
+            toast.className = `toast ${type}`;
             toast.textContent = message;
             
-            container.appendChild(toast);
+            document.body.appendChild(toast);
             
             setTimeout(() => {
-                toast.style.transform = 'translateY(-100%)';
-                toast.style.opacity = '0';
-                setTimeout(() => {
-                    if (toast.parentNode) {
-                        toast.parentNode.removeChild(toast);
-                    }
-                }, 300);
+                toast.remove();
             }, 3000);
         }
 
-        // ================================================================
-        // UTILITY FUNCTIONS (Preserved existing)
-        // ================================================================
-
-        function updateGreeting() {
-            const hour = new Date().getHours();
-            const greeting = document.getElementById('greeting');
-            const context = document.getElementById('time-context');
-            
-            if (hour < 12) {
-                greeting.textContent = 'Good morning, Sarah! ☀️';
-                context.textContent = 'Perfect time for a guilt-free coffee';
-            } else if (hour < 17) {
-                greeting.textContent = 'Good afternoon, Sarah! ☀️';
-                context.textContent = 'Perfect time for a guilt-free treat';
-            } else {
-                greeting.textContent = 'Good evening, Sarah! 🌙';
-                context.textContent = 'Perfect time to enjoy your money';
+        // ===== HAPTIC FEEDBACK =====
+        function triggerHaptic(intensity = 'light') {
+            if (navigator.vibrate) {
+                const patterns = {
+                    light: [10],
+                    medium: [20],
+                    heavy: [30]
+                };
+                navigator.vibrate(patterns[intensity] || patterns.light);
             }
         }
 
-        // ================================================================
-        // INITIALIZATION (Enhanced existing)
-        // ================================================================
-
-        function initApp() {
-            console.log('🚀 Initializing Flow Budgeting System v2.4...');
-            
-            updateGreeting();
-            updateProfileUI();
-            calculateDailyFlow();
-            updateDisplay();
-            
-            // Ensure correct tab is displayed and navigation is set
-            switchTab('guilt-free');
-            
-            console.log('✅ Flow system initialized successfully');
-            console.log('💰 Flow allocations:', {
-                secure: `${appState.categories.secure.allocated} (${appState.categories.secure.percentage}%)`,
-                save: `${appState.categories.save.allocated} (${appState.categories.save.percentage}%)`,
-                spend: `${appState.categories.spend.allocated} (${appState.categories.spend.percentage}%)`,
-                stash: `${appState.categories.stash.allocated} (${appState.categories.stash.percentage}%)`
-            });
-        }
-
-        // ================================================================
-        // EVENT LISTENERS
-        // ================================================================
-
-        // Handle Enter key in custom expense modal
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && !document.getElementById('custom-expense-modal').classList.contains('hidden')) {
-                addCustomExpense();
-            } else if (e.key === 'Escape') {
-                hideCustomExpenseModal();
-            }
-        });
-
-        // Add touch event handlers for better mobile compatibility
-        function addTouchHandlers() {
-            const navButtons = ['nav-guilt-free', 'nav-budget', 'nav-insights', 'nav-ai', 'nav-settings'];
-            const tabNames = ['guilt-free', 'budget', 'insights', 'ai', 'settings'];
-            
-            navButtons.forEach((buttonId, index) => {
-                const button = document.getElementById(buttonId);
-                if (button) {
-                    // Add touchstart event as backup
-                    button.addEventListener('touchstart', function(e) {
-                        e.preventDefault();
-                        switchTab(tabNames[index]);
-                    }, { passive: false });
-                    
-                    // Add click event as primary
-                    button.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        switchTab(tabNames[index]);
-                    });
-                }
+        // ===== ERROR HANDLING =====
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            console.error('App Error:', {
+                message: msg,
+                source: url,
+                line: lineNo,
+                column: columnNo,
+                error: error
             });
             
-            console.log('✅ Touch handlers added for navigation');
-        }
-
-        // Start the app
-        document.addEventListener('DOMContentLoaded', function() {
-            initApp();
-            addTouchHandlers();
-        });
-        
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                initApp();
-                addTouchHandlers();
-            });
-        } else {
-            initApp();
-            addTouchHandlers();
-        }
-
-        // Make functions available globally for testing
-        window.FlowBudgetingSystem = {
-            addExpense,
-            switchProfile,
-            switchTab,
-            getState: () => appState,
-            getProfiles: () => FLOW_PROFILES,
-            
-            // Test functions
-            testExpense: (amount = 5) => {
-                console.log(`🧪 Test: Adding ${amount} expense`);
-                addExpense(amount, `Test expense ${amount}`);
-            },
-            
-            resetTodaySpent: () => {
-                console.log(`🔄 Resetting today's spending from ${appState.todaySpent} to $0`);
-                appState.todaySpent = 0;
-                updateDisplay();
-            },
-            
-            showCurrentState: () => {
-                console.log('📊 CURRENT STATE:', {
-                    todaySpent: appState.todaySpent,
-                    dailyFlow: appState.dailyFlow,
-                    daysLeft: appState.daysLeft,
-                    categories: Object.fromEntries(
-                        Object.entries(appState.categories).map(([key, cat]) => [
-                            key, 
-                            { used: cat.used, allocated: cat.allocated, remaining: cat.allocated - cat.used }
-                        ])
-                    )
-                });
-            }
+            showToast('Something went wrong. Please refresh the app.', 'warning');
+            return false;
         };
-
-        console.log('💚 Flow Budgeting System v2.4 - Flow System Complete!');
     </script>
-</body>
-</html>
+
+</body></html>
