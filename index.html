@@ -1,57 +1,28 @@
 <!DOCTYPE html>
-<!-- saved from url=(0073)file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>💚 Flow Budgeting - Your Financial Freedom v2.6.0</title>
+    <title>💚 Flow Budgeting - Your Financial Freedom</title>
     
     <!-- 
-    VERSION: 2.6.0-stash-complete ✅
-    STATUS: FLOW SYSTEM + MULTIPLES OF 5 + CORRECT SAVE CATEGORY + DAYS CALCULATION + STASH AUTO-ACTIVATION COMPLETE
+    VERSION: 2.5.2-stash-activation-partial ✅
+    STATUS: FLOW SYSTEM + MULTIPLES OF 5 + CORRECT SAVE CATEGORY + DAYS CALCULATION + STASH AUTO-ACTIVATION (Steps 1-4)
     DATE: July 01, 2025
     
-    NEW FEATURES (v2.6.0-stash-complete):
-    ✅ STASH Auto-Activation System - COMPLETE IMPLEMENTATION
-    ✅ Emergency Fund Access - Automatic activation when SPEND depleted
-    ✅ Smart Transaction Processing - Charges correct category based on mode
-    ✅ Real-time STASH Balance Updates - Immediate recalculation after transactions
-    ✅ Depletion Warning System - Critical alerts at $20 and $0 thresholds
-    ✅ Emergency UI Indicators - Amber styling and emergency messaging
-    ✅ Tab 3 STASH Display - Shows actual usage vs allocation consistently
-    ✅ Daily Flow STASH Integration - Seamless transition between SPEND and STASH calculations
-    ✅ Proper State Initialization - Correct STASH available amount on app startup
-    ✅ Robust Calculation Logic - Fixed early exit and consistency issues
+    NEW FEATURES (v2.5.2-partial):
+    ✅ STASH Auto-Activation System - Core functionality implemented (Steps 1-4)
+    ✅ Emergency Mode State Management - stashActivated and stashAvailable tracking
+    ✅ activateStashMode() Function - Automatic emergency fund activation
+    ✅ updateStashModeDisplays() Function - Emergency UI indicators
+    ✅ Enhanced Daily Flow Calculation - STASH-aware calculation logic
     
-    STASH SYSTEM FUNCTIONALITY:
-    ✅ Detection: Automatic activation when SPEND category overdrawn
-    ✅ Transaction Processing: Charges STASH when in emergency mode
-    ✅ Balance Management: Real-time STASH available amount tracking
-    ✅ Warning System: Progressive alerts (running low → depleted)
-    ✅ UI Integration: Emergency styling across all tabs and displays
-    ✅ Daily Flow: Uses STASH balance for daily spending calculations
-    ✅ State Consistency: Proper initialization and cross-tab synchronization
-    
-    PREVIOUS FEATURES (v2.5.x):
-    ✅ calculateDaysRemaining() Function - Enterprise-grade days calculation
+    PREVIOUS FEATURES (v2.5.1):
+    ✅ calculateDaysRemaining() Function Added - Enterprise-grade days calculation
     ✅ Division by Zero Protection - Math.max(1, daysLeft) safeguard
-    ✅ SAVE Category - Correctly named wealth building category
-    ✅ Universal Multiples of 5 Rounding - All amounts rounded to nearest $5
-    ✅ 4 S's Framework - SECURE, SAVE, SPEND, STASH alignment complete
+    ✅ Documentation Added - Clear function purpose and edge case handling
     
-    KNOWN LIMITATIONS (See Defect Logs):
-    ⚠️ STASH deactivation logic not implemented (manual future enhancement)
-    ⚠️ Small amount rounding may eliminate access to funds under $2.50/day
-    ⚠️ No overdraw protection for transactions exceeding total available funds
-    
-    NEXT DEVELOPMENT:
-    - Bug fixes per defect logs (STASH and Daily Flow calculation improvements)
-    - Add user profile system (Starting Out, Getting Serious, Wealth Building)
-    - Tab 4: Analytics and insights dashboard
-    - Tab 5: Settings and profile management
-    - Period rollover and STASH reset functionality
-    -->
-    
-    </head><body>PREVIOUS FEATURES (v2.5):
+    PREVIOUS FEATURES (v2.5):
     ✅ SAVE Category - Correctly named and positioned (was "Sustain")
     ✅ Wealth Building Focus - SAVE category now represents long-term wealth building
     ✅ Savings-Focused Examples - Emergency fund, investments, retirement planning
@@ -69,8 +40,8 @@
     ✅ Daily Flow: $35 - Matches Flow methodology
     
     STABLE FEATURES:
-    ✅ Tab 1 (Guilt-Free Zone) - Complete with correct allocations &amp; rounding
-    ✅ Tab 2 (Lightning-Fast Expense Entry) - Working with Flow math &amp; rounding
+    ✅ Tab 1 (Guilt-Free Zone) - Complete with correct allocations & rounding
+    ✅ Tab 2 (Lightning-Fast Expense Entry) - Working with Flow math & rounding
     ✅ Tab 3 (4 S's Budget System) - Proper SECURE, SAVE, STASH, SPEND categories
     ✅ Cross-Tab Synchronization - Real-time updates across all tabs
     ✅ AI Chat Integration - Contextual intelligence across tabs
@@ -83,7 +54,7 @@
     - Implement STASH auto-activation system
     - Tab 4: Analytics and insights dashboard
     - Tab 5: Settings and profile management
-    --&gt;
+    -->
     
     <style>
         /* ===== CSS VARIABLES - EXACT REFERENCE COMPLIANCE ===== */
@@ -972,8 +943,8 @@
             /* Triggers heavy haptic feedback via JavaScript */
         }
     </style>
-
-
+</head>
+<body>
     <!-- Animated Background -->
     <div class="bg-animation"></div>
 
@@ -985,7 +956,7 @@
             <div class="hero-section">
                 <div class="daily-flow-display" onclick="celebrateFlow()">
                     <div class="daily-flow-label">💚 Today's Guilt-Free Amount</div>
-                    <div class="daily-flow-amount" id="daily-flow-amount">$10</div>
+                    <div class="daily-flow-amount" id="daily-flow-amount">$35</div>
                     <div class="daily-flow-description">
                         This is YOUR money to enjoy guilt-free 🎉
                     </div>
@@ -994,17 +965,17 @@
 
             <!-- Quick Spend Actions -->
             <div class="quick-actions">
-                <div class="action-btn haptic-medium" onclick="quickSpend(5, &#39;Coffee Run ☕&#39;)">
+                <div class="action-btn haptic-medium" onclick="quickSpend(5, 'Coffee Run ☕')">
                     <span class="action-icon">☕</span>
                     <div class="action-label">Coffee Run</div>
                     <div class="action-desc">$5</div>
                 </div>
-                <div class="action-btn haptic-medium" onclick="quickSpend(15, &#39;Lunch Treat 🍕&#39;)">
+                <div class="action-btn haptic-medium" onclick="quickSpend(15, 'Lunch Treat 🍕')">
                     <span class="action-icon">🍕</span>
                     <div class="action-label">Lunch Treat</div>
                     <div class="action-desc">$15</div>
                 </div>
-                <div class="action-btn haptic-medium" onclick="quickSpend(5, &#39;Snack Attack 🍿&#39;)">
+                <div class="action-btn haptic-medium" onclick="quickSpend(5, 'Snack Attack 🍿')">
                     <span class="action-icon">🍿</span>
                     <div class="action-label">Snack Attack</div>
                     <div class="action-desc">$5</div>
@@ -1034,7 +1005,7 @@
             <header class="header">
                 <div class="header-info">
                     <h1 class="tab-title">Add Spending 💸</h1>
-                    <p class="quick-status" id="tab2-daily-flow">$10 left guilt-free today!</p>
+                    <p class="quick-status" id="tab2-daily-flow">$35 left guilt-free today!</p>
                 </div>
                 <div style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 8px 12px; font-size: 12px; color: var(--accent-green); font-weight: 600;">
                     ✅ Pre-approved
@@ -1045,32 +1016,32 @@
             <div class="quick-add-section">
                 <h2 class="section-title">⚡ Lightning Quick Add</h2>
                 <div class="quick-add-grid">
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;coffee&#39;, 5)">
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('coffee', 5)">
                         <span class="quick-add-icon">☕</span>
                         <div class="quick-add-label">Coffee</div>
                         <div class="quick-add-price">$5</div>
                     </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;lunch&#39;, 10)">
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('lunch', 10)">
                         <span class="quick-add-icon">🍕</span>
                         <div class="quick-add-label">Lunch</div>
                         <div class="quick-add-price">$10</div>
                     </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;snack&#39;, 5)">
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('snack', 5)">
                         <span class="quick-add-icon">🍿</span>
                         <div class="quick-add-label">Snack</div>
                         <div class="quick-add-price">$5</div>
                     </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;gas&#39;, 40)">
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('gas', 40)">
                         <span class="quick-add-icon">⛽</span>
                         <div class="quick-add-label">Gas</div>
                         <div class="quick-add-price">$40</div>
                     </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;uber&#39;, 15)">
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('uber', 15)">
                         <span class="quick-add-icon">🚗</span>
                         <div class="quick-add-label">Ride</div>
                         <div class="quick-add-price">$15</div>
                     </div>
-                    <div class="quick-add-btn haptic-medium" onclick="quickAdd(&#39;shopping&#39;, 25)">
+                    <div class="quick-add-btn haptic-medium" onclick="quickAdd('shopping', 25)">
                         <span class="quick-add-icon">🛍️</span>
                         <div class="quick-add-label">Shopping</div>
                         <div class="quick-add-price">$25</div>
@@ -1117,7 +1088,7 @@
             <div class="budget-flow">
                 
                 <!-- SECURE -->
-                <div class="budget-category secure" onclick="expandCategory(&#39;secure&#39;)">
+                <div class="budget-category secure" onclick="expandCategory('secure')">
                     <div class="category-header">
                         <div class="category-icon">🛡️</div>
                         <div class="category-info">
@@ -1128,12 +1099,12 @@
                     <div class="category-amount">$1,760</div>
                     <div class="progress-container">
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 95.4545%;"></div>
+                            <div class="progress-fill" style="width: 0%"></div>
                         </div>
                         <div class="progress-text">
-                                <span>$1760 allocated</span>
-                                <span>55% of income</span>
-                            </div>
+                            <span>$1,760 allocated</span>
+                            <span>55% of income</span>
+                        </div>
                     </div>
                     <div class="allocation-examples">
                         <div class="example-item">🏠 Rent: $1,200</div>
@@ -1144,7 +1115,7 @@
                 </div>
 
                 <!-- SAVE -->
-                <div class="budget-category save" onclick="expandCategory(&#39;save&#39;)">
+                <div class="budget-category save" onclick="expandCategory('save')">
                     <div class="category-header">
                         <div class="category-icon">💰</div>
                         <div class="category-info">
@@ -1155,12 +1126,12 @@
                     <div class="category-amount">$160</div>
                     <div class="progress-container">
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 100%;"></div>
+                            <div class="progress-fill" style="width: 0%"></div>
                         </div>
                         <div class="progress-text">
-                                <span>$160 saved this month</span>
-                                <span>5% of income</span>
-                            </div>
+                            <span>$160 saved this month</span>
+                            <span>5% of income</span>
+                        </div>
                     </div>
                     <div class="allocation-examples">
                         <div class="example-item">🏦 Emergency Fund: $80</div>
@@ -1171,7 +1142,7 @@
                 </div>
 
                 <!-- SPEND -->
-                <div class="budget-category spend" onclick="expandCategory(&#39;spend&#39;)">
+                <div class="budget-category spend" onclick="expandCategory('spend')">
                     <div class="category-header">
                         <div class="category-icon">💚</div>
                         <div class="category-info">
@@ -1182,12 +1153,12 @@
                     <div class="category-amount">$1,120</div>
                     <div class="progress-container">
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 65.625%;"></div>
+                            <div class="progress-fill" style="width: 0%"></div>
                         </div>
                         <div class="progress-text">
-                                <span>$735 enjoyed so far</span>
-                                <span>35% of income</span>
-                            </div>
+                            <span>$735 enjoyed so far</span>
+                            <span>35% of income</span>
+                        </div>
                     </div>
                     <div class="allocation-examples">
                         <div class="example-item">☕ Coffee: $150</div>
@@ -1198,7 +1169,7 @@
                 </div>
 
                 <!-- STASH -->
-                <div class="budget-category stash" onclick="expandCategory(&#39;stash&#39;)">
+                <div class="budget-category stash" onclick="expandCategory('stash')">
                     <div class="category-header">
                         <div class="category-icon">💎</div>
                         <div class="category-info">
@@ -1209,12 +1180,12 @@
                     <div class="category-amount">$160</div>
                     <div class="progress-container">
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 25%;"></div>
+                            <div class="progress-fill" style="width: 0%"></div>
                         </div>
                         <div class="progress-text">
-                                    <span>160 protected</span>
-                                    <span>5% of income</span>
-                                </div>
+                            <span>$160 protected</span>
+                            <span>5% of income</span>
+                        </div>
                     </div>
                     <div class="allocation-examples">
                         <div class="example-item">🛡️ Emergency: $100</div>
@@ -1229,7 +1200,7 @@
             <!-- Daily Spending Preview -->
             <div class="daily-preview">
                 <h2 class="daily-title">📅 Your Daily Guilt-Free Amount</h2>
-                <div class="daily-amount">10</div>
+                <div class="daily-amount">$35</div>
                 <div class="daily-description">This is what you can spend TODAY without any guilt or worry!</div>
                 
                 <!-- Calculation Breakdown -->
@@ -1237,15 +1208,15 @@
                     <div style="font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">How we calculate this:</div>
                     <div class="calculation-line">
                         <span>Spend category remaining:</span>
-                        <span>385</span>
+                        <span>$385</span>
                     </div>
                     <div class="calculation-line">
                         <span>Days left in month:</span>
-                        <span>31 days</span>
+                        <span>11 days</span>
                     </div>
                     <div class="calculation-line">
                         <span>Your daily freedom:</span>
-                        <span>10</span>
+                        <span>$35</span>
                     </div>
                 </div>
             </div>
@@ -1264,29 +1235,42 @@
             <div class="loading-state">
                 <div class="loading-spinner"></div>
                 <div>👤 Setting up your profile...</div>
+            
+            <div class="glass-card">
+                <button onclick="startFresh()" style="width: 100%; padding: 14px 20px; font-size: 14px; font-weight: 600; background: rgba(255,255,255,0.08); color: white; border: none; border-radius: 12px; cursor: pointer;">
+                    🔄 Start Fresh with New Income
+                </button>
+            </div>
+
+            <div class="glass-card">
+                <button onclick="resetAppState()" style="width: 100%; padding: 14px 20px; font-size: 14px; font-weight: 600; background: rgba(255,255,255,0.05); color: white; border: none; border-radius: 12px; cursor: pointer;">
+                    🧹 Reset All App Data
+                </button>
+            </div>
+
             </div>
         </div>
     </div>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
-        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item active" onclick="switchTab(&#39;guilt-free&#39;)">
+        <a href="#" class="nav-item active" onclick="switchTab('guilt-free')">
             <span class="nav-icon">💚</span>
             <span class="nav-label">Flow</span>
         </a>
-        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item" onclick="switchTab(&#39;spending&#39;)">
+        <a href="#" class="nav-item" onclick="switchTab('spending')">
             <span class="nav-icon">💸</span>
             <span class="nav-label">Spend</span>
         </a>
-        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item" onclick="switchTab(&#39;budget&#39;)">
+        <a href="#" class="nav-item" onclick="switchTab('budget')">
             <span class="nav-icon">🎯</span>
             <span class="nav-label">Budget</span>
         </a>
-        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item" onclick="switchTab(&#39;insights&#39;)">
+        <a href="#" class="nav-item" onclick="switchTab('insights')">
             <span class="nav-icon">✨</span>
             <span class="nav-label">Insights</span>
         </a>
-        <a href="file:///Users/anjanasudhakar/Downloads/flow_app_days_fix_step1%20(9).html#" class="nav-item" onclick="switchTab(&#39;settings&#39;)">
+        <a href="#" class="nav-item" onclick="switchTab('settings')">
             <span class="nav-icon">👤</span>
             <span class="nav-label">You</span>
         </a>
@@ -1434,7 +1418,7 @@
         }
 
         // ===== APP STATE MANAGEMENT =====
-        let appState = {
+        let appState = loadAppState() || {
             dailyFlow: 35,
             todaySpent: 0,
             monthlyIncome: 3200,
@@ -1447,14 +1431,14 @@
             transactions: [],
             currentTab: 'guilt-free',
             aiChatOpen: false,
-            stashActivated: false,  // NEW: Track STASH activation status
-            stashAvailable: 0       // NEW: Track available STASH amount
+            stashActivated: false,
+            stashAvailable: 0
         };
 
         // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Initializing Flow Budgeting App v2.6.0-stash-complete');
-            console.log('📊 STASH auto-activation system fully implemented:', appState);
+            console.log('🚀 Initializing Flow Budgeting App v2.5.2-stash-activation-partial');
+            console.log('📊 Updated app state with STASH auto-activation system (Steps 1-4):', appState);
             
             // Initialize STASH available amount
             appState.stashAvailable = appState.categories.stash.allocated - appState.categories.stash.used;
@@ -1463,8 +1447,9 @@
             updateDailyFlowDisplay();
             updateTransactionsList();
             updateBudgetProgress();
+            persistAppState();  // Save to localStorage
             
-            console.log('✅ v2.6.0 initialized - STASH emergency fund system complete and functional');
+            console.log('✅ v2.5.2 initialized - STASH auto-activation system partially implemented');
         });
 
         // ===== TAB NAVIGATION SYSTEM =====
@@ -1491,6 +1476,7 @@
         // ===== TAB 3: BUDGET SYSTEM FUNCTIONALITY =====
         function initializeBudgetTab() {
             updateBudgetProgress();
+            persistAppState();  // Save to localStorage
             updateDailyFlowCalculation();
             console.log('✅ Tab 3 initialized with proper SAVE category (wealth building focus)');
         }
@@ -1679,6 +1665,7 @@
             updateDailyFlowCalculation();
             updateTransactionsList();
             updateBudgetProgress();
+            persistAppState();  // Save to localStorage
             
             if (appState.dailyFlow >= 0) {
                 showToast(`🎉 ${description} - Guilt-free purchase confirmed!`, 'success');
@@ -1845,6 +1832,136 @@
             }
         }
 
+        
+        // ===== LOCALSTORAGE PERSISTENCE SYSTEM =====
+
+        function startFresh() {
+            const input = prompt("Enter your new monthly income (must be a number):", "3200");
+            const income = parseInt(input);
+            if (isNaN(income) || income < 100) {
+                alert("Please enter a valid number greater than 100.");
+                return;
+            }
+
+            const securePercentage = parseFloat(prompt("Enter SECURE % (e.g., 55)", "55"));
+            const savePercentage = parseFloat(prompt("Enter SAVE % (e.g., 5)", "5"));
+            const stashPercentage = parseFloat(prompt("Enter STASH % (e.g., 5)", "5"));
+
+            const totalPercent = securePercentage + savePercentage + stashPercentage;
+            if (
+                isNaN(securePercentage) || isNaN(savePercentage) || isNaN(stashPercentage) ||
+                totalPercent >= 100 || securePercentage < 0 || savePercentage < 0 || stashPercentage < 0
+            ) {
+                alert("Invalid input. Ensure all values are positive and the total is less than 100%.");
+                return;
+            }
+
+            const spendPercentage = 100 - totalPercent;
+
+            const secure = Math.round(income * (securePercentage / 100) / 5) * 5;
+            const save = Math.round(income * (savePercentage / 100) / 5) * 5;
+            const stash = Math.round(income * (stashPercentage / 100) / 5) * 5;
+            const spend = income - secure - save - stash;
+
+            appState = {
+                dailyFlow: 0,
+                todaySpent: 0,
+                monthlyIncome: income,
+                categories: {
+                    secure: { allocated: secure, used: 0, percentage: securePercentage },
+                    save: { allocated: save, used: save, percentage: savePercentage },
+                    spend: { allocated: spend, used: 0, percentage: spendPercentage },
+                    stash: { allocated: stash, used: 0, percentage: stashPercentage }
+                },
+                transactions: [],
+                currentTab: 'guilt-free',
+                aiChatOpen: false,
+                stashActivated: false,
+                stashAvailable: stash
+            };
+
+            persistAppState();
+            updateDailyFlowCalculation();
+            updateDailyFlowDisplay();
+            updateTransactionsList();
+            updateBudgetProgress();
+            showToast("✅ Budget reset with $" + income + " income and custom allocations", "success");
+        }
+
+
+        function startFresh() {
+            const input = prompt("Enter your new monthly income (must be a number):", "3200");
+            const income = parseInt(input);
+            if (isNaN(income) || income < 100) {
+                alert("Please enter a valid number greater than 100.");
+                return;
+            }
+
+            const savePercentage = 5;
+            const stashPercentage = 5;
+            const securePercentage = 55;
+            const spendPercentage = 100 - savePercentage - stashPercentage - securePercentage;
+
+            const secure = Math.round(income * (securePercentage / 100) / 5) * 5;
+            const save = Math.round(income * (savePercentage / 100) / 5) * 5;
+            const stash = Math.round(income * (stashPercentage / 100) / 5) * 5;
+            const spend = income - secure - save - stash;
+
+            appState = {
+                dailyFlow: 0,
+                todaySpent: 0,
+                monthlyIncome: income,
+                categories: {
+                    secure: { allocated: secure, used: 0, percentage: securePercentage },
+                    save: { allocated: save, used: save, percentage: savePercentage },
+                    spend: { allocated: spend, used: 0, percentage: spendPercentage },
+                    stash: { allocated: stash, used: 0, percentage: stashPercentage }
+                },
+                transactions: [],
+                currentTab: 'guilt-free',
+                aiChatOpen: false,
+                stashActivated: false,
+                stashAvailable: stash
+            };
+
+            persistAppState();
+            updateDailyFlowCalculation();
+            updateDailyFlowDisplay();
+            updateTransactionsList();
+            updateBudgetProgress();
+            showToast("✅ New budget set based on $" + income + " income", "success");
+        }
+
+        function persistAppState() {
+            try {
+                localStorage.setItem('flowAppState', JSON.stringify(appState));
+            } catch (e) {
+                console.error('❌ Failed to save state to localStorage:', e);
+            }
+        }
+
+        function loadAppState() {
+            try {
+                const saved = localStorage.getItem('flowAppState');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    console.log('✅ Loaded app state from localStorage:', parsed);
+                    return parsed;
+                }
+            } catch (e) {
+                console.error('⚠️ Failed to load state from localStorage:', e);
+            }
+            return null;
+        }
+
+        function resetAppState() {
+            if (confirm('Are you sure you want to clear all saved data and reload?')) {
+                localStorage.removeItem('flowAppState');
+                location.reload();
+            }
+        }
+
+
         // ===== ERROR HANDLING =====
         window.onerror = function(msg, url, lineNo, columnNo, error) {
             console.error('App Error:', {
@@ -1859,5 +1976,5 @@
             return false;
         };
     </script>
-
-</body></html>
+</body>
+</html>
