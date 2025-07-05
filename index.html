@@ -161,7 +161,7 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
         /* ===== 3-TAB CONTENT SYSTEM (ANIMATION OPTIMIZED) ===== */
         .tab-content {
             padding: 20px;
-            padding-bottom: 120px;
+            padding-bottom: 140px;
             min-height: 100vh;
             display: none;
             will-change: transform, opacity;
@@ -1638,15 +1638,15 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
         .profile-options {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin-bottom: 24px;
+            gap: 12px;
+            margin-bottom: 16px;
         }
 
         .profile-option {
             background: var(--glass-bg);
             border: 2px solid var(--glass-border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 16px;
             cursor: pointer;
             transition: all 0.3s var(--animation-timing);
             text-align: left;
@@ -2063,7 +2063,7 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
                 <div class="category-item">
                     <div class="category-info">
                         <div class="category-name" style="color: var(--accent-red);">🏠 Secure</div>
-                        <div class="category-amount">$1,680 / $1,760 used</div>
+                        <div class="category-amount" id="secureCategoryAmount"></div>
                     </div>
                     <div class="category-status">✅</div>
                 </div>
@@ -2071,7 +2071,7 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
                 <div class="category-item">
                     <div class="category-info">
                         <div class="category-name" style="color: var(--accent-amber);">💰 Save</div>
-                        <div class="category-amount">$160 / $160 used</div>
+                        <div class="category-amount" id="saveCategoryAmount"></div>
                     </div>
                     <div class="category-status">🎯</div>
                 </div>
@@ -2079,7 +2079,7 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
                 <div class="category-item">
                     <div class="category-info">
                         <div class="category-name" style="color: var(--accent-green);">🎉 Spend</div>
-                        <div class="category-amount" id="spendAmount">$75 / $1,280 used</div>
+                        <div class="category-amount" id="spendCategoryAmount"></div>
                     </div>
                     <div class="category-status">💚</div>
                 </div>
@@ -2116,14 +2116,14 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
                             <div class="category-emoji">🏠</div>
                             <div class="category-title">Secure</div>
                         </div>
-                        <div class="category-percentage">55%</div>
+                        <div class="category-percentage" id="securePercentage">55%</div>
                     </div>
                     <div class="progress-container">
-                        <div class="progress-fill" style="width: 95.5%"></div>
+                        <div class="progress-fill" id="secureProgressFill"></div>
                     </div>
                     <div class="progress-text">
-                        <span>$1,680 used</span>
-                        <span>$1,760 allocated</span>
+                        <span id="secureUsedAmount">$1,680 used</span>
+                        <span id="secureAllocatedAmount">$1,760 allocated</span>
                     </div>
                 </div>
 
@@ -2133,14 +2133,14 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
                             <div class="category-emoji">💰</div>
                             <div class="category-title">Save</div>
                         </div>
-                        <div class="category-percentage">5%</div>
+                        <div class="category-percentage" id="savePercentage">5%</div>
                     </div>
                     <div class="progress-container">
                         <div class="progress-fill" style="width: 100%"></div>
                     </div>
                     <div class="progress-text">
-                        <span>$160 used</span>
-                        <span>$160 allocated</span>
+                        <span id="saveUsedAmount">$160 used</span>
+                        <span id="saveAllocatedAmount">$160 allocated</span>
                     </div>
                 </div>
 
@@ -2150,14 +2150,14 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
                             <div class="category-emoji">🎉</div>
                             <div class="category-title">Spend</div>
                         </div>
-                        <div class="category-percentage">40%</div>
+                        <div class="category-percentage" id="spendPercentage">40%</div>
                     </div>
                     <div class="progress-container">
                         <div class="progress-fill" style="width: 5.9%"></div>
                     </div>
                     <div class="progress-text">
                         <span id="spendUsedAmount">$75 used</span>
-                        <span>$1,280 allocated</span>
+                        <span id="spendAllocatedAmount">$1,280 allocated</span>
                     </div>
                 </div>
             </div>
@@ -2398,11 +2398,29 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
             spend: { percentage: 40, allocated: 1280, used: 75 }    // $1,280 (40% Enhanced)
         };
 
+        //===== ENHANCED APP STATE MANAGEMENT FOR INTEGRATION =====
         const appState = {
-            monthlyIncome: 3200,
-            categories: ENHANCED_SPEND_ALLOCATIONS,
-            currentDay: 15,
+            // Core Financial Data (Integration Point 1)
+            monthlyIncome: 3200,  // Will be set from onboarding
+            userProfile: 'starting',  // Will be set from onboarding profile selection
+            isOnboardingComplete: false,  // Integration flag
+
+            // Allocation percentages based on profile (Integration Point 2)
+            allocations: {
+                secure: 55,    // Will be set from profile selection
+                save: 5,       // Will be set from profile selection  
+                spend: 40      // Will be set from profile selection
+            },
+
+            // Existing state preserved (DO NOT CHANGE)
+            dailyFlow: 40,
             daysInMonth: 31,
+            currentDay: 1,
+            categories: {
+                secure: { allocated: 1760, used: 1680, percentage: 55 },
+                save: { allocated: 160, used: 160, percentage: 5 },
+                spend: { allocated: 1280, used: 75, percentage: 40 }
+            },
             transactions: []
         };
 
@@ -2458,6 +2476,48 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
             spendElements.forEach(el => {
                 el.textContent = `$${appState.categories.spend.used} / $${appState.categories.spend.allocated} used`;
             });
+
+            // Update income display
+            updateIncomeDisplay()
+
+            const secureAmountEl = document.getElementById('secureCategoryAmount');
+            if (secureAmountEl) {
+                secureAmountEl.textContent = `$${appState.categories.secure.used} / $${appState.categories.secure.allocated} used`;
+            }
+            const saveAmountEl = document.getElementById('saveCategoryAmount');
+            if (saveAmountEl) {
+                saveAmountEl.textContent = `$${appState.categories.save.used} / $${appState.categories.save.allocated} used`;
+            }
+            const spendAmountEl = document.getElementById('spendCategoryAmount');
+            if (spendAmountEl) {
+                spendAmountEl.textContent = `$${appState.categories.spend.used} / $${appState.categories.spend.allocated} used`;
+            }
+
+            // Update Budget Health progress bar numbers
+            const secureUsed = document.getElementById('secureUsedAmount');
+            const secureAllocated = document.getElementById('secureAllocatedAmount');
+            if (secureUsed) secureUsed.textContent = `$${appState.categories.secure.used} used`;
+            if (secureAllocated) secureAllocated.textContent = `$${appState.categories.secure.allocated} allocated`;
+
+            const saveUsed = document.getElementById('saveUsedAmount');
+            const saveAllocated = document.getElementById('saveAllocatedAmount');
+            if (saveUsed) saveUsed.textContent = `$${appState.categories.save.used} used`;
+            if (saveAllocated) saveAllocated.textContent = `$${appState.categories.save.allocated} allocated`;
+
+            const spendUsed = document.getElementById('spendUsedAmount');
+            const spendAllocated = document.getElementById('spendAllocatedAmount');
+            if (spendUsed) spendUsed.textContent = `$${appState.categories.spend.used} used`;
+            if (spendAllocated) spendAllocated.textContent = `$${appState.categories.spend.allocated} allocated`;
+
+            // Update category percentages on Budget Health cards
+            const securePercentEl = document.getElementById('securePercentage');
+            if (securePercentEl) securePercentEl.textContent = `${appState.categories.secure.percentage}%`;
+
+            const savePercentEl = document.getElementById('savePercentage');
+            if (savePercentEl) savePercentEl.textContent = `${appState.categories.save.percentage}%`;
+
+            const spendPercentEl = document.getElementById('spendPercentage');
+            if (spendPercentEl) spendPercentEl.textContent = `${appState.categories.spend.percentage}%`;
 
             // Update allocation sliders
             updateAllocationSlidersDisplay();
@@ -3179,6 +3239,7 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
 
             // Update selected profile
             selectedProfile = profileType;
+            updateDailyFlowPreview();
 
             // Update UI
             document.querySelectorAll('.profile-option').forEach(option => {
@@ -3334,6 +3395,7 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
 
                 if (validation.isValid) {
                     userIncome = validation.amount;
+                    appState.monthlyIncome = validation.amount;
                     updateDailyFlowPreview();
                     enableContinueButton();
                 } else {
@@ -3393,6 +3455,7 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
 
             if (validation.isValid) {
                 userIncome = validation.amount;
+                appState.monthlyIncome = validation.amount;
                 document.getElementById('incomeInput').value = amount;
 
                 // Update preset button states
@@ -3405,6 +3468,7 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
                 updateValidationDisplay(validation);
                 updateInputVisualState(validation);
                 updateDailyFlowPreview();
+                updateProfilePreviewsWithValidation();
                 enableContinueButton();
 
                 // Show success toast
@@ -3497,18 +3561,127 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
             updateProfilePreviewsWithValidation();
         }
 
-        // ===== PROFILE SELECTION SYSTEM (DAY 13 ENHANCED) =====
+        // ===== PROFILE SELECTION SYSTEM (DAY 21 ENHANCED) =====
         function selectProfile(profileType) {
+            // Remove previous selections
+            document.querySelectorAll('.profile-option').forEach(card => {
+                card.classList.remove('selected');
+                card.style.border = '1px solid var(--glass-border)';
+            });
+
+            // Select current profile
+            const selectedCard = document.querySelector(`[data-profile="${profileType}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('selected');
+                selectedCard.style.border = '2px solid var(--accent-green)';
+            }
+
+            // INTEGRATION: Update preview with selected profile data
+            const profiles = {
+                'starting': { secure: 55, save: 5, spend: 40 },
+                'serious': { secure: 55, save: 10, spend: 35 },
+                'wealth': { secure: 55, save: 20, spend: 25 }
+            };
+
+            selectedProfile = profileType;
+            updateDailyFlowPreview(); // This will now use the integrated data
+
             // Use enhanced validation system
             selectProfileWithValidation(profileType);
         }
 
-        // ===== ONBOARDING COMPLETION (DAY 14 ENHANCED) =====
-        function completeOnboarding() {
-            // Use enhanced validation system for main app transition
-            completeOnboardingWithValidation();
+        // ===== INTEGRATION HELPER FUNCTIONS =====
+        function getCurrentIncomeValue() {
+            const incomeInput = document.getElementById('incomeInput');
+            const value = parseFloat(incomeInput?.value || 0);
+            return value > 0 ? value : null;
         }
 
+        function getCurrentProfileData() {
+            // Determine which profile is selected
+            const profiles = {
+                'starting': { type: 'starting', secure: 55, save: 5, spend: 40 },
+                'serious': { type: 'serious', secure: 55, save: 10, spend: 35 },
+                'wealth': { type: 'wealth', secure: 55, save: 20, spend: 25 }
+            };
+
+            // Check which profile card is selected (has active styling)
+            const selectedCard = document.querySelector('.profile-option.selected') ||
+                document.querySelector('.profile-option:first-child');
+
+            if (selectedCard?.dataset?.profile) {
+                return profiles[selectedCard.dataset.profile];
+            }
+
+            return profiles['starting']; // Default fallback
+        }
+
+        // ===== ONBOARDING COMPLETION (DAY 21 ENHANCED) =====
+        function completeOnboarding() {
+            console.log('🎯 STARTING DATA FLOW INTEGRATION');
+
+            // INTEGRATION POINT 1: Capture onboarding income
+            const capturedIncome = getCurrentIncomeValue();
+            if (capturedIncome && capturedIncome > 0) {
+                appState.monthlyIncome = capturedIncome;
+                userIncome = capturedIncome; // Keep onboarding state in sync
+                console.log('✅ Income integrated:', capturedIncome);
+            }
+
+            // INTEGRATION POINT 2: Capture profile selection and allocations
+            const profileData = getCurrentProfileData();
+            if (profileData) {
+                appState.userProfile = profileData.type;
+                selectedProfile = profileData.type; // Keep onboarding state in sync
+                appState.allocations = {
+                    secure: profileData.secure,
+                    save: profileData.save,
+                    spend: profileData.spend
+                };
+                // Apply profile percentages to actual categories
+                appState.categories.secure.percentage = profileData.secure;
+                appState.categories.save.percentage = profileData.save;
+                appState.categories.spend.percentage = profileData.spend;
+
+                // Recalculate allocations based on new income and profile
+                recalculateAllocations();
+
+                console.log('✅ Profile integrated:', profileData);
+            }
+
+            // INTEGRATION POINT 3: Mark onboarding as complete
+            appState.isOnboardingComplete = true;
+
+            // INTEGRATION POINT 4: Recalculate everything with new data
+            updateAllDisplaysSynchronized();
+
+            // Hide onboarding and show main app
+            const overlay = document.getElementById('onboardingOverlay') || document.querySelector('.onboarding-overlay');
+            if (overlay) {
+                overlay.classList.add('hidden');
+                overlay.style.display = 'none';
+            }
+
+            // DAY 21 ADDITION: UX Enhancements
+            const profileNames = {
+                'starting': 'Starting Out',
+                'serious': 'Getting Serious',
+                'wealth': 'Wealth Building'
+            };
+            const profileName = profileNames[appState.userProfile] || 'Starting Out';
+            const dailyFlowAmount = calculateDailyFlow(appState.categories);
+
+            showToast(`🎉 Welcome ${profileName} saver! Your $${dailyFlowAmount} daily flow is ready!`, 'success');
+
+            // Add personalized achievement
+            setTimeout(() => {
+                showToast(`💎 Your ${profileName} profile is perfectly configured for $${appState.monthlyIncome.toLocaleString()}/month`, 'success');
+            }, 2000);
+
+            console.log('🎯 DATA FLOW INTEGRATION COMPLETE');
+        }
+
+        // ===== ONBOARDING SKIP FUNCTION (DAY 21 ENHANCED) =====
         function skipOnboarding() {
             console.log('🔄 USER SKIPPED ONBOARDING - RETURNING USER FLOW');
 
@@ -3625,9 +3798,10 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
         function recalculateAllocations() {
             const income = appState.monthlyIncome;
 
-            appState.categories.secure.allocated = Math.round(income * 0.55);
-            appState.categories.save.allocated = Math.round(income * 0.05);
-            appState.categories.spend.allocated = Math.round(income * 0.40);
+            // Use actual category percentages (from profile selection)
+            appState.categories.secure.allocated = Math.round(income * (appState.categories.secure.percentage / 100));
+            appState.categories.save.allocated = Math.round(income * (appState.categories.save.percentage / 100));
+            appState.categories.spend.allocated = Math.round(income * (appState.categories.spend.percentage / 100));
 
             appState.dailyFlow = calculateDailyFlow(appState.categories);
         }
@@ -3640,8 +3814,77 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
         }
 
 
-        // DAY 18 ADDITION: Custom Allocation Management
+        // DAY 22 ADDITION: Custom Allocation Management slider 100% validation
         function updateAllocation(category, newValue) {
+            const newPercentage = parseInt(newValue);
+            const income = appState.monthlyIncome;
+
+            // Get current slider values
+            const secureSlider = document.getElementById('secureSlider');
+            const saveSlider = document.getElementById('saveSlider');
+            const spendSlider = document.getElementById('spendSlider');
+
+            let secure = parseInt(secureSlider.value);
+            let save = parseInt(saveSlider.value);
+            let spend = parseInt(spendSlider.value);
+
+            if (category === 'secure') {
+                // Save stays fixed, spend is flex
+                secure = newPercentage;
+                const maxSecure = 100 - save;
+                if (secure > maxSecure) secure = maxSecure;
+                spend = 100 - secure - save;
+                if (spend < parseInt(spendSlider.min)) {
+                    spend = parseInt(spendSlider.min);
+                    secure = 100 - save - spend;
+                }
+                secureSlider.value = secure;
+                spendSlider.value = spend;
+            } else if (category === 'save') {
+                // Secure stays fixed, spend is flex
+                save = newPercentage;
+                const maxSave = 100 - secure;
+                if (save > maxSave) save = maxSave;
+                spend = 100 - secure - save;
+                if (spend < parseInt(spendSlider.min)) {
+                    spend = parseInt(spendSlider.min);
+                    save = 100 - secure - spend;
+                }
+                saveSlider.value = save;
+                spendSlider.value = spend;
+            } else if (category === 'spend') {
+                // Save stays fixed, secure is flex
+                spend = newPercentage;
+                const maxSpend = 100 - save;
+                if (spend > maxSpend) spend = maxSpend;
+                secure = 100 - save - spend;
+                if (secure < parseInt(secureSlider.min)) {
+                    secure = parseInt(secureSlider.min);
+                    spend = 100 - save - secure;
+                }
+                spendSlider.value = spend;
+                secureSlider.value = secure;
+            }
+
+            // Update app state
+            appState.categories.secure.percentage = secure;
+            appState.categories.save.percentage = save;
+            appState.categories.spend.percentage = spend;
+
+            // Update allocations
+            ['secure', 'save', 'spend'].forEach(cat => {
+                appState.categories[cat].allocated = Math.round((appState.categories[cat].percentage / 100) * income / 5) * 5;
+                updateSliderDisplay(cat, appState.categories[cat].percentage, appState.categories[cat].allocated);
+            });
+
+            // Recalculate and update all displays
+            updateAllDisplaysSynchronized();
+
+            // Show success feedback
+            const slider = document.getElementById(category + 'Slider');
+            showValidationMessage(slider, `✨ ${category} updated to ${appState.categories[category].percentage}%`, 'success');
+        }
+        /*function updateAllocation(category, newValue) {
             const newPercentage = parseInt(newValue);
             //Validation checks
             if (!validateSliderConstraints(category, newPercentage)) {
@@ -3684,7 +3927,7 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
             // Show success feedback
             const slider = document.getElementById(category + 'Slider');
             showValidationMessage(slider, `✨ ${category} updated to ${adjustedValue}%`, 'success');
-        }
+        }*/
 
         // DAY 19 ADDITION: Enhanced slider interaction handlers
         function handleSliderInput(category, slider) {
@@ -3904,12 +4147,12 @@ PHASE 4 PROGRESS: Days 16-20 Complete → Ready for Phase 5
             setTimeout(() => {
                 // Get current profile defaults
                 const profiles = {
-                    'Starting Out': { secure: 55, save: 5, spend: 40 },
-                    'Getting Serious': { secure: 55, save: 10, spend: 35 },
-                    'Wealth Building': { secure: 55, save: 20, spend: 25 }
+                    'starting': { secure: 55, save: 5, spend: 40 },
+                    'serious': { secure: 55, save: 10, spend: 35 },
+                    'wealth': { secure: 55, save: 20, spend: 25 }
                 };
 
-                const currentProfile = appState.userProfile || 'Starting Out';
+                const currentProfile = appState.userProfile || 'starting';
                 const defaults = profiles[currentProfile];
 
                 // Reset sliders
