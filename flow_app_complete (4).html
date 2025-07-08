@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow - Complete Budgeting App</title>
+    <style>
+        :root {
+            --primary-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(148, 163, 184, 0.1);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #64748b;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --backdrop-blur: blur(24px);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-glow: 0 0 30px rgba(16, 185, 129, 0.15);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .app-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .app-header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: var(--backdrop-blur);
+            border-bottom: 1px solid var(--card-border);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .icon-button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .icon-button:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue);
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 0 0 100px 0;
+            max-width: 480px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Daily Flow Tab */
+        .daily-summary {
+            background: var(--card-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .daily-amount {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .daily-label {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .daily-value {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .daily-context {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .progress-section {
+            margin-top: 24px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .progress-amount {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            border-radius: 4px;
+            transition: width 0.6s ease-out;
+        }
+
+        /* Achievement Badges */
+        .achievement-badges {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0 24px 0;
+            padding: 0;
+        }
+
+        .achievement-badge {
+            min-width: 100px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        .achievement-badge.unlocked {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border-color: var(--accent-green);
+        }
+
+        .achievement-badge.locked {
+            opacity: 0.5;
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .achievement-badge:hover:not(.locked) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2);
+        }
+
+        .badge-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .badge-text {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .quick-action {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 120px;
+            min-height: 120px;
+            max-height: 120px;
+        }
+
+        .quick-action:hover {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .quick-action-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .quick-action-amount {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-action-label {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        .transaction-input {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px;
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: var(--transition-smooth);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .amount-input {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent-blue);
+        }
+
+        /* Recent Transactions */
+        .recent-transactions {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-details {
+            flex: 1;
+        }
+
+        .transaction-description {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .transaction-category {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        .transaction-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .transaction-buttons {
+            display: flex;
+            gap: 4px;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .transaction-item:hover .transaction-buttons {
+            opacity: 1;
+        }
+
+        .transaction-btn {
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .transaction-btn.edit:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .transaction-btn.delete:hover {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        .transaction-amount {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        /* Budget Health Tab */
+        .budget-overview {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .budget-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .budget-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-blue);
+        }
+
+        .budget-card.secure::before {
+            background: var(--accent-blue);
+        }
+
+        .budget-card.save::before {
+            background: var(--accent-purple);
+        }
+
+        .budget-card.spend::before {
+            background: var(--accent-green);
+        }
+
+        .budget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .budget-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .budget-percentage {
+            font-size: 14px;
+            color: var(--text-secondary);
+            background: rgba(59, 130, 246, 0.1);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .budget-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .budget-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .budget-progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 4px 0;
+        }
+
+        .budget-progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.6s ease-out;
+        }
+
+        .secure-progress {
+            background: linear-gradient(90deg, var(--accent-blue) 0%, #0ea5e9 100%);
+        }
+
+        .save-progress {
+            background: linear-gradient(90deg, var(--accent-purple) 0%, #a855f7 100%);
+        }
+
+        .spend-progress {
+            background: linear-gradient(90deg, var(--accent-green) 0%, #059669 100%);
+        }
+
+        /* Journey Tab */
+        .profile-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 16px;
+        }
+
+        .profile-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .profile-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: var(--backdrop-blur);
+            border-top: 1px solid var(--card-border);
+            padding: 12px 0 24px;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            padding: 8px 16px;
+            border-radius: 12px;
+            min-width: 80px;
+        }
+
+        .nav-item.active {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Achievements */
+        .achievements-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .achievement-item:last-child {
+            border-bottom: none;
+        }
+
+        .achievement-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-red) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .achievement-content {
+            flex: 1;
+        }
+
+        .achievement-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .achievement-description {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            max-width: 320px;
+            width: 90%;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .modal-content {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Celebration Animation */
+        .celebration {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            z-index: 1001;
+            animation: celebrate 1s ease-out forwards;
+        }
+
+        @keyframes celebrate {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 0 0 100px 0;
+            }
+
+            .tab-content {
+                padding: 16px;
+            }
+
+            .daily-value {
+                font-size: 40px;
+            }
+
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--card-border);
+            border-top: 3px solid var(--accent-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">Flow</div>
+                <div class="header-actions">
+                    <button class="icon-button" onclick="showEducationHub()" aria-label="Education Hub">
+                        📚
+                    </button>
+                    <button class="icon-button" onclick="editIncome()" aria-label="Edit Income">
+                        💰
+                    </button>
+                    <button class="icon-button" onclick="showSettings()" aria-label="Settings">
+                        ⚙️
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Daily Flow Tab -->
+            <div class="tab-content active" id="dailyFlowTab">
+                <div class="daily-summary">
+                    <div class="daily-amount">
+                        <div class="daily-label">Your Daily Flow</div>
+                        <div class="daily-value" id="dailyFlowAmount">$35</div>
+                        <div class="daily-context" id="dailyFlowContext">15 days left in July • $525 remaining</div>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-header">
+                            <div class="progress-label">July Progress</div>
+                            <div class="progress-amount" id="progressAmount">$755 of $1,280</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 59%"></div>
+                        </div>
+                        <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 4px;">
+                            You're doing great! 🎯
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-badges">
+                    <div class="achievement-badge unlocked" onclick="showAchievementDetails('setup-master')">
+                        <div class="badge-icon">🎯</div>
+                        <div class="badge-text">Setup Master</div>
+                    </div>
+                    <div class="achievement-badge unlocked" onclick="showAchievementDetails('first-spend')">
+                        <div class="badge-icon">💚</div>
+                        <div class="badge-text">First Spend</div>
+                    </div>
+                    <div class="achievement-badge unlocked" onclick="showAchievementDetails('week-warrior')">
+                        <div class="badge-icon">🔥</div>
+                        <div class="badge-text">Week Warrior</div>
+                    </div>
+                    <div class="achievement-badge locked" onclick="showAchievementDetails('month-master')">
+                        <div class="badge-icon">🏆</div>
+                        <div class="badge-text">Month Master</div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="quick-action" onclick="quickAdd(5)">
+                        <div class="quick-action-icon">☕</div>
+                        <div class="quick-action-amount">$5</div>
+                        <div class="quick-action-label">Coffee</div>
+                    </button>
+                    <button class="quick-action" onclick="quickAdd(15)">
+                        <div class="quick-action-icon">🍕</div>
+                        <div class="quick-action-amount">$15</div>
+                        <div class="quick-action-label">Lunch</div>
+                    </button>
+                    <button class="quick-action" onclick="quickAdd(25)">
+                        <div class="quick-action-icon">🍽️</div>
+                        <div class="quick-action-amount">$25</div>
+                        <div class="quick-action-label">Dinner</div>
+                    </button>
+                    <button class="quick-action" onclick="quickAdd(10)">
+                        <div class="quick-action-icon">🍿</div>
+                        <div class="quick-action-amount">$10</div>
+                        <div class="quick-action-label">Snack</div>
+                    </button>
+                </div>
+
+                <div class="transaction-input">
+                    <div class="input-group">
+                        <label class="input-label" for="amountInput">Amount</label>
+                        <input type="number" id="amountInput" class="input-field amount-input" placeholder="$0" min="0" step="5">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="descriptionInput">What's this for?</label>
+                        <input type="text" id="descriptionInput" class="input-field" placeholder="Coffee, lunch, shopping...">
+                    </div>
+                    <button class="btn-primary" onclick="addTransaction()">Add Expense</button>
+                </div>
+
+                <div class="recent-transactions">
+                    <div class="section-header">
+                        <h3 class="section-title">Recent</h3>
+                        <button class="icon-button" onclick="showAllTransactions()">📋</button>
+                    </div>
+                    <div id="recentTransactionsList">
+                        <div class="transaction-item" data-transaction-id="1">
+                            <div class="transaction-details">
+                                <div class="transaction-description">Coffee & pastry</div>
+                                <div class="transaction-category">Today • SPEND</div>
+                            </div>
+                            <div class="transaction-actions">
+                                <div class="transaction-amount">$15</div>
+                                <div class="transaction-buttons">
+                                    <button class="transaction-btn edit" onclick="editTransaction(1)" aria-label="Edit">✏️</button>
+                                    <button class="transaction-btn delete" onclick="deleteTransaction(1)" aria-label="Delete">🗑️</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="transaction-item" data-transaction-id="2">
+                            <div class="transaction-details">
+                                <div class="transaction-description">Lunch at Chipotle</div>
+                                <div class="transaction-category">Yesterday • SPEND</div>
+                            </div>
+                            <div class="transaction-actions">
+                                <div class="transaction-amount">$20</div>
+                                <div class="transaction-buttons">
+                                    <button class="transaction-btn edit" onclick="editTransaction(2)" aria-label="Edit">✏️</button>
+                                    <button class="transaction-btn delete" onclick="deleteTransaction(2)" aria-label="Delete">🗑️</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="transaction-item" data-transaction-id="3">
+                            <div class="transaction-details">
+                                <div class="transaction-description">Movie tickets</div>
+                                <div class="transaction-category">2 days ago • SPEND</div>
+                            </div>
+                            <div class="transaction-actions">
+                                <div class="transaction-amount">$30</div>
+                                <div class="transaction-buttons">
+                                    <button class="transaction-btn edit" onclick="editTransaction(3)" aria-label="Edit">✏️</button>
+                                    <button class="transaction-btn delete" onclick="deleteTransaction(3)" aria-label="Delete">🗑️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Health Tab -->
+            <div class="tab-content" id="budgetHealthTab">
+                <div class="budget-overview">
+                    <div class="budget-card secure">
+                        <div class="budget-header">
+                            <div class="budget-title">💙 SECURE</div>
+                            <div class="budget-percentage">55%</div>
+                        </div>
+                        <div class="budget-amount" id="secureAmount">$1,760</div>
+                        <div class="budget-description">
+                            Bills, rent, groceries - the essentials you can't skip. This keeps you stable and secure.
+                        </div>
+                        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(148, 163, 184, 0.1);">
+                            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px;">
+                                <span style="color: var(--text-secondary);">Used this month:</span>
+                                <span style="color: var(--text-primary); font-weight: 600;" id="secureUsed">$1,420</span>
+                            </div>
+                            <div class="budget-progress-bar">
+                                <div class="budget-progress-fill secure-progress" style="width: 81%"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-top: 4px;">
+                                <span style="color: var(--text-secondary);">Remaining:</span>
+                                <span style="color: var(--accent-green); font-weight: 600;" id="secureRemaining">$340</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="budget-card save">
+                        <div class="budget-header">
+                            <div class="budget-title">💜 SAVE</div>
+                            <div class="budget-percentage">10%</div>
+                        </div>
+                        <div class="budget-amount" id="saveAmount">$320</div>
+                        <div class="budget-description">
+                            Future goals, emergency fund, long-term dreams. This builds your wealth automatically.
+                        </div>
+                        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(148, 163, 184, 0.1);">
+                            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px;">
+                                <span style="color: var(--text-secondary);">Saved this month:</span>
+                                <span style="color: var(--accent-purple); font-weight: 600;">$320</span>
+                            </div>
+                            <div class="budget-progress-bar">
+                                <div class="budget-progress-fill save-progress" style="width: 100%"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-top: 4px;">
+                                <span style="color: var(--text-secondary);">Total saved:</span>
+                                <span style="color: var(--accent-purple); font-weight: 600;">$980</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="budget-card spend">
+                        <div class="budget-header">
+                            <div class="budget-title">💚 SPEND</div>
+                            <div class="budget-percentage">35%</div>
+                        </div>
+                        <div class="budget-amount" id="spendAmount">$1,280</div>
+                        <div class="budget-description">
+                            Coffee, entertainment, spontaneous fun - completely guilt-free! Includes $160 safety buffer.
+                        </div>
+                        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(148, 163, 184, 0.1);">
+                            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px;">
+                                <span style="color: var(--text-secondary);">Spent this month:</span>
+                                <span style="color: var(--text-primary); font-weight: 600;" id="spendUsed">$755</span>
+                            </div>
+                            <div class="budget-progress-bar">
+                                <div class="budget-progress-fill spend-progress" style="width: 59%"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-top: 4px;">
+                                <span style="color: var(--text-secondary);">Remaining:</span>
+                                <span style="color: var(--accent-green); font-weight: 600;" id="spendRemaining">$525</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--border-radius); padding: 20px; margin-bottom: 24px;">
+                    <h3 class="section-title" style="margin-bottom: 16px;">Monthly Income</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--text-primary);" id="monthlyIncome">$3,200</div>
+                            <div style="font-size: 14px; color: var(--text-secondary);">After taxes</div>
+                        </div>
+                        <button class="btn-secondary" onclick="editIncome()" style="padding: 8px 16px; font-size: 14px;">
+                            Edit
+                        </button>
+                    </div>
+                    <div style="font-size: 13px; color: var(--text-tertiary); line-height: 1.4;">
+                        Your allocations are automatically calculated based on your "Getting Serious" profile. 
+                        <a href="#" style="color: var(--accent-blue);" onclick="changeProfile()">Change profile</a>
+                    </div>
+                </div>
+
+                <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--border-radius); padding: 20px; margin-bottom: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <h3 class="section-title">Custom Allocations</h3>
+                        <button class="btn-primary" onclick="showAllocationAdjustment()" style="padding: 8px 16px; font-size: 14px;">
+                            Adjust
+                        </button>
+                    </div>
+                    <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 16px;">
+                        Fine-tune your 3 S's allocations to match your specific needs
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                        <div style="text-align: center; padding: 12px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                            <div style="font-size: 12px; color: var(--accent-blue); margin-bottom: 4px;">SECURE</div>
+                            <div style="font-size: 16px; font-weight: 600; color: var(--text-primary);">55%</div>
+                        </div>
+                        <div style="text-align: center; padding: 12px; background: rgba(139, 92, 246, 0.1); border-radius: 8px;">
+                            <div style="font-size: 12px; color: var(--accent-purple); margin-bottom: 4px;">SAVE</div>
+                            <div style="font-size: 16px; font-weight: 600; color: var(--text-primary);">10%</div>
+                        </div>
+                        <div style="text-align: center; padding: 12px; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                            <div style="font-size: 12px; color: var(--accent-green); margin-bottom: 4px;">SPEND</div>
+                            <div style="font-size: 16px; font-weight: 600; color: var(--text-primary);">35%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--border-radius); padding: 20px;">
+                    <h3 class="section-title" style="margin-bottom: 16px;">Insights & Tips</h3>
+                    <div style="background: rgba(16, 185, 129, 0.1); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--accent-green); margin-bottom: 8px;">
+                            🎯 You're on track!
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.4;">
+                            Your spending pace is healthy. You have $525 left for the rest of July, which means about $35/day.
+                        </div>
+                    </div>
+                    <div style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; padding: 16px;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--accent-blue); margin-bottom: 8px;">
+                            💡 Smart tip
+                        </div>
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.4;">
+                            Consider increasing your SAVE allocation to 15% next month to build wealth faster.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Your Journey Tab -->
+            <div class="tab-content" id="journeyTab">
+                <div class="profile-section">
+                    <div class="profile-avatar">👤</div>
+                    <div class="profile-name">Getting Serious</div>
+                    <div class="profile-subtitle">Building wealth with 10% savings</div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">16</div>
+                        <div class="stat-label">Days Active</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$980</div>
+                        <div class="stat-label">Total Saved</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">94%</div>
+                        <div class="stat-label">On Budget</div>
+                    </div>
+                </div>
+
+                <div class="achievements-section">
+                    <div class="section-header">
+                        <h3 class="section-title">Achievements</h3>
+                        <div style="font-size: 14px; color: var(--text-secondary);">4 of 12</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">🎯</div>
+                        <div class="achievement-content">
+                            <div class="achievement-title">Setup Master</div>
+                            <div class="achievement-description">Successfully configured your Flow system</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">📱</div>
+                        <div class="achievement-content">
+                            <div class="achievement-title">First Transaction</div>
+                            <div class="achievement-description">Added your first expense</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">🔥</div>
+                        <div class="achievement-content">
+                            <div class="achievement-title">Week Warrior</div>
+                            <div class="achievement-description">Stayed on budget for 7 days</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">💜</div>
+                        <div class="achievement-content">
+                            <div class="achievement-title">Saver Status</div>
+                            <div class="achievement-description">Hit your first month's savings goal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--border-radius); padding: 20px; margin-bottom: 24px;">
+                    <h3 class="section-title" style="margin-bottom: 16px;">This Month's Summary</h3>
+                    <div style="display: grid; gap: 12px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                            <span style="color: var(--text-secondary);">Income:</span>
+                            <span style="color: var(--text-primary); font-weight: 600;">$3,200</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                            <span style="color: var(--text-secondary);">Allocated to SECURE:</span>
+                            <span style="color: var(--accent-blue); font-weight: 600;">$1,760</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                            <span style="color: var(--text-secondary);">Allocated to SAVE:</span>
+                            <span style="color: var(--accent-purple); font-weight: 600;">$320</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                            <span style="color: var(--text-secondary);">Allocated to SPEND:</span>
+                            <span style="color: var(--accent-green); font-weight: 600;">$1,280</span>
+                        </div>
+                        <div style="height: 1px; background: rgba(148, 163, 184, 0.1); margin: 8px 0;"></div>
+                        <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                            <span style="color: var(--text-secondary);">Spent so far:</span>
+                            <span style="color: var(--text-primary); font-weight: 600;">$2,175</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                            <span style="color: var(--text-secondary);">Remaining:</span>
+                            <span style="color: var(--accent-green); font-weight: 600;">$1,025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--border-radius); padding: 20px;">
+                    <h3 class="section-title" style="margin-bottom: 16px;">Account Settings</h3>
+                    <div style="display: grid; gap: 12px;">
+                        <button class="btn-secondary" onclick="changeProfile()" style="text-align: left; padding: 12px 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Savings Profile</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Currently: Getting Serious (10% savings)</div>
+                        </button>
+                        <button class="btn-secondary" onclick="editIncome()" style="text-align: left; padding: 12px 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Monthly Income</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Currently: $3,200 after taxes</div>
+                        </button>
+                        <button class="btn-secondary" onclick="exportData()" style="text-align: left; padding: 12px 16px;">
+                            <div style="font-weight: 600; margin-bottom: 4px;">Export Data</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Download your financial data</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-container">
+                <div class="nav-item active" onclick="switchTab('dailyFlow')">
+                    <div class="nav-icon">💚</div>
+                    <div class="nav-label">Daily Flow</div>
+                </div>
+                <div class="nav-item" onclick="switchTab('budgetHealth')">
+                    <div class="nav-icon">🎯</div>
+                    <div class="nav-label">Budget Health</div>
+                </div>
+                <div class="nav-item" onclick="switchTab('journey')">
+                    <div class="nav-icon">👤</div>
+                    <div class="nav-label">Your Journey</div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="incomeModal">
+        <div class="modal">
+            <h3 class="modal-title">Edit Monthly Income</h3>
+            <div class="modal-content">
+                <div class="input-group">
+                    <label class="input-label" for="incomeInput">After-tax monthly income</label>
+                    <input type="number" id="incomeInput" class="input-field amount-input" value="3200" min="0" step="5">
+                </div>
+                <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">
+                    All allocations will update automatically
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal('incomeModal')" style="flex: 1;">Cancel</button>
+                <button class="btn-primary" onclick="updateIncome()" style="flex: 1;">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="profileModal">
+        <div class="modal">
+            <h3 class="modal-title">Choose Your Profile</h3>
+            <div class="modal-content">
+                <div style="display: grid; gap: 12px; margin-bottom: 16px;">
+                    <button class="btn-secondary profile-option" onclick="selectProfile('starting')" style="text-align: left; padding: 16px;">
+                        <div style="font-weight: 600; margin-bottom: 4px;">Starting Out</div>
+                        <div style="font-size: 13px; color: var(--text-secondary);">5% savings • Focus on building habits</div>
+                    </button>
+                    <button class="btn-primary profile-option" onclick="selectProfile('serious')" style="text-align: left; padding: 16px;">
+                        <div style="font-weight: 600; margin-bottom: 4px;">Getting Serious</div>
+                        <div style="font-size: 13px; color: rgba(255,255,255,0.8);">10% savings • Balanced approach</div>
+                    </button>
+                    <button class="btn-secondary profile-option" onclick="selectProfile('wealth')" style="text-align: left; padding: 16px;">
+                        <div style="font-weight: 600; margin-bottom: 4px;">Wealth Building</div>
+                        <div style="font-size: 13px; color: var(--text-secondary);">20% savings • Aggressive wealth growth</div>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal('profileModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education Hub Modal -->
+    <div class="modal-overlay" id="educationModal">
+        <div class="modal" style="max-width: 400px;">
+            <h3 class="modal-title">📚 Flow Education Hub</h3>
+            <div class="modal-content">
+                <div style="display: grid; gap: 16px; margin-bottom: 20px;">
+                    <div style="background: rgba(16, 185, 129, 0.1); border-radius: 12px; padding: 16px;">
+                        <h4 style="color: var(--accent-green); margin-bottom: 12px;">💡 The Flow Philosophy</h4>
+                        <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                            <div style="color: var(--accent-blue); font-weight: 600; margin-bottom: 4px;">💙 SECURE (55%)</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Bills, rent, groceries - the essentials you can't skip</div>
+                        </div>
+                        <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                            <div style="color: var(--accent-purple); font-weight: 600; margin-bottom: 4px;">💜 SAVE (5-25%)</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Future goals, emergency fund, long-term dreams</div>
+                        </div>
+                        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 12px;">
+                            <div style="color: var(--accent-green); font-weight: 600; margin-bottom: 4px;">💚 SPEND (Remaining)</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">Coffee, entertainment, spontaneous fun - completely guilt-free!</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; padding: 16px;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 8px;">🔐 Your Privacy</h4>
+                        <ul style="font-size: 13px; color: var(--text-secondary); list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 4px;">🛡️ All data stays on your device</li>
+                            <li style="margin-bottom: 4px;">🚫 No accounts or logins required</li>
+                            <li style="margin-bottom: 4px;">📁 Export your data anytime</li>
+                            <li>⚡ Zero tracking or analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-primary" onclick="closeModal('educationModal')">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Allocation Adjustment Modal -->
+    <div class="modal-overlay" id="allocationModal">
+        <div class="modal" style="max-width: 400px;">
+            <h3 class="modal-title">🎯 Adjust Allocations</h3>
+            <div class="modal-content">
+                <div style="margin-bottom: 20px;">
+                    <div style="background: rgba(16, 185, 129, 0.1); border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 13px; color: var(--text-secondary);">
+                        💡 Tip: SECURE should cover all essentials. Adjust SAVE vs SPEND based on your goals.
+                    </div>
+                    
+                    <div style="display: grid; gap: 16px;">
+                        <div>
+                            <label style="display: block; font-size: 14px; font-weight: 600; color: var(--accent-blue); margin-bottom: 8px;">💙 SECURE</label>
+                            <input type="range" id="secureSlider" min="40" max="70" value="55" oninput="updateAllocationPreview()" style="width: 100%; margin-bottom: 4px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-tertiary);">
+                                <span>40%</span>
+                                <span id="secureValue">55%</span>
+                                <span>70%</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; font-size: 14px; font-weight: 600; color: var(--accent-purple); margin-bottom: 8px;">💜 SAVE</label>
+                            <input type="range" id="saveSlider" min="5" max="30" value="10" oninput="updateAllocationPreview()" style="width: 100%; margin-bottom: 4px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-tertiary);">
+                                <span>5%</span>
+                                <span id="saveValue">10%</span>
+                                <span>30%</span>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(16, 185, 129, 0.1); border-radius: 8px; padding: 12px;">
+                            <div style="font-size: 14px; font-weight: 600; color: var(--accent-green); margin-bottom: 4px;">💚 SPEND (Auto-calculated)</div>
+                            <div style="font-size: 20px; font-weight: 700; color: var(--text-primary);" id="spendValue">35%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal('allocationModal')">Cancel</button>
+                <button class="btn-primary" onclick="saveAllocations()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction Edit Modal -->
+    <div class="modal-overlay" id="editTransactionModal">
+        <div class="modal">
+            <h3 class="modal-title">✏️ Edit Transaction</h3>
+            <div class="modal-content">
+                <div class="input-group">
+                    <label class="input-label" for="editAmountInput">Amount</label>
+                    <input type="number" id="editAmountInput" class="input-field amount-input" min="0" step="5">
+                </div>
+                <div class="input-group">
+                    <label class="input-label" for="editDescriptionInput">Description</label>
+                    <input type="text" id="editDescriptionInput" class="input-field" placeholder="What's this for?">
+                </div>
+                <input type="hidden" id="editTransactionId">
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal('editTransactionModal')">Cancel</button>
+                <button class="btn-primary" onclick="saveTransactionEdit()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Details Modal -->
+    <div class="modal-overlay" id="achievementModal">
+        <div class="modal">
+            <h3 class="modal-title" id="achievementTitle">🎯 Achievement</h3>
+            <div class="modal-content">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div style="font-size: 48px; margin-bottom: 12px;" id="achievementIcon">🎯</div>
+                    <div style="font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;" id="achievementName">Setup Master</div>
+                    <div style="font-size: 14px; color: var(--text-secondary);" id="achievementDescription">Successfully configured your Flow system</div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-primary" onclick="closeModal('achievementModal')">Awesome!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Application State
+        const appState = {
+            monthlyIncome: 3200,
+            savingsProfile: 'serious',
+            currentMonth: 'July',
+            daysInMonth: 31,
+            daysPassed: 16,
+            transactions: [
+                { amount: 15, description: 'Coffee & pastry', category: 'spend', date: new Date(), id: 1 },
+                { amount: 20, description: 'Lunch at Chipotle', category: 'spend', date: new Date(Date.now() - 86400000), id: 2 },
+                { amount: 30, description: 'Movie tickets', category: 'spend', date: new Date(Date.now() - 172800000), id: 3 }
+            ],
+            spendUsed: 755,
+            secureUsed: 1420,
+            totalSaved: 980
+        };
+
+        const profiles = {
+            starting: { save: 0.05, spend: 0.40, name: 'Starting Out' },
+            serious: { save: 0.10, spend: 0.35, name: 'Getting Serious' },
+            wealth: { save: 0.20, spend: 0.25, name: 'Wealth Building' }
+        };
+
+        function initApp() {
+            loadSavedData();
+            updateAllDisplays();
+            setActiveTab('dailyFlow');
+        }
+
+        function saveData() {
+            try {
+                localStorage.setItem('flowAppData', JSON.stringify(appState));
+            } catch (error) {
+                console.warn('Unable to save data to localStorage:', error);
+            }
+        }
+
+        function loadSavedData() {
+            try {
+                const saved = localStorage.getItem('flowAppData');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    Object.assign(appState, data);
+                    appState.transactions = appState.transactions.map(t => ({
+                        ...t,
+                        date: new Date(t.date)
+                    }));
+                }
+            } catch (error) {
+                console.warn('Unable to load saved data:', error);
+            }
+        }
+
+        function roundToFive(amount) {
+            return Math.round(amount / 5) * 5;
+        }
+
+        function calculateAllocations() {
+            if (appState.customAllocations) {
+                const secure = roundToFive(appState.monthlyIncome * appState.customAllocations.secure);
+                const save = roundToFive(appState.monthlyIncome * appState.customAllocations.save);
+                const spend = roundToFive(appState.monthlyIncome * appState.customAllocations.spend) + 160;
+                return { secure, save, spend };
+            }
+            
+            const profile = profiles[appState.savingsProfile];
+            const secure = roundToFive(appState.monthlyIncome * 0.55);
+            const save = roundToFive(appState.monthlyIncome * profile.save);
+            const spend = roundToFive(appState.monthlyIncome * profile.spend) + 160;
+            
+            return { secure, save, spend };
+        }
+
+        function calculateDailyFlow() {
+            const allocations = calculateAllocations();
+            const remaining = allocations.spend - appState.spendUsed;
+            const daysLeft = appState.daysInMonth - appState.daysPassed;
+            return roundToFive(remaining / Math.max(daysLeft, 1));
+        }
+
+        function updateAllDisplays() {
+            updateDailyFlowDisplay();
+            updateBudgetHealthDisplay();
+            updateJourneyDisplay();
+            saveData();
+        }
+
+        function updateDailyFlowDisplay() {
+            const allocations = calculateAllocations();
+            const dailyFlow = calculateDailyFlow();
+            const remaining = allocations.spend - appState.spendUsed;
+            const daysLeft = appState.daysInMonth - appState.daysPassed;
+            const progressPercent = Math.round((appState.spendUsed / allocations.spend) * 100);
+
+            document.getElementById('dailyFlowAmount').textContent = `$${dailyFlow}`;
+            document.getElementById('dailyFlowContext').textContent = `${daysLeft} days left in ${appState.currentMonth} • $${remaining} remaining`;
+            document.getElementById('progressAmount').textContent = `$${appState.spendUsed} of $${allocations.spend}`;
+            document.getElementById('progressFill').style.width = `${Math.min(progressPercent, 100)}%`;
+
+            updateRecentTransactions();
+        }
+
+        function updateBudgetHealthDisplay() {
+            const allocations = calculateAllocations();
+            const profile = profiles[appState.savingsProfile];
+
+            document.getElementById('monthlyIncome').textContent = `$${appState.monthlyIncome.toLocaleString()}`;
+            document.getElementById('secureAmount').textContent = `$${allocations.secure.toLocaleString()}`;
+            document.getElementById('saveAmount').textContent = `$${allocations.save.toLocaleString()}`;
+            document.getElementById('spendAmount').textContent = `$${allocations.spend.toLocaleString()}`;
+
+            document.getElementById('secureUsed').textContent = `$${appState.secureUsed.toLocaleString()}`;
+            document.getElementById('secureRemaining').textContent = `$${(allocations.secure - appState.secureUsed).toLocaleString()}`;
+            document.getElementById('spendUsed').textContent = `$${appState.spendUsed.toLocaleString()}`;
+            document.getElementById('spendRemaining').textContent = `$${(allocations.spend - appState.spendUsed).toLocaleString()}`;
+
+            document.querySelector('.budget-card.save .budget-percentage').textContent = `${Math.round(profile.save * 100)}%`;
+            document.querySelector('.budget-card.spend .budget-percentage').textContent = `${Math.round(profile.spend * 100)}%`;
+
+            const secureProgress = Math.min((appState.secureUsed / allocations.secure) * 100, 100);
+            const spendProgress = Math.min((appState.spendUsed / allocations.spend) * 100, 100);
+            
+            document.querySelector('.secure-progress').style.width = `${secureProgress}%`;
+            document.querySelector('.save-progress').style.width = '100%';
+            document.querySelector('.spend-progress').style.width = `${spendProgress}%`;
+        }
+
+        function updateJourneyDisplay() {
+            const profile = profiles[appState.savingsProfile];
+            document.querySelector('.profile-name').textContent = profile.name;
+            document.querySelector('.profile-subtitle').textContent = `Building wealth with ${Math.round(profile.save * 100)}% savings`;
+            
+            document.querySelector('.stat-card:nth-child(2) .stat-value').textContent = `$${appState.totalSaved.toLocaleString()}`;
+            
+            const streak = appState.transactions.length > 0 ? Math.min(appState.daysPassed, 7) : 0;
+            document.querySelector('.stat-card:nth-child(3) .stat-value').textContent = streak;
+            
+            const allocations = calculateAllocations();
+            const budgetAdherence = Math.round(Math.max(0, 100 - (appState.spendUsed / allocations.spend * 100 - 80)));
+            document.querySelector('.stat-card:nth-child(4) .stat-value').textContent = `${Math.min(budgetAdherence, 100)}%`;
+        }
+
+        function updateRecentTransactions() {
+            const list = document.getElementById('recentTransactionsList');
+            const recent = appState.transactions.slice(-3).reverse();
+            
+            list.innerHTML = recent.map(transaction => {
+                const date = transaction.date;
+                const isToday = date.toDateString() === new Date().toDateString();
+                const isYesterday = date.toDateString() === new Date(Date.now() - 86400000).toDateString();
+                let dateText = isToday ? 'Today' : isYesterday ? 'Yesterday' : `${Math.floor((Date.now() - date.getTime()) / 86400000)} days ago`;
+                
+                return `
+                    <div class="transaction-item" data-transaction-id="${transaction.id}">
+                        <div class="transaction-details">
+                            <div class="transaction-description">${transaction.description}</div>
+                            <div class="transaction-category">${dateText} • ${transaction.category.toUpperCase()}</div>
+                        </div>
+                        <div class="transaction-actions">
+                            <div class="transaction-amount">$${transaction.amount}</div>
+                            <div class="transaction-buttons">
+                                <button class="transaction-btn edit" onclick="editTransaction(${transaction.id})" aria-label="Edit">✏️</button>
+                                <button class="transaction-btn delete" onclick="deleteTransaction(${transaction.id})" aria-label="Delete">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(`${tabName}Tab`).classList.add('active');
+            
+            if (tabName === 'dailyFlow') {
+                updateDailyFlowDisplay();
+            } else if (tabName === 'budgetHealth') {
+                updateBudgetHealthDisplay();
+            } else if (tabName === 'journey') {
+                updateJourneyDisplay();
+            }
+        }
+
+        function setActiveTab(tabName) {
+            switchTab(tabName);
+        }
+
+        function quickAdd(amount) {
+            const descriptions = {
+                5: 'Coffee',
+                10: 'Snack',
+                15: 'Lunch',
+                25: 'Dinner'
+            };
+            
+            const transaction = {
+                id: Date.now(),
+                amount: amount,
+                description: descriptions[amount] || 'Quick expense',
+                category: 'spend',
+                date: new Date()
+            };
+            
+            addTransactionToState(transaction);
+            showCelebration('💰', 'Added!');
+        }
+
+        function addTransaction() {
+            const amountInput = document.getElementById('amountInput');
+            const descriptionInput = document.getElementById('descriptionInput');
+            
+            const amount = roundToFive(parseFloat(amountInput.value) || 0);
+            const description = descriptionInput.value.trim() || 'Expense';
+            
+            if (amount <= 0) {
+                showAlert('Please enter a valid amount');
+                return;
+            }
+            
+            const transaction = {
+                id: Date.now(),
+                amount: amount,
+                description: description,
+                category: 'spend',
+                date: new Date()
+            };
+            
+            addTransactionToState(transaction);
+            
+            amountInput.value = '';
+            descriptionInput.value = '';
+            
+            if (amount !== parseFloat(amountInput.value)) {
+                showAlert(`Rounded to $${amount} (nearest $5)`);
+            }
+            
+            showCelebration('✅', 'Added!');
+        }
+
+        function addTransactionToState(transaction) {
+            appState.transactions.push(transaction);
+            appState.spendUsed += transaction.amount;
+            updateAllDisplays();
+            checkAchievements();
+        }
+
+        function editTransaction(transactionId) {
+            const transaction = appState.transactions.find(t => t.id === transactionId);
+            if (!transaction) return;
+            
+            document.getElementById('editTransactionId').value = transactionId;
+            document.getElementById('editAmountInput').value = transaction.amount;
+            document.getElementById('editDescriptionInput').value = transaction.description;
+            showModal('editTransactionModal');
+        }
+
+        function deleteTransaction(transactionId) {
+            if (confirm('Delete this transaction?')) {
+                const transactionIndex = appState.transactions.findIndex(t => t.id === transactionId);
+                if (transactionIndex !== -1) {
+                    const transaction = appState.transactions[transactionIndex];
+                    appState.spendUsed -= transaction.amount;
+                    appState.transactions.splice(transactionIndex, 1);
+                    updateAllDisplays();
+                    showCelebration('🗑️', 'Deleted!');
+                }
+            }
+        }
+
+        function saveTransactionEdit() {
+            const transactionId = parseInt(document.getElementById('editTransactionId').value);
+            const newAmount = roundToFive(parseFloat(document.getElementById('editAmountInput').value) || 0);
+            const newDescription = document.getElementById('editDescriptionInput').value.trim() || 'Expense';
+            
+            if (newAmount <= 0) {
+                showAlert('Please enter a valid amount');
+                return;
+            }
+            
+            const transaction = appState.transactions.find(t => t.id === transactionId);
+            if (!transaction) return;
+            
+            appState.spendUsed = appState.spendUsed - transaction.amount + newAmount;
+            transaction.amount = newAmount;
+            transaction.description = newDescription;
+            
+            updateAllDisplays();
+            closeModal('editTransactionModal');
+            showCelebration('✅', 'Updated!');
+        }
+
+        function showEducationHub() {
+            showModal('educationModal');
+        }
+
+        function showAchievementDetails(achievementKey) {
+            const achievements = {
+                'setup-master': {
+                    icon: '🎯',
+                    name: 'Setup Master',
+                    description: 'Successfully configured your Flow Budgeting system! You\'re ready to take control of your finances.'
+                },
+                'first-spend': {
+                    icon: '💚',
+                    name: 'First Spend',
+                    description: 'Added your first expense! You\'re actively tracking your spending - great start!'
+                },
+                'week-warrior': {
+                    icon: '🔥',
+                    name: 'Week Warrior',
+                    description: 'Stayed on budget for 7 consecutive days! Your discipline is paying off.'
+                },
+                'month-master': {
+                    icon: '🏆',
+                    name: 'Month Master',
+                    description: 'Complete a full month on budget to unlock this achievement!'
+                }
+            };
+            
+            const achievement = achievements[achievementKey];
+            if (achievement) {
+                document.getElementById('achievementIcon').textContent = achievement.icon;
+                document.getElementById('achievementName').textContent = achievement.name;
+                document.getElementById('achievementDescription').textContent = achievement.description;
+                showModal('achievementModal');
+            }
+        }
+
+        function showAllocationAdjustment() {
+            showModal('allocationModal');
+            updateAllocationPreview();
+        }
+
+        function updateAllocationPreview() {
+            const secure = parseInt(document.getElementById('secureSlider').value);
+            const save = parseInt(document.getElementById('saveSlider').value);
+            const spend = Math.max(0, 100 - secure - save);
+            
+            document.getElementById('secureValue').textContent = `${secure}%`;
+            document.getElementById('saveValue').textContent = `${save}%`;
+            document.getElementById('spendValue').textContent = `${spend}%`;
+        }
+
+        function saveAllocations() {
+            const secure = parseInt(document.getElementById('secureSlider').value);
+            const save = parseInt(document.getElementById('saveSlider').value);
+            
+            appState.customAllocations = {
+                secure: secure / 100,
+                save: save / 100,
+                spend: Math.max(0, 100 - secure - save) / 100
+            };
+            
+            updateAllDisplays();
+            closeModal('allocationModal');
+            showCelebration('🎯', 'Allocations updated!');
+        }
+
+        function editIncome() {
+            document.getElementById('incomeInput').value = appState.monthlyIncome;
+            showModal('incomeModal');
+        }
+
+        function updateIncome() {
+            const newIncome = roundToFive(parseFloat(document.getElementById('incomeInput').value) || 0);
+            
+            if (newIncome < 500) {
+                showAlert('Please enter a valid income amount');
+                return;
+            }
+            
+            appState.monthlyIncome = newIncome;
+            updateAllDisplays();
+            closeModal('incomeModal');
+            showCelebration('💰', 'Updated!');
+        }
+
+        function changeProfile() {
+            showModal('profileModal');
+        }
+
+        function selectProfile(profileKey) {
+            appState.savingsProfile = profileKey;
+            updateAllDisplays();
+            closeModal('profileModal');
+            showCelebration('🎯', 'Profile updated!');
+        }
+
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function showCelebration(emoji, text) {
+            const celebration = document.createElement('div');
+            celebration.className = 'celebration';
+            celebration.textContent = emoji;
+            document.body.appendChild(celebration);
+            
+            setTimeout(() => {
+                document.body.removeChild(celebration);
+            }, 1000);
+        }
+
+        function showAlert(message) {
+            alert(message);
+        }
+
+        function checkAchievements() {
+            const transactionCount = appState.transactions.length;
+            
+            if (transactionCount === 1) {
+                setTimeout(() => showCelebration('🎉', 'First transaction!'), 500);
+            } else if (transactionCount === 10) {
+                setTimeout(() => showCelebration('🏆', 'Transaction master!'), 500);
+            }
+        }
+
+        function exportData() {
+            const data = {
+                ...appState,
+                exportDate: new Date().toISOString(),
+                version: '1.0'
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `flow-budget-data-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showCelebration('📁', 'Exported!');
+        }
+
+        function showSettings() {
+            switchTab('journey');
+        }
+
+        function showAllTransactions() {
+            showAlert('Full transaction history coming soon!');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initApp();
+            
+            document.querySelectorAll('.amount-input').forEach(input => {
+                input.addEventListener('blur', function() {
+                    const value = parseFloat(this.value) || 0;
+                    const rounded = roundToFive(value);
+                    if (value !== rounded && value > 0) {
+                        this.value = rounded;
+                    }
+                });
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                        modal.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
