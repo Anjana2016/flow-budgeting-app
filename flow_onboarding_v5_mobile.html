@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>💜 Flow - Make Financial Wellness a Habit ✨</title>
+
+    <!--
+    FLOW ONBOARDING v5.0 - MOBILE-FIRST EDITION 📱
+    ===============================================
+    
+    🎯 MOBILE-FIRST APPROACH:
+    - No scrolling per screen (fits in viewport)
+    - Swipeable cards for content-heavy screens
+    - Horizontal swipe through details
+    - Fixed bottom navigation
+    - Personalized messaging with user's name
+    - Portrait optimization (375px base width)
+    
+    💜 GEN Z + MOBILE FEATURES:
+    - Card-based content delivery
+    - Gesture-friendly interactions
+    - Progress indicators for cards
+    - Smooth swipe animations
+    - Mobile-optimized typography
+    - Touch-friendly button sizes
+    -->
+
+    <style>
+        /* ===== MOBILE-FIRST DESIGN SYSTEM ===== */
+        :root {
+            /* Core Colors */
+            --primary-bg: #0A0A0F;
+            --secondary-bg: #1A1A25;
+            --card-bg: #1E1E35;
+            
+            /* Electric Blue Theme */
+            --flow-blue: #0ea5e9;
+            --flow-blue-light: #06b6d4;
+            --flow-mint: #00D2AA;
+            --flow-purple: #7C3AED;
+            --flow-pink: #F472B6;
+            --flow-orange: #FB923C;
+            --flow-yellow: #FDE047;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+            --gradient-secondary: linear-gradient(135deg, #F472B6 0%, #FB923C 100%);
+            --gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            --gradient-hero: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #00D2AA 100%);
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-hover: rgba(255, 255, 255, 0.15);
+            --backdrop-blur: blur(20px);
+            
+            /* Typography */
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            
+            /* Shadows */
+            --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 30px rgba(14, 165, 233, 0.3);
+            --shadow-button: 0 8px 25px rgba(14, 165, 233, 0.4);
+            
+            /* Animation */
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Mobile Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            
+            /* Mobile Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+        
+        /* ===== MOBILE-FIRST FOUNDATION ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow: hidden; /* Prevent body scrolling */
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+        }
+        
+        /* ===== MOBILE PROGRESS HEADER ===== */
+        .progress-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--glass-border);
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .progress-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s var(--ease-smooth);
+        }
+        
+        .progress-dot.active {
+            background: var(--flow-blue);
+            transform: scale(1.3);
+            box-shadow: 0 0 8px rgba(14, 165, 233, 0.6);
+        }
+        
+        .progress-dot.completed {
+            background: var(--flow-mint);
+            transform: scale(1.1);
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* ===== MOBILE SCREEN CONTAINER ===== */
+        .screen-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px;
+            padding-bottom: 100px; /* Space for bottom nav */
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #0a0a1a 100%);
+        }
+        
+        .screen {
+            flex: 1;
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ===== MOBILE CONTENT AREAS ===== */
+        .screen-header {
+            padding: var(--space-lg) var(--space-md) var(--space-md);
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .screen-headline {
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: var(--space-sm);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .screen-subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        
+        .screen-content {
+            flex: 1;
+            padding: 0 var(--space-md);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* ===== SWIPEABLE CARD SYSTEM ===== */
+        .card-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: var(--space-md);
+        }
+        
+        .card-stack {
+            display: flex;
+            height: 100%;
+            transition: transform 0.3s var(--ease-smooth);
+            will-change: transform;
+        }
+        
+        .content-card {
+            min-width: 100%;
+            padding: var(--space-lg);
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            margin-right: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow-y: auto;
+        }
+        
+        .card-content {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .card-highlight {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        /* ===== CARD NAVIGATION ===== */
+        .card-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-sm) 0;
+            flex-shrink: 0;
+        }
+        
+        .card-dots {
+            display: flex;
+            gap: var(--space-xs);
+        }
+        
+        .card-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s var(--ease-smooth);
+        }
+        
+        .card-dot.active {
+            background: var(--flow-blue);
+            transform: scale(1.2);
+        }
+        
+        .swipe-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        /* ===== MOBILE FORMS ===== */
+        .mobile-form {
+            padding: var(--space-lg);
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            margin: var(--space-md) 0;
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            text-align: left;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: var(--space-md);
+            border: 2px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            color: var(--text-primary);
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            transition: all 0.3s var(--ease-smooth);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--flow-blue);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+        
+        /* ===== MOBILE APP PREVIEW ===== */
+        .app-preview {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-lg);
+            margin: var(--space-md) 0;
+            text-align: center;
+        }
+        
+        .preview-phone {
+            max-width: 200px;
+            margin: 0 auto var(--space-md);
+            background: var(--gradient-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .preview-phone::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .flow-amount {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .flow-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* ===== MOBILE BUTTONS ===== */
+        .mobile-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border-top: 1px solid var(--glass-border);
+            padding: var(--space-md);
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .back-btn {
+            width: 48px;
+            height: 48px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s var(--ease-smooth);
+            flex-shrink: 0;
+        }
+        
+        .back-btn:hover {
+            background: var(--glass-hover);
+            color: var(--flow-blue);
+            transform: translateX(-2px);
+        }
+        
+        .primary-btn {
+            flex: 1;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            padding: var(--space-md) var(--space-lg);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-smooth);
+            position: relative;
+            overflow: hidden;
+            min-height: 48px;
+        }
+        
+        .primary-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-button);
+        }
+        
+        .primary-btn:hover::before {
+            left: 100%;
+        }
+        
+        .primary-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* ===== GOAL SELECTION MOBILE ===== */
+        .goal-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        
+        .goal-option {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 2px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            cursor: pointer;
+            transition: all 0.3s var(--ease-smooth);
+            text-align: left;
+        }
+        
+        .goal-option:hover,
+        .goal-option.selected {
+            border-color: var(--flow-blue);
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .goal-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .goal-icon {
+            font-size: 20px;
+        }
+        
+        .goal-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .goal-description {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+        
+        /* ===== HABIT CARDS MOBILE ===== */
+        .habit-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: var(--space-xs);
+        }
+        
+        .habit-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 2px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            cursor: pointer;
+            transition: all 0.3s var(--ease-smooth);
+            position: relative;
+        }
+        
+        .habit-card:hover,
+        .habit-card.selected {
+            border-color: var(--flow-blue);
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .habit-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .habit-icon {
+            font-size: 16px;
+        }
+        
+        .habit-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .habit-description {
+            font-size: 12px;
+            opacity: 0.8;
+            line-height: 1.3;
+        }
+        
+        .recommended-badge {
+            position: absolute;
+            top: -6px;
+            right: var(--space-sm);
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 2px var(--space-sm);
+            border-radius: var(--radius-md);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        /* ===== STATS MOBILE ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-sm);
+            margin: var(--space-md) 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: var(--space-sm);
+        }
+        
+        .stat-number {
+            font-size: 18px;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .stat-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        /* ===== TESTIMONIALS MOBILE ===== */
+        .testimonial-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            text-align: left;
+        }
+        
+        .testimonial-text {
+            font-size: 14px;
+            line-height: 1.4;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .author-avatar {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .author-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .author-achievement {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+        
+        /* ===== INTERFACE CARDS MOBILE ===== */
+        .interface-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            text-align: left;
+        }
+        
+        .interface-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .interface-details h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .interface-details p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+        
+        /* ===== MILESTONES MOBILE ===== */
+        .milestone-list {
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: var(--space-xs);
+        }
+        
+        .milestone-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-sm);
+            margin-bottom: var(--space-xs);
+            border-radius: var(--radius-md);
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .milestone-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .milestone-icon.completed {
+            background: var(--gradient-success);
+            color: white;
+        }
+        
+        .milestone-icon.pending {
+            background: var(--glass-bg);
+            color: var(--text-muted);
+            border: 2px solid var(--glass-border);
+        }
+        
+        .milestone-details h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+        
+        .milestone-details p {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+        
+        /* ===== INCOME INPUT MOBILE ===== */
+        .income-display {
+            text-align: center;
+            padding: var(--space-lg);
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            margin: var(--space-md) 0;
+        }
+        
+        .income-input {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            width: 200px;
+            margin: 0 auto;
+        }
+        
+        .income-input:focus {
+            outline: none;
+        }
+        
+        .income-preview {
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 360px) {
+            .screen-headline {
+                font-size: 22px;
+            }
+            
+            .screen-subtitle {
+                font-size: 14px;
+            }
+            
+            .mobile-buttons {
+                padding: var(--space-sm);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ===== TOUCH GESTURES ===== */
+        .card-stack {
+            touch-action: pan-x;
+        }
+        
+        .swipe-indicator {
+            position: absolute;
+            right: var(--space-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 12px;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* ===== LOADING STATES ===== */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* ===== UTILITY CLASSES ===== */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 0.3s ease-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Mobile Progress Header -->
+    <div class="progress-header">
+        <div class="progress-dots">
+            <div class="progress-dot completed"></div>
+            <div class="progress-dot completed"></div>
+            <div class="progress-dot completed"></div>
+            <div class="progress-dot active"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+        </div>
+        <div class="progress-text" id="progressText">Building your financial vibe ✨</div>
+    </div>
+
+    <!-- Screen Container -->
+    <div class="screen-container">
+
+        <!-- Screen 1: App Preview -->
+        <div class="screen active" id="screen1">
+            <div class="screen-header">
+                <div class="screen-headline">This is what your daily financial life looks like ✨</div>
+                <div class="screen-subtitle">Real app interface, real results, zero BS 💯</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="app-preview">
+                    <div class="preview-phone">
+                        <div class="flow-amount">$35</div>
+                        <div class="flow-label">Available Today 🔥</div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">+$320</div>
+                            <div class="stat-label">This Month</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Day Streak</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">$980</div>
+                            <div class="stat-label">Saved Total</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 2: Pain Point Empathy (Swipeable) -->
+        <div class="screen" id="screen2">
+            <div class="screen-header">
+                <div class="screen-headline">We totally get it 💭</div>
+                <div class="screen-subtitle">Money management feels like a hot mess sometimes</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="card-container">
+                    <div class="card-stack" id="painPointCards">
+                        <div class="content-card">
+                            <div class="card-content">
+                                Traditional budgeting apps make you feel like you're failing before you even start. 
+                                Categories everywhere, guilt about every purchase, and zero idea if you're actually doing well. 😵‍💫
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="card-content">
+                                <span class="card-highlight">That's not your fault.</span> You need something that works with your life, 
+                                not against it. Something that feels good instead of stressful.
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="card-content">
+                                Flow is the anti-budget that actually works. Built by people who understand that 
+                                financial wellness should feel empowering, not exhausting. ✨
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swipe-indicator">👉</div>
+                </div>
+                
+                <div class="card-nav">
+                    <div class="card-dots">
+                        <div class="card-dot active"></div>
+                        <div class="card-dot"></div>
+                        <div class="card-dot"></div>
+                    </div>
+                    <div class="swipe-hint">💡 Swipe to explore</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 3: Scientific Approach (Swipeable) -->
+        <div class="screen" id="screen3">
+            <div class="screen-header">
+                <div class="screen-headline">The science is actually insane 🧠</div>
+                <div class="screen-subtitle">Behavioral psychology meets your bank account</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="card-container">
+                    <div class="card-stack" id="scienceCards">
+                        <div class="content-card">
+                            <div class="card-content">
+                                Studies show that people who track daily spending amounts (instead of complex categories) 
+                                are <span class="card-highlight">3x more likely to achieve their financial goals</span>. 📊
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="card-content">
+                                Flow uses the same psychology principles that make fitness apps addictive, but for your money:
+                                <br><br>
+                                <span class="card-highlight">🎯 Single Focus:</span> One daily number to track<br>
+                                <span class="card-highlight">💚 Guilt-Free Framework:</span> Built-in buffers<br>
+                                <span class="card-highlight">📈 Habit Formation:</span> Daily wealth building
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="card-content">
+                                <span class="card-highlight">🔥 Achievement System:</span> Celebrate wins, learn from experiences<br><br>
+                                This isn't just another app - it's a scientifically-backed system that actually works! ⚡
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-nav">
+                    <div class="card-dots">
+                        <div class="card-dot active"></div>
+                        <div class="card-dot"></div>
+                        <div class="card-dot"></div>
+                    </div>
+                    <div class="swipe-hint">💡 Keep swiping</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 4: Personal Connection -->
+        <div class="screen" id="screen4">
+            <div class="screen-header">
+                <div class="screen-headline">What should we call you? 😊</div>
+                <div class="screen-subtitle">Let's make this personal</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="mobile-form">
+                    <div class="form-group">
+                        <label class="form-label">First Name ✨</label>
+                        <input type="text" class="form-input" id="userName" placeholder="Type your name here..." maxlength="20">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">What's your main financial vibe? 🎯</label>
+                        <div class="goal-grid">
+                            <div class="goal-option" onclick="selectGoal(this, 'emergency-fund')">
+                                <div class="goal-header">
+                                    <div class="goal-icon">🛡️</div>
+                                    <div class="goal-title">Build my safety net</div>
+                                </div>
+                                <div class="goal-description">Emergency fund vibes - I want that peace of mind</div>
+                            </div>
+                            <div class="goal-option" onclick="selectGoal(this, 'wealth-building')">
+                                <div class="goal-header">
+                                    <div class="goal-icon">💎</div>
+                                    <div class="goal-title">Start wealth building</div>
+                                </div>
+                                <div class="goal-description">Long-term wealth mode - let's get this money growing</div>
+                            </div>
+                            <div class="goal-option" onclick="selectGoal(this, 'stress-reduction')">
+                                <div class="goal-header">
+                                    <div class="goal-icon">🧘</div>
+                                    <div class="goal-title">Reduce money stress</div>
+                                </div>
+                                <div class="goal-description">Just want to feel good about my finances day-to-day</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 5: Financial Stats -->
+        <div class="screen" id="screen5">
+            <div class="screen-header">
+                <div class="screen-headline" id="incomeHeadline">Let's talk numbers 💰</div>
+                <div class="screen-subtitle">This helps us calculate your perfect daily flow</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="income-display">
+                    <label class="form-label">Monthly Income (after taxes) 📊</label>
+                    <input type="number" class="income-input" id="incomeInput" placeholder="3200" min="500" max="50000" step="50">
+                    <div style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                        It's totally okay to estimate - you can update this anytime! ✨
+                    </div>
+                    
+                    <div class="income-preview">
+                        <div style="font-weight: 600; margin-bottom: 12px;">Your Flow Preview 👀</div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number" id="previewSecure">$1,760</div>
+                                <div class="stat-label">Secure (55%)</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="previewSave">$320</div>
+                                <div class="stat-label">Save (10%)</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="previewDaily">$35</div>
+                                <div class="stat-label">Daily Flow</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 6: Habit Selection -->
+        <div class="screen" id="screen6">
+            <div class="screen-header">
+                <div class="screen-headline" id="habitHeadline">Pick your financial habits 🎯</div>
+                <div class="screen-subtitle">Choose 2-3 that feel right for your vibe</div>
+            </div>
+            
+            <div class="screen-content">
+                <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: var(--space-md); text-center;">
+                    Research shows 2-3 habits stick way better than trying to change everything at once. 
+                    Start small, build momentum! 💪
+                </div>
+                
+                <div class="habit-grid">
+                    <div class="habit-card" onclick="toggleHabit(this, 'daily-tracking')">
+                        <div class="recommended-badge">Recommended</div>
+                        <div class="habit-header">
+                            <div class="habit-icon">📱</div>
+                            <div class="habit-title">Track daily spending</div>
+                        </div>
+                        <div class="habit-description">Quick 30-second check-ins to stay aware of your flow</div>
+                    </div>
+                    
+                    <div class="habit-card" onclick="toggleHabit(this, 'morning-checkin')">
+                        <div class="recommended-badge">Recommended</div>
+                        <div class="habit-header">
+                            <div class="habit-icon">☀️</div>
+                            <div class="habit-title">Morning financial check-in</div>
+                        </div>
+                        <div class="habit-description">Start each day knowing exactly what you can spend guilt-free</div>
+                    </div>
+                    
+                    <div class="habit-card" onclick="toggleHabit(this, 'weekly-review')">
+                        <div class="habit-header">
+                            <div class="habit-icon">📊</div>
+                            <div class="habit-title">Weekly progress review</div>
+                        </div>
+                        <div class="habit-description">Celebrate wins and adjust your approach based on what you learn</div>
+                    </div>
+                    
+                    <div class="habit-card" onclick="toggleHabit(this, 'mindful-pause')">
+                        <div class="habit-header">
+                            <div class="habit-icon">🧘</div>
+                            <div class="habit-title">Mindful spending pause</div>
+                        </div>
+                        <div class="habit-description">Take a breath before big purchases to make sure they align with your goals</div>
+                    </div>
+                    
+                    <div class="habit-card" onclick="toggleHabit(this, 'celebrate-milestones')">
+                        <div class="habit-header">
+                            <div class="habit-icon">🎉</div>
+                            <div class="habit-title">Celebrate savings milestones</div>
+                        </div>
+                        <div class="habit-description">Acknowledge your progress and reward yourself for hitting goals</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: var(--space-md);">
+                    <div style="font-size: 12px; color: var(--text-muted);">
+                        <span id="habitCount">0</span> habits selected
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 7: Motivation -->
+        <div class="screen" id="screen7">
+            <div class="screen-header">
+                <div class="screen-headline" id="motivationHeadline">You're absolutely crushing it! 🔥</div>
+                <div class="screen-subtitle">Look at this solid foundation you've built</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="mobile-form">
+                    <div style="text-align: center; padding: var(--space-lg);">
+                        <div style="font-size: 48px; margin-bottom: var(--space-md);">🎯</div>
+                        <div style="font-size: 18px; font-weight: 600; margin-bottom: var(--space-sm);">
+                            <span id="motivationName">You</span> have a rock-solid foundation!
+                        </div>
+                        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.5;">
+                            Seriously, most people never get this far. You've already shown you're committed to 
+                            building wealth and reducing money stress. That's actually huge. ✨
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid" style="margin-top: var(--space-lg);">
+                        <div class="stat-item">
+                            <div class="stat-number" id="summarySecure">$1,760</div>
+                            <div class="stat-label">SECURE</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="summarySave">$320</div>
+                            <div class="stat-label">SAVE</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="summaryDaily">$35</div>
+                            <div class="stat-label">DAILY FLOW</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 8: Social Proof (Swipeable) -->
+        <div class="screen" id="screen8">
+            <div class="screen-header">
+                <div class="screen-headline" id="socialHeadline">Join the crew! 👥</div>
+                <div class="screen-subtitle">You're about to be part of something special</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="stats-grid" style="margin-bottom: var(--space-md);">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">People Helped</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$12M+</div>
+                        <div class="stat-label">Wealth Built</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.8★</div>
+                        <div class="stat-label">App Rating</div>
+                    </div>
+                </div>
+                
+                <div class="card-container">
+                    <div class="card-stack" id="testimonialCards">
+                        <div class="content-card">
+                            <div class="testimonial-card">
+                                <div class="testimonial-text">
+                                    "Flow completely changed my relationship with money. I used to stress about every purchase, 
+                                    now I know exactly what I can spend and I'm automatically building wealth. Game changer! 🤯"
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">A</div>
+                                    <div>
+                                        <div class="author-name">Alex, 24</div>
+                                        <div class="author-achievement">$3,200 saved • 8 months strong</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="testimonial-card">
+                                <div class="testimonial-text">
+                                    "Finally, a money app that doesn't make me feel guilty! Flow feels like having a 
+                                    financial bestie who actually gets it. Hit my emergency fund goal last month! 🎉"
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">J</div>
+                                    <div>
+                                        <div class="author-name">Jordan, 26</div>
+                                        <div class="author-achievement">$5,000 emergency fund • 1 year strong</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-nav">
+                    <div class="card-dots">
+                        <div class="card-dot active"></div>
+                        <div class="card-dot"></div>
+                    </div>
+                    <div class="swipe-hint">💡 Real success stories</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 9: Interface Education (Swipeable) -->
+        <div class="screen" id="screen9">
+            <div class="screen-header">
+                <div class="screen-headline" id="interfaceHeadline">Here's the magic ✨</div>
+                <div class="screen-subtitle">Three simple screens to manage your entire financial life</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="card-container">
+                    <div class="card-stack" id="interfaceCards">
+                        <div class="content-card">
+                            <div class="interface-card">
+                                <div class="interface-icon">💚</div>
+                                <div class="interface-details">
+                                    <h3>Daily Flow</h3>
+                                    <p>Your main hub! Track spending, see your remaining budget, and add expenses with one tap.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="interface-card">
+                                <div class="interface-icon">🎯</div>
+                                <div class="interface-details">
+                                    <h3>Budget Health</h3>
+                                    <p>Monitor your 3 S's progress, adjust allocations, and understand your financial impact.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content-card">
+                            <div class="interface-card">
+                                <div class="interface-icon">📈</div>
+                                <div class="interface-details">
+                                    <h3>Your Journey</h3>
+                                    <p>Track growth over time, celebrate milestones, and see how Flow is building your wealth.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-nav">
+                    <div class="card-dots">
+                        <div class="card-dot active"></div>
+                        <div class="card-dot"></div>
+                        <div class="card-dot"></div>
+                    </div>
+                    <div class="swipe-hint">💡 Explore each tab</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 10: Goal Setting -->
+        <div class="screen" id="screen10">
+            <div class="screen-header">
+                <div class="screen-headline" id="goalHeadline">What's your dream? 🌟</div>
+                <div class="screen-subtitle">Let's set some goals that actually excite you</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="mobile-form">
+                    <div style="font-weight: 600; margin-bottom: var(--space-md); text-align: center;">
+                        Your Personal Milestones 🎯
+                    </div>
+                    
+                    <div class="milestone-list">
+                        <div class="milestone-item">
+                            <div class="milestone-icon completed">✓</div>
+                            <div class="milestone-details">
+                                <h4>Started Flow</h4>
+                                <p>Welcome to your financial glow-up journey!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="milestone-item">
+                            <div class="milestone-icon pending">1</div>
+                            <div class="milestone-details">
+                                <h4>First Week Challenge</h4>
+                                <p>Track spending for 7 days straight • Starting today!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="milestone-item">
+                            <div class="milestone-icon pending">2</div>
+                            <div class="milestone-details">
+                                <h4>$500 Milestone</h4>
+                                <p>Save your first $500 • ~2 months</p>
+                            </div>
+                        </div>
+                        
+                        <div class="milestone-item">
+                            <div class="milestone-icon pending">3</div>
+                            <div class="milestone-details">
+                                <h4>Emergency Fund Starter</h4>
+                                <p>Build $1,000 emergency fund • ~3 months</p>
+                            </div>
+                        </div>
+                        
+                        <div class="milestone-item">
+                            <div class="milestone-icon pending">4</div>
+                            <div class="milestone-details">
+                                <h4>Flow Champion</h4>
+                                <p>30 days of consistent tracking • You're gonna crush this!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 11: Final Commitment -->
+        <div class="screen" id="screen11">
+            <div class="screen-header">
+                <div class="screen-headline" id="finalHeadline">Ready to glow up? 💜</div>
+                <div class="screen-subtitle">Your financial wellness journey starts right now</div>
+            </div>
+            
+            <div class="screen-content">
+                <div class="mobile-form">
+                    <div style="text-align: center; padding: var(--space-lg);">
+                        <div style="font-size: 64px; margin-bottom: var(--space-md);">🎉</div>
+                        <div style="font-size: 18px; font-weight: 600; margin-bottom: var(--space-md);">
+                            Achievement Unlocked: Setup Master! 
+                        </div>
+                        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: var(--space-lg);">
+                            <span id="finalName">You've</span> successfully configured your Flow system! You're officially ready to start 
+                            your financial wellness journey. ✨
+                        </div>
+                    </div>
+                    
+                    <div style="background: var(--glass-bg); border-radius: var(--radius-lg); padding: var(--space-md); margin: var(--space-md) 0; border: 1px solid var(--glass-border);">
+                        <div style="font-weight: 600; margin-bottom: var(--space-md); text-align: center;">
+                            Your first challenge 🎯
+                        </div>
+                        <div style="background: var(--gradient-primary); border-radius: var(--radius-md); padding: var(--space-md); text-align: center; color: white;">
+                            <div style="font-size: 32px; margin-bottom: var(--space-sm);">📱</div>
+                            <div style="font-weight: 600; margin-bottom: 4px;">Track your first expense</div>
+                            <div style="font-size: 12px; opacity: 0.9;">
+                                Log any purchase today to start building your financial awareness habit
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-buttons">
+        <button class="back-btn" onclick="previousScreen()" id="backButton" style="opacity: 0.5; pointer-events: none;">←</button>
+        <button class="primary-btn" onclick="nextScreen()" id="nextButton">Yess, I want this! 🚀</button>
+    </div>
+
+    <script>
+        // ===== MOBILE-FIRST STATE MANAGEMENT =====
+        let onboardingState = {
+            currentScreen: 1,
+            totalScreens: 11,
+            userName: '',
+            primaryGoal: '',
+            income: 3200,
+            selectedHabits: [],
+            dailyFlow: 35,
+            isCompleted: false,
+            currentCard: {
+                screen2: 0,
+                screen3: 0,
+                screen8: 0,
+                screen9: 0
+            }
+        };
+
+        // ===== SWIPE FUNCTIONALITY =====
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        function initializeSwipeCards() {
+            const swipeScreens = ['screen2', 'screen3', 'screen8', 'screen9'];
+            
+            swipeScreens.forEach(screenId => {
+                const cardStack = document.querySelector(`#${screenId} .card-stack`);
+                if (cardStack) {
+                    cardStack.addEventListener('touchstart', handleTouchStart, { passive: false });
+                    cardStack.addEventListener('touchmove', handleTouchMove, { passive: false });
+                    cardStack.addEventListener('touchend', handleTouchEnd);
+                    
+                    // Mouse events for desktop testing
+                    cardStack.addEventListener('mousedown', handleMouseStart);
+                    cardStack.addEventListener('mousemove', handleMouseMove);
+                    cardStack.addEventListener('mouseup', handleMouseEnd);
+                    cardStack.addEventListener('mouseleave', handleMouseEnd);
+                }
+            });
+        }
+
+        function handleTouchStart(e) {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }
+
+        function handleTouchMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            currentX = e.touches[0].clientX;
+        }
+
+        function handleTouchEnd(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const diffX = startX - currentX;
+            const threshold = 50;
+            
+            if (Math.abs(diffX) > threshold) {
+                const screenId = e.target.closest('.screen').id;
+                if (diffX > 0) {
+                    // Swipe left - next card
+                    nextCard(screenId);
+                } else {
+                    // Swipe right - previous card
+                    previousCard(screenId);
+                }
+            }
+        }
+
+        // Mouse events for desktop
+        function handleMouseStart(e) {
+            startX = e.clientX;
+            isDragging = true;
+            e.preventDefault();
+        }
+
+        function handleMouseMove(e) {
+            if (!isDragging) return;
+            currentX = e.clientX;
+        }
+
+        function handleMouseEnd(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const diffX = startX - currentX;
+            const threshold = 50;
+            
+            if (Math.abs(diffX) > threshold) {
+                const screenId = e.target.closest('.screen').id;
+                if (diffX > 0) {
+                    nextCard(screenId);
+                } else {
+                    previousCard(screenId);
+                }
+            }
+        }
+
+        function nextCard(screenId) {
+            const cardStack = document.querySelector(`#${screenId} .card-stack`);
+            const cards = cardStack.children;
+            const maxCards = cards.length;
+            const currentIndex = onboardingState.currentCard[screenId];
+            
+            if (currentIndex < maxCards - 1) {
+                onboardingState.currentCard[screenId]++;
+                updateCardPosition(screenId);
+                updateCardDots(screenId);
+            }
+        }
+
+        function previousCard(screenId) {
+            const currentIndex = onboardingState.currentCard[screenId];
+            
+            if (currentIndex > 0) {
+                onboardingState.currentCard[screenId]--;
+                updateCardPosition(screenId);
+                updateCardDots(screenId);
+            }
+        }
+
+        function updateCardPosition(screenId) {
+            const cardStack = document.querySelector(`#${screenId} .card-stack`);
+            const currentIndex = onboardingState.currentCard[screenId];
+            const translateX = -currentIndex * 100;
+            
+            cardStack.style.transform = `translateX(${translateX}%)`;
+        }
+
+        function updateCardDots(screenId) {
+            const dots = document.querySelectorAll(`#${screenId} .card-dot`);
+            const currentIndex = onboardingState.currentCard[screenId];
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // ===== NAVIGATION FUNCTIONS =====
+        function nextScreen() {
+            // Validation for specific screens
+            if (onboardingState.currentScreen === 4 && !validatePersonalInfo()) {
+                return;
+            }
+            
+            if (onboardingState.currentScreen === 5 && !validateIncome()) {
+                return;
+            }
+            
+            // Hide current screen
+            document.getElementById(`screen${onboardingState.currentScreen}`).classList.remove('active');
+            
+            // Move to next screen
+            onboardingState.currentScreen++;
+            
+            // Update progress
+            updateProgress();
+            updatePersonalization();
+            
+            // Special handling for specific screens
+            if (onboardingState.currentScreen === 7) {
+                updateMotivationSummary();
+            } else if (onboardingState.currentScreen === 11) {
+                updateFinalScreen();
+            }
+            
+            // Show new screen
+            setTimeout(() => {
+                document.getElementById(`screen${onboardingState.currentScreen}`).classList.add('active');
+                
+                // Reset card position for new screen
+                if (onboardingState.currentCard[`screen${onboardingState.currentScreen}`] !== undefined) {
+                    onboardingState.currentCard[`screen${onboardingState.currentScreen}`] = 0;
+                    updateCardPosition(`screen${onboardingState.currentScreen}`);
+                    updateCardDots(`screen${onboardingState.currentScreen}`);
+                }
+            }, 100);
+            
+            // Update buttons
+            updateNavigationButtons();
+            
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate([10, 50, 10]);
+            }
+        }
+
+        function previousScreen() {
+            if (onboardingState.currentScreen > 1) {
+                document.getElementById(`screen${onboardingState.currentScreen}`).classList.remove('active');
+                onboardingState.currentScreen--;
+                updateProgress();
+                updatePersonalization();
+                setTimeout(() => {
+                    document.getElementById(`screen${onboardingState.currentScreen}`).classList.add('active');
+                }, 100);
+                updateNavigationButtons();
+            }
+        }
+
+        // ===== PERSONALIZATION SYSTEM =====
+        function updatePersonalization() {
+            const name = onboardingState.userName || 'You';
+            const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
+            
+            // Update screen headlines with personalization
+            const personalizedElements = {
+                'incomeHeadline': `Let's talk numbers, ${nameCapitalized}! 💰`,
+                'habitHeadline': `Pick your financial habits, ${nameCapitalized} 🎯`,
+                'motivationHeadline': `${nameCapitalized}, you're absolutely crushing it! 🔥`,
+                'socialHeadline': `${nameCapitalized}, join the crew! 👥`,
+                'interfaceHeadline': `Here's the magic, ${nameCapitalized} ✨`,
+                'goalHeadline': `What's your dream, ${nameCapitalized}? 🌟`,
+                'finalHeadline': `Ready to glow up, ${nameCapitalized}? 💜`,
+                'motivationName': nameCapitalized,
+                'finalName': `${nameCapitalized}, you've`
+            };
+            
+            Object.entries(personalizedElements).forEach(([id, text]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = text;
+                }
+            });
+        }
+
+        // ===== PROGRESS TRACKING =====
+        function updateProgress() {
+            const dots = document.querySelectorAll('.progress-dot');
+            const progressTexts = [
+                'Building your financial vibe ✨',
+                'Understanding your money goals 💭',
+                'Learning the science behind Flow 🧠',
+                'Making it personal 😊',
+                'Setting up your numbers 💰',
+                'Choosing your habits 🎯',
+                'Celebrating your foundation 🔥',
+                'Joining the community 👥',
+                'Learning the app magic ✨',
+                'Setting your milestones 🌟',
+                'Ready for your glow up! 💜'
+            ];
+            
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active', 'completed');
+                if (index < onboardingState.currentScreen - 1) {
+                    dot.classList.add('completed');
+                } else if (index === onboardingState.currentScreen - 1) {
+                    dot.classList.add('active');
+                }
+            });
+            
+            document.getElementById('progressText').textContent = progressTexts[onboardingState.currentScreen - 1];
+        }
+
+        function updateNavigationButtons() {
+            const backButton = document.getElementById('backButton');
+            const nextButton = document.getElementById('nextButton');
+            
+            // Back button visibility
+            if (onboardingState.currentScreen === 1) {
+                backButton.style.opacity = '0.5';
+                backButton.style.pointerEvents = 'none';
+            } else {
+                backButton.style.opacity = '1';
+                backButton.style.pointerEvents = 'auto';
+            }
+            
+            // Next button text
+            const buttonTexts = [
+                'Yess, I want this! 🚀',
+                'Tell me more! 👀',
+                'I\'m ready to try this! ⚡',
+                'Let\'s go! 🚀',
+                'This looks perfect! 💜',
+                'I\'m ready to build these habits! 🔥',
+                'Let\'s keep this energy going! ⚡',
+                'Count me in! 🙋‍♀️',
+                'Show me my goals! 🌟',
+                'I\'m so ready for this! 🔥',
+                'Let\'s start my glow up! 🚀✨'
+            ];
+            
+            nextButton.textContent = buttonTexts[onboardingState.currentScreen - 1];
+            
+            if (onboardingState.currentScreen === 11) {
+                nextButton.onclick = completeOnboarding;
+            }
+        }
+
+        // ===== FORM VALIDATION =====
+        function validatePersonalInfo() {
+            const name = document.getElementById('userName').value.trim();
+            const selectedGoal = document.querySelector('.goal-option.selected');
+            
+            if (!name) {
+                alert('Please enter your name! We want to make this personal ✨');
+                return false;
+            }
+            
+            if (!selectedGoal) {
+                alert('Please select your main financial vibe! 🎯');
+                return false;
+            }
+            
+            onboardingState.userName = name;
+            onboardingState.primaryGoal = selectedGoal.dataset.goal;
+            
+            return true;
+        }
+
+        function validateIncome() {
+            const income = parseInt(document.getElementById('incomeInput').value);
+            
+            if (!income || income < 500) {
+                alert('Please enter a valid monthly income (at least $500) 💰');
+                return false;
+            }
+            
+            onboardingState.income = income;
+            calculateDailyFlow();
+            
+            return true;
+        }
+
+        // ===== GOAL SELECTION =====
+        function selectGoal(element, goalType) {
+            document.querySelectorAll('.goal-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            element.dataset.goal = goalType;
+        }
+
+        // ===== HABIT SELECTION =====
+        function toggleHabit(element, habitType) {
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                onboardingState.selectedHabits = onboardingState.selectedHabits.filter(h => h !== habitType);
+            } else {
+                if (onboardingState.selectedHabits.length < 3) {
+                    element.classList.add('selected');
+                    onboardingState.selectedHabits.push(habitType);
+                } else {
+                    alert('Keep it simple! Pick just 2-3 habits to start 😊');
+                }
+            }
+            
+            document.getElementById('habitCount').textContent = onboardingState.selectedHabits.length;
+        }
+
+        // ===== CALCULATIONS =====
+        function calculateDailyFlow() {
+            const income = onboardingState.income;
+            const spendPercentage = 35;
+            const buffer = 160;
+            
+            const spendAmount = Math.round(income * (spendPercentage / 100) / 5) * 5 + buffer;
+            const dailyFlow = Math.round(spendAmount / 30 / 5) * 5;
+            
+            onboardingState.dailyFlow = dailyFlow;
+            updateIncomePreview();
+        }
+
+        function updateIncomePreview() {
+            const income = onboardingState.income;
+            const secure = Math.round(income * 0.55 / 5) * 5;
+            const save = Math.round(income * 0.10 / 5) * 5;
+            const dailyFlow = onboardingState.dailyFlow;
+            
+            document.getElementById('previewSecure').textContent = `$${secure.toLocaleString()}`;
+            document.getElementById('previewSave').textContent = `$${save.toLocaleString()}`;
+            document.getElementById('previewDaily').textContent = `$${dailyFlow}`;
+        }
+
+        function updateMotivationSummary() {
+            const income = onboardingState.income;
+            const secure = Math.round(income * 0.55 / 5) * 5;
+            const save = Math.round(income * 0.10 / 5) * 5;
+            const dailyFlow = onboardingState.dailyFlow;
+            
+            document.getElementById('summarySecure').textContent = `$${secure.toLocaleString()}`;
+            document.getElementById('summarySave').textContent = `$${save.toLocaleString()}`;
+            document.getElementById('summaryDaily').textContent = `$${dailyFlow}`;
+        }
+
+        function updateFinalScreen() {
+            // Final screen is already personalized through updatePersonalization
+        }
+
+        // ===== COMPLETION =====
+        function completeOnboarding() {
+            const name = onboardingState.userName || 'Financial Warrior';
+            const habitText = onboardingState.selectedHabits.length > 0 
+                ? `Selected habits: ${onboardingState.selectedHabits.length}`
+                : 'Ready to build habits';
+            
+            alert(`🎉 Welcome to Flow, ${name}! 
+
+Daily Flow: $${onboardingState.dailyFlow}
+Primary Goal: ${onboardingState.primaryGoal}
+${habitText}
+
+Your financial glow-up starts now! ✨🚀`);
+            
+            // In real app: redirect to main application
+            // window.location.href = 'flow_v5_myfitnesspal_inspired.html';
+        }
+
+        function exportData() {
+            const exportData = {
+                user: onboardingState,
+                completedAt: new Date().toISOString(),
+                version: 'Mobile-First v5.0'
+            };
+            
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'flow-onboarding-mobile-data.json';
+            link.click();
+        }
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize income input handling
+            const incomeInput = document.getElementById('incomeInput');
+            if (incomeInput) {
+                incomeInput.addEventListener('input', function() {
+                    const income = parseInt(this.value) || 3200;
+                    onboardingState.income = income;
+                    calculateDailyFlow();
+                });
+            }
+            
+            // Initialize swipe functionality
+            initializeSwipeCards();
+            
+            // Initialize progress and buttons
+            updateProgress();
+            updateIncomePreview();
+            updateNavigationButtons();
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' && onboardingState.currentScreen !== 4 && onboardingState.currentScreen !== 5 && onboardingState.currentScreen !== 6) {
+                    nextScreen();
+                } else if (e.key === 'ArrowLeft') {
+                    previousScreen();
+                }
+            });
+            
+            console.log('📱 Flow Mobile-First Onboarding v5.0 Ready!');
+            console.log('Swipeable cards + personalization activated! ✨');
+        });
+    </script>
+</body>
+</html>
