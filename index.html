@@ -576,16 +576,29 @@ All core calculations, state management, and user interactions 100% intact
 
         /* ===== DAY 44: DUAL-LAYER ACHIEVEMENT DISPLAY STYLES ===== */
         
-        /* Dual-layer modal specific animation */
+        /* Dual-layer modal specific positioning and animation */
         .achievement-modal.dual-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             max-width: 450px !important;
             width: 95% !important;
+            margin: 0 auto;
+            z-index: 10000;
         }
         
         .achievement-modal.dual-layer .modal-content {
+            position: relative;
             max-height: 85vh;
             overflow-y: auto;
             padding: 24px;
+            width: 100%;
+            margin: auto;
         }
         
         /* Dual-layer container */
@@ -4897,11 +4910,38 @@ All core calculations, state management, and user interactions 100% intact
             }
         }
 
-        /* Responsive Achievement Modals */
+        /* ===== DAY 44: STEP 4 - MOBILE MODAL POSITIONING FIX ===== */
+        
+        /* Enhanced Mobile Achievement Modal Positioning */
         @media (max-width: 480px) {
             .achievement-modal {
-                max-width: 95% !important;
-                margin: 0 auto;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 20px;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                z-index: 10000 !important;
+                overflow: hidden;
+            }
+
+            .achievement-modal .modal-content {
+                position: relative;
+                max-width: 340px;
+                width: 100%;
+                max-height: 90vh;
+                overflow-y: auto;
+                margin: auto;
+                transform: none !important;
+                top: auto !important;
+                left: auto !important;
             }
 
             .achievement-icon {
@@ -4919,6 +4959,26 @@ All core calculations, state management, and user interactions 100% intact
 
             .achievement-actions {
                 flex-direction: column;
+            }
+            
+            /* Ensure dual-layer modal is also properly centered */
+            .achievement-modal.dual-layer {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+            }
+            
+            .achievement-modal.dual-layer .modal-content {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                margin: auto !important;
             }
         }
 
@@ -7863,6 +7923,10 @@ function debugBudgetAdherenceSystem() {
                 // Update achievement stats before opening
                 updateAchievementStats();
                 
+                // Scroll to top to ensure modal is visible
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                
                 // Open the dual-layer achievement modal
                 FlowAchievements.showDualLayer();
                 
@@ -7871,6 +7935,10 @@ function debugBudgetAdherenceSystem() {
                 FlowAppLogger.error('❌ Failed to open achievements modal:', error);
                 // Fallback - try direct method
                 try {
+                    // Ensure scroll position is at top for fallback too
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                    
                     showAchievementModal('dual-layer', { 
                         wealthData: { current: calculateCurrentWealth() },
                         engagementData: { badges: appState.achievements?.badges || [] }
@@ -14176,6 +14244,10 @@ function debugBudgetAdherenceSystem() {
                 existing.remove();
             }
 
+            // Scroll to top to ensure modal is visible on mobile
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+
             // Create modal HTML based on type
             const modalHTML = createAchievementModalHTML(type, data);
             
@@ -14184,6 +14256,33 @@ function debugBudgetAdherenceSystem() {
             
             // Get the modal element
             const modal = document.querySelector('.achievement-modal');
+            
+            // ===== DAY 44: STEP 4 - MOBILE POSITIONING FIX =====
+            // Apply mobile positioning fixes for all achievement modals
+            if (FlowAchievements.isMobile() && modal) {
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.right = '0';
+                modal.style.bottom = '0';
+                modal.style.display = 'flex';
+                modal.style.alignItems = 'center';
+                modal.style.justifyContent = 'center';
+                modal.style.zIndex = '10000';
+                modal.style.margin = '0';
+                modal.style.padding = '20px';
+                
+                // Ensure modal content is properly positioned
+                const modalContent = modal.querySelector('.modal-content');
+                if (modalContent) {
+                    modalContent.style.position = 'relative';
+                    modalContent.style.margin = 'auto';
+                    modalContent.style.maxWidth = '340px';
+                    modalContent.style.width = '100%';
+                    modalContent.style.maxHeight = '90vh';
+                    modalContent.style.overflowY = 'auto';
+                }
+            }
             
             // Force animation trigger for dual-layer modals
             if (type === 'dual-layer' && modal) {
